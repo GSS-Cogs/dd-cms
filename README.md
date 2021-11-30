@@ -93,9 +93,9 @@ cd path/to/data-driven-cms
 bash ubuntu-20.4-plone-installer.sh 
 ```
 
-Enter your superuser credentials and hit return...the machine will automatically reboot after the script is done; don't be alarmed!
+Enter your superuser credentials and hit return!
 
-# Running A Demo
+# Running A Plone Demo
 Change directory into your Plone folder. By default this is "home/$USER/Plone", e.g:
 
 ```
