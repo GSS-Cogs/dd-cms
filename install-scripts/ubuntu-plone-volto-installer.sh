@@ -1,5 +1,5 @@
 # User Configurable Variables
-TARGET_PLONE_DIRECTORY="/home/$USER/Plone"
+TARGET_PLONE_DIRECTORY="../../plone"
 PLONE_PASSWORD="admin"
 
 # OS Level Dependencies
@@ -42,6 +42,12 @@ bash install.sh standalone --target=$TARGET_PLONE_DIRECTORY --with-python=/usr/b
 
 
 ## Install Volto
+cd ../..
+mkdir volto
+cd volto
 npm install -g yo @plone/generator-volto
-yo @plone/volto
+yo @plone/volto dd-cms --skip-addons
+
+# Tidy Up
+find ../../ -name 'Plone-5.2.5-UnifiedInstaller-1.0*' -exec rm -rf {} \;
 
