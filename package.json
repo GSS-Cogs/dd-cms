@@ -110,6 +110,7 @@
     "@eeacms/volto-datablocks": "^2.0.11",
     "@eeacms/volto-slate-dataentity": "github:eea/volto-slate-dataentity",
     "@eeacms/volto-slate-footnote": "^2.0.0",
+    "@govuk-react/icon-crown": "0.0.5",
     "@plone/volto": "13.8.2",
     "@types/styled-components": "5.1.16",
     "govuk-react": "0.10.0",
