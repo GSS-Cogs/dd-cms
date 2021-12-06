@@ -3,7 +3,7 @@
  * @module routes
  */
 
-import { App } from '@plone/volto/components';
+import { App } from './App';
 import { defaultRoutes } from '@plone/volto/routes';
 import config from '@plone/volto/registry';
 
