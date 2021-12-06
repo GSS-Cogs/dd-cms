@@ -114,6 +114,7 @@
     "@plone/volto": "13.8.2",
     "@types/styled-components": "5.1.16",
     "govuk-react": "0.10.0",
+    "react-router-dom": "6.0.2",
     "styled-components": "5.3.3",
     "volto-plotlycharts": "github:eea/volto-plotlycharts#2.0.0",
     "volto-slate": "*"
