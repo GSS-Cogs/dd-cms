@@ -9,6 +9,8 @@
  * };
  */
 import Header from "./Header/Header";
+import MainPage from "./MainPage/MainPage";
 export {
   Header,
+  MainPage,
 };
