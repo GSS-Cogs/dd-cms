@@ -17,11 +17,8 @@
   "private": false,
   "workspaces": [],
   "addons": [
-    "volto-plotlycharts",
-    "@eeacms/volto-datablocks",
-    "volto-slate:asDefault",
-    "@eeacms/volto-slate-footnote",
-    "@eeacms/volto-slate-dataentity"
+    "@eeacms/volto-plotlycharts",
+    "@eeacms/volto-datablocks"
   ],
   "jest": {
     "modulePathIgnorePatterns": [
@@ -96,7 +93,7 @@
     },
     "ignoreFiles": "theme/themes/default/**/*.overrides"
   },
-    "browserslist": [
+  "browserslist": [
     ">1%",
     "last 4 versions",
     "Firefox ESR",
@@ -107,12 +104,9 @@
     "node": "^10 || ^12 || ^14"
   },
   "dependencies": {
-    "@plone/volto": "13.8.2",
-    "volto-plotlycharts": "github:eea/volto-plotlycharts#2.0.0",
-    "@eeacms/volto-datablocks": "^2.0.11",
-    "volto-slate": "*",
-    "@eeacms/volto-slate-footnote": "^2.0.0",
-    "@eeacms/volto-slate-dataentity": "github:eea/volto-slate-dataentity"
+    "@eeacms/volto-datablocks": "2.0.17",
+    "@eeacms/volto-plotlycharts": "2.0.10",
+    "@plone/volto": "13.15.1"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "3.1.3",
