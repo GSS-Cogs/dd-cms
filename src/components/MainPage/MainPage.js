@@ -17,11 +17,18 @@ export default class MainPage extends Component {
         <GridRow>
           <GridCol setWidth="one-quarter">
             <div class="container">
-              <UnorderedList>
-                <ListItem>
-                  List item example
-                </ListItem>
-              </UnorderedList>
+              <nav>
+                <UnorderedList>
+                  <ListItem>
+                    <a href="#">Overview</a>
+                  </ListItem>
+                </UnorderedList>
+                <UnorderedList>
+                  <ListItem>
+                    <a href="#">Article</a>
+                  </ListItem>
+                </UnorderedList>
+              </nav>
             </div>
           </GridCol>
           <GridCol>

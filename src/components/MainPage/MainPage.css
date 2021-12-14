@@ -1,3 +1,20 @@
+rticle, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li.active a {
+  font-family: "GDS Transport Bold",sans-serif;
+  font-weight: 700;
+  background: #F3F2F1;
+  border-left: 4px solid #1d70b8;
+}
+
 .container {
   min-height: 100%;
   margin: 0 32px;
