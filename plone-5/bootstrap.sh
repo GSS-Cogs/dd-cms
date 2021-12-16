@@ -7,7 +7,7 @@ do
 done
 docker rm -v $plone
 
-sed -i 's|var-dir=/data|var-dir=data|;/RelStorage\|psycopg2\|mysqlclient\|cx-Oracle/d' instance/buildout.cfg
+sed -i 's|var-dir=/data|var-dir=data|;/RelStorage\|psycopg2\|mysqlclient\|cx-Oracle\|ldap/d' instance/buildout.cfg
 
 pipenv --python 3.8
 
