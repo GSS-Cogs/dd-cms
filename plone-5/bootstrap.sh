@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-mkdir -p instance
 plone=$(docker create plone:5)
 for f in base.cfg buildout-base.cfg buildout.cfg develop.cfg lxml_static.cfg requirements.txt
 do
@@ -18,4 +17,4 @@ export $(docker inspect --format='{{join .Config.Env " "}}' plone:5)
 
 pipenv install pip==$PIP setuptools==$SETUPTOOLS zc.buildout==$ZC_BUILDOUT wheel==$WHEEL
 cd instance
-pipenv run buildout
+pipenv run buildout -c custom.cfg
