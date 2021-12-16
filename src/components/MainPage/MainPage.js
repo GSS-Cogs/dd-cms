@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { PhaseBanner, Link, GridRow, GridCol, Footer, UnorderedList, ListItem, } from "govuk-react";
 import Header from "../Header/Header";
-import Crown from "../../../static/images/govuk-crest.png";
+import Crown from "../../../public/images/govuk-crest.png";
 import './MainPage.css';
 export default class MainPage extends Component {
   render() {
