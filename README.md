@@ -37,6 +37,11 @@ By default, runs tests related to files changed since the last commit.
 Runs the test i18n runner which extracts all the translation strings and
 generates the needed files.
 
+## Switching between git branches
+
+If you are switching between git branches, please run following
+
+`yarn run clean`
 
 ### mrs-developer
 
