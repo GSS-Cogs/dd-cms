@@ -43,11 +43,6 @@ If you are switching between git branches, please run following
 
 `yarn run clean`
 
-Above command requires you to install a npm package `rimraf`
-
-`npm i -g rimraf` for globally installing it
-
-
 ### mrs-developer
 
 [mrs-developer](https://github.com/collective/mrs-developer) is a great tool
