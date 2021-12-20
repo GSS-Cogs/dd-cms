@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import config from '@plone/volto/registry';
 import { Button } from 'govuk-react';
+import { FormattedMessage } from 'react-intl';
 
 /**
  * Anontools container class.
@@ -49,15 +50,22 @@ export class Anontools extends Component {
     const { settings } = config;
     return (
       !this.props.token && (
-        <Button buttonColour="#1d70b8" to={`/login${this.props.content
-          ? `?return_url=${this.props.content['@id'].replace(
-            settings.apiPath,
-            '',
-          )}`
-          : ''
-          }`}>
-          Log in
-        </Button>
+        <Link
+          aria-label="login"
+          to={`/login${this.props.content
+            ? `?return_url=${this.props.content['@id'].replace(
+              settings.apiPath,
+              '',
+            )}`
+            : ''
+            }`}
+        >
+          <Button buttonColour="#1d70b8" onClick={() => {
+            console.log('Clicked');
+          }}>
+            Log in
+          </Button>
+        </Link>
       )
     );
   }
