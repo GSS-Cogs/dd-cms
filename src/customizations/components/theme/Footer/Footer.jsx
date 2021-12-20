@@ -10,10 +10,10 @@ import config from '@plone/volto/registry';
 import { Footer as GovukFooter } from "govuk-react";
 
 const messages = defineMessages({
-    copyright: {
-        id: 'Copyright',
-        defaultMessage: 'Copyright',
-    },
+  copyright: {
+    id: 'Copyright',
+    defaultMessage: 'Copyright',
+  },
 });
 
 /**
@@ -23,22 +23,22 @@ const messages = defineMessages({
  * @returns {string} Markup of the component
  */
 const Footer = ({ intl }) => {
-    const { settings } = config;
-    const lang = useSelector((state) => state.intl.locale);
-    return (
-        <GovukFooter
-            copyright={{
-                image: {
-                    height: 102,
-                    src: 'images/govuk-crest.png',
-                    width: 125
-                },
-                link: 'https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/',
-                text: 'Crown copyright'
-            }}
-            meta={<GovukFooter.MetaLinks heading="Support links"><GovukFooter.Link href="/">Item 1</GovukFooter.Link><GovukFooter.Link href="/footer-meta-item-2">Item 2</GovukFooter.Link><GovukFooter.Link href="/">Item 3</GovukFooter.Link></GovukFooter.MetaLinks>}
-        />
-    );
+  const { settings } = config;
+  const lang = useSelector((state) => state.intl.locale);
+  return (
+    <GovukFooter
+      copyright={{
+        image: {
+          height: 102,
+          src: 'images/govuk-crest.png',
+          width: 125
+        },
+        link: 'https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/',
+        text: 'Crown copyright'
+      }}
+      meta={< GovukFooter.MetaLinks heading="Support links" ><GovukFooter.Link href="/">Item 1</GovukFooter.Link><GovukFooter.Link href="/footer-meta-item-2">Item 2</GovukFooter.Link><GovukFooter.Link href="/">Item 3</GovukFooter.Link></GovukFooter.MetaLinks >}
+    />
+  );
 };
 
 /**
@@ -47,9 +47,9 @@ const Footer = ({ intl }) => {
  * @static
  */
 Footer.propTypes = {
-    /**
-     * i18n object
-     */
+  /**
+   * i18n object
+   */
 };
 
 export default injectIntl(Footer);
