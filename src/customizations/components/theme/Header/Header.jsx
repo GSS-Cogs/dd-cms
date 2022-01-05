@@ -59,6 +59,7 @@ class Header extends Component {
             <Anontools />
           </div>
         )}
+        <Navigation pathname={this.props.pathname} />
       </TopNav>
     );
   }
