@@ -7,8 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { NavLink } from 'react-router-dom';
-import { TopNav } from "govuk-react";
+import * as GOVUK from "govuk-react";
 import { defineMessages, injectIntl } from 'react-intl';
 import { Menu } from 'semantic-ui-react';
 import cx from 'classnames';
@@ -174,19 +173,13 @@ class Navigation extends Component {
           onClick={this.closeMobileMenu}
         >
           {this.props.items.map((item) => (
-            <NavLink
-              to={item.url === '' ? '/' : item.url}
-              key={item.url}
-              className="item"
-              activeClassName="active"
-              exact={
-                settings.isMultilingual
-                  ? item.url === `/${lang}`
-                  : item.url === ''
-              }
+            <GOVUK.TopNav.NavLink
+              href={item.url === '' ? '/' : item.url}
+              target="new"
+              className="TopNavClass"
             >
               {item.title}
-            </NavLink>
+            </GOVUK.TopNav.NavLink>
           ))}
         </Menu>
       </nav>
