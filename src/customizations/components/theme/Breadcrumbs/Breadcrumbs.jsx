@@ -78,35 +78,20 @@ class Breadcrumbs extends Component {
    */
   render() {
     return (
-      <Segment
-        role="navigation"
-        aria-label={this.props.intl.formatMessage(messages.breadcrumbs)}
-        className="breadcrumbs"
-        secondary
-        vertical
-      >
+      <dev>
         <Container>
-          <Breadcrumb>
-            <Link
-              to={this.props.root || '/'}
-              className="section"
-              title={this.props.intl.formatMessage(messages.home)}
+          <GOVUK.Breadcrumbs>
+            <GOVUK.Breadcrumbs.Link
+              href={this.props.root || '/'}
             >
               <Icon name={homeSVG} size="18px" />
-            </Link>
-            {this.props.items.map((item, index, items) => [
-              <Breadcrumb.Divider key={`divider-${item.url}`} />,
-              index < items.length - 1 ? (
-                <Link key={item.url} to={item.url} className="section">
-                  {item.title}
-                </Link>
-              ) : (
-                <Breadcrumb.Section key={item.url} active>
-                  {item.title}
-                </Breadcrumb.Section>
-              ),
-            ])}
-          </Breadcrumb>
+            </GOVUK.Breadcrumbs.Link>
+            {this.props.items.map((item, index, items) =>
+              <GOVUK.Breadcrumbs.Link href={item.url}>
+                {item.title}
+              </GOVUK.Breadcrumbs.Link>
+            )}
+          </GOVUK.Breadcrumbs>
           <GOVUK.PhaseBanner level="beta">
             This part of GOV.UK is being rebuilt –{' '}
             <Link to="https://example.com">
@@ -114,7 +99,7 @@ class Breadcrumbs extends Component {
             </Link>
           </GOVUK.PhaseBanner>
         </Container>
-      </Segment>
+      </dev>
     );
   }
 }
