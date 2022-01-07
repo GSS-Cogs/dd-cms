@@ -10,10 +10,37 @@ our Plone backend.
 
 ## Build the local environment
 
-Run `./bootstrap.sh` to create a local, virtualenv (Pipenv) separate environment with all the right dependencies
+Firstly, ensure that you have the necessary tools installed: Docker, pipenv, git, patch, sed.
+
+For Fedora:
+```bash
+sudo dnf install docker pipenv sed patch git
+```
+
+For Ubuntu:
+```bash
+sudo apt-get install docker.io build-essential pipenv
+```
+
+For Mac/OSX, Docker can be installed using the official [Docker Desktop](https://www.docker.com/products/docker-desktop)
+for Mac, or [alternately one can use Homebrew](https://dhwaneetbhatt.com/blog/run-docker-without-docker-desktop-on-macos)
+to install `hyperkit`, `minikube` and the docker cli commands. Once Docker is installed, the other tools can be installed
+with Homebrew:
+```bash
+brew install pipenv
+```
+
+Finally, run `./bootstrap.sh` to create a local, virtualenv (Pipenv) separate environment with all the right dependencies
 fetched by `buildout` and placed into the `buildout-cache` directory.
 
-Once complete, the project/module can be loaded into IntelliJ as a sub-module, using the `plone-5.iml` project file.
+Once buildout completes, the `instance` directory will contain all necessary dependencies and scripts used to launch
+Plone. This can be launched directly:
+```bash
+cd instance
+pipenv run ./bin/instance fg
+```
+
+Or the project/module can be loaded into PyCharm/IntelliJ as a sub-module, using the `plone-5.iml` project file.
 
 Note that we need to ensure that IntelliJ knows where to find all the dependencies from the `buildout-cache` folder. The
 following command should output the text needed to copy/paste into `plone-5.iml` to keep it up to date with any new
