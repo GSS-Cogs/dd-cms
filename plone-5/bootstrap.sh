@@ -15,6 +15,8 @@ pipenv --python 3.8
 # N.B. Sets versions used below and also PATH and LANG
 export $(docker inspect --format='{{join .Config.Env " "}}' plone:5)
 
-pipenv install pip==$PIP setuptools==$SETUPTOOLS zc.buildout==$ZC_BUILDOUT wheel==$WHEEL
+pipenv install pip==$PIP setuptools==$SETUPTOOLS zc.buildout==$ZC_BUILDOUT wheel==$WHEEL SPARQLWrapper
 cd instance
 pipenv run buildout -c custom.cfg
+cd ..
+patch -N -r - -s -p0 < sparql-dataconnector.patch

@@ -1,0 +1,299 @@
+diff -ruN eea.api.dataconnector-1.8/eea/api/dataconnector/adapter.py buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/adapter.py
+--- eea.api.dataconnector-1.8/eea/api/dataconnector/adapter.py	2021-11-25 16:20:46.000000000 +0000
++++ buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/adapter.py	2022-01-05 14:48:36.153365010 +0000
+@@ -15,6 +15,8 @@
+     IDataProvider
+ from eea.restapi.utils import timing
+ 
++from SPARQLWrapper import SPARQLWrapper, JSON
++
+ logger = logging.getLogger(__name__)
+ 
+ 
+@@ -74,105 +76,24 @@
+     def _get_data(self):
+         """_get_data."""
+         # query = urllib.parse.quote_plus(self.query)
++        endpoint_url = self.context.endpoint_url
++        query = self.context.sparql_query
+ 
+-        form = self.request.form
+-        db_version = (
+-            get_value(form, self.context.namespace, "db_version") or "latest"
+-        )
+-        query = parse(
+-            re.sub(
+-                r"\/\*[\s\S]*?\*\/",
+-                "",
+-                self.context.sql_query.replace("DB_VERSION", db_version),
+-            )
+-        )
+-        collate = self.context.collate
+-        wheres_list = []
+-        data = {}
+-
+-        if self.context.parameters:
+-            for param_expression in self.context.parameters:
+-                # A param can have this structure table*field[op]
+-                # so we need to separate the table and operation from field[op]
+-                param = re.sub(
+-                    r"\[(gt|gte|lt|lte|eq|ne|in|nin|like)\]",
+-                    "",
+-                    param_expression,
+-                )
+-                op = re.search(
+-                    r"\b(gt|gte|lt|lte|eq|ne|in|nin|like)\b", param_expression
+-                )
+-                op = op.group() if op else "eq"
+-                field = param_expression.split("*")
+-
+-                if len(field) > 1:
+-                    field = ".".join(field[1:])
+-                elif len(field) == 1:
+-                    field = field[0]
+-
+-                param = param.replace("*", ".")
+-                value = get_value(form, self.context.namespace, field)
+-
+-                if re.search(r"(eq|ne|like)", op) and isinstance(value, list):
+-                    or_wheres_list = [
+-                        {
+-                            op: [
+-                                get_param(param, value, collate),
+-                                {
+-                                    "literal": "%" + item + "%"
+-                                    if op == "like"
+-                                    else item
+-                                },
+-                            ]
+-                        }
+-                        for item in value
+-                    ]
+-                    or_wheres = build_where_statement(or_wheres_list, "or")
+-                    if or_wheres:
+-                        wheres_list.append(or_wheres)
+-                elif value:
+-                    wheres_list.append(
+-                        {
+-                            op: [
+-                                get_param(param, value, collate),
+-                                {
+-                                    "literal": "%" + value + "%"
+-                                    if op == "like"
+-                                    else value
+-                                },
+-                            ]
+-                        }
+-                    )
+-
+-        wheres = build_where_statement(wheres_list, "and")
+-
+-        if "where" in query and wheres:
+-            query["where"] = {"and": [query["where"], wheres]}
+-        elif "where" not in query and wheres:
+-            query["where"] = wheres
+-
+-        data["query"] = sql_format(query)
+-
+-        if form.get("p"):
+-            data["p"] = form.get("p")
+-
+-        if form.get("nrOfHits"):
+-            data["nrOfHits"] = form.get("nrOfHits")
+-
+-        try:
+-            req = requests.post(self.context.endpoint_url, data)
+-            res = req.json()
+-        except Exception:
+-            logger.exception("Error in requestion data")
+-            res = {"results": []}
++        print(endpoint_url)
++        print(query)
+ 
+-        if "errors" in res:
+-            return {"results": []}
++        sparql = SPARQLWrapper(endpoint_url)
++        sparql.setQuery(query)
++        sparql.setReturnFormat(JSON)
+ 
+-        return res
++        results = sparql.query().convert()
++
++        return results
+ 
+     def change_orientation(self, data):
+         """ change orientation """
++
++        print("Data:", data)
+         res = {}
+ 
+         if not data:
+@@ -183,7 +104,7 @@
+         # TO DO: in-memory built, should optimize
+ 
+         for k in keys:
+-            res[k] = [row[k] for row in data]
++            res[k] = [row[k]["value"] for row in data]
+ 
+         return res
+ 
+@@ -191,13 +112,15 @@
+     @ram.cache(lambda func, self: (self.context.modified(), self.request.form))
+     def _provided_data(self):
+         """ provided data """
+-        if not self.context.sql_query:
++        if not self.context.sparql_query:
+             return []
+         if not has_required_parameters(self.request, self.context):
+             return []
+         data = self._get_data()
+ 
+-        return self.change_orientation(data["results"])
++        print("Data before wrangle:", data)
++        rotate_data = self.change_orientation(data["results"]["bindings"])
++        return rotate_data
+ 
+     @property
+     def provided_data(self):
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/api/__pycache__/dataconnector.cpython-38.pyc and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/api/__pycache__/dataconnector.cpython-38.pyc differ
+diff -ruN eea.api.dataconnector-1.8/eea/api/dataconnector/behavior.py buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/behavior.py
+--- eea.api.dataconnector-1.8/eea/api/dataconnector/behavior.py	2021-11-25 16:20:46.000000000 +0000
++++ buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/behavior.py	2022-01-05 14:48:36.154364986 +0000
+@@ -29,7 +29,7 @@
+     """
+ 
+     endpoint_url = DCFieldProperty(IDataConnector["endpoint_url"])
+-    sql_query = DCFieldProperty(IDataConnector["sql_query"])
++    sparql_query = DCFieldProperty(IDataConnector["sparql_query"])
+     parameters = DCFieldProperty(IDataConnector["parameters"])
+     namespace = DCFieldProperty(IDataConnector["namespace"])
+     required_parameters = DCFieldProperty(
+diff -ruN eea.api.dataconnector-1.8/eea/api/dataconnector/browser/pt/data_connector_view.pt buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/browser/pt/data_connector_view.pt
+--- eea.api.dataconnector-1.8/eea/api/dataconnector/browser/pt/data_connector_view.pt	2021-11-25 16:20:46.000000000 +0000
++++ buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/browser/pt/data_connector_view.pt	2022-01-05 14:48:36.154364986 +0000
+@@ -11,7 +11,7 @@
+       <h1 class="documentFirstHeading" tal:content="context/Title">Title</h1>
+ 
+       <strong i18n:translate="text_query">Query:</strong>
+-      <pre tal:content="context/sql_query">Query definition here</pre>
++      <pre tal:content="context/sparql_query">Query definition here</pre>
+ 
+       <!-- <div tal:replace="structure context/@@provided_data" /> -->
+ 
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/browser/__pycache__/dataprovider.cpython-38.pyc and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/browser/__pycache__/dataprovider.cpython-38.pyc differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/browser/__pycache__/__init__.cpython-38.pyc and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/browser/__pycache__/__init__.cpython-38.pyc differ
+diff -ruN eea.api.dataconnector-1.8/eea/api/dataconnector/interfaces.py buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/interfaces.py
+--- eea.api.dataconnector-1.8/eea/api/dataconnector/interfaces.py	2021-11-25 16:20:46.000000000 +0000
++++ buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/interfaces.py	2022-01-05 14:48:36.154364986 +0000
+@@ -26,15 +26,20 @@
+     """A generic discodata connector"""
+ 
+     endpoint_url = schema.TextLine(
+-        title="Discodata endpoint URL",
++        title="SPARQL endpoint URL",
+         required=True,
+         # default=u"http://discomap.eea.europa.eu/App/SqlEndpoint/query"
+-        default="https://discodata.eea.europa.eu/sql",
++        # default="https://discodata.eea.europa.eu/sql",
++        default="http://dbpedia.org/sparql",
+     )
+-    sql_query = schema.Text(
+-        title="SQL Query",
++    sparql_query = schema.Text(
++        title="SPARQL Query",
+         required=True,
+-        default="Select top 10000 * from [FISE].[v1].[CLC]",
++        default="""
++            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
++            SELECT ?label
++            WHERE { <http://dbpedia.org/resource/Asturias> rdfs:label ?label }
++        """
+     )
+     parameters = schema.List(
+         title="Query parameters",
+@@ -42,13 +47,6 @@
+         required=False,
+         value_type=schema.TextLine(title="Parameter"),
+     )
+-    required_parameters = schema.List(
+-        title="Required query parameters",
+-        description=u"Provider doesn't send data if the reuqired parameter is "
+-        "not set",
+-        required=False,
+-        value_type=schema.TextLine(title="Parameter"),
+-    )
+     required_parameters = schema.List(
+         title=u"Required query parameters",
+         description=u"Provider doesn't send data if the reuqired parameter is "
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/bg/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/bg/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/bg/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/bg/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/cs/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/cs/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/cs/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/cs/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/da/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/da/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/da/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/da/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/de/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/de/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/de/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/de/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/el/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/el/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/el/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/el/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/en/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/en/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/en/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/en/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/es/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/es/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/es/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/es/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/et/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/et/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/et/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/et/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/eu/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/eu/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/eu/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/eu/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/fi/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/fi/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/fi/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/fi/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/fr/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/fr/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/fr/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/fr/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/hr/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/hr/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/hr/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/hr/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/hu/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/hu/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/hu/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/hu/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/is/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/is/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/is/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/is/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/it/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/it/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/it/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/it/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/kl/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/kl/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/kl/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/kl/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/lt/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/lt/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/lt/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/lt/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/lv/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/lv/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/lv/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/lv/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/mt/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/mt/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/mt/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/mt/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/nl/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/nl/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/nl/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/nl/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/no/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/no/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/no/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/no/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/pl/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/pl/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/pl/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/pl/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/pt/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/pt/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/pt/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/pt/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/pt_BR/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/pt_BR/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/pt_BR/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/pt_BR/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/__pycache__/__init__.cpython-38.pyc and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/__pycache__/__init__.cpython-38.pyc differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/ro/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/ro/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/ro/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/ro/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/ru/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/ru/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/ru/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/ru/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/sk/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/sk/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/sk/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/sk/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/sl/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/sl/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/sl/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/sl/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/sv/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/sv/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/sv/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/sv/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/tr/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/tr/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/tr/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/tr/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/zh_TW/LC_MESSAGES/eea.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/zh_TW/LC_MESSAGES/eea.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/locales/zh_TW/LC_MESSAGES/plone.mo and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/locales/zh_TW/LC_MESSAGES/plone.mo differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/__pycache__/adapter.cpython-38.pyc and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/__pycache__/adapter.cpython-38.pyc differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/__pycache__/behavior.cpython-38.pyc and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/__pycache__/behavior.cpython-38.pyc differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/__pycache__/__init__.cpython-38.pyc and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/__pycache__/__init__.cpython-38.pyc differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/__pycache__/interfaces.cpython-38.pyc and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/__pycache__/interfaces.cpython-38.pyc differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/__pycache__/setuphandlers.cpython-38.pyc and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/__pycache__/setuphandlers.cpython-38.pyc differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/tests/__pycache__/base.cpython-38.pyc and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/tests/__pycache__/base.cpython-38.pyc differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/tests/__pycache__/__init__.cpython-38.pyc and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/tests/__pycache__/__init__.cpython-38.pyc differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/tests/__pycache__/test_doctests.cpython-38.pyc and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/tests/__pycache__/test_doctests.cpython-38.pyc differ
+Binary files eea.api.dataconnector-1.8/eea/api/dataconnector/upgrades/__pycache__/__init__.cpython-38.pyc and buildout-cache/eggs/cp38/eea.api.dataconnector-1.8-py3.8.egg/eea/api/dataconnector/upgrades/__pycache__/__init__.cpython-38.pyc differ
