@@ -49,3 +49,20 @@ dependencies:
 ```bash
 awk 'match($0, /(buildout-cache[^'\'']*)/, a) {print "      <sourceFolder url=\"file://$MODULE_DIR$/" a[1] "\" isTestSource=\"false\" />"}' instance/bin/instance
 ```
+
+## Configure Plone
+
+To fully access the features of the data-driven addons such as dataconnector and plotly charts, Plone will need be
+configured using the site setup options. If these aren't done quite right, the Discodata Connector option won't be in
+the menus and files won't supply data to charts.
+
+In Order:
+- Log in.
+- Go to Site Setup.
+- Go to Add-Ons.
+- Install/Enable the `EEA.API.DATACONNECTOR` and `EEA.RESTAPI` add-ons.
+- Go back to Dexterity Types.
+- Select File.
+- Go to Behaviours.
+- Enable the "Data provider for files" behaviour.
+- Save.
