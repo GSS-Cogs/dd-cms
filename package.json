@@ -19,7 +19,8 @@
   "workspaces": [],
   "addons": [
     "@eeacms/volto-plotlycharts",
-    "@eeacms/volto-datablocks"
+    "@eeacms/volto-datablocks",
+    "@eeacms/volto-columns-block"
   ],
   "jest": {
     "modulePathIgnorePatterns": [
@@ -107,6 +108,7 @@
   "dependencies": {
     "@eeacms/volto-datablocks": "2.0.17",
     "@eeacms/volto-plotlycharts": "2.0.10",
+    "@eeacms/volto-columns-block": "4.0.0",
     "@plone/volto": "13.15.1",
     "govuk-react": "0.10.0"
   },
