@@ -6,16 +6,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { TopNav, SearchBox } from "govuk-react";
+import { TopNav, SearchBox } from 'govuk-react';
 import Crown from '@govuk-react/icon-crown';
 
-import {
-  Anontools,
-  LanguageSelector,
-  Logo,
-  Navigation,
-  SearchWidget,
-} from '@plone/volto/components';
+import { Anontools, Navigation } from '@plone/volto/components';
 
 /**
  * Header component class.
@@ -50,9 +44,24 @@ class Header extends Component {
   render() {
     return (
       <TopNav
-        company={<TopNav.Anchor href="https://example.com" target="new"><TopNav.IconTitle icon={<Crown height="32" width="36" />}>GOV.UK</TopNav.IconTitle></TopNav.Anchor>}
-        search={<SearchBox><SearchBox.Input placeholder="Search" /><SearchBox.Button /></SearchBox>}
-        serviceTitle={<TopNav.NavLink href="https://example.com" target="new">GOV.UK Open Data</TopNav.NavLink>}
+        company={
+          <TopNav.Anchor href="https://example.com" target="new">
+            <TopNav.IconTitle icon={<Crown height="32" width="36" />}>
+              GOV.UK
+            </TopNav.IconTitle>
+          </TopNav.Anchor>
+        }
+        search={
+          <SearchBox>
+            <SearchBox.Input placeholder="Search" />
+            <SearchBox.Button />
+          </SearchBox>
+        }
+        serviceTitle={
+          <TopNav.NavLink href="https://example.com" target="new">
+            GOV.UK Open Data
+          </TopNav.NavLink>
+        }
       >
         {!this.props.token && (
           <div className="tools">
