@@ -3,17 +3,23 @@ logs
 *.log
 npm-debug.log*
 .DS_Store
+*~
+.idea
+*.iml
 
 coverage
-node_modules
 build
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-data
-omelette
-*~
-.idea
-*.iml
+volto/data
+volto/node_modules
+volto/omelette
+
+plone-5/buildout-cache/
+plone-5/Pipfile
+plone-5/Pipfile.lock
+plone-5/instance/
+!plone-5/instance/custom.cfg
