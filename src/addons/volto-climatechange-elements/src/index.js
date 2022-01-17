@@ -1,5 +1,25 @@
+import tableSVG from '@plone/volto/icons/table.svg';
+import { DashboardTileView } from './GssCogsElements/DashboardTileView';
+import { DashboardTileEdit } from './GssCogsElements/DashboardTileEdit';
+
 const applyConfig = (config) => {
-  return config;
+    config.blocks.blocksConfig.dashboardTile = {
+        id: 'dashboardTile',
+        title: 'Dashboard Tile',
+        icon: tableSVG,
+        group: 'common',
+        view: DashboardTileView,
+        edit: DashboardTileEdit,
+        restricted: false,
+        mostUsed: true,
+        sidebarTab: 1,
+        security: {
+            addPermission: [],
+            view: [],
+        },
+    };
+
+    return config;
 };
 
 export default applyConfig;
