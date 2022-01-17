@@ -16,11 +16,14 @@
     "develop": "missdev --config=jsconfig.json --output=addons --fetch-https"
   },
   "private": false,
-  "workspaces": [],
+  "workspaces": [
+    "src/addons/volto-climatechange-elements"
+  ],
   "addons": [
     "@eeacms/volto-plotlycharts",
     "@eeacms/volto-datablocks",
-    "@eeacms/volto-columns-block"
+    "@eeacms/volto-columns-block",
+    "volto-climatechange-elements"
   ],
   "jest": {
     "modulePathIgnorePatterns": [
