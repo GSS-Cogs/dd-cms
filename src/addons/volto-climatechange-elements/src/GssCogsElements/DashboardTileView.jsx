@@ -1,5 +1,10 @@
 import React from 'react';
 
-export const DashboardTileView = (props) => {
-    return <div>Here's a Dashboard Tile View</div>;
+export const DashboardTileView = ({ data }) => {
+    return (
+        <div>
+            {data.topic}<br/>
+            {data.title}<br/>
+        </div>
+    );
 };
