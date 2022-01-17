@@ -1,6 +1,6 @@
 import tableSVG from '@plone/volto/icons/table.svg';
-import { DashboardTileView } from './GssCogsElements/DashboardTileView';
-import { DashboardTileEdit } from './GssCogsElements/DashboardTileEdit';
+import { DashboardTileView } from './GssCogsElements/DashboardTile/DashboardTileView';
+import { DashboardTileEdit } from './GssCogsElements/DashboardTile/DashboardTileEdit';
 
 const applyConfig = (config) => {
     config.blocks.blocksConfig.dashboardTile = {

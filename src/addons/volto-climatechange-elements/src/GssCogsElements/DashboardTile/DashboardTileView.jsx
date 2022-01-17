@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { spacing, typography } from '@govuk-react/lib';
 import { PANEL_TEXT } from 'govuk-colours';
-import { DASHBOARD_TILE_BACKGROUND, COLOR_SECONDARY, COLOR_PRIMARY } from '../colors';
-
+import { DASHBOARD_TILE_BACKGROUND, COLOR_SECONDARY, COLOR_PRIMARY } from '../../colors';
 
 const DashboardTileContainer = styled('div')(
     {
