@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { spacing, typography } from '@govuk-react/lib';
 import { PANEL_TEXT } from 'govuk-colours';
 import { DASHBOARD_TILE_BACKGROUND, COLOR_SECONDARY, COLOR_PRIMARY } from '../../colors';
+import { Eg1, Eg2 } from './examples';
 
 const DashboardTileContainer = styled('div')(
     {
@@ -51,6 +52,7 @@ export const DashboardTileView = ({ data }) => {
         <DashboardTileContainer>
             <DashboardTileTopic>{data.topic}</DashboardTileTopic>
             <DashboardTileTitle>{data.title}</DashboardTileTitle>
+            <Eg2 />
         </DashboardTileContainer>
     );
 };
