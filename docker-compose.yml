@@ -22,7 +22,6 @@ services:
               source: volto/
               target: /home/node/app
         environment:
-            - HOST=0.0.0.0
             - RAZZLE_DEV_PROXY_API_PATH=http://plone:8080/Plone
         ports:
             - "127.0.0.1:3000:3000"
