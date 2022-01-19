@@ -15,7 +15,7 @@
     "i18n": "NODE_ENV=production node node_modules/@plone/volto/src/i18n.js",
     "develop": "missdev --config=jsconfig.json --output=addons --fetch-https"
   },
-  "private": false,
+  "private": true,
   "workspaces": [
     "src/addons/volto-climatechange-elements"
   ],
