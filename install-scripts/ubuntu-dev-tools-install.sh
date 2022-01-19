@@ -22,7 +22,7 @@ xclip -selection clipboard < ~/.ssh/id_ed25519.pub
 xdg-open https://github.com/settings/ssh/new
 echo Opened Github...paste from clipboard into the key field. Set a sensible title for this machine. If this fails for some reason, you can manually go to https://github.com/settings/ssh/new and paste ~/ssh/id_ed25519.pub content to the key field.
 
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt install nodejs
 sudo npm install -g ungit
 
