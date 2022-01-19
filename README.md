@@ -61,3 +61,9 @@ In case you don't want (or can't) install mrs-developer globally, you can instal
 ```bash
 yarn add -W mrs-developer
 ```
+
+### M1 Mac users
+
+You may run into an issue with the plone docker image when running the `.run_plone.sh` script on an M1 Mac machine.
+
+Running this command `docker pull --platform linux/x86_64 plone` seems to solve the issue.
