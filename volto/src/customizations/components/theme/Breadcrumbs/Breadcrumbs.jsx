@@ -77,29 +77,29 @@ class Breadcrumbs extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const hasBreadcrumbItems = this.props.items && this.props.items.length >= 1;
+
     return (
-      <dev>
-        <Container>
-          <GOVUK.Breadcrumbs>
-            <GOVUK.Breadcrumbs.Link
-              href={this.props.root || '/'}
-            >
-              <Icon name={homeSVG} size="18px" />
+      <Container>
+        {hasBreadcrumbItems && <GOVUK.Breadcrumbs id="ddcms_breadcrumbs">
+          <GOVUK.Breadcrumbs.Link
+            href={this.props.root || '/'}
+          >
+            Home
+          </GOVUK.Breadcrumbs.Link>
+          {this.props.items.map((item, index, items) =>
+            <GOVUK.Breadcrumbs.Link href={item.url}>
+              {item.title}
             </GOVUK.Breadcrumbs.Link>
-            {this.props.items.map((item, index, items) =>
-              <GOVUK.Breadcrumbs.Link href={item.url}>
-                {item.title}
-              </GOVUK.Breadcrumbs.Link>
-            )}
-          </GOVUK.Breadcrumbs>
-          <GOVUK.PhaseBanner level="beta">
-            This part of GOV.UK is being rebuilt –{' '}
-            <Link to="https://example.com">
-              find out what that means
-            </Link>
-          </GOVUK.PhaseBanner>
-        </Container>
-      </dev>
+          )}
+        </GOVUK.Breadcrumbs>}
+        <GOVUK.PhaseBanner level="beta">
+          This part of GOV.UK is being rebuilt –{' '}
+          <Link to="https://example.com">
+            find out what that means
+          </Link>
+        </GOVUK.PhaseBanner>
+      </Container>
     );
   }
 }
