@@ -5,3 +5,4 @@ export const COLOR_SECONDARY = '#505A5F';
 export const COLOR_RED = '#D4351C';
 export const COLOR_GREEN = '#00703C';
 
+export const HERO_HEADER_BG = '#1D70B8';
