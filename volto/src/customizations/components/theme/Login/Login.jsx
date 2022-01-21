@@ -9,29 +9,15 @@ import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import {
-  Container,
-  Segment,
-  Grid,
-  Form,
-} from 'semantic-ui-react';
-import {
-  Heading,
-  Button,
-  Input,
-  InputField,
-} from 'govuk-react';
+import { Container, Segment, Grid, Form } from 'semantic-ui-react';
+import { Heading, Button, InputField } from 'govuk-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 import { withRouter } from 'react-router-dom';
 
-import { Icon } from '@plone/volto/components';
 import { getNavigation, login } from '@plone/volto/actions';
 import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
-
-import aheadSVG from '@plone/volto/icons/ahead.svg';
-import clearSVG from '@plone/volto/icons/clear.svg';
 
 import config from '@plone/volto/registry';
 import './Login.css';
@@ -172,15 +158,12 @@ class Login extends Component {
    * @returns {undefined}
    */
   onLogin(event) {
-    this.props.login(
-      this.email,
-      this.password,
-    );
+    this.props.login(this.email, this.password);
     event.preventDefault();
   }
 
   onChange(event) {
-    if (event.target.id == "email") {
+    if (event.target.id === 'email') {
       this.email = event.target.value;
     } else {
       this.password = event.target.value;
@@ -199,9 +182,7 @@ class Login extends Component {
         <Container>
           <Form method="post" onSubmit={this.onLogin}>
             <Segment.Group>
-              <Heading size="LARGE">
-                Login
-              </Heading>
+              <Heading size="LARGE">Login</Heading>
               <Segment secondary>
                 <FormattedMessage
                   id="Sign in to start session"
@@ -212,7 +193,7 @@ class Login extends Component {
                 <InputField
                   input={{
                     name: 'group0',
-                    id: "email",
+                    id: 'email',
                   }}
                   onChange={this.onChange}
                 >
@@ -221,11 +202,10 @@ class Login extends Component {
                 <InputField
                   input={{
                     name: 'group0',
-                    type: "password",
-                    id: "password",
+                    type: 'password',
+                    id: 'password',
                   }}
                   onChange={this.onChange}
-
                 >
                   Password
                 </InputField>
@@ -286,7 +266,7 @@ class Login extends Component {
             </Segment.Group>
           </Form>
         </Container>
-      </div >
+      </div>
     );
   }
 }
