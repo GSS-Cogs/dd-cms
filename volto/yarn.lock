@@ -1434,6 +1434,13 @@
   dependencies:
     "@datapunt/matomo-tracker-js" "^0.3.1"
 
+"@eeacms/volto-columns-block@4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-columns-block/-/volto-columns-block-4.0.0.tgz#d47d7c5e1634166cec65d339c72b821d14714c10"
+  integrity sha512-Ml/bdawnL5cge4ua67IGhr7jugWj7+4VHv8p1SCq7y7Q62IKr1a9qij2G/IaD7eaJ4eJbTqyRG8pAEGu82ngtw==
+  dependencies:
+    react-color "~2.18.1"
+
 "@eeacms/volto-corsproxy@*":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@eeacms/volto-corsproxy/-/volto-corsproxy-2.1.4.tgz#cf0e668f1b626f17168bf6a085da9c3449416017"
@@ -16859,6 +16866,18 @@ react-color@2.19.3:
     "@icons/material" "^0.2.4"
     lodash "^4.17.15"
     lodash-es "^4.17.15"
+    material-colors "^1.2.1"
+    prop-types "^15.5.10"
+    reactcss "^1.2.0"
+    tinycolor2 "^1.4.1"
+
+react-color@~2.18.1:
+  version "2.18.1"
+  resolved "https://registry.yarnpkg.com/react-color/-/react-color-2.18.1.tgz#2cda8cc8e06a9e2c52ad391a30ddad31972472f4"
+  integrity sha512-X5XpyJS6ncplZs74ak0JJoqPi+33Nzpv5RYWWxn17bslih+X7OlgmfpmGC1fNvdkK7/SGWYf1JJdn7D2n5gSuQ==
+  dependencies:
+    "@icons/material" "^0.2.4"
+    lodash "^4.17.11"
     material-colors "^1.2.1"
     prop-types "^15.5.10"
     reactcss "^1.2.0"
