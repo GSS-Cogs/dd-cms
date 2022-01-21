@@ -1,4 +1,7 @@
 FROM ubuntu:20.04
+
+EXPOSE 8080
+
 ENV LANG=en_GB.UTF-8
 ENV LANGUAGE=en_GB:en
 
