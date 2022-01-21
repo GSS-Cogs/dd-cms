@@ -9,25 +9,14 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import * as GOVUK from 'govuk-react';
-import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
-import { defineMessages, injectIntl } from 'react-intl';
+import { Container } from 'semantic-ui-react';
+import { injectIntl } from 'react-intl';
 
 import { Icon } from '@plone/volto/components';
 import { getBreadcrumbs } from '@plone/volto/actions';
 import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
 
 import homeSVG from '@plone/volto/icons/home.svg';
-
-const messages = defineMessages({
-  home: {
-    id: 'Home',
-    defaultMessage: 'Home',
-  },
-  breadcrumbs: {
-    id: 'Breadcrumbs',
-    defaultMessage: 'Breadcrumbs',
-  },
-});
 
 /**
  * Breadcrumbs container class.
@@ -81,22 +70,18 @@ class Breadcrumbs extends Component {
       <dev>
         <Container>
           <GOVUK.Breadcrumbs>
-            <GOVUK.Breadcrumbs.Link
-              href={this.props.root || '/'}
-            >
+            <GOVUK.Breadcrumbs.Link href={this.props.root || '/'}>
               <Icon name={homeSVG} size="18px" />
             </GOVUK.Breadcrumbs.Link>
-            {this.props.items.map((item, index, items) =>
+            {this.props.items.map((item, index, items) => (
               <GOVUK.Breadcrumbs.Link href={item.url}>
                 {item.title}
               </GOVUK.Breadcrumbs.Link>
-            )}
+            ))}
           </GOVUK.Breadcrumbs>
           <GOVUK.PhaseBanner level="beta">
             This part of GOV.UK is being rebuilt –{' '}
-            <Link to="https://example.com">
-              find out what that means
-            </Link>
+            <Link to="https://example.com">find out what that means</Link>
           </GOVUK.PhaseBanner>
         </Container>
       </dev>

@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import * as GOVUK from "govuk-react";
+import * as GOVUK from 'govuk-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Menu } from 'semantic-ui-react';
 import cx from 'classnames';
@@ -16,7 +16,7 @@ import config from '@plone/volto/registry';
 
 import { getNavigation } from '@plone/volto/actions';
 
-import "./Navigation.css";
+import './Navigation.css';
 
 const messages = defineMessages({
   closeMobileMenu: {
@@ -125,9 +125,6 @@ class Navigation extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { settings } = config;
-    const { lang } = this.props;
-
     return (
       <nav className="navigation" id="navigation">
         <div className="hamburger-wrapper mobile tablet only">
@@ -138,20 +135,20 @@ class Navigation extends Component {
             aria-label={
               this.state.isMobileMenuOpen
                 ? this.props.intl.formatMessage(messages.closeMobileMenu, {
-                  type: this.props.type,
-                })
+                    type: this.props.type,
+                  })
                 : this.props.intl.formatMessage(messages.openMobileMenu, {
-                  type: this.props.type,
-                })
+                    type: this.props.type,
+                  })
             }
             title={
               this.state.isMobileMenuOpen
                 ? this.props.intl.formatMessage(messages.closeMobileMenu, {
-                  type: this.props.type,
-                })
+                    type: this.props.type,
+                  })
                 : this.props.intl.formatMessage(messages.openMobileMenu, {
-                  type: this.props.type,
-                })
+                    type: this.props.type,
+                  })
             }
             type="button"
             onClick={this.toggleMobileMenu}
@@ -174,6 +171,7 @@ class Navigation extends Component {
         >
           {this.props.items.map((item) => (
             <GOVUK.TopNav.NavLink
+              key={item.url}
               href={item.url === '' ? '/' : item.url}
               target="new"
               className="TopNavClass"
