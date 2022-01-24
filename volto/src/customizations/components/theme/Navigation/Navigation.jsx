@@ -174,6 +174,7 @@ class Navigation extends Component {
         >
           {this.props.items.map((item) => (
             <GOVUK.TopNav.NavLink
+              key={item.url}
               href={item.url === '' ? '/' : item.url}
               target="new"
               className="TopNavClass"
@@ -182,7 +183,7 @@ class Navigation extends Component {
             </GOVUK.TopNav.NavLink>
           ))}
         </Menu>
-      </nav>
+      </nav >
     );
   }
 }
