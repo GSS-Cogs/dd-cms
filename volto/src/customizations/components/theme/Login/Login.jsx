@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { Container, Segment, Grid, Form } from 'semantic-ui-react';
-import { Heading, Button, InputField } from 'govuk-react';
+import { Button, Input } from 'govuk-react-jsx';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 import { withRouter } from 'react-router-dom';
@@ -182,7 +182,7 @@ class Login extends Component {
         <Container>
           <Form method="post" onSubmit={this.onLogin}>
             <Segment.Group>
-              <Heading size="LARGE">Login</Heading>
+              <h1 className="govuk-heading-l">Login</h1>
               <Segment secondary>
                 <FormattedMessage
                   id="Sign in to start session"
@@ -190,25 +190,24 @@ class Login extends Component {
                 />
               </Segment>
               <Segment className="form">
-                <InputField
-                  input={{
-                    name: 'group0',
-                    id: 'email',
+                <Input
+                  id="email"
+                  label={{
+                    children: 'User Name'
                   }}
+                  name="group0"
+                  type="text"
                   onChange={this.onChange}
-                >
-                  User Name
-                </InputField>
-                <InputField
-                  input={{
-                    name: 'group0',
-                    type: 'password',
-                    id: 'password',
+                />
+                <Input
+                  id="password"
+                  label={{
+                    children: 'Password'
                   }}
+                  name="group0"
+                  type="password"
                   onChange={this.onChange}
-                >
-                  Password
-                </InputField>
+                />
                 <Form.Field inline className="help">
                   <Grid>
                     <Grid.Row stretched>
@@ -236,29 +235,22 @@ class Login extends Component {
               </Segment>
               <Segment className="actions" clearing>
                 <Button
-                  basic
-                  primary
-                  floated="right"
                   type="submit"
                   id="login-form-submit"
                   aria-label={this.props.intl.formatMessage(messages.login)}
                   title={this.props.intl.formatMessage(messages.login)}
                   loading={this.props.loading}
                   onClick={this.onSubmit}
+                  className="govuk-!-margin-right-1"
                 >
                   Submit
                 </Button>
 
                 <Button
-                  basic
-                  secondary
                   id="login-form-cancel"
-                  as={Link}
                   to="/"
                   aria-label={this.props.intl.formatMessage(messages.cancel)}
                   title={this.props.intl.formatMessage(messages.cancel)}
-                  floated="right"
-                  className="button-cls"
                 >
                   Cancel
                 </Button>

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import config from '@plone/volto/registry';
-import { Button } from 'govuk-react';
+import { Button } from 'govuk-react-jsx';
 
 /**
  * Anontools container class.
@@ -59,8 +59,9 @@ export class Anontools extends Component {
                 )}`
               : ''
           }`}
+          id="ddcms_login"
         >
-          <Button buttonColour="#1d70b8">Log in</Button>
+          <Button className="govuk-!-margin-0">Log in</Button>
         </Link>
       )
     );

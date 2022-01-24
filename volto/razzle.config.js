@@ -14,3 +14,5 @@ Object.keys(pathsConfig).forEach(pkg => {
 });
 
 module.exports = require(`${voltoPath}/razzle.config`);
+
+module.exports.plugins.push('scss');
