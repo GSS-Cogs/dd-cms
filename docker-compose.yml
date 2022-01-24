@@ -26,7 +26,7 @@ services:
         ports:
             - "127.0.0.1:3000:3000"
             - "127.0.0.1:3001:3001"
-        command: 'bash -c "yarn install && yarn start"'
+        command: 'bash -c "yarn global add mrs-developer && yarn develop && yarn install && yarn start"'
 
 volumes:
     plone-data: ~
