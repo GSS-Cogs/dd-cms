@@ -13,7 +13,6 @@ import {
   Anontools,
   LanguageSelector,
   Logo,
-  Navigation,
   SearchWidget,
 } from '@plone/volto/components';
 
@@ -59,7 +58,6 @@ class Header extends Component {
             <Anontools />
           </div>
         )}
-        <Navigation pathname={this.props.pathname} />
       </TopNav>
     );
   }
