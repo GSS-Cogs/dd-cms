@@ -119,7 +119,7 @@
   "devDependencies": {
     "eslint-plugin-prettier": "3.1.3",
     "prettier": "2.0.5",
-    "razzle-plugin-scss": "4.2.14",
+    "razzle-plugin-scss": "3.4.5",
     "rimraf": "3.0.2",
     "stylelint": "13.3.3",
     "stylelint-config-idiomatic-order": "8.1.0",
@@ -128,7 +128,6 @@
   },
   "resolutions": {
     "draft-js": "0.10.5",
-    "razzle": "3.4.2",
-    "css-loader": "3.5.3"
+    "razzle": "3.4.2"
   }
 }
