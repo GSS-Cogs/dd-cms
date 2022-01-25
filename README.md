@@ -66,4 +66,6 @@ yarn add -W mrs-developer
 
 You may run into an issue with the plone docker image when running the `.run_plone.sh` script on an M1 Mac machine.
 
-Running this command `docker pull --platform linux/x86_64 plone` seems to solve the issue.
+Running this command `docker pull --platform linux/x86_64 plone:5.2.5` seems to solve the issue.
+
+The version number of the image needs to match the version in the `docker-compose.yml` file.
