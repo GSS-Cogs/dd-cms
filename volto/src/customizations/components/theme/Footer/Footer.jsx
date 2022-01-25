@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { injectIntl } from 'react-intl';
-import { Footer as GovukFooter } from 'govuk-react';
+import { Footer as GovukFooter } from 'govuk-react-jsx';
 
 /**
  * Component to display the footer.
@@ -16,23 +16,23 @@ import { Footer as GovukFooter } from 'govuk-react';
 const Footer = ({ intl }) => {
   return (
     <GovukFooter
-      copyright={{
-        image: {
-          height: 102,
-          src: 'images/govuk-crest.png',
-          width: 125,
-        },
-        link:
-          'https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/',
-        text: 'Crown copyright',
+      meta={{
+        items: [
+          {
+            children: 'Item 1',
+            href: '/'
+          },
+          {
+            children: 'Item 2',
+            href: '/footer-meta-item-2'
+          },
+          {
+            children: 'Item 3',
+            href: '/'
+          }
+        ],
+        visuallyHiddenTitle: 'Support links'
       }}
-      meta={
-        <GovukFooter.MetaLinks heading="Support links">
-          <GovukFooter.Link href="/">Item 1</GovukFooter.Link>
-          <GovukFooter.Link href="/footer-meta-item-2">Item 2</GovukFooter.Link>
-          <GovukFooter.Link href="/">Item 3</GovukFooter.Link>
-        </GovukFooter.MetaLinks>
-      }
     />
   );
 };

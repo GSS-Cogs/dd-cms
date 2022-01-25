@@ -1,6 +1,9 @@
 {
     "compilerOptions": {
         "paths": {
+            "govuk-react-jsx": [
+                "addons/govuk-react-jsx"
+            ]
         },
         "baseUrl": "src"
     }
