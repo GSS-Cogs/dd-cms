@@ -3,7 +3,7 @@ import { DashboardTileView } from './GssCogsElements/DashboardTile/DashboardTile
 import { DashboardTileEdit } from './GssCogsElements/DashboardTile/DashboardTileEdit';
 import { CcHeroHeaderView } from './GssCogsElements/CcHeroHeader/CcHeroHeaderView';
 import { CcHeroHeaderEdit } from './GssCogsElements/CcHeroHeader/CcHeroHeaderEdit';
-import { CcV2Preview } from './GssCogsElements/CcV2Preview/CcV2Preview';
+import { CcV2Overview } from './GssCogsElements/CcV2Preview/CcV2Overview';
 
 const applyConfig = (config) => {
     config.blocks.blocksConfig.dashboardTile = {
@@ -38,7 +38,7 @@ const applyConfig = (config) => {
         },
     };
 
-    config.views.layoutViews.cc_preview = CcV2Preview;
+    config.views.layoutViews.cc_preview = CcV2Overview;
 
 
     return config;

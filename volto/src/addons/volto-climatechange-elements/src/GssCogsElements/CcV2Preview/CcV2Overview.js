@@ -5,7 +5,7 @@ import { TileGroup } from '../DashboardTile/TileGroup';
 import { CcArticleList } from '../CcArticleList/CcArticleList';
 import { RelatedLinks } from '../RelatedLinks/RelatedLinks';
 
-export const CcV2Preview = () => (
+export const CcV2Overview = () => (
   <div>
     <CcHeroHeaderView
       data={{
