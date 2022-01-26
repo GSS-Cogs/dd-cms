@@ -2,6 +2,8 @@ import React from 'react';
 import { CcHeroHeaderView } from '../CcHeroHeader/CcHeroHeaderView';
 import { DashboardTileView } from '../DashboardTile/DashboardTileView';
 import { TileGroup } from '../DashboardTile/TileGroup';
+import { CcArticleList } from '../CcArticleList/CcArticleList';
+import { RelatedLinks } from '../RelatedLinks/RelatedLinks';
 
 export const CcV2Preview = () => (
   <div>
@@ -64,6 +66,15 @@ export const CcV2Preview = () => (
           }}
         />
       </TileGroup>
+
+      <div className="govuk-grid-row">
+        <div className="govuk-grid-column-two-thirds">
+          <CcArticleList />
+        </div>
+        <div className="govuk-grid-column-one-third">
+          <RelatedLinks />
+        </div>
+      </div>
     </div>
   </div>
 );

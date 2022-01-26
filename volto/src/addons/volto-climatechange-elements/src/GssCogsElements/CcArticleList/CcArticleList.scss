@@ -1,0 +1,14 @@
+@import 'govuk-frontend/govuk/all.scss';
+
+
+.cc-article-list {
+  margin-top: govuk-spacing(8);
+}
+
+.cc-article-preview {
+  margin-bottom: govuk-spacing(4);
+
+  &--date {
+    color: govuk-colour('mid-grey');
+  }
+}

@@ -1,0 +1,16 @@
+@import 'govuk-frontend/govuk/all.scss';
+
+
+.cc-related-links {
+  margin-top: govuk-spacing(8);
+  padding-top: govuk-spacing(2);
+  border-top: 3px solid govuk-colour('blue');
+
+  .cc-related-links--list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  .cc-related-links--item {
+    margin-bottom: govuk-spacing(2);
+  }
+}
