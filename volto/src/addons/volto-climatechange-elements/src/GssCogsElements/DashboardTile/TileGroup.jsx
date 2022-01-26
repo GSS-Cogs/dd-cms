@@ -1,5 +1,5 @@
 import React from 'react';
 
-export const TileGroup = ({ children }) => (
-  <div className='cc-tile-group'>{children}</div>
+export const TileGroup = ({ children, columns }) => (
+  <div className={`cc-tile-group cc-tile-group--cols-${columns}`}>{children}</div>
 )
