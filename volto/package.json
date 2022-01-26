@@ -20,7 +20,8 @@
   "addons": [
     "@eeacms/volto-plotlycharts",
     "@eeacms/volto-datablocks",
-    "@eeacms/volto-columns-block"
+    "@eeacms/volto-columns-block",
+    "@eeacms/volto-energy-theme"
   ],
   "jest": {
     "modulePathIgnorePatterns": [
@@ -109,6 +110,7 @@
     "@eeacms/volto-columns-block": "4.0.0",
     "@eeacms/volto-datablocks": "2.0.17",
     "@eeacms/volto-plotlycharts": "2.0.10",
+    "@eeacms/volto-energy-theme": "file:../../volto-energy-theme",
     "@plone/volto": "13.15.1",
     "govuk-frontend": "4.0.0",
     "govuk-react": "0.10.0",
