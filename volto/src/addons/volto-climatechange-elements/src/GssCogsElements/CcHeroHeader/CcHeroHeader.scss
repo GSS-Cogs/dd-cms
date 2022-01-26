@@ -3,6 +3,10 @@
 
 .cc-masthead-wrapper {
   background-color: $hero_header_bg;
+
+  &--bottom-overlap {
+    margin-bottom: govuk-spacing(-8);
+  }
 }
 
 .cc-hero-header {
@@ -13,8 +17,9 @@
   margin: auto;
 
   &--content {
-    min-width: 640px;
+    min-width: 550px;
     padding: govuk-spacing(8) 0;
+    padding-right: govuk-spacing(8);
   }
 
   &--image {
