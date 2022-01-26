@@ -8,8 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import config from '@plone/volto/registry';
-import { Button } from 'govuk-react';
-import { FormattedMessage } from 'react-intl';
+import { Button } from 'govuk-react-jsx';
 
 /**
  * Anontools container class.
@@ -52,19 +51,17 @@ export class Anontools extends Component {
       !this.props.token && (
         <Link
           aria-label="login"
-          to={`/login${this.props.content
-            ? `?return_url=${this.props.content['@id'].replace(
-              settings.apiPath,
-              '',
-            )}`
-            : ''
-            }`}
+          to={`/login${
+            this.props.content
+              ? `?return_url=${this.props.content['@id'].replace(
+                  settings.apiPath,
+                  '',
+                )}`
+              : ''
+          }`}
+          id="ddcms_login"
         >
-          <Button buttonColour="#1d70b8" onClick={() => {
-            console.log('Clicked');
-          }}>
-            Log in
-          </Button>
+          <Button className="govuk-!-margin-0">Log in</Button>
         </Link>
       )
     );

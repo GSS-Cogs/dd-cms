@@ -6,16 +6,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { TopNav, SearchBox } from "govuk-react";
-import Crown from '@govuk-react/icon-crown';
-
-import {
-  Anontools,
-  LanguageSelector,
-  Logo,
-  Navigation,
-  SearchWidget,
-} from '@plone/volto/components';
+import { Header as GovukHeader, Input } from 'govuk-react-jsx';
+import { Anontools } from '@plone/volto/components';
 
 /**
  * Header component class.
@@ -48,23 +40,27 @@ class Header extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    return (
-      <TopNav
-        company={<TopNav.Anchor href="https://example.com" target="new"><TopNav.IconTitle icon={<Crown height="32" width="36" />}>GOV.UK</TopNav.IconTitle></TopNav.Anchor>}
-        search={<SearchBox><SearchBox.Input placeholder="Search" /><SearchBox.Button /></SearchBox>}
-        serviceTitle={<TopNav.NavLink href="https://example.com" target="new">GOV.UK Open Data</TopNav.NavLink>}
-      >
-        {!this.props.token && (
-          <div className="tools">
-            <Anontools />
-          </div>
-        )}
-        <Navigation pathname={this.props.pathname} />
-      </TopNav>
-    );
+    return (<>
+      <GovukHeader
+        navigationClassName='govuk-!-padding-left-0'
+        navigation={[
+          ...this.props.items.map(({title, url}) => ({
+              children: title,
+              href: url === '' ? '/' : url
+            })
+          ),
+          {
+            children: !this.props.token && <Anontools />
+          }
+        ]}
+        serviceName="GOV.UK Open Data"
+        serviceUrlHref="/"
+      />
+    </>);
   }
 }
 
 export default connect((state) => ({
   token: state.userSession.token,
+  items: state.navigation.items,
 }))(Header);
