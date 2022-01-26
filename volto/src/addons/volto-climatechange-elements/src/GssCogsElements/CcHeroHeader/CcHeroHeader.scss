@@ -1,16 +1,20 @@
 @import '../../colors.scss';
 @import 'govuk-frontend/govuk/all.scss';
 
-.cc-hero-header {
-  font-family: "GDS Transport", Arial;
+.cc-masthead-wrapper {
   background-color: $hero_header_bg;
+}
+
+.cc-hero-header {
+  font-family: "GDS Transport", Arial, sans-serif;
   color: white;
   height: 512px;
   display: flex;
+  margin: auto;
 
   &--content {
     min-width: 640px;
-    padding: govuk-spacing(8) govuk-spacing(6);
+    padding: govuk-spacing(8) 0;
   }
 
   &--image {
