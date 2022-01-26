@@ -2,7 +2,14 @@
 @import 'govuk-frontend/govuk/all.scss';
 
 .cc-masthead-wrapper {
-  background-color: $hero_header_bg;
+
+  &--hero {
+    background-color: govuk-colour('blue');
+  }
+
+  &--article {
+    background-color: govuk-colour('light-grey');
+  }
 
   &--bottom-overlap {
     margin-bottom: govuk-spacing(-8);

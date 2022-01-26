@@ -4,6 +4,7 @@ import { DashboardTileEdit } from './GssCogsElements/DashboardTile/DashboardTile
 import { CcHeroHeaderView } from './GssCogsElements/CcHeroHeader/CcHeroHeaderView';
 import { CcHeroHeaderEdit } from './GssCogsElements/CcHeroHeader/CcHeroHeaderEdit';
 import { CcV2Overview } from './GssCogsElements/CcV2Preview/CcV2Overview';
+import { CcV2ArticleView } from './GssCogsElements/CcV2Preview/CcV2ArticleView';
 
 const applyConfig = (config) => {
     config.blocks.blocksConfig.dashboardTile = {
@@ -38,7 +39,7 @@ const applyConfig = (config) => {
         },
     };
 
-    config.views.layoutViews.cc_preview = CcV2Overview;
+    config.views.layoutViews.cc_preview = CcV2ArticleView;
 
 
     return config;

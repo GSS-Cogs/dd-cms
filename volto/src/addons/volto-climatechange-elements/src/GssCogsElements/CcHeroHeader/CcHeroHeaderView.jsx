@@ -7,7 +7,7 @@ import './CcHeroHeader.scss';
 
 export const CcHeroHeaderView = (props) => {
   return (
-    <div className="cc-masthead-wrapper cc-masthead-wrapper--bottom-overlap">
+    <div className="cc-masthead-wrapper cc-masthead-wrapper--bottom-overlap cc-masthead-wrapper--hero">
       <div className="cc-hero-header govuk-width-container">
         <div className="cc-hero-header--content">
           <div className="cc-hero-header--update-type">
