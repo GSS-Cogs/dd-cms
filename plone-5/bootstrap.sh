@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-plone=$(docker create plone:5)
+plone=$(docker create plone:5 \
+          -e PLONE_ADDONS="ukstats.sparql_dataconnector" \
+          -e PLONE_DEVELOP="instance/src/ukstats.sparql_dataconnector" \
+          -v instance/src:/plone/instance/src)
+
 for f in base.cfg buildout-base.cfg buildout.cfg develop.cfg lxml_static.cfg requirements.txt
 do
   docker cp $plone:/plone/instance/$f instance/$f
