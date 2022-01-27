@@ -1,12 +1,12 @@
 import React from 'react';
-import { Button, Tag } from 'govuk-react-jsx';
 import { H1, Paragraph } from 'govuk-react';
 import { RelatedLinks } from '../RelatedLinks/RelatedLinks';
+import { CcMasthead } from '../CcMasthead/CcMasthead';
 
 export const CcArticleHeader = () => {
   return (
-    <div className="cc-masthead-wrapper cc-masthead-wrapper--bottom-overlap cc-masthead-wrapper--article">
-      <div className="govuk-width-container">
+    <CcMasthead className='cc-masthead-wrapper--article'>
+      <div className="cc-article-header govuk-width-container">
         <div className="govuk-grid-row">
           <div className="govuk-grid-column-two-thirds">
             <H1>
@@ -24,10 +24,10 @@ export const CcArticleHeader = () => {
             </Paragraph>
           </div>
           <div className="govuk-grid-column-one-third">
-            <RelatedLinks />
+            <RelatedLinks limit={2} />
           </div>
         </div>
       </div>
-    </div>
+    </CcMasthead>
   );
 };

@@ -1,20 +1,6 @@
 @import '../../colors.scss';
 @import 'govuk-frontend/govuk/all.scss';
 
-.cc-masthead-wrapper {
-
-  &--hero {
-    background-color: govuk-colour('blue');
-  }
-
-  &--article {
-    background-color: govuk-colour('light-grey');
-  }
-
-  &--bottom-overlap {
-    margin-bottom: govuk-spacing(-8);
-  }
-}
 
 .cc-hero-header {
   font-family: "GDS Transport", Arial, sans-serif;
