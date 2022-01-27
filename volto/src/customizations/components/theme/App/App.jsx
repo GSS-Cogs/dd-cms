@@ -19,6 +19,7 @@ import config from '@plone/volto/registry';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
 
 import Error from '@plone/volto/error';
+import './App.css';
 
 import {
   AppExtras,
@@ -132,9 +133,9 @@ class App extends Component {
         <SkipLinks />
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
-        <Navigation pathname={this.props.pathname} />
         <MultilingualRedirector pathname={this.props.pathname}>
           <Segment basic className="content-area">
+            <Navigation pathname={this.props.pathname} />
             <main>
               <OutdatedBrowser />
               {this.props.connectionRefused ? (

@@ -1,3 +1,7 @@
+.navigation {
+  float: left;
+}
+
 aside {
         width: 256px;
         margin: 0 0 24px;
