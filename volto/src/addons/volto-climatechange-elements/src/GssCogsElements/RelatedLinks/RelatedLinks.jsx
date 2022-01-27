@@ -28,11 +28,11 @@ const TEST_ITEMS = [
   },
 ];
 
-export const RelatedLinks = () => (
+export const RelatedLinks = ({ limit }) => (
   <div className="cc-related-links">
     <H3>Related Links</H3>
     <ul className="cc-related-links--list">
-      {TEST_ITEMS.map((data, i) => (
+      {TEST_ITEMS.slice(0, limit || TEST_ITEMS.length).map((data, i) => (
         <li key={i} className="cc-related-links--item">
           <H4>
             <a href="#">{data.title}</a>
