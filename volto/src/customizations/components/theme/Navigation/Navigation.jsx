@@ -15,6 +15,7 @@ import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 import { getNavigation } from '@plone/volto/actions';
+import { SideNav } from '../../../../components';
 
 import "./Navigation.css";
 
@@ -172,16 +173,7 @@ class Navigation extends Component {
           }
           onClick={this.closeMobileMenu}
         >
-          {this.props.items.map((item) => (
-            <GOVUK.TopNav.NavLink
-              key={item.url}
-              href={item.url === '' ? '/' : item.url}
-              target="new"
-              className="TopNavClass"
-            >
-              {item.title}
-            </GOVUK.TopNav.NavLink>
-          ))}
+          <SideNav items={this.props.items} />
         </Menu>
       </nav >
     );

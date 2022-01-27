@@ -1,7 +1,60 @@
-.TopNavClass:first-of-type {
-  margin-left: -28pt;
-}
+aside {
+        width: 256px;
+        margin: 0 0 24px;
+    }
 
-.TopNavClass {
-  margin-left: 15pt;
-}
+    nav {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 32px;
+    }
+
+    hr {
+        border: 0;
+        border-bottom: 1px solid #B2B4B6;
+        margin: 16px 0;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        margin: 0;
+    }
+
+    a {
+        font-size: 16px;
+        line-height: 24px;
+        padding: 8px;
+        text-decoration: none;
+        border-left: 4px solid transparent;
+        display: block;
+    }
+
+    a:hover {
+        border-left: 4px solid #5694ca
+    }
+
+    li.active a {
+        font-family: 'GDS Transport Bold', sans-serif;
+        font-weight: 700;
+        background: #F3F2F1;
+        border-left: 4px solid #1d70b8;
+    }
+
+    @media screen and (max-width: 768px) {
+        aside {
+            width: 100%;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        a {
+            padding: 16px;
+        }
+    }
