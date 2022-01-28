@@ -3,6 +3,8 @@ import { H1, Paragraph } from 'govuk-react';
 import { RelatedLinks } from '../RelatedLinks/RelatedLinks';
 import { CcMasthead } from '../CcMasthead/CcMasthead';
 
+import './CcArticleHeader.scss';
+
 export const CcArticleHeader = () => {
   return (
     <CcMasthead className='cc-masthead-wrapper--article'>
