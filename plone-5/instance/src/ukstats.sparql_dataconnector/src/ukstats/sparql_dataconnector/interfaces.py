@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
-"""Module where all interfaces, events and exceptions live."""
+"""Module where all interfaces, events and exceptions live. Based on eea.api.dataconnector add-on"""
+from plone.app.z3cform.widget import QueryStringFieldWidget
 from plone import schema
 from plone.autoform.interfaces import IFormFieldProvider
+from plone.autoform import directives as form
 from plone.supermodel import model
 from zope.interface import provider
+from zope.interface import Interface
+from zope.interface import Attribute
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
 
@@ -29,3 +33,21 @@ class ISPARQLConnector(model.Schema):
             WHERE { <http://dbpedia.org/resource/Asturias> rdfs:label ?label }
         """
     )
+
+
+class IBasicDataProvider(Interface):
+    """A data provider concept"""
+
+
+class ISPARQLDataProvider(IBasicDataProvider):
+    """An export of data for remote purposes"""
+
+    provided_data = Attribute("Data made available by this data provider")
+
+
+class ISPARQLFileDataProvider(IBasicDataProvider):
+    """Marker interface for objects that provide data to visualizations"""
+
+
+class ISPARQLConnectorDataProvider(IBasicDataProvider):
+    """Marker interface for objects that provide data to visualizations"""
