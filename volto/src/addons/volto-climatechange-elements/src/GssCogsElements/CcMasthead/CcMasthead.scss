@@ -1,6 +1,7 @@
 @import 'govuk-frontend/govuk/all.scss';
 
 .cc-masthead-wrapper {
+  margin-bottom: govuk-spacing(4);
 
   &--hero {
     background-color: govuk-colour('blue');
