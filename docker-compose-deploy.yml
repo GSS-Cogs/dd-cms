@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+    plone:
+        build:
+            context: plone-5
+        ports:
+            - 8080:8080
+        volumes:
+            - plone-data:/data
+    volto:
+        build:
+            context: volto
+        environment:
+            - RAZZLE_DEV_PROXY_API_PATH=http://plone:8080/Plone
+        ports:
+            - 3000:3000
+            - 3001:3001
+        command: "yarn start"
+
+volumes:
+    plone-data:
