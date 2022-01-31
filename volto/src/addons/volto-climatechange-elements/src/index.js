@@ -40,6 +40,7 @@ const applyConfig = (config) => {
     };
 
     config.views.layoutViews.cc_preview = CcV2ArticleView;
+    config.views.layoutViews.cc_preview2 = CcV2Overview;
 
 
     return config;

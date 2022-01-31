@@ -7,7 +7,7 @@ import './CcArticleHeader.scss';
 
 export const CcArticleHeader = () => {
   return (
-    <CcMasthead className='cc-masthead-wrapper--article'>
+    <CcMasthead className="cc-masthead-wrapper--article">
       <div className="cc-article-header govuk-width-container">
         <div className="govuk-grid-row">
           <div className="govuk-grid-column-two-thirds">
