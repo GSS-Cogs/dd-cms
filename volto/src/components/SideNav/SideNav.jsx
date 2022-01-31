@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-
 class SideNav extends Component {
   static propTypes = {
     items: PropTypes.arrayOf(
@@ -31,8 +30,7 @@ class SideNav extends Component {
               <li key={item.url}>
                 <a href={item.url}>{item.title}</a>
               </li>
-            ))
-            }
+            ))}
           </ul>
         </nav>
       </aside>
