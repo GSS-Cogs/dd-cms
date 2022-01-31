@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+    plone:
+        build:
+            context: plone-5
+        ports:
+            - 8080:8080
+        volumes:
+            - plone-data:/data
+        networks:
+            - cogs_proxy
+    volto:
+        build:
+            context: volto
+        environment:
+            - RAZZLE_API_PATH=https://climate-1.ukstats.dev/api
+#            - RAZZLE_DEV_PROXY_API_PATH=http://plone:8080/Plone
+            - NODE_ENV=production
+            - VIRTUAL_HOST=climate-1.ukstats.dev
+        ports:
+            - 3000:3000
+        command: "yarn start:prod"
+        init: true
+        networks:
+            - cogs_proxy
+
+volumes:
+    plone-data:
+
+networks:
+    cogs_proxy:
+        external: true
