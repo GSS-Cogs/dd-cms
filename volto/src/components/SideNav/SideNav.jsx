@@ -27,7 +27,7 @@ class SideNav extends Component {
         <nav>
           <ul>
             {this.props.items.map((item) => (
-              <li>
+              <li key={item.url}>
                 <a href={item.url}>{item.title}</a>
               </li>
             ))

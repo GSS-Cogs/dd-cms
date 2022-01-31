@@ -17,6 +17,7 @@ import { getBreadcrumbs } from '@plone/volto/actions';
 import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
 
 import homeSVG from '@plone/volto/icons/home.svg';
+import './Breadcrumbs.css';
 
 const messages = defineMessages({
   home: {
@@ -80,14 +81,14 @@ class Breadcrumbs extends Component {
     return (
       <dev>
         <Container>
-          <GOVUK.Breadcrumbs>
+          <GOVUK.Breadcrumbs className="Breadcrumbs">
             <GOVUK.Breadcrumbs.Link
               href={this.props.root || '/'}
             >
               <Icon name={homeSVG} size="18px" />
             </GOVUK.Breadcrumbs.Link>
             {this.props.items.map((item, index, items) =>
-              <GOVUK.Breadcrumbs.Link href={item.url}>
+              <GOVUK.Breadcrumbs.Link href={item.url} key={item.url}>
                 {item.title}
               </GOVUK.Breadcrumbs.Link>
             )}
