@@ -42,19 +42,11 @@ class Header extends Component {
   render() {
     return (<>
       <GovukHeader
-        navigationClassName='govuk-!-padding-left-0'
-        navigation={[
-          ...this.props.items.map(({title, url}) => ({
-              children: title,
-              href: url === '' ? '/' : url
-            })
-          ),
-          {
-            children: !this.props.token && <Anontools />
-          }
-        ]}
+        containerClassName="govuk-header__container--full-width"
         serviceName="GOV.UK Open Data"
         serviceUrlHref="/"
+        navigationClassName="govuk-header__navigation--end"
+        navigation={[{ children: !this.props.token && <Anontools /> }]}
       />
     </>);
   }
