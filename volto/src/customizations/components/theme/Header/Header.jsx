@@ -40,15 +40,20 @@ class Header extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    return (<>
-      <GovukHeader
-        containerClassName="govuk-header__container--full-width"
-        serviceName="GOV.UK Open Data"
-        serviceUrlHref="/"
-        navigationClassName="govuk-header__navigation--end"
-        navigation={[{ children: !this.props.token && <Anontools /> }]}
-      />
-    </>);
+    return (
+      <>
+        <GovukHeader
+          navigationClassName="govuk-!-padding-left-0"
+          navigation={[
+            {
+              children: !this.props.token && <Anontools />,
+            },
+          ]}
+          serviceName="GOV.UK Open Data"
+          serviceUrlHref="/"
+        />
+      </>
+    );
   }
 }
 
