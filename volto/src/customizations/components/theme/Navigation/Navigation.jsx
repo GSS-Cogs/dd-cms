@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import * as GOVUK from "govuk-react";
+import * as GOVUK from 'govuk-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Menu } from 'semantic-ui-react';
 import cx from 'classnames';
@@ -17,7 +17,7 @@ import config from '@plone/volto/registry';
 import { getNavigation } from '@plone/volto/actions';
 import { SideNav } from '../../../../components';
 
-import "./Navigation.css";
+import './Navigation.css';
 
 const messages = defineMessages({
   closeMobileMenu: {
@@ -70,7 +70,7 @@ class Navigation extends Component {
 
   componentDidMount() {
     const { settings } = config;
-    if (!hasApiExpander('navigation', getBaseUrl(this.props.pathname))) {
+    if (!hasApiExpander('Navigation', getBaseUrl(this.props.pathname))) {
       this.props.getNavigation(
         getBaseUrl(this.props.pathname),
         settings.navDepth,
@@ -90,7 +90,7 @@ class Navigation extends Component {
       nextProps.pathname !== this.props.pathname ||
       nextProps.token !== this.props.token
     ) {
-      if (!hasApiExpander('navigation', getBaseUrl(this.props.pathname))) {
+      if (!hasApiExpander('Navigation', getBaseUrl(this.props.pathname))) {
         this.props.getNavigation(
           getBaseUrl(nextProps.pathname),
           settings.navDepth,
@@ -130,7 +130,7 @@ class Navigation extends Component {
     const { lang } = this.props;
 
     return (
-      <nav className="navigation" id="navigation">
+      <nav className="Navigation" id="Navigation">
         <div className="hamburger-wrapper mobile tablet only">
           <button
             className={cx('hamburger hamburger--collapse', {
@@ -139,20 +139,20 @@ class Navigation extends Component {
             aria-label={
               this.state.isMobileMenuOpen
                 ? this.props.intl.formatMessage(messages.closeMobileMenu, {
-                  type: this.props.type,
-                })
+                    type: this.props.type,
+                  })
                 : this.props.intl.formatMessage(messages.openMobileMenu, {
-                  type: this.props.type,
-                })
+                    type: this.props.type,
+                  })
             }
             title={
               this.state.isMobileMenuOpen
                 ? this.props.intl.formatMessage(messages.closeMobileMenu, {
-                  type: this.props.type,
-                })
+                    type: this.props.type,
+                  })
                 : this.props.intl.formatMessage(messages.openMobileMenu, {
-                  type: this.props.type,
-                })
+                    type: this.props.type,
+                  })
             }
             type="button"
             onClick={this.toggleMobileMenu}
@@ -169,13 +169,14 @@ class Navigation extends Component {
           className={
             this.state.isMobileMenuOpen
               ? 'open'
-              : 'computer large screen widescreen only'
+              : 'computer large screen widescreen only NavigationSideNav'
           }
           onClick={this.closeMobileMenu}
+          id="NavigationSideNav"
         >
           <SideNav items={this.props.items} />
         </Menu>
-      </nav >
+      </nav>
     );
   }
 }
