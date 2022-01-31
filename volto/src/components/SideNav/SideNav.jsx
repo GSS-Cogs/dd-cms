@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+
 class SideNav extends Component {
   static propTypes = {
     items: PropTypes.arrayOf(
@@ -23,7 +24,7 @@ class SideNav extends Component {
 
   render() {
     return (
-      <aside className="navigation">
+      <aside>
         <nav>
           <ul>
             {this.props.items.map((item) => (
