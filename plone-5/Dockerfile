@@ -14,4 +14,3 @@ RUN \
     cd instance && \
     find /data  -not -user plone -exec chown plone:plone {} \+ && \
     find /plone -not -user plone -exec chown plone:plone {} \+
-ENTRYPOINT ["./bin/instance", "fg"]

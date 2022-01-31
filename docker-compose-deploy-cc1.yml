@@ -6,8 +6,8 @@ services:
             context: plone-5
         ports:
             - 8080:8080
-        volumes:
-            - plone-data:/data
+#        volumes:
+#            - plone-data:/data:z
         networks:
             - cogs_proxy
     volto:
@@ -18,6 +18,7 @@ services:
 #            - RAZZLE_DEV_PROXY_API_PATH=http://plone:8080/Plone
             - NODE_ENV=production
             - VIRTUAL_HOST=climate-1.ukstats.dev
+            - LETSENCRYPT_HOST=climate-1.ukstats.dev
         ports:
             - 3000:3000
         command: "yarn start:prod"
