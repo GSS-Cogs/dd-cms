@@ -8,27 +8,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import * as GOVUK from 'govuk-react';
-import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
-import { defineMessages, injectIntl } from 'react-intl';
+import { Breadcrumbs as GovukBreadcrumbs, PhaseBanner } from 'govuk-react-jsx';
+import { Container } from 'semantic-ui-react';
+import { injectIntl } from 'react-intl';
 
-import { Icon } from '@plone/volto/components';
 import { getBreadcrumbs } from '@plone/volto/actions';
 import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
-
-import homeSVG from '@plone/volto/icons/home.svg';
-import './Breadcrumbs.css';
-
-const messages = defineMessages({
-  home: {
-    id: 'Home',
-    defaultMessage: 'Home',
-  },
-  breadcrumbs: {
-    id: 'Breadcrumbs',
-    defaultMessage: 'Breadcrumbs',
-  },
-});
 
 /**
  * Breadcrumbs container class.
@@ -78,28 +63,34 @@ class Breadcrumbs extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { props } = this;
+    const hasBreadcrumbItems = props.items && props.items.length >= 1;
+
     return (
       <dev>
-        <Container>
-          <GOVUK.Breadcrumbs className="Breadcrumbs">
-            <GOVUK.Breadcrumbs.Link
-              href={this.props.root || '/'}
-            >
-              <Icon name={homeSVG} size="18px" />
-            </GOVUK.Breadcrumbs.Link>
-            {this.props.items.map((item, index, items) =>
-              <GOVUK.Breadcrumbs.Link href={item.url} key={item.url}>
-                {item.title}
-              </GOVUK.Breadcrumbs.Link>
-            )}
-          </GOVUK.Breadcrumbs>
-          <GOVUK.PhaseBanner level="beta">
+        <div className="govuk-width-container">
+          {hasBreadcrumbItems && <GovukBreadcrumbs items={[
+            {
+              children: 'Home',
+              href: '/'
+            },
+            ...props.items.map((item, index, items) => (
+              {
+                children: item.title,
+                href: item.url
+              }
+            ))
+          ]} />}
+
+          <PhaseBanner
+            tag={{
+              children: 'beta'
+            }}
+          >
             This part of GOV.UK is being rebuilt –{' '}
-            <Link to="https://example.com">
-              find out what that means
-            </Link>
-          </GOVUK.PhaseBanner>
-        </Container>
+            <Link to="https://example.com">find out what that means</Link>
+          </PhaseBanner>
+        </div>
       </dev>
     );
   }
