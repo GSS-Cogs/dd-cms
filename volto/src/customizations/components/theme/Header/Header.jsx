@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Header as GovukHeader, Input } from 'govuk-react-jsx';
 import { Anontools } from '@plone/volto/components';
-
+import "./Header.css";
 /**
  * Header component class.
  * @class Header
@@ -51,6 +51,7 @@ class Header extends Component {
           ]}
           serviceName="GOV.UK Open Data"
           serviceUrlHref="/"
+          className="Header"
         />
       </>
     );
