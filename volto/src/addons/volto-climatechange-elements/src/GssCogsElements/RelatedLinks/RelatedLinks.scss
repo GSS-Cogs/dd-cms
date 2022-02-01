@@ -23,6 +23,8 @@
       background-color: govuk-colour('blue');
       color: white;
       margin-right: govuk-spacing(2);
+      border: 2px solid govuk-colour('blue');
+      box-sizing: content-box;
     }
   }
 }
