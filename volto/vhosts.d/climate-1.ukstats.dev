@@ -1,0 +1,4 @@
+location ~ /api($|/.*) {
+  rewrite ^/api($|/.*) /VirtualHostBase/https/climate-1.ukstats.dev:443/Plone/VirtualHostRoot/_vh_api$1 break;
+  proxy_pass http://plone:8080;
+}

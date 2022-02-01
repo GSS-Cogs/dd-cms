@@ -1,3 +1,13 @@
-/build/
-/node_modules/
-/omelette/
+**
+!.eslintrc.js
+!babel.config.js
+!jsconfig.json
+!package.json
+!razzle.config.js
+!yarn.lock
+!locales
+!patches
+!public
+!src
+!theme
+!mrs.developer.json

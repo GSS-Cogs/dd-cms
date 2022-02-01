@@ -1,18 +1,16 @@
-FROM ubuntu:20.04
+FROM plone:5.2.5-python38
 
-EXPOSE 8080
-
-ENV LANG=en_GB.UTF-8
-ENV LANGUAGE=en_GB:en
-
-COPY ./ubuntu-install.sh ./plone-5/
-COPY ./instance/custom.cfg ./plone-5/instance/custom.cfg
-COPY ./sparql-dataconnector.patch ./plone-5/
-
-CMD bash ./plone/ubuntu-install.sh
-#CMD cd instance
-#CMD pipenv run ./bin/instance fg
-#COPY site.cfg /plone/instance/
-#RUN buildout -c site.cfg \
-# && find /data  -not -user plone -exec chown plone:plone {} \+ \
-# && find /plone -not -user plone -exec chown plone:plone {} \+
+COPY instance/custom.cfg /plone/instance/
+COPY sparql-dataconnector.patch /plone/
+RUN \
+    sed -i '/RelStorage\|psycopg2\|mysqlclient\|cx-Oracle\|ldap/d' buildout.cfg && \
+    buildout -c custom.cfg && \
+    cd .. && \
+    pip install SPARQLWrapper && \
+    apt-get update && \
+    apt-get install patch && \
+    patch -p0 < sparql-dataconnector.patch && \
+    rm -rf /var/lib/apt/lists/* && \
+    cd instance && \
+    find /data  -not -user plone -exec chown plone:plone {} \+ && \
+    find /plone -not -user plone -exec chown plone:plone {} \+

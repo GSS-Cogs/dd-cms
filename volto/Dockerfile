@@ -1,16 +1,11 @@
-FROM ubuntu:20.04
+FROM node:14
 
-EXPOSE 3000
-
-ENV LANG=en_GB.UTF-8
-ENV LANGUAGE=en_GB:en
-
-COPY ./ ./volto/
-
-CMD bash ./volto/ubuntu-install.sh
-#CMD cd instance
-#CMD pipenv run ./bin/instance fg
-#COPY site.cfg /plone/instance/
-#RUN buildout -c site.cfg \
-# && find /data  -not -user plone -exec chown plone:plone {} \+ \
-# && find /plone -not -user plone -exec chown plone:plone {} \+
+WORKDIR /app
+# restrict files/directories to copy in .dockerignore
+COPY . /app/
+ENV BUILD_TARGET=server
+RUN \
+    yarn global add mrs-developer && \
+    yarn develop && \
+    yarn install --frozen-lockfile && \
+    yarn build
