@@ -1,16 +1,19 @@
 import React from 'react';
+import { H1, H3, H4 } from 'govuk-react';
 
 import './CcArticleList.scss';
-import { H1, H3 } from 'govuk-react';
 
-const CcArticlePreview = ({data}) => {
+const CcArticlePreview = ({data, skipSummary}) => {
   return (
-    <article className='cc-article-preview'>
+    <article className="cc-article-preview">
       <aside className="cc-article-preview--date">{data.publicationDate}</aside>
       <H3>
         <a href={data.link}>{data.title}</a>
       </H3>
-      <div>{data.preview}</div>
+      {skipSummary
+        ? null
+        : <div>{data.preview}</div>
+      }
     </article>
   );
 };
@@ -52,6 +55,17 @@ export const CcArticleList = () => {
       {TEST_ARTICLES.map((data, i, idx) => <CcArticlePreview key={i} data={data}/>)}
 
       <a href='#'>View all articles</a>
+    </div>
+  );
+};
+
+export const CcRecentArticles = ({ limit,  }) => {
+  return (
+    <div className="cc-article-list cc-article-header">
+      <H4>Recent Articles</H4>
+      {TEST_ARTICLES.slice(0, 2).map((data, i, idx) =>
+        <CcArticlePreview key={i} data={data} skipSummary={true}/>)
+      }
     </div>
   );
 };

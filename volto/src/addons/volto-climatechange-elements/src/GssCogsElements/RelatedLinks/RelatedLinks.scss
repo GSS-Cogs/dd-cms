@@ -2,7 +2,7 @@
 
 
 .cc-related-links {
-  margin-top: govuk-spacing(8);
+  margin-bottom: govuk-spacing(8);
   padding-top: govuk-spacing(2);
   border-top: 3px solid govuk-colour('blue');
 
@@ -12,5 +12,27 @@
   }
   .cc-related-links--item {
     margin-bottom: govuk-spacing(2);
+  }
+
+  &--link {
+    height: 24px;
+    color: govuk-colour('blue');
+
+    svg {
+      vertical-align: middle;
+      background-color: govuk-colour('blue');
+      color: white;
+      margin-right: govuk-spacing(2);
+    }
+  }
+}
+
+.cc-signup-types {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  .cc-related-links--link {
+    flex-grow: 1;
   }
 }

@@ -1,9 +1,5 @@
 import React from 'react';
 import { CcArticleHeader } from '../CcArticleHeader/CcArticleHeader';
-import { DashboardTileView } from '../DashboardTile/DashboardTileView';
-import { TileGroup } from '../DashboardTile/TileGroup';
-import { CcArticleList } from '../CcArticleList/CcArticleList';
-import { RelatedLinks } from '../RelatedLinks/RelatedLinks';
 import { Paragraph } from 'govuk-react';
 
 export const CcV2ArticleView = () => (

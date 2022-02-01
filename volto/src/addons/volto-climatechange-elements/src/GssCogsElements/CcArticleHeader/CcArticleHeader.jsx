@@ -1,8 +1,8 @@
 import React from 'react';
 import { H1, Paragraph } from 'govuk-react';
-import { RelatedLinks } from '../RelatedLinks/RelatedLinks';
+import { CcRecentArticles } from '../CcArticleList/CcArticleList';
 import { CcMasthead } from '../CcMasthead/CcMasthead';
-
+import { FeedSignUps } from '../RelatedLinks/FeedSignUps';
 import './CcArticleHeader.scss';
 
 export const CcArticleHeader = () => {
@@ -26,7 +26,8 @@ export const CcArticleHeader = () => {
             </Paragraph>
           </div>
           <div className="govuk-grid-column-one-third">
-            <RelatedLinks limit={2} />
+            <FeedSignUps />
+            <CcRecentArticles />
           </div>
         </div>
       </div>
