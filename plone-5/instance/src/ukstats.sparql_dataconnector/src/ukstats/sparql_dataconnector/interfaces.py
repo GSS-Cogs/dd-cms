@@ -16,7 +16,7 @@ class IUkstatsSparqlDataconnectorLayer(IDefaultBrowserLayer):
 
 
 @provider(IFormFieldProvider)
-class ISPARQLConnector(model.Schema):
+class ISPARQLDataConnector(model.Schema):
     """A SPARQL connector"""
 
     endpoint_url = schema.TextLine(

@@ -16,7 +16,7 @@
       title="SPARQL connector behavior"
       description="Adds sparql connector query execution"
       factory=".behavior.SPARQLDataConnector"
-      provides=".interfaces.ISPARQLConnector"
+      provides=".interfaces.ISPARQLDataConnector"
       for="plone.dexterity.interfaces.IDexterityContent"
       marker=".interfaces.ISPARQLConnectorDataProvider"
       />

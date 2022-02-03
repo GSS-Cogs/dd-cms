@@ -10,6 +10,7 @@
   <adapter factory=".adapter.SPARQLDataProviderForConnectors" />
 
   <include package=".browser" />
+  <include package=".api" />
   <include file="behavior.zcml" />
   <include file="profiles.zcml" />
 

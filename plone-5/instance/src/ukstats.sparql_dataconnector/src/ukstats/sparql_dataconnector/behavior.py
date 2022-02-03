@@ -10,13 +10,13 @@ from plone.rfc822.interfaces import IPrimaryFieldInfo
 from zope.component import adapter
 from zope.interface import implementer
 from zope.publisher.interfaces.browser import IBrowserRequest
-from .interfaces import ISPARQLConnector, ISPARQLDataProvider, ISPARQLFileDataProvider
-
+from eea.api.dataconnector.interfaces import IDataProvider, IFileDataProvider
+from .interfaces import ISPARQLDataConnector, ISPARQLDataProvider, ISPARQLFileDataProvider
 
 logger = logging.getLogger(__name__)
 
 
-@implementer(ISPARQLConnector)
+@implementer(ISPARQLDataConnector)
 @adapter(IDexterityContent)
 class SPARQLDataConnector(MetadataBase):
     """Allow data connectivity to discodata
@@ -24,8 +24,8 @@ class SPARQLDataConnector(MetadataBase):
     See http://discomap.eea.europa.eu/App/SqlEndpoint/Browser.aspx
     """
 
-    endpoint_url = DCFieldProperty(ISPARQLConnector["endpoint_url"])
-    sparql_query = DCFieldProperty(ISPARQLConnector["sparql_query"])
+    endpoint_url = DCFieldProperty(ISPARQLDataConnector["endpoint_url"])
+    sparql_query = DCFieldProperty(ISPARQLDataConnector["sparql_query"])
 
 
 @implementer(ISPARQLDataProvider)
