@@ -43,7 +43,7 @@ jobs:
         fi
         docker image push --all-tags $remote_param
     - name: Push Plone
-    - run: |
+      run: |
         vers_num="$(grep 'version :=' build.sbt | head -n1 | sed 's/.*"\(.*\)".*/\1/')"
         
         rel_cand_substring='rc'
