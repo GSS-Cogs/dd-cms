@@ -5,6 +5,7 @@ import { CcHeroHeaderView } from './GssCogsElements/CcHeroHeader/CcHeroHeaderVie
 import { CcHeroHeaderEdit } from './GssCogsElements/CcHeroHeader/CcHeroHeaderEdit';
 import { CcV2Overview } from './GssCogsElements/CcV2Preview/CcV2Overview';
 import { CcV2ArticleView } from './GssCogsElements/CcV2Preview/CcV2ArticleView';
+import articlesList from './reducers';
 
 const applyConfig = (config) => {
     config.blocks.blocksConfig.dashboardTile = {
@@ -41,6 +42,8 @@ const applyConfig = (config) => {
 
     config.views.layoutViews.cc_preview = CcV2ArticleView;
     config.views.layoutViews.cc_preview2 = CcV2Overview;
+
+    config.addonReducers.articleList = articlesList;
 
 
     return config;
