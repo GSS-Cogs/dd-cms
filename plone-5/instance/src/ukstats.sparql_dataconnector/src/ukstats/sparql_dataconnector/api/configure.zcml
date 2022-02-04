@@ -9,6 +9,7 @@
   <adapter name="sparql-connector-data" factory=".sparql_dataconnector.ConnectorData" />
 
 	<!-- TODO: this should be eea.dataconnector.interfaces.IBasicDataProvider -->
+	<!--
   <plone:service
     method="GET"
     for="*"
@@ -24,5 +25,6 @@
     name="@connector-data"
     permission="zope2.View"
     />
+   -->
 
 </configure>

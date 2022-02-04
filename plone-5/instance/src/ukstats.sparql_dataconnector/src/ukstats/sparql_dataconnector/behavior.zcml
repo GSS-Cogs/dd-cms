@@ -16,7 +16,7 @@
       title="SPARQL connector behavior"
       description="Adds sparql connector query execution"
       factory=".behavior.SPARQLDataConnector"
-      provides=".interfaces.ISPARQLDataConnector"
+      provides="eea.api.dataconnector.interfaces.IDataProvider"
       for="plone.dexterity.interfaces.IDexterityContent"
       marker=".interfaces.ISPARQLConnectorDataProvider"
       />
@@ -26,7 +26,7 @@
       title="SPARQL Data provider for files"
       description="Allows Files to provide remote data"
       factory=".behavior.SPARQLDataProviderForFiles"
-      provides=".interfaces.ISPARQLDataProvider"
+      provides="eea.api.dataconnector.interfaces.IDataProvider"
       for="plone.dexterity.interfaces.IDexterityContent"
       marker=".interfaces.ISPARQLFileDataProvider"
       />

@@ -9,6 +9,7 @@ from zope.interface import provider
 from zope.interface import Interface
 from zope.interface import Attribute
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
+from eea.api.dataconnector.interfaces import IBasicDataProvider
 
 
 class IUkstatsSparqlDataconnectorLayer(IDefaultBrowserLayer):
@@ -33,10 +34,6 @@ class ISPARQLDataConnector(model.Schema):
             WHERE { <http://dbpedia.org/resource/Asturias> rdfs:label ?label }
         """
     )
-
-
-class IBasicDataProvider(Interface):
-    """A data provider concept"""
 
 
 class ISPARQLDataProvider(IBasicDataProvider):

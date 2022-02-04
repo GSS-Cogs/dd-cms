@@ -28,8 +28,8 @@ class SPARQLDataConnector(MetadataBase):
     sparql_query = DCFieldProperty(ISPARQLDataConnector["sparql_query"])
 
 
-@implementer(ISPARQLDataProvider)
-@adapter(ISPARQLFileDataProvider, IBrowserRequest)
+@implementer(IDataProvider)
+@adapter(IFileDataProvider, IBrowserRequest)
 class SPARQLDataProviderForFiles(object):
     """Behavior implementation for content types with a File primary field"""
 
