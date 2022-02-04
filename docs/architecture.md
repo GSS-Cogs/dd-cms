@@ -13,8 +13,9 @@ We want to enable statisticians to create and disseminate reports that are funda
 Creation, editing, drafting and reviewing of the reports, dashboards and underlying data should be done using the same
 web interface that is used to manage and disseminate these artifacts, using a content management system.
 
-To support this, we have taken an existing open source content management system, Plone/Volto, as a way to quickly
-prototype and demo these capabilities. We are concentrating on developing add-on components highlighted below as
+To support this, we are basing some prototypes and demos on top of an existing open source content management system,
+Plone/Volto, and more specifically the [great work](https://github.com/eea) that has been done for the European
+Environment agency on data driven content. We are concentrating on developing add-on components highlighted below as
 open source, re-usable packages that themselves make full use of other open source packages.
 
 ![components](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/GSS-Cogs/dd-cms/main/docs/components.puml)
