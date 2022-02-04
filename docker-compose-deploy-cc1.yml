@@ -6,8 +6,8 @@ services:
             context: plone-5
         ports:
             - 8080:8080
-#        volumes:
-#            - plone-data:/data:z
+        volumes:
+            - plone-data:/data:z
         networks:
             - cogs_proxy
     volto:
