@@ -18,12 +18,14 @@
   },
   "private": true,
   "workspaces": [
+    "src/addons/volto-govuk-theme",
     "src/addons/volto-climatechange-elements"
   ],
   "addons": [
     "@eeacms/volto-plotlycharts",
     "@eeacms/volto-datablocks",
     "@eeacms/volto-columns-block",
+    "volto-govuk-theme",
     "volto-climatechange-elements"
   ],
   "jest": {
