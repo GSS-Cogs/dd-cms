@@ -7,6 +7,16 @@ A training on how to create your own website using Volto is available as part of
 
 Below is a list of commands you will probably find useful.
 
+You'll need to have `mrs-developer` installed globally. See the [mrs-developer](#mrsdeveloper) section below.
+
+This is necessary because we need to use the 'source' for `react-govuk-jsx` to
+have the Razzle server-side rendering work correctly.  More info on this
+in issue [49](https://github.com/GSS-Cogs/dd-cms/issues/49) 
+
+### `yarn install && yarn develop`
+
+Installs the dependencies, including the `mrs-developer` provided source packages.  
+
 ### `yarn start`
 
 Runs the project in development mode.
@@ -43,7 +53,7 @@ If you are switching between git branches, please run following
 
 `yarn run clean`
 
-### mrs-developer
+### <a name='mrsdeveloper'></a> mrs-developer
 
 [mrs-developer](https://github.com/collective/mrs-developer) is a great tool
 for developing multiple packages at the same time.
