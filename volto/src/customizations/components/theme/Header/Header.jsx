@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Header as GovukHeader, Input } from 'govuk-react-jsx';
 import { Anontools } from '@plone/volto/components';
-
+import "./Header.css";
 /**
  * Header component class.
  * @class Header
@@ -40,23 +40,21 @@ class Header extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    return (<>
-      <GovukHeader
-        navigationClassName='govuk-!-padding-left-0'
-        navigation={[
-          ...this.props.items.map(({title, url}) => ({
-              children: title,
-              href: url === '' ? '/' : url
-            })
-          ),
-          {
-            children: !this.props.token && <Anontools />
-          }
-        ]}
-        serviceName="GOV.UK Open Data"
-        serviceUrlHref="/"
-      />
-    </>);
+    return (
+      <>
+        <GovukHeader
+          navigationClassName="govuk-!-padding-left-0"
+          navigation={[
+            {
+              children: !this.props.token && <Anontools />,
+            },
+          ]}
+          serviceName="GOV.UK Open Data"
+          serviceUrlHref="/"
+          className="Header"
+        />
+      </>
+    );
   }
 }
 
