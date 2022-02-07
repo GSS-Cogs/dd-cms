@@ -4,23 +4,34 @@ services:
     plone:
         build:
             context: plone-5
-        ports:
-            - 8080:8080
 #        volumes:
 #            - plone-data:/data:z
         networks:
             - cogs_proxy
-    volto:
+    volto-v1:
         build:
             context: volto
         environment:
             - RAZZLE_API_PATH=https://climate-1.ukstats.dev/api
-#            - RAZZLE_DEV_PROXY_API_PATH=http://plone:8080/Plone
             - NODE_ENV=production
             - VIRTUAL_HOST=climate-1.ukstats.dev
+            - VIRTUAL_PORT=3000
             - LETSENCRYPT_HOST=climate-1.ukstats.dev
-        ports:
-            - 3000:3000
+        command: "yarn start:prod"
+        init: true
+        networks:
+            - cogs_proxy
+
+    volto-v2:
+        build:
+            context: volto
+            dockerfile: Dockerfile-cc2
+        environment:
+            - RAZZLE_API_PATH=https://climate-2.ukstats.dev/api
+            - NODE_ENV=production
+            - VIRTUAL_HOST=climate-2.ukstats.dev
+            - VIRTUAL_PORT=3000
+            - LETSENCRYPT_HOST=climate-2.ukstats.dev
         command: "yarn start:prod"
         init: true
         networks:
