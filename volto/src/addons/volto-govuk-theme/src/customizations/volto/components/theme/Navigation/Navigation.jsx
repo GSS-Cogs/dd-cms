@@ -15,7 +15,7 @@ import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 import { getNavigation } from '@plone/volto/actions';
-import { SideNav } from '../../../../components';
+import { SideNav } from '../../../../../../../../components';
 
 import './Navigation.css';
 
