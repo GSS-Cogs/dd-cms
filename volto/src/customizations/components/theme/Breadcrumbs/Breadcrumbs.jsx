@@ -14,6 +14,7 @@ import { injectIntl } from 'react-intl';
 
 import { getBreadcrumbs } from '@plone/volto/actions';
 import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
+import './Breadcrumbs.css';
 
 /**
  * Breadcrumbs container class.
@@ -68,23 +69,25 @@ class Breadcrumbs extends Component {
 
     return (
       <dev>
-        <div className="govuk-width-container">
-          {hasBreadcrumbItems && <GovukBreadcrumbs items={[
-            {
-              children: 'Home',
-              href: '/'
-            },
-            ...props.items.map((item, index, items) => (
-              {
-                children: item.title,
-                href: item.url
-              }
-            ))
-          ]} />}
+        <div className="Breadcrumbs">
+          {hasBreadcrumbItems && (
+            <GovukBreadcrumbs
+              items={[
+                {
+                  children: 'Home',
+                  href: '/',
+                },
+                ...props.items.map((item, index, items) => ({
+                  children: item.title,
+                  href: item.url,
+                })),
+              ]}
+            />
+          )}
 
           <PhaseBanner
             tag={{
-              children: 'beta'
+              children: 'beta',
             }}
           >
             This part of GOV.UK is being rebuilt –{' '}
