@@ -18,4 +18,4 @@ Plone/Volto, and more specifically the [great work](https://github.com/eea) that
 Environment agency on data driven content. We are concentrating on developing add-on components highlighted below as
 open source, re-usable packages that themselves make full use of other open source packages.
 
-![components](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/GSS-Cogs/dd-cms/main/docs/components.puml)
+![components](http://www.plantuml.com/plantuml/proxy?cache=no&fmt=svg&src=https://raw.github.com/GSS-Cogs/dd-cms/main/docs/components.puml)
