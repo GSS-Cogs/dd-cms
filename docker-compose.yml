@@ -3,6 +3,7 @@ version: '3.8'
 services:
     plone:
         image: plone:5.2.5
+        container_name: dd-cms-backend
         environment:
             - FIND_LINKS=https://eggrepo.eea.europa.eu/simple/
             - SITE=Plone
@@ -15,11 +16,12 @@ services:
             - plone-data:/data
     volto:
         image: node:14
+        container_name: dd-cms-frontend
         user: 'node'
         working_dir: /home/node/app
         volumes:
             - type: bind
-              source: volto/
+              source: ./volto/
               target: /home/node/app
         environment:
             - RAZZLE_DEV_PROXY_API_PATH=http://plone:8080/Plone
