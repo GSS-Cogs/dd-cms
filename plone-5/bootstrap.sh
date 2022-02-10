@@ -7,7 +7,11 @@ do
 done
 docker rm -v $plone
 
-sed -i 's|var-dir=/data|var-dir=data|;/RelStorage\|psycopg2\|mysqlclient\|cx-Oracle\|ldap/d' instance/buildout.cfg
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    sed -i '' 's|var-dir=/data|var-dir=data|;/RelStorage\|psycopg2\|mysqlclient\|cx-Oracle\|ldap/d' instance/buildout.cfg
+else
+    sed -i 's|var-dir=/data|var-dir=data|;/RelStorage\|psycopg2\|mysqlclient\|cx-Oracle\|ldap/d' instance/buildout.cfg
+fi
 
 pipenv --python 3.8
 
