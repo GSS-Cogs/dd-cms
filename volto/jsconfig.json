@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
         "paths": {
-            "govuk-react-jsx": [
-                "addons/govuk-react-jsx"
+            "volto-climatechange-elements": [
+                "addons/volto-climatechange-elements"
             ]
         },
         "baseUrl": "src"
