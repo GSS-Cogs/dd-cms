@@ -68,7 +68,7 @@ class Breadcrumbs extends Component {
     const hasBreadcrumbItems = props.items && props.items.length >= 1;
 
     return (
-      <dev>
+      <div>
         <div className="Breadcrumbs">
           {hasBreadcrumbItems && (
             <GovukBreadcrumbs
@@ -94,7 +94,7 @@ class Breadcrumbs extends Component {
             <Link to="https://example.com">find out what that means</Link>
           </PhaseBanner>
         </div>
-      </dev>
+      </div>
     );
   }
 }
