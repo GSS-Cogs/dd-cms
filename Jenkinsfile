@@ -7,9 +7,9 @@ pipeline {
     stages {
         stage('Volto'){
             steps{
-                sh 'cd volto'
-                sh 'docker build . -t volto'
-                sh 'docker run volto yarn test'
+                'sh cd volto'
+                'sh docker build . -t volto'
+                'sh docker run volto yarn test'
             }
         }
     }
