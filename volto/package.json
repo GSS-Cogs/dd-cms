@@ -18,13 +18,15 @@
   },
   "private": true,
   "workspaces": [
-    "src/addons/volto-govuk-theme"
+    "src/addons/volto-govuk-theme",
+    "src/addons/volto-chart-builder"
   ],
   "addons": [
     "@eeacms/volto-plotlycharts",
     "@eeacms/volto-datablocks",
     "@eeacms/volto-columns-block",
-    "volto-govuk-theme"
+    "volto-govuk-theme",
+    "volto-chart-builder"
   ],
   "jest": {
     "modulePathIgnorePatterns": [
