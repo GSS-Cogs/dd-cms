@@ -1,6 +1,9 @@
 {
     "compilerOptions": {
         "paths": {
+            "chart-builder": [
+                "addons/chart-builder"
+            ]
         },
         "baseUrl": "src"
     }
