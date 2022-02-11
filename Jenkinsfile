@@ -1,13 +1,12 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Build Volto') {
             steps {
                 sh 'docker build ./volto -t volto'
-                sh 'docker build ./plone-5 -t plone'
             }
         }
-        stage('Integration Test') {
+        stage('Integration Test Volto') {
             steps {
                 sh 'docker run volto yarn test'
             }
@@ -16,7 +15,7 @@ pipeline {
     post {
         always {
             script {
-                junit allowEmptyResults: true, testResults: 'build/test-results/**/*.xml'
+                junit allowEmptyResults: true, testResults: '*.xml'
                 publishHTML([
                         allowMissing: true,
                         alwaysLinkToLastBuild: true,
