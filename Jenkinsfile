@@ -8,10 +8,10 @@ pipeline {
         }
         stage('Integration Test Volto') {
             steps {
-                sh 'docker run volto yarn test'
+                sh 'docker run volto yarn test
                 docker run -d -t --name sample volto yarn test
                 docker cp sample:/app/junit.xml .
-                docker rm -f sample
+                docker rm -f sample'
             }
         }
     }
