@@ -1,0 +1,53 @@
+@startuml
+!theme spacelab
+skinparam defaultFontName Oswald
+
+skinparam defaultTextAlignment center
+skinparam noteTextAlignment left
+' left to right direction
+
+'node "Publish My Data" {
+'    database SPARQL as "Stardog\nRDF\ntriple store"
+'    [Drafter]
+'    [Data\nBrowser]
+'}
+
+node "CMS" {
+  rectangle Frontend {
+    package VoltoFE as "React JS / Volto" {
+        component Theme #Orange {
+          [govuk] as "govuk-react-jsx"
+          [custom] #Orange
+        }
+        [Admin UI]
+        rectangle "Editor plugins" {
+          component datablocks as "Data blocks"
+          component wsywig as "Slate.js Editor"
+          component plotlyblocks as "Plotly blocks"
+          component chartbuilder as "Chart builder" #Orange
+        }
+    }
+  }
+  rectangle Backend {
+    package VoltoBE as "React JS / Volto" {
+    [plone.restapi]
+    [plone.volto]
+  }
+  package Plone {
+    rectangle PloneAddons as "Plone Addons" {
+        component SPARQLDC as "SPARQL Connector" #Orange
+        ' SPARQLDC <-> SPARQL : SPARQL
+        component CSVW_CT as "CSV-W\nContent Type" #Orange
+        component Article_CT as "Article\nContent Type" #Orange
+        component EEA as "eea.api.datablocks"
+        component OAUTH2 as "OAuth2 PAS"
+        component workflow as "Custom Workflows" #Orange
+    }
+    database ZODB
+    }
+  Frontend <-d-> Backend : HTTP
+}
+}
+
+
+@enduml
