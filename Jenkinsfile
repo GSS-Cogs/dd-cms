@@ -9,6 +9,9 @@ pipeline {
         stage('Integration Test Volto') {
             steps {
                 sh 'docker run volto yarn test'
+                docker run -d -t --name sample volto yarn test
+                docker cp sample:/app/junit.xml .
+                docker rm -f sample
             }
         }
     }
@@ -20,9 +23,9 @@ pipeline {
                         allowMissing: true,
                         alwaysLinkToLastBuild: true,
                         keepAll: true,
-                        reportDir   : "build/reports/tests/integrationTest/",
-                        reportFiles : 'index.html',
-                        reportName  : 'Integration Tests'])
+                        reportDir   : "build/reports/tests/",
+                        reportFiles : 'junit.xml',
+                        reportName  : 'jest tests'])
             }
         }
     }
