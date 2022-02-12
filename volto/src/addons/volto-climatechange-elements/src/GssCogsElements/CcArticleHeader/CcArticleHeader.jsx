@@ -2,7 +2,7 @@ import React from 'react';
 import { H1, Paragraph } from 'govuk-react';
 import { CcRecentArticles } from '../CcArticleList/CcArticleList';
 import { CcMasthead } from '../CcMasthead/CcMasthead';
-import { FeedSignUps } from '../RelatedLinks/FeedSignUps';
+import { FeedSignUps } from '../CcRelatedLinks/FeedSignUps';
 import './CcArticleHeader.scss';
 
 export const CcArticleHeader = () => {
