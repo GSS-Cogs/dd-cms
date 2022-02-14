@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
+<dev>
+  <div
+    className="ui container"
+  >
+    <div
+      className="src__BreadcrumbsContainer-sc-12g859m-0 gOLTPU"
+    >
+      <ol
+        className="src__BreadcrumbsList-sc-12g859m-1 ldkhaH"
+      >
+        <li
+          className="src__BreadcrumbsListItem-sc-12g859m-2 hvDHkF"
+        >
+          <a
+            className="link__Link-sc-1rdpl6e-0 chhlMd"
+            href="/"
+          >
+            <svg
+              className="icon"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "18px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
+            />
+          </a>
+        </li>
+        <li
+          className="src__BreadcrumbsListItem-sc-12g859m-2 hvDHkF"
+        >
+          <a
+            className="link__Link-sc-1rdpl6e-0 chhlMd"
+            href="/blog"
+          >
+            Blog
+          </a>
+        </li>
+        <li
+          className="src__BreadcrumbsListItem-sc-12g859m-2 hvDHkF"
+        >
+          <a
+            className="link__Link-sc-1rdpl6e-0 chhlMd"
+            href="/blog/my-first-blog"
+          >
+            My first blog
+          </a>
+        </li>
+      </ol>
+    </div>
+    <div
+      className="src__StyledBanner-sc-11ccy2-0 jRBjVE"
+    >
+      <p
+        className="src__BannerContent-sc-11ccy2-1 bNKaHe"
+      >
+        <strong
+          className="src__Tag-sc-10wvgvx-0 bfgaTX"
+        >
+          beta
+        </strong>
+        <span
+          className="src__BannerText-sc-11ccy2-2 gHASTx"
+        >
+          This part of GOV.UK is being rebuilt –
+           
+          <a
+            href="/https://example.com"
+            onClick={[Function]}
+          >
+            find out what that means
+          </a>
+        </span>
+      </p>
+    </div>
+  </div>
+</dev>
+`;

@@ -1,0 +1,35 @@
+@import '../../colors.scss';
+@import 'govuk-frontend/govuk/all.scss';
+
+
+.cc-hero-header {
+  font-family: "GDS Transport", Arial, sans-serif;
+  color: white;
+  height: 512px;
+  display: flex;
+  margin: auto;
+
+  &--content {
+    min-width: 550px;
+    padding: govuk-spacing(8) 0;
+    padding-right: govuk-spacing(8);
+  }
+
+  &--image {
+    background: $hero_header_bg;
+    border: 50% solid $hero_header_bg;
+    max-width: 617px;
+  }
+
+  &--title {
+    font-size: 48px;
+    line-height: 48px;
+    margin: govuk-spacing(2) 0;
+  }
+
+  &--summary {
+    font-size: 24px;
+    line-height: 24px;
+    margin: govuk-spacing(6) 0;
+  }
+}

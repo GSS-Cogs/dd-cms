@@ -19,8 +19,9 @@ services:
         working_dir: /home/node/app
         volumes:
             - type: bind
-              source: volto/
+              source: ./volto/
               target: /home/node/app
+            - ./volto/package-cc2.json:/home/node/app/package.json
         environment:
             - RAZZLE_DEV_PROXY_API_PATH=http://plone:8080/Plone
         ports:

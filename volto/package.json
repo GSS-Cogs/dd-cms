@@ -13,14 +13,19 @@
     "test": "razzle test --env=jest-environment-jsdom-sixteen --passWithNoTests",
     "start:prod": "NODE_ENV=production node build/server.js",
     "i18n": "NODE_ENV=production node node_modules/@plone/volto/src/i18n.js",
-    "develop": "missdev --config=jsconfig.json --output=addons --fetch-https"
+    "develop": "missdev --config=jsconfig.json --output=addons --fetch-https",
+    "start:dev": "yarn develop && yarn install && yarn start"
   },
-  "private": false,
-  "workspaces": [],
+  "private": true,
+  "workspaces": [
+    "src/addons/volto-govuk-theme",
+    "src/addons/volto-climatechange-elements"
+  ],
   "addons": [
     "@eeacms/volto-plotlycharts",
     "@eeacms/volto-datablocks",
-    "@eeacms/volto-columns-block"
+    "@eeacms/volto-columns-block",
+    "volto-govuk-theme"
   ],
   "jest": {
     "modulePathIgnorePatterns": [

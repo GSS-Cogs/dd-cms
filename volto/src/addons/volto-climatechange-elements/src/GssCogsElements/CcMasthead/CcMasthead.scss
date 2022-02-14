@@ -1,0 +1,17 @@
+@import 'govuk-frontend/govuk/all.scss';
+
+.cc-masthead-wrapper {
+  margin-bottom: govuk-spacing(4);
+
+  &--hero {
+    background-color: govuk-colour('blue');
+  }
+
+  &--article {
+    background-color: govuk-colour('light-grey');
+  }
+
+  &--bottom-overlap {
+    margin-bottom: govuk-spacing(-8);
+  }
+}
