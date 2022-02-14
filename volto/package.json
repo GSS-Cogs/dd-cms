@@ -121,7 +121,7 @@
     "govuk-react-jsx": "6.2.1",
     "mrs-developer": "1.6.1",
     "react-helmet": "6.1.0",
-    "volto-authomatic": "*"
+    "volto-authomatic": "1.0.3"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "3.1.3",
