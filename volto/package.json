@@ -25,7 +25,8 @@
     "@eeacms/volto-plotlycharts",
     "@eeacms/volto-datablocks",
     "@eeacms/volto-columns-block",
-    "volto-govuk-theme"
+    "volto-govuk-theme",
+    "volto-authomatic"
   ],
   "jest": {
     "modulePathIgnorePatterns": [
@@ -119,7 +120,8 @@
     "govuk-react": "0.10.0",
     "govuk-react-jsx": "6.2.1",
     "mrs-developer": "1.6.1",
-    "react-helmet": "6.1.0"
+    "react-helmet": "6.1.0",
+    "volto-authomatic": "*"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "3.1.3",
