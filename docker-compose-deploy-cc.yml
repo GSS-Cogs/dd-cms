@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+    plone:
+        build:
+            context: plone-5
+        volumes:
+            - plone-data:/data:z
+        networks:
+            - cogs_proxy
+        restart: always
+
+    volto-v1:
+        build:
+            context: volto
+        environment:
+            - RAZZLE_API_PATH=https://climate-1.ukstats.dev/api
+            - NODE_ENV=production
+            - VIRTUAL_HOST=climate-1.ukstats.dev
+            - VIRTUAL_PORT=3000
+            - LETSENCRYPT_HOST=climate-1.ukstats.dev
+        command: "yarn start:prod"
+        init: true
+        networks:
+            - cogs_proxy
+        restart: always
+
+    volto-v2:
+        build:
+            context: volto
+            dockerfile: Dockerfile-cc2
+        environment:
+            - RAZZLE_API_PATH=https://climate-2.ukstats.dev/api
+            - NODE_ENV=production
+            - VIRTUAL_HOST=climate-2.ukstats.dev
+            - VIRTUAL_PORT=3000
+            - LETSENCRYPT_HOST=climate-2.ukstats.dev
+        command: "yarn start:prod"
+        init: true
+        networks:
+            - cogs_proxy
+        restart: always
+
+volumes:
+    plone-data:
+
+networks:
+    cogs_proxy:
+        external: true
