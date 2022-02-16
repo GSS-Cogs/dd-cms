@@ -1,6 +1,7 @@
 FROM plone:5.2.5-python38
 
 COPY instance/custom.cfg /plone/instance/
+COPY instance/src /plone/instance/src/
 COPY sparql-dataconnector.patch /plone/
 RUN \
     sed -i '/RelStorage\|psycopg2\|mysqlclient\|cx-Oracle\|ldap/d' buildout.cfg && \
