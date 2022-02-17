@@ -71,7 +71,7 @@
     ],
    "roots": [
     "./src/addons/"
-    ],
+    ]
   },
   "prettier": {
     "trailingComma": "all",
