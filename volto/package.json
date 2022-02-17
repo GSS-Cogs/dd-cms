@@ -70,7 +70,7 @@
       "jest-junit"
     ],
    "roots": [
-    "./src/addons/",
+    "./src/addons/"
     ],
   },
   "prettier": {
