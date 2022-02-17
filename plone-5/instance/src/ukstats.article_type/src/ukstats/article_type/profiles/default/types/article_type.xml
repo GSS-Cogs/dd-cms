@@ -7,7 +7,7 @@
   <!-- Basic properties -->
   <property
       i18n:translate=""
-      name="title">article_type</property>
+      name="title">Article</property>
   <property
       i18n:translate=""
       name="description">Article Type for DD-CMS</property>

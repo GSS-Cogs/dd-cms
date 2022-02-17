@@ -21,7 +21,7 @@
       name="default"
       title="ukstats.article_type"
       directory="profiles/default"
-      description="Installs the ukstats.article_type add-on."
+      description="Installs the ukstats.dev Article content type."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       post_handler=".setuphandlers.post_install"
       />
@@ -30,7 +30,7 @@
       name="uninstall"
       title="ukstats.article_type (uninstall)"
       directory="profiles/uninstall"
-      description="Uninstalls the ukstats.article_type add-on."
+      description="Uninstalls the ukstats.dev Article content type."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       post_handler=".setuphandlers.uninstall"
       />
