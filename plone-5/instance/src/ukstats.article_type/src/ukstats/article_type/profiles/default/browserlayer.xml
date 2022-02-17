@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layers>
+  <layer
+      name="ukstats.article_type"
+      interface="ukstats.article_type.interfaces.IUkstatsArticleTypeLayer"
+      />
+</layers>

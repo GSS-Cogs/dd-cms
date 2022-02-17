@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<rolemap>
+  <permissions>
+  <!-- -*- extra stuff goes here -*- -->
+
+    <permission name="ukstats.article_type: Add ArticleType" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+
+  </permissions>
+</rolemap>
