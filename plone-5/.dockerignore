@@ -1,3 +1,4 @@
 **
 !instance/custom.cfg
 !sparql-dataconnector.patch
+!instance/src
