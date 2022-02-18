@@ -3,6 +3,8 @@
  * @module razzle.config
  */
 
+const path = require('path');
+
 const jsConfig = require('./jsconfig').compilerOptions;
 
 const pathsConfig = jsConfig.paths;
@@ -49,13 +51,30 @@ module.exports.modifyWebpackConfig = ({
     const origExternals = res.externals[0];
 
     res.externals[0] = function ddCmsExternals(context, request, callback) {
-      if (/govuk-react-jsx/.test(request)) {
+      if (/(govuk-react-jsx)|(plotly\.js)|(@plotly\/d3)|(d3-format)/.test(request)) {
         callback();
       } else {
         return origExternals(context, request, callback);
       }
     };
   }
+  res.module.rules.unshift({
+    test: /\.js$/,
+    loader: 'string-replace-loader',
+    options: {
+      multiple: [
+        { search: /^!function\(\)/, replace: '!function(self)', },
+        {
+          search: /\.apply\(self\)/,
+          replace: target === 'node'
+            ? '.apply(null, [{}])'
+            : '.apply(null, [window])'
+        },
+      ]
+    },
+  });
+  res.resolve.alias['plotly.js/dist/plotly'] = path.resolve(__dirname, 'node_modules/plotly.js/lib/index.js');
+
 
   return res;
 };
