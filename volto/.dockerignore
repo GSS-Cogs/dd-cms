@@ -12,3 +12,4 @@
 !src
 !theme
 !mrs.developer.json
+**/node_modules
