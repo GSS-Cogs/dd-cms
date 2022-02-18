@@ -14,6 +14,7 @@ COPY patches /app/patches/
 COPY public /app/public/
 COPY src /app/src/
 COPY theme /app/theme/
+RUN yarn install
 ENV BUILD_TARGET=server
 RUN yarn -s build
 
@@ -21,3 +22,4 @@ FROM node:14
 
 WORKDIR /app
 COPY --from=builder /app/build /app
+CMD node server.js
