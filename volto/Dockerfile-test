@@ -1,4 +1,4 @@
-FROM node:14 as builder
+FROM node:14
 
 WORKDIR /app
 # restrict files/directories to copy in .dockerignore
@@ -8,16 +8,3 @@ RUN \
     mkdir -p src/addons && \
     yarn develop && \
     yarn install
-
-COPY locales /app/locales/
-COPY patches /app/patches/
-COPY public /app/public/
-COPY src /app/src/
-COPY theme /app/theme/
-ENV BUILD_TARGET=server
-RUN yarn -s build
-
-FROM node:14
-
-WORKDIR /app
-COPY --from=builder /app/build /app
