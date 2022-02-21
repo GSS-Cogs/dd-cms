@@ -19,7 +19,8 @@
   "private": true,
   "workspaces": [
     "src/addons/volto-govuk-theme",
-    "src/addons/volto-chart-builder"
+    "src/addons/volto-chart-builder",
+    "src/addons/chart-builder"
   ],
   "addons": [
     "@eeacms/volto-plotlycharts",
