@@ -135,6 +135,7 @@
   },
   "resolutions": {
     "draft-js": "0.10.5",
-    "razzle": "3.4.2"
+    "razzle": "3.4.2",
+    "react": "16.14.0"
   }
 }
