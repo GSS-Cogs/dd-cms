@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { SidebarPortal } from '@plone/volto/components';
 import ChartContextProvider from 'chart-builder/src/context/ChartContextProvider';
 import SidePanel from 'chart-builder/src/components/side-panel/SidePanel';
@@ -12,15 +12,34 @@ const View = () => {
   return previewMode ? <ChartPanel /> : <CSVUploader />;
 };
 
-export const ChartBuilderEdit = ({ selected }) => {
+const Edit = (props) => {
+  const { selected, onChangeBlock, data, block, } = props;
+  const { chartDefinition } = useContext(ChartContext);
+
+  useEffect(() => {
+    onChangeBlock(block, {
+      ...data,
+      'chartDefinition': JSON.stringify(chartDefinition),
+    });
+
+  }, [chartDefinition]);
+
+  console.log('chart definition is', chartDefinition);
+
+  return (
+    <SidebarPortal selected={selected}>
+      <div id="chart-builder">
+        <SidePanel />
+      </div>
+    </SidebarPortal>
+  );
+}
+
+export const ChartBuilderEdit = (props) => {
+
   return (
     <ChartContextProvider>
-      <SidebarPortal selected={selected}>
-        <div id="chart-builder">
-          <SidePanel />
-        </div>
-      </SidebarPortal>
-
+      <Edit {...props} />
       <View />
     </ChartContextProvider>
   );

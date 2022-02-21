@@ -1,6 +1,6 @@
 import imageSVG from '@plone/volto/icons/image.svg';
-import App from 'chart-builder/src/App.tsx';
 import { ChartBuilderEdit } from './components/ChartBuilderEdit';
+import { ChartBuilderView } from './components/ChartBuilderView';
 
 const applyConfig = (config) => {
 
@@ -9,7 +9,7 @@ const applyConfig = (config) => {
     title: 'Chart Builder',
     icon: imageSVG,
     group: 'common',
-    view: App,
+    view: ChartBuilderView,
     edit: ChartBuilderEdit,
     restricted: false,
     mostUsed: true,
