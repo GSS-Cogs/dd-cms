@@ -10,7 +10,7 @@ pipeline {
             steps {
                 sh 'docker rm -f sample'
                 sh 'docker run --name sample volto yarn test'
-                sh 'docker cp sample:/app/junit.xml .'
+                sh 'docker cp sample:/app/junit.xml ./coverage'
                 sh 'docker rm -f sample'
             }
         }
@@ -23,9 +23,9 @@ pipeline {
                         allowMissing: true,
                         alwaysLinkToLastBuild: true,
                         keepAll: true,
-                        reportDir   : "/",
+                        reportDir   : "./coverage/",
                         reportFiles : 'junit.xml',
-                        reportName  : 'jest tests'])
+                        reportName  : 'jest volto tests'])
             }
         }
     }
