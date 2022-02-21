@@ -70,7 +70,8 @@
       "jest-junit"
     ],
    "roots": [
-    "./src/addons/"
+    "./src/addons/volto-climatechange-elements/",
+    "./src/addons/volto-govuk-theme/"
     ]
   },
   "prettier": {
