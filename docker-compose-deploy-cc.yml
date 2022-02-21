@@ -4,10 +4,12 @@ services:
     plone:
         build:
             context: plone-5
-#        volumes:
-#            - plone-data:/data:z
+        volumes:
+            - plone-data:/data:z
         networks:
             - cogs_proxy
+        restart: always
+
     volto-v1:
         build:
             context: volto
@@ -21,6 +23,7 @@ services:
         init: true
         networks:
             - cogs_proxy
+        restart: always
 
     volto-v2:
         build:
@@ -36,6 +39,7 @@ services:
         init: true
         networks:
             - cogs_proxy
+        restart: always
 
 volumes:
     plone-data:
