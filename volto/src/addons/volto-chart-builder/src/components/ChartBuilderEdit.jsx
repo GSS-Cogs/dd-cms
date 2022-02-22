@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { SidebarPortal } from '@plone/volto/components';
-import ChartContextProvider from 'chart-builder/src/context/ChartContextProvider';
+import { useChartContext, useChartContextState } from 'chart-builder/src/context/ChartContextProvider';
 import SidePanel from 'chart-builder/src/components/side-panel/SidePanel';
 import ChartPanel from 'chart-builder/src/components/chart-panel/ChartPanel';
 import ChartContext from 'chart-builder/src/context/ChartContext';
@@ -36,11 +36,13 @@ const Edit = (props) => {
 }
 
 export const ChartBuilderEdit = (props) => {
+  const state = useChartContextState();
+  const hook = useChartContext(state);
 
   return (
-    <ChartContextProvider>
+    <ChartContext.Provider value={hook}>
       <Edit {...props} />
       <View />
-    </ChartContextProvider>
+    </ChartContext.Provider>
   );
 };
