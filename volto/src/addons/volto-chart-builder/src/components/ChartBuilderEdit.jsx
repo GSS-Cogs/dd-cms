@@ -26,19 +26,22 @@ const Edit = (props) => {
   );
 };
 
+// try to extract the initialValue for the react state hook
+// from the block config.
+// we store the values in the block config down in the effect
+// in useBlockChartContextState
 function useVoltoBlockDataState(data, id, initialValue) {
   const [value, updater] = useState(() => {
-    console.log('init for', id, data.hasOwnProperty(id), data[id]);
     return data.hasOwnProperty(id) ? JSON.parse(data[id]) : initialValue;
   });
 
   return [value, updater];
 }
 
-// props here is a bit hac`ky; expect all the props that a Volto block
+// props here is a bit hacky; expect all the props that a Volto block
 // receives, and use the onChangeBlock etc to store our chart state.
-export function useChartContextState(props) {
-  const {block, data, onChangeBlock} = props;
+export function useBlockChartContextState(props) {
+  const { block, data, onChangeBlock } = props;
 
   const [tidyData, setTidyData] = useVoltoBlockDataState(data, 'tidyData', []);
   const [chartDefinition, setChartDefinition] = useVoltoBlockDataState(data, 'chartDefinition', {});
@@ -52,6 +55,14 @@ export function useChartContextState(props) {
   const [selectedColumns, setSelectedColumns] = useVoltoBlockDataState(data, 'selectedColumns', [])
   const [selectedDimensions, setSelectedDimensions] = useVoltoBlockDataState(data, 'selectedDimensions', [])
 
+  // everytime any of the values change, serialize all the values
+  // into the volto block data.
+  // we store everything in a single effect here because there are
+  // several places that call multiple setX functions directly
+  // after each other, and you get into closure problems caused
+  // by stale ...data spreads otherwise.
+  // so by doing them all in the same effect, we can be sure they
+  // all spread off the one "data" value.
   useEffect(() => {
     onChangeBlock(block, {
       ...data,
@@ -110,7 +121,7 @@ export function useChartContextState(props) {
 }
 
 export const ChartBuilderEdit = (props) => {
-  const state = useChartContextState(props);
+  const state = useBlockChartContextState(props);
   const hook = useChartContext(state);
 
   return (
