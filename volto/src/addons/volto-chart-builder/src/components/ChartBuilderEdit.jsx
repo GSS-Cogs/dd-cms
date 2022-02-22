@@ -28,7 +28,7 @@ const Edit = (props) => {
 
 function useVoltoBlockDataState(data, id, initialValue) {
   const [value, updater] = useState(() => {
-    console.log('init for', id, data[id]);
+    console.log('init for', id, data.hasOwnProperty(id), data[id]);
     return data.hasOwnProperty(id) ? JSON.parse(data[id]) : initialValue;
   });
 
@@ -50,6 +50,7 @@ export function useChartContextState(props) {
   const [fullScreenMode, setFullScreenMode] = useVoltoBlockDataState(data, 'fullScreenMode', false);
   const [availableDimensions, setAvailableDimensions] = useVoltoBlockDataState(data, 'availableDimensions', []);
   const [selectedColumns, setSelectedColumns] = useVoltoBlockDataState(data, 'selectedColumns', [])
+  const [selectedDimensions, setSelectedDimensions] = useVoltoBlockDataState(data, 'selectedDimensions', [])
 
   useEffect(() => {
     onChangeBlock(block, {
@@ -64,6 +65,7 @@ export function useChartContextState(props) {
       fullScreenMode: JSON.stringify(fullScreenMode),
       availableDimensions: JSON.stringify(availableDimensions),
       selectedColumns: JSON.stringify(selectedColumns),
+      selectedDimensions: JSON.stringify(selectedDimensions),
     });
   }, [
     // data, // don't include, we only want to include our changes
@@ -78,6 +80,7 @@ export function useChartContextState(props) {
     fullScreenMode,
     availableDimensions,
     selectedColumns,
+    selectedDimensions,
   ]);
 
   return {
@@ -101,6 +104,8 @@ export function useChartContextState(props) {
     setAvailableDimensions,
     selectedColumns,
     setSelectedColumns,
+    selectedDimensions,
+    setSelectedDimensions,
   };
 }
 
