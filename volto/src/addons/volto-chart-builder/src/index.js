@@ -1,6 +1,7 @@
 import imageSVG from '@plone/volto/icons/image.svg';
 import { ChartBuilderEdit } from './components/ChartBuilderEdit';
 import { ChartBuilderView } from './components/ChartBuilderView';
+import { chartBuilderRawData } from './reducers';
 
 const applyConfig = (config) => {
 
@@ -19,6 +20,8 @@ const applyConfig = (config) => {
       view: [],
     },
   };
+
+  config.addonReducers.chartBuilderRawData = chartBuilderRawData;
 
   return config;
 };

@@ -1,5 +1,7 @@
-import React, { useEffect, useContext, useState, useCallback } from 'react';
-import { SidebarPortal } from '@plone/volto/components';
+import React, { useEffect, useContext, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { SidebarPortal, Field } from '@plone/volto/components';
+import { Segment, Form } from 'semantic-ui-react';
 import { useChartContext } from 'chart-builder/src/context/ChartContextProvider';
 import initialChartState from 'chart-builder/src/context/initialChartState';
 import SidePanel from 'chart-builder/src/components/side-panel/SidePanel';
@@ -7,6 +9,7 @@ import ChartPanel from 'chart-builder/src/components/chart-panel/ChartPanel';
 import ChartContext from 'chart-builder/src/context/ChartContext';
 import CSVUploader from 'chart-builder/src/components/side-panel/csv-uploader/CSVUploader';
 import { NO_FILE_SELECTED_TEXT } from 'chart-builder/src/components/constants/Common-constants';
+import { getCsvData, setLoadedFileId } from '../actions';
 
 const View = () => {
   const {previewMode} = useContext(ChartContext);
@@ -14,12 +17,57 @@ const View = () => {
   return previewMode ? <ChartPanel/> : <CSVUploader/>;
 };
 
+function usePloneCsvData(file_path) {
+  const { validateData } = useContext(ChartContext);
+  const dispatch = useDispatch();
+  const { content, loaded, loadedId } = useSelector(
+    (state) => state.chartBuilderRawData,
+  );
+
+  const file = file_path.length ? file_path[0] : null;
+
+  useEffect(() => {
+    if (file != null) {
+      dispatch(setLoadedFileId(file.id));
+      dispatch(getCsvData(file.id));
+    }
+  }, [file, dispatch]);
+
+  useEffect(() => {
+    if (loaded && file.id === loadedId) {
+      validateData(content, loadedId);
+    }
+  }, [content, loaded, loadedId, file, validateData]);
+}
+
 const Edit = (props) => {
-  const {selected} = props;
+  const { selected, onChangeBlock, block, data } = props;
+  usePloneCsvData(data.file_path || []);
 
   return (
     <SidebarPortal selected={selected}>
       <div id="chart-builder">
+        <Segment.Group raised>
+          <header className="header pulled">
+            <h2>CSV Data</h2>
+          </header>
+          <Form>
+            <Field
+              id="file_path"
+              widget="object_browser"
+              mode="link"
+              title="Data file"
+              value={data.file_path || []}
+              onChange={(id, value) => {
+                onChangeBlock(block, {
+                  ...data,
+                  [id]: value,
+                });
+              }}
+            />
+          </Form>
+        </Segment.Group>
+
         <SidePanel />
       </div>
     </SidebarPortal>
