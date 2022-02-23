@@ -1,0 +1,7 @@
+@import 'govuk-frontend/govuk/all.scss';
+
+.ccv2-article-body {
+  p {
+    @extend %govuk-body-m;
+  }
+}

@@ -1,26 +1,47 @@
 import React from 'react';
 import { CcArticleHeader } from '../CcArticleHeader/CcArticleHeader';
-import { Paragraph } from 'govuk-react';
 
-export const CcV2ArticleView = ({content}) => {
-  const isDynamic = false;
-  const getContent = (staticContent, dynamicKey) => isDynamic ? dynamicKey : staticContent;
+import { map } from 'lodash';
+import config from '@plone/volto/registry';
+import {
+  getBlocksFieldname,
+  getBlocksLayoutFieldname,
+  getBaseUrl,
+} from '@plone/volto/helpers';
 
-  const data = {
-    title: getContent('Measuring greenhouse gas emissions', content.title),
-    summary: getContent('The UK is required to report its estimated greenhouse gas (GHG) emissions on a range of different bases to fulfil a wide range of international agreements as well as for domestic policy making purposes.', content.summary),
-    href: '#',
-    linkTitle: 'All climate and weather data',
-  }
+import './CvV2ArticleView.scss';
+
+export const CcV2ArticleView = ({ content, intl, location }) => {
+  const blocksFieldname = getBlocksFieldname(content);
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
 
   return (<div>
     <CcArticleHeader
-      data={data}
+      data={{
+        title: content.title,
+        summary: content.description,
+        href: '#',
+        linkTitle: 'All climate and weather data',
+      }}
     />
-    <div className="govuk-width-container">
-      <Paragraph>
-        { getContent('The report found unequivocal evidence that observed warming of the climate is a consequence of emissions from human activity that has increased the concentration of greenhouse gases in the global atmosphere. Human induced climate change has already affected the severity and frequency of many types of extreme weather and climate events.', content.body) }
-      </Paragraph>
+    <div className="govuk-width-container ccv2-article-body">
+      <div>
+        {map(content[blocksLayoutFieldname].items, (block) => {
+         const Block =
+           config.blocks.blocksConfig[
+             content[blocksFieldname]?.[block]?.['@type']
+           ]?.['view'] || null;
+
+         return Block !== null && content[blocksFieldname]?.[block]?.['@type'] !== 'title' ? (
+           <Block
+             key={block}
+             id={block}
+             properties={content}
+             data={content[blocksFieldname][block]}
+             path={getBaseUrl(location?.pathname || '')}
+           />
+         ) : null;
+       })}</div>
     </div>
   </div>)
 };
