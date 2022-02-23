@@ -1,7 +1,7 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { SidebarPortal, Field } from '@plone/volto/components';
-import { Segment, Form } from 'semantic-ui-react';
+import { Field, SidebarPortal } from '@plone/volto/components';
+import { Form, Segment } from 'semantic-ui-react';
 import { useChartContext } from 'chart-builder/src/context/ChartContextProvider';
 import initialChartState from 'chart-builder/src/context/initialChartState';
 import SidePanel from 'chart-builder/src/components/side-panel/SidePanel';
@@ -28,13 +28,13 @@ function usePloneCsvData(file_path) {
 
   useEffect(() => {
     if (file != null) {
-      dispatch(setLoadedFileId(file.id));
-      dispatch(getCsvData(file.id));
+      dispatch(setLoadedFileId(file['@id']));
+      dispatch(getCsvData(file['@id']));
     }
   }, [file, dispatch]);
 
   useEffect(() => {
-    if (loaded && file.id === loadedId) {
+    if (loaded && file?.['@id'] === loadedId) {
       validateData(content, loadedId);
     }
   }, [content, loaded, loadedId, file, validateData]);
