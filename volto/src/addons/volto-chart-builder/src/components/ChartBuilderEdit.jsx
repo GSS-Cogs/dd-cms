@@ -25,19 +25,20 @@ function usePloneCsvData(file_path) {
   );
 
   const file = file_path.length ? file_path[0] : null;
+  const fileId = file?.['@id'];
 
   useEffect(() => {
-    if (file != null) {
-      dispatch(setLoadedFileId(file['@id']));
-      dispatch(getCsvData(file['@id']));
+    if (fileId != null) {
+      dispatch(setLoadedFileId(fileId));
+      dispatch(getCsvData(fileId));
     }
-  }, [file, dispatch]);
+  }, [fileId, dispatch]);
 
   useEffect(() => {
-    if (loaded && file?.['@id'] === loadedId) {
+    if (loaded && fileId === loadedId) {
       validateData(content, loadedId);
     }
-  }, [content, loaded, loadedId, file, validateData]);
+  }, [content, loaded, loadedId, fileId, validateData]);
 }
 
 const Edit = (props) => {
