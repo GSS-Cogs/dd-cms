@@ -8,7 +8,6 @@ pipeline {
                     filename 'Dockerfile-test'
                     args '-u root:root'
                     reuseNode true
-                    reportDir
                 }
             }
             steps {
