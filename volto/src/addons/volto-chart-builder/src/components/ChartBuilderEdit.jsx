@@ -5,17 +5,16 @@ import initialChartState from 'chart-builder/src/context/initialChartState';
 import SidePanel from 'chart-builder/src/components/side-panel/SidePanel';
 import ChartPanel from 'chart-builder/src/components/chart-panel/ChartPanel';
 import ChartContext from 'chart-builder/src/context/ChartContext';
-import CSVUploader from 'chart-builder/src/components/side-panel/csv-uploader/CSVUploader';
 import { NO_FILE_SELECTED_TEXT } from 'chart-builder/src/components/constants/Common-constants';
 
-const View = () => {
-  const {previewMode} = useContext(ChartContext);
+import debounce from 'lodash.debounce';
 
-  return previewMode ? <ChartPanel/> : <CSVUploader/>;
+const View = () => {
+  return <ChartPanel />;
 };
 
 const Edit = (props) => {
-  const {selected} = props;
+  const { selected } = props;
 
   return (
     <SidebarPortal selected={selected}>
@@ -44,16 +43,46 @@ export function useBlockChartContextState(props) {
   const { block, data, onChangeBlock } = props;
 
   const [tidyData, setTidyData] = useVoltoBlockDataState(data, 'tidyData', []);
-  const [chartDefinition, setChartDefinition] = useVoltoBlockDataState(data, 'chartDefinition', {});
-  const [chartProperties, setChartProperties] = useVoltoBlockDataState(data, 'chartProperties', initialChartState);
-  const [selectedFilename, setSelectedFilename] = useVoltoBlockDataState(data, 'selectedFilename', NO_FILE_SELECTED_TEXT,);
-  const [previewMode, setPreviewMode] = useVoltoBlockDataState(data, 'previewMode', false);
-  const [columnNames, setColumnNames] = useVoltoBlockDataState(data, 'columnNames', []);
-  const [dataSelection, setDataSelection] = useVoltoBlockDataState(data, 'dataSelection', null);
-  const [fullScreenMode, setFullScreenMode] = useVoltoBlockDataState(data, 'fullScreenMode', false);
-  const [availableDimensions, setAvailableDimensions] = useVoltoBlockDataState(data, 'availableDimensions', []);
-  const [selectedColumns, setSelectedColumns] = useVoltoBlockDataState(data, 'selectedColumns', [])
-  const [selectedDimensions, setSelectedDimensions] = useVoltoBlockDataState(data, 'selectedDimensions', [])
+  const [chartDefinition, setChartDefinition] = useVoltoBlockDataState(
+    data,
+    'chartDefinition',
+    {},
+  );
+  const [chartProperties, setChartProperties] = useVoltoBlockDataState(
+    data,
+    'chartProperties',
+    initialChartState,
+  );
+  const [selectedFilename, setSelectedFilename] = useVoltoBlockDataState(
+    data,
+    'selectedFilename',
+    NO_FILE_SELECTED_TEXT,
+  );
+  const [columnNames, setColumnNames] = useVoltoBlockDataState(
+    data,
+    'columnNames',
+    [],
+  );
+  const [dataSelection, setDataSelection] = useVoltoBlockDataState(
+    data,
+    'dataSelection',
+    null,
+  );
+  const [availableDimensions, setAvailableDimensions] = useVoltoBlockDataState(
+    data,
+    'availableDimensions',
+    [],
+  );
+  const [selectedColumns, setSelectedColumns] = useVoltoBlockDataState(
+    data,
+    'selectedColumns',
+    [],
+  );
+  const [selectedDimensions, setSelectedDimensions] = useVoltoBlockDataState(
+    data,
+    'selectedDimensions',
+    [],
+  );
 
   // everytime any of the values change, serialize all the values
   // into the volto block data.
@@ -63,20 +92,29 @@ export function useBlockChartContextState(props) {
   // by stale ...data spreads otherwise.
   // so by doing them all in the same effect, we can be sure they
   // all spread off the one "data" value.
+  // debounce updates to the block state e.g, for text property changes
+  // that can change rapidly
+  const debouncedOnChangeBlock = useCallback(
+    debounce((callback) => {
+      callback();
+    }, 100),
+    [],
+  );
+
   useEffect(() => {
-    onChangeBlock(block, {
-      ...data,
-      tidyData: JSON.stringify(tidyData),
-      chartDefinition: JSON.stringify(chartDefinition),
-      chartProperties: JSON.stringify(chartProperties),
-      selectedFilename: JSON.stringify(selectedFilename),
-      previewMode: JSON.stringify(previewMode),
-      columnNames: JSON.stringify(columnNames),
-      dataSelection: JSON.stringify(dataSelection),
-      fullScreenMode: JSON.stringify(fullScreenMode),
-      availableDimensions: JSON.stringify(availableDimensions),
-      selectedColumns: JSON.stringify(selectedColumns),
-      selectedDimensions: JSON.stringify(selectedDimensions),
+    debouncedOnChangeBlock(() => {
+      onChangeBlock(block, {
+        ...data,
+        tidyData: JSON.stringify(tidyData),
+        chartDefinition: JSON.stringify(chartDefinition),
+        chartProperties: JSON.stringify(chartProperties),
+        selectedFilename: JSON.stringify(selectedFilename),
+        columnNames: JSON.stringify(columnNames),
+        dataSelection: JSON.stringify(dataSelection),
+        availableDimensions: JSON.stringify(availableDimensions),
+        selectedColumns: JSON.stringify(selectedColumns),
+        selectedDimensions: JSON.stringify(selectedDimensions),
+      });
     });
   }, [
     // data, // don't include, we only want to include our changes
@@ -85,10 +123,8 @@ export function useBlockChartContextState(props) {
     chartDefinition,
     chartProperties,
     selectedFilename,
-    previewMode,
     columnNames,
     dataSelection,
-    fullScreenMode,
     availableDimensions,
     selectedColumns,
     selectedDimensions,
@@ -103,14 +139,10 @@ export function useBlockChartContextState(props) {
     setChartProperties,
     selectedFilename,
     setSelectedFilename,
-    previewMode,
-    setPreviewMode,
     columnNames,
     setColumnNames,
     dataSelection,
     setDataSelection,
-    fullScreenMode,
-    setFullScreenMode,
     availableDimensions,
     setAvailableDimensions,
     selectedColumns,
