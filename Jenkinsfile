@@ -21,18 +21,20 @@ pipeline {
     post {
         always {
             script {
-                sh 'mkdir coverage'
-                sh 'mv junit.xml coverage'
-                dir('coverage') {
-                    junit allowEmptyResults: true, testResults: '*.xml'
-                    publishHTML([
-                        allowMissing: true,
-                        alwaysLinkToLastBuild: true,
-                        keepAll: true,
-                        reportDir   : ".",
-                        reportFiles : 'junit.xml',
-                        reportName  : 'jest tests'
-                    ])
+                dir('volto') {
+                    sh 'rm -rf coverage; mkdir coverage'
+                    sh 'mv junit.xml coverage'
+                    dir('coverage') {
+                        junit allowEmptyResults: true, testResults: '*.xml'
+                        publishHTML([
+                            allowMissing: true,
+                            alwaysLinkToLastBuild: true,
+                            keepAll: true,
+                            reportDir   : "./",
+                            reportFiles : 'junit.xml',
+                            reportName  : 'jest tests'
+                        ])
+                    }
                 }
             }
         }
