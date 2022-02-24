@@ -12,6 +12,7 @@ pipeline {
             }
             steps {
                 dir('volto') {
+                    sh "yarn develop"
                     sh "yarn install"
                     sh "yarn test"
                 }
