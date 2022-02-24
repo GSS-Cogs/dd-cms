@@ -8,3 +8,5 @@ RUN yarn global add mrs-developer
 RUN yarn develop
 RUN yarn install --frozen-lockfile
 RUN yarn build
+
+CMD yarn start

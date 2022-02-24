@@ -1,31 +1,39 @@
 pipeline {
     agent any
     stages {
-        stage('Build Volto') {
-            steps {
-                sh 'docker build ./volto -t volto'
+        stage('Test') {
+            agent {
+                dockerfile {
+                    dir 'volto'
+                    filename 'Dockerfile-test'
+                    args '-u root:root'
+                    reuseNode true
+                    reportDir
+                }
             }
-        }
-        stage('Integration Test Volto') {
             steps {
-                sh 'docker rm -f sample'
-                sh 'docker run --name sample volto yarn test'
-                sh 'docker cp sample:/app/junit.xml ./coverage'
-                sh 'docker rm -f sample'
+                dir('volto') {
+                    sh "yarn install"
+                    sh "yarn test"
+                }
             }
         }
     }
     post {
         always {
             script {
+                sh 'mkdir coverage'
+                sh 'mv junit.xml coverage'
+                dir('coverage') {
                 junit allowEmptyResults: true, testResults: '*.xml'
                 publishHTML([
-                        allowMissing: true,
-                        alwaysLinkToLastBuild: true,
-                        keepAll: true,
-                        reportDir   : "./coverage/",
-                        reportFiles : 'junit.xml',
-                        reportName  : 'jest volto tests'])
+                    allowMissing: true,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir   : ".",
+                    reportFiles : 'junit.xml',
+                    reportName  : 'jest tests'
+                ])
             }
         }
     }
