@@ -15,33 +15,41 @@ export const CcV2ArticleView = ({ content, intl, location }) => {
   const blocksFieldname = getBlocksFieldname(content);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
 
+  const formattedDate = (date) => new Date(date).toLocaleDateString('en-gb', { year: 'numeric', month: 'long', day: 'numeric' });
+  const formattedCreators = (creators) => creators.join(', ');
+
   return (<div>
     <CcArticleHeader
       data={{
         title: content.title,
         summary: content.description,
-        href: '#',
-        linkTitle: 'All climate and weather data',
+        created: formattedDate(content.created),
+        creators: formattedCreators(content.creators),
       }}
     />
     <div className="govuk-width-container ccv2-article-body">
-      <div>
-        {map(content[blocksLayoutFieldname].items, (block) => {
-         const Block =
-           config.blocks.blocksConfig[
-             content[blocksFieldname]?.[block]?.['@type']
-           ]?.['view'] || null;
+      <div className="govuk-grid-row">
+        <div className="govuk-grid-column-two-thirds govuk-!-padding-right-6">
+            {map(content[blocksLayoutFieldname].items, (block) => {
+              const Block =
+                config.blocks.blocksConfig[
+                  content[blocksFieldname]?.[block]?.['@type']
+                ]?.['view'] || null;
+              
+              const notTitleBlock = content[blocksFieldname]?.[block]?.['@type'] !== 'title';
 
-         return Block !== null && content[blocksFieldname]?.[block]?.['@type'] !== 'title' ? (
-           <Block
-             key={block}
-             id={block}
-             properties={content}
-             data={content[blocksFieldname][block]}
-             path={getBaseUrl(location?.pathname || '')}
-           />
-         ) : null;
-       })}</div>
+              return Block !== null && notTitleBlock ? (
+                <Block
+                  key={block}
+                  id={block}
+                  properties={content}
+                  data={content[blocksFieldname][block]}
+                  path={getBaseUrl(location?.pathname || '')}
+                />
+              ) : null;
+            })}
+        </div>
+      </div>
     </div>
   </div>)
 };

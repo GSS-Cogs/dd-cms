@@ -1,5 +1,9 @@
 @import 'govuk-frontend/govuk/all.scss';
 
 .cc-article-header {
-  padding: govuk-spacing(8) 0;
+  padding: govuk-spacing(8) 0 govuk-spacing(4);
+}
+
+.cc-article-header__date {
+  text-transform: capitalize;
 }
