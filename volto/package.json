@@ -33,7 +33,6 @@
     "modulePathIgnorePatterns": [
       "api"
     ],
-    "reporters": [ "default", "jest-junit" ],
     "transform": {
       "^.+\\.js(x)?$": "babel-jest",
       "^.+\\.css$": "jest-css-modules",
@@ -70,6 +69,10 @@
     "reporters": [
       "default",
       "jest-junit"
+    ],
+   "roots": [
+     "./src/addons/volto-climatechange-elements/",
+     "./src/addons/volto-govuk-theme/"
     ]
   },
   "prettier": {
