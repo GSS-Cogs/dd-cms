@@ -5,15 +5,15 @@ import { Form, Segment } from 'semantic-ui-react';
 import { useChartContext } from 'chart-builder/src/context/ChartContextProvider';
 import initialChartState from 'chart-builder/src/context/initialChartState';
 import SidePanel from 'chart-builder/src/components/side-panel/SidePanel';
-import ChartPanel from 'chart-builder/src/components/chart-panel/ChartPanel';
 import ChartContext from 'chart-builder/src/context/ChartContext';
 import { NO_FILE_SELECTED_TEXT } from 'chart-builder/src/components/constants/Common-constants';
 import { getCsvData, setLoadedFileId } from '../actions';
 
 import debounce from 'lodash.debounce';
+import ChartPreview from 'addons/chart-builder/src/components/chart-panel/chart-preview/ChartPreview';
 
 const View = () => {
-  return <ChartPanel />;
+  return <ChartPreview />;
 };
 
 function usePloneCsvData(file_path) {
