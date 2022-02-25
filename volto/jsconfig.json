@@ -1,6 +1,9 @@
 {
     "compilerOptions": {
         "paths": {
+            "volto-climatechange-elements": [
+                "addons/volto-climatechange-elements"
+            ],
             "chart-builder": [
                 "addons/chart-builder"
             ]

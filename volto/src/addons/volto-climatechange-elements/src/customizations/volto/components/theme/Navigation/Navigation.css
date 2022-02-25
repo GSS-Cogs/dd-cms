@@ -1,0 +1,64 @@
+.Navigation aside {
+  width: 256px;
+  margin: 0 0 24px;
+}
+
+.Navigation nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 32px;
+}
+
+.Navigation hr {
+  border: 0;
+  border-bottom: 1px solid #b2b4b6;
+  margin: 16px 0;
+}
+
+.Navigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.Navigation li {
+  margin: 0;
+}
+
+.Navigation a {
+  font-size: 16px;
+  line-height: 24px;
+  padding: 8px;
+  text-decoration: none;
+  border-left: 4px solid transparent;
+  display: block;
+}
+
+.Navigation a:hover {
+  border-left: 4px solid #5694ca;
+}
+
+.Navigation li.active a {
+  font-family: 'GDS Transport Bold', sans-serif;
+  font-weight: 700;
+  background: #f3f2f1;
+  border-left: 4px solid #1d70b8;
+}
+
+#NavigationSideNav {
+  border-bottom: none;
+}
+
+@media screen and (max-width: 768px) {
+  .Navigation aside {
+    width: 100%;
+  }
+
+  .Navigation li {
+    margin-bottom: 8px;
+  }
+
+  .Navigation a {
+    padding: 16px;
+  }
+}

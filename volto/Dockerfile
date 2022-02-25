@@ -9,3 +9,4 @@ RUN \
     yarn develop && \
     yarn install --frozen-lockfile && \
     yarn build
+CMD yarn start

@@ -1,4 +1,7 @@
 {
+  "volto-climatechange-elements": {
+    "local": "addons/volto-climatechange-elements"
+  },
   "chart-builder": {
     "url": "https://github.com/GSS-Cogs/chart-builder/",
     "branch": "volto-integration"
