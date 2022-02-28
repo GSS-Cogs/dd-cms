@@ -30,7 +30,6 @@ describe('Breadcrumbs', () => {
       </Provider>,
     );
     const json = component.toJSON();
-    // expect(json).toMatchSnapshot();
-    expect(json).not.toBe(null);
+    expect(json).toMatchSnapshot();
   });
 });
