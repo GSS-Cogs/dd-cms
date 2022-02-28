@@ -27,14 +27,6 @@ pipeline {
                     sh 'mv junit.xml coverage'
                     dir('coverage') {
                         junit allowEmptyResults: true, testResults: '*.xml'
-                        publishHTML([
-                            allowMissing: true,
-                            alwaysLinkToLastBuild: true,
-                            keepAll: true,
-                            reportDir   : "./",
-                            reportFiles : 'junit.xml',
-                            reportName  : 'jest tests'
-                        ])
                     }
                 }
             }
