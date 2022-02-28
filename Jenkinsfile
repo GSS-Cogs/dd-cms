@@ -12,6 +12,7 @@ pipeline {
             }
             steps {
                 dir('volto') {
+                    sh "yarn develop"
                     sh "yarn install"
                     sh "yarn test"
                 }
@@ -21,14 +22,9 @@ pipeline {
     post {
         always {
             script {
-                junit allowEmptyResults: true, testResults: 'volto/*.xml'
-                publishHTML([
-                        allowMissing: true,
-                        alwaysLinkToLastBuild: true,
-                        keepAll: true,
-                        reportDir   : "volto",
-                        reportFiles : 'junit.xml',
-                        reportName  : 'jest tests'])
+                dir('volto') {
+                    junit allowEmptyResults: true, testResults: '*.xml'
+                }
             }
         }
     }

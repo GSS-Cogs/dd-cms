@@ -1,58 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
-<dev>
+<div>
   <div
-    className="ui container"
+    className="Breadcrumbs"
   >
     <div
-      className="src__BreadcrumbsContainer-sc-12g859m-0 gOLTPU"
+      className="govuk-breadcrumbs  "
     >
       <ol
-        className="src__BreadcrumbsList-sc-12g859m-1 ldkhaH"
+        className="govuk-breadcrumbs__list"
       >
         <li
-          className="src__BreadcrumbsListItem-sc-12g859m-2 hvDHkF"
+          className="govuk-breadcrumbs__list-item"
         >
           <a
-            className="link__Link-sc-1rdpl6e-0 chhlMd"
+            className="govuk-breadcrumbs__link"
             href="/"
           >
-            <svg
-              className="icon"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": undefined,
-                }
-              }
-              onClick={null}
-              style={
-                Object {
-                  "fill": "currentColor",
-                  "height": "18px",
-                  "width": "auto",
-                }
-              }
-              viewBox=""
-              xmlns=""
-            />
+            Home
           </a>
         </li>
         <li
-          className="src__BreadcrumbsListItem-sc-12g859m-2 hvDHkF"
+          className="govuk-breadcrumbs__list-item"
         >
           <a
-            className="link__Link-sc-1rdpl6e-0 chhlMd"
+            className="govuk-breadcrumbs__link"
             href="/blog"
           >
             Blog
           </a>
         </li>
         <li
-          className="src__BreadcrumbsListItem-sc-12g859m-2 hvDHkF"
+          className="govuk-breadcrumbs__list-item"
         >
           <a
-            className="link__Link-sc-1rdpl6e-0 chhlMd"
+            className="govuk-breadcrumbs__link"
             href="/blog/my-first-blog"
           >
             My first blog
@@ -61,18 +44,18 @@ exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
       </ol>
     </div>
     <div
-      className="src__StyledBanner-sc-11ccy2-0 jRBjVE"
+      className="govuk-phase-banner "
     >
       <p
-        className="src__BannerContent-sc-11ccy2-1 bNKaHe"
+        className="govuk-phase-banner__content"
       >
         <strong
-          className="src__Tag-sc-10wvgvx-0 bfgaTX"
+          className="govuk-tag govuk-phase-banner__content__tag "
         >
           beta
         </strong>
         <span
-          className="src__BannerText-sc-11ccy2-2 gHASTx"
+          className="govuk-phase-banner__text"
         >
           This part of GOV.UK is being rebuilt –
            
@@ -86,5 +69,5 @@ exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
       </p>
     </div>
   </div>
-</dev>
+</div>
 `;
