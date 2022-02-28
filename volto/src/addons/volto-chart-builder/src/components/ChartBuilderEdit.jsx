@@ -45,7 +45,7 @@ const Edit = (props) => {
   usePloneCsvData(data.file_path || []);
 
   return (
-    <SidebarPortal selected={selected}>
+    <SidebarPortal selected={selected} key={block}>
       <div id="chart-builder">
         <Segment.Group raised>
           <header className="header pulled">
