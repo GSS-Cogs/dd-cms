@@ -23,11 +23,7 @@ pipeline {
         always {
             script {
                 dir('volto') {
-                    sh 'rm -rf coverage; mkdir coverage'
-                    sh 'mv junit.xml coverage'
-                    dir('coverage') {
-                        junit allowEmptyResults: true, testResults: '*.xml'
-                    }
+                    junit allowEmptyResults: true, testResults: '*.xml'
                 }
             }
         }
