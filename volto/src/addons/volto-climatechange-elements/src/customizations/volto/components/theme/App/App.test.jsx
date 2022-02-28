@@ -35,7 +35,7 @@ jest.mock('semantic-ui-react', () => ({
 }));
 
 describe('App', () => {
-  it('renders a app component', () => {
+  it('renders a CCv2 style app component', () => {
     const store = mockStore({
       userSession: {
         token: 'abcdefgh',

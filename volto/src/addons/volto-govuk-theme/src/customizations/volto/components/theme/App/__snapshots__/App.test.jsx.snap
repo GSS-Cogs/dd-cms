@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App renders a CCv2 style app component 1`] = `
+exports[`App renders a app component 1`] = `
 Array [
-  <main />,
+  <div
+    id="segment"
+  />,
   <div
     className="Toastify"
   />,
