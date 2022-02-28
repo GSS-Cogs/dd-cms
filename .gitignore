@@ -17,6 +17,7 @@ build
 volto/data
 volto/node_modules
 volto/omelette
+volto/locales/*.json
 volto/src/addons/*/node_modules/
 
 plone-5/buildout-cache/
