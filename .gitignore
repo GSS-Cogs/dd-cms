@@ -18,6 +18,8 @@ volto/data
 volto/node_modules
 volto/omelette
 volto/locales/*.json
+volto/src/addons/*/node_modules/
+volto/junit.xml
 
 plone-5/buildout-cache/
 plone-5/Pipfile

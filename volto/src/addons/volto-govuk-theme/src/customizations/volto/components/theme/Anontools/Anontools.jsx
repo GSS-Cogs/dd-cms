@@ -48,21 +48,23 @@ export class Anontools extends Component {
   render() {
     const { settings } = config;
     return (
-      !this.props.token && (
-        <Link
-          aria-label="login"
-          to={`/login${this.props.content
-            ? `?return_url=${this.props.content['@id'].replace(
-              settings.apiPath,
-              '',
-            )}`
-            : ''
-            }`}
-          id="ddcms_login"
-        >
-          <Button className="govuk-!-margin-0">Log in</Button>
-        </Link>
-      )
+      !this.props.token
+          ? (
+          <Link
+            aria-label="login"
+            to={`/login${this.props.content
+              ? `?return_url=${this.props.content['@id'].replace(
+                settings.apiPath,
+                '',
+              )}`
+              : ''
+              }`}
+            id="ddcms_login"
+          >
+            <Button className="govuk-!-margin-0">Log in</Button>
+          </Link>
+        )
+        : null
     );
   }
 }

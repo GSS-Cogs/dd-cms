@@ -1,154 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navigation renders a navigation component with an active item 1`] = `
-<nav
-  className="navigation"
-  id="navigation"
->
-  <div
-    className="hamburger-wrapper mobile tablet only"
-  >
-    <button
-      aria-label="Open menu"
-      className="hamburger hamburger--collapse"
-      onClick={[Function]}
-      title="Open menu"
-      type="button"
-    >
-      <span
-        className="hamburger-box"
-      >
-        <span
-          className="hamburger-inner"
-        />
-      </span>
-    </button>
-  </div>
-  <div
-    className="ui pointing secondary stackable computer large screen widescreen only menu"
-    onClick={[Function]}
-  >
-    <a
-      className="top-nav-anchor__TopNavAnchor-sc-lt39h5-0 nav-link-anchor__NavLinkAnchor-sc-1pr115z-0 bkzsxS gCoYiD TopNavClass"
-      href="/blog"
-      target="new"
-    >
-      Blog
-    </a>
-    <a
-      className="top-nav-anchor__TopNavAnchor-sc-lt39h5-0 nav-link-anchor__NavLinkAnchor-sc-1pr115z-0 bkzsxS gCoYiD TopNavClass"
-      href="/users"
-      target="new"
-    >
-      Users
-    </a>
-  </div>
-</nav>
-`;
-
-exports[`Navigation renders a navigation component with an active item when its subchildren are accessed 1`] = `
-<nav
-  className="navigation"
-  id="navigation"
->
-  <div
-    className="hamburger-wrapper mobile tablet only"
-  >
-    <button
-      aria-label="Open menu"
-      className="hamburger hamburger--collapse"
-      onClick={[Function]}
-      title="Open menu"
-      type="button"
-    >
-      <span
-        className="hamburger-box"
-      >
-        <span
-          className="hamburger-inner"
-        />
-      </span>
-    </button>
-  </div>
-  <div
-    className="ui pointing secondary stackable computer large screen widescreen only menu"
-    onClick={[Function]}
-  >
-    <a
-      className="top-nav-anchor__TopNavAnchor-sc-lt39h5-0 nav-link-anchor__NavLinkAnchor-sc-1pr115z-0 bkzsxS gCoYiD TopNavClass"
-      href="/blog"
-      target="new"
-    >
-      Blog
-    </a>
-    <a
-      className="top-nav-anchor__TopNavAnchor-sc-lt39h5-0 nav-link-anchor__NavLinkAnchor-sc-1pr115z-0 bkzsxS gCoYiD TopNavClass"
-      href="/users"
-      target="new"
-    >
-      Users
-    </a>
-  </div>
-</nav>
-`;
-
-exports[`Navigation renders a navigation component with only one active item even if there are similar item names 1`] = `
-<nav
-  className="navigation"
-  id="navigation"
->
-  <div
-    className="hamburger-wrapper mobile tablet only"
-  >
-    <button
-      aria-label="Open menu"
-      className="hamburger hamburger--collapse"
-      onClick={[Function]}
-      title="Open menu"
-      type="button"
-    >
-      <span
-        className="hamburger-box"
-      >
-        <span
-          className="hamburger-inner"
-        />
-      </span>
-    </button>
-  </div>
-  <div
-    className="ui pointing secondary stackable computer large screen widescreen only menu"
-    onClick={[Function]}
-  >
-    <a
-      className="top-nav-anchor__TopNavAnchor-sc-lt39h5-0 nav-link-anchor__NavLinkAnchor-sc-1pr115z-0 bkzsxS gCoYiD TopNavClass"
-      href="/blog"
-      target="new"
-    >
-      Blog
-    </a>
-    <a
-      className="top-nav-anchor__TopNavAnchor-sc-lt39h5-0 nav-link-anchor__NavLinkAnchor-sc-1pr115z-0 bkzsxS gCoYiD TopNavClass"
-      href="/blog-of-mine"
-      target="new"
-    >
-      Blog of mine
-    </a>
-    <a
-      className="top-nav-anchor__TopNavAnchor-sc-lt39h5-0 nav-link-anchor__NavLinkAnchor-sc-1pr115z-0 bkzsxS gCoYiD TopNavClass"
-      href="/users"
-      target="new"
-    >
-      Users
-    </a>
-  </div>
-</nav>
-`;
-
 exports[`Navigation renders a navigation component without active items 1`] = `
 <nav
-  className="navigation"
-  id="navigation"
+  className="Navigation"
+  id="Navigation"
 >
   <div
     className="hamburger-wrapper mobile tablet only"
@@ -170,23 +25,30 @@ exports[`Navigation renders a navigation component without active items 1`] = `
     </button>
   </div>
   <div
-    className="ui pointing secondary stackable computer large screen widescreen only menu"
+    className="ui pointing secondary stackable computer large screen widescreen only NavigationSideNav menu"
+    id="NavigationSideNav"
     onClick={[Function]}
   >
-    <a
-      className="top-nav-anchor__TopNavAnchor-sc-lt39h5-0 nav-link-anchor__NavLinkAnchor-sc-1pr115z-0 bkzsxS gCoYiD TopNavClass"
-      href="/blog"
-      target="new"
-    >
-      Blog
-    </a>
-    <a
-      className="top-nav-anchor__TopNavAnchor-sc-lt39h5-0 nav-link-anchor__NavLinkAnchor-sc-1pr115z-0 bkzsxS gCoYiD TopNavClass"
-      href="/users"
-      target="new"
-    >
-      Users
-    </a>
+    <aside>
+      <nav>
+        <ul>
+          <li>
+            <a
+              href="/blog"
+            >
+              Blog
+            </a>
+          </li>
+          <li>
+            <a
+              href="/users"
+            >
+              Users
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
   </div>
 </nav>
 `;
