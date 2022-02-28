@@ -17,7 +17,7 @@ export const CcArticleHeader = ({data}) => {
           </div>
           <div className="govuk-grid-column-one-third">
             <FeedSignUps />
-            <CcRecentArticles />
+            <CcRecentArticles articles={data.relatedItems} />
           </div>
         </div>
       </div>

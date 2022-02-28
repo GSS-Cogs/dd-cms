@@ -59,12 +59,16 @@ export const CcArticleList = () => {
   );
 };
 
-export const CcRecentArticles = ({ limit,  }) => {
+export const CcRecentArticles = ({ articles }) => {
   return (
     <div className="cc-article-list cc-article-header">
       <H4>Recent Articles</H4>
-      {TEST_ARTICLES.slice(0, 2).map((data, i, idx) =>
-        <CcArticlePreview key={i} data={data} skipSummary={true}/>)
+      {articles.map((data, i, idx) =>
+        <CcArticlePreview
+          key={i}
+          data={{ title: data.title, link: data['@id'], publicationDate: 'Monday, 1 November 2021' }}
+          skipSummary={true} 
+        />)
       }
     </div>
   );

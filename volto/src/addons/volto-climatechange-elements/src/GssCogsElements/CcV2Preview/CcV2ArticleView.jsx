@@ -25,6 +25,7 @@ export const CcV2ArticleView = ({ content, intl, location }) => {
         summary: content.description,
         created: formattedDate(content.created),
         creators: formattedCreators(content.creators),
+        relatedItems: content.relatedItems
       }}
     />
     <div className="govuk-width-container ccv2-article-body">
