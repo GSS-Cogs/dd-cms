@@ -1,8 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
-import { CcArticleHeader } from '../CcArticleHeader/CcArticleHeader';
-
 import { map } from 'lodash';
 import config from '@plone/volto/registry';
 import {
@@ -10,46 +7,52 @@ import {
   getBlocksLayoutFieldname,
   getBaseUrl,
 } from '@plone/volto/helpers';
-import { getArticlePublishedDate } from '../../actions';
+
+import { CcArticleHeader } from '../CcArticleHeader/CcArticleHeader';
+import { getRelatedItemsData } from '../../actions';
+import { formattedDate } from '../../utils';
 
 import './CvV2ArticleView.scss';
 
 export const CcV2ArticleView = (props) => {
-  const { content, intl, location, articlePublishedDate={} } = props;
+  const { content, location } = props;
   const blocksFieldname = getBlocksFieldname(content);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
 
-  const formattedDate = (date) => new Date(date).toLocaleDateString('en-gb', { year: 'numeric', month: 'long', day: 'numeric' });
   const formattedCreators = (creators) => creators.join(', ');
 
   const dispatch = useDispatch();
 
-  const { data } = useSelector((state) => state.articlePublishedDate);
+  const { data } = useSelector((state) => state.relatedItemsData);
 
   useEffect(() => {
-    content.relatedItems.forEach((item) => dispatch(getArticlePublishedDate(item['@id'])))
+    content.relatedItems.forEach((item) =>
+      dispatch(getRelatedItemsData(item['@id'])),
+    );
   }, []);
 
-  return (<div>
-    <CcArticleHeader
-      data={{
-        title: content.title,
-        summary: content.description,
-        created: formattedDate(content.created),
-        creators: formattedCreators(content.creators),
-        relatedItems: data
-      }}
-    />
-    <div className="govuk-width-container ccv2-article-body">
-      <div className="govuk-grid-row">
-        <div className="govuk-grid-column-two-thirds govuk-!-padding-right-6">
+  return (
+    <div>
+      <CcArticleHeader
+        data={{
+          title: content.title,
+          summary: content.description,
+          created: formattedDate(content.created),
+          creators: formattedCreators(content.creators),
+          relatedItems: data,
+        }}
+      />
+      <div className="govuk-width-container ccv2-article-body">
+        <div className="govuk-grid-row">
+          <div className="govuk-grid-column-two-thirds govuk-!-padding-right-6">
             {map(content[blocksLayoutFieldname].items, (block) => {
               const Block =
                 config.blocks.blocksConfig[
                   content[blocksFieldname]?.[block]?.['@type']
                 ]?.['view'] || null;
-              
-              const notTitleBlock = content[blocksFieldname]?.[block]?.['@type'] !== 'title';
+
+              const notTitleBlock =
+                content[blocksFieldname]?.[block]?.['@type'] !== 'title';
 
               return Block !== null && notTitleBlock ? (
                 <Block
@@ -61,8 +64,9 @@ export const CcV2ArticleView = (props) => {
                 />
               ) : null;
             })}
+          </div>
         </div>
       </div>
     </div>
-  </div>)
+  );
 };

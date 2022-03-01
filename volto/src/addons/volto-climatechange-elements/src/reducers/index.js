@@ -1,4 +1,5 @@
-import { GET_ARTICLE_PUBLISHED_DATE } from '../constants/ActionTypes';
+import { GET_RELATED_ITEMS_DATA } from '../constants/ActionTypes';
+import { formattedDate } from '../utils';
 
 const initialState = {
   error: null,
@@ -9,31 +10,31 @@ const initialState = {
   loadedId: null,
 };
 
-export function articlePublishedDate(state = initialState, action = {}) {
+export function relatedItemsData(state = initialState, action = {}) {
   switch (action.type) {
-    case `${GET_ARTICLE_PUBLISHED_DATE}_PENDING`:
+    case `${GET_RELATED_ITEMS_DATA}_PENDING`:
       return {
         ...state,
         error: null,
         loading: true,
         loaded: false,
       };
-    case `${GET_ARTICLE_PUBLISHED_DATE}_SUCCESS`:
+    case `${GET_RELATED_ITEMS_DATA}_SUCCESS`:
       return {
         ...state,
         error: null,
         data: [
-            ...state.data,
-            {
-                publishedDate: new Date(action.result.created).toLocaleDateString('en-gb', { year: 'numeric', month: 'long', day: 'numeric' }),
-                '@id': action.result['@id'],
-                title: action.result.title 
-            }
+          ...state.data,
+          {
+            publishedDate: formattedDate(action.result.created),
+            '@id': action.result['@id'],
+            title: action.result.title,
+          },
         ],
         loaded: true,
         loading: false,
       };
-    case `${GET_ARTICLE_PUBLISHED_DATE}_FAIL`:
+    case `${GET_RELATED_ITEMS_DATA}_FAIL`:
       return {
         ...state,
         error: action.error,
