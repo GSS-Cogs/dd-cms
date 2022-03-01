@@ -133,14 +133,6 @@ export function useBlockChartContextState(props) {
     [],
   );
 
-  // everytime any of the values change, serialize all the values
-  // into the volto block data.
-  // we store everything in a single effect here because there are
-  // several places that call multiple setX functions directly
-  // after each other, and you get into closure problems caused
-  // by stale ...data spreads otherwise.
-  // so by doing them all in the same effect, we can be sure they
-  // all spread off the one "data" value.
   // debounce updates to the block state e.g, for text property changes
   // that can change rapidly
   const debouncedOnChangeBlock = useCallback(
@@ -150,6 +142,14 @@ export function useBlockChartContextState(props) {
     [],
   );
 
+  // everytime any of the values change, serialize all the values
+  // into the volto block data.
+  // we store everything in a single effect here because there are
+  // several places that call multiple setX functions directly
+  // after each other, and you get into closure problems caused
+  // by stale ...data spreads otherwise.
+  // so by doing them all in the same effect, we can be sure they
+  // all spread off the one "data" value.
   useEffect(() => {
     debouncedOnChangeBlock(() => {
       onChangeBlock(block, {
