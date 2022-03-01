@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { CcArticleHeader } from '../CcArticleHeader/CcArticleHeader';
 
 import { map } from 'lodash';
@@ -8,15 +10,25 @@ import {
   getBlocksLayoutFieldname,
   getBaseUrl,
 } from '@plone/volto/helpers';
+import { getArticlePublishedDate } from '../../actions';
 
 import './CvV2ArticleView.scss';
 
-export const CcV2ArticleView = ({ content, intl, location }) => {
+export const CcV2ArticleView = (props) => {
+  const { content, intl, location, articlePublishedDate={} } = props;
   const blocksFieldname = getBlocksFieldname(content);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
 
   const formattedDate = (date) => new Date(date).toLocaleDateString('en-gb', { year: 'numeric', month: 'long', day: 'numeric' });
   const formattedCreators = (creators) => creators.join(', ');
+
+  const dispatch = useDispatch();
+
+  const { data } = useSelector((state) => state.articlePublishedDate);
+
+  useEffect(() => {
+    content.relatedItems.forEach((item) => dispatch(getArticlePublishedDate(item['@id'])))
+  }, []);
 
   return (<div>
     <CcArticleHeader
@@ -25,7 +37,7 @@ export const CcV2ArticleView = ({ content, intl, location }) => {
         summary: content.description,
         created: formattedDate(content.created),
         creators: formattedCreators(content.creators),
-        relatedItems: content.relatedItems
+        relatedItems: data
       }}
     />
     <div className="govuk-width-container ccv2-article-body">

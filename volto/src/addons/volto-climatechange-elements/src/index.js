@@ -8,6 +8,8 @@ import { CcV2Overview } from './GssCogsElements/CcV2Preview/CcV2Overview';
 import { CcV2ArticleView } from './GssCogsElements/CcV2Preview/CcV2ArticleView';
 import { CcRelatedLinks } from './GssCogsElements/CcRelatedLinks/CcRelatedLinks';
 
+import { articlePublishedDate } from './reducers';
+
 const applyConfig = (config) => {
     config.blocks.blocksConfig.dashboardTile = {
         id: 'dashboardTile',
@@ -60,6 +62,7 @@ const applyConfig = (config) => {
     config.views.layoutViews.cc_preview = CcV2ArticleView;
     config.views.layoutViews.cc_preview2 = CcV2Overview;
 
+    config.addonReducers.articlePublishedDate = articlePublishedDate;
 
     return config;
 };
