@@ -1,3 +1,4 @@
+import { uniq } from 'lodash';
 import { GET_RELATED_ITEMS_DATA } from '../constants/ActionTypes';
 import { formattedDate } from '../utils';
 
@@ -20,17 +21,19 @@ export function relatedItemsData(state = initialState, action = {}) {
         loaded: false,
       };
     case `${GET_RELATED_ITEMS_DATA}_SUCCESS`:
+      const uniqueRelatedItems = uniq([
+        ...state.data,
+        {
+          publishedDate: formattedDate(action.result.created),
+          '@id': action.result['@id'],
+          title: action.result.title,
+        },
+      ]);
+
       return {
         ...state,
         error: null,
-        data: [
-          ...state.data,
-          {
-            publishedDate: formattedDate(action.result.created),
-            '@id': action.result['@id'],
-            title: action.result.title,
-          },
-        ],
+        data: uniqueRelatedItems,
         loaded: true,
         loading: false,
       };
