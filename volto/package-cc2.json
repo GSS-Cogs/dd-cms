@@ -25,9 +25,11 @@
     "@eeacms/volto-plotlycharts",
     "@eeacms/volto-datablocks",
     "@eeacms/volto-columns-block",
+    "volto-slate:asDefault",
+    "volto-authomatic",
     "volto-govuk-theme",
-    "volto-climatechange-elements",
-    "volto-authomatic"
+    "volto-chart-builder",
+    "volto-climatechange-elements"
   ],
   "jest": {
     "modulePathIgnorePatterns": [
