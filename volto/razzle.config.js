@@ -3,6 +3,8 @@
  * @module razzle.config
  */
 
+const path = require('path');
+
 const jsConfig = require('./jsconfig').compilerOptions;
 
 const pathsConfig = jsConfig.paths;
@@ -49,7 +51,7 @@ module.exports.modifyWebpackConfig = ({
     const origExternals = res.externals[0];
 
     res.externals[0] = function ddCmsExternals(context, request, callback) {
-      if (/govuk-react-jsx/.test(request)) {
+      if (/(govuk-react-jsx)/.test(request)) {
         callback();
       } else {
         return origExternals(context, request, callback);

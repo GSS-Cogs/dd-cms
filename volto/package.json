@@ -19,15 +19,18 @@
   "private": true,
   "workspaces": [
     "src/addons/volto-govuk-theme",
-    "src/addons/volto-climatechange-elements"
+    "src/addons/volto-climatechange-elements",
+    "src/addons/volto-chart-builder",
+    "src/addons/chart-builder"
   ],
   "addons": [
     "@eeacms/volto-plotlycharts",
     "@eeacms/volto-datablocks",
     "@eeacms/volto-columns-block",
     "volto-slate:asDefault",
+    "volto-authomatic",
     "volto-govuk-theme",
-    "volto-authomatic"
+    "volto-chart-builder"
   ],
   "jest": {
     "modulePathIgnorePatterns": [
@@ -148,6 +151,7 @@
   },
   "resolutions": {
     "draft-js": "0.10.5",
-    "razzle": "3.4.2"
+    "razzle": "3.4.2",
+    "react": "16.14.0"
   }
 }
