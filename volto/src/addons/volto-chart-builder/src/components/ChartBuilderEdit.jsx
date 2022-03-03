@@ -8,7 +8,7 @@ import SidePanel from 'chart-builder/src/components/side-panel/SidePanel';
 import ChartPreview from 'chart-builder/src/components/chart-panel/chart-preview/ChartPreview';
 import ChartContext from 'chart-builder/src/context/ChartContext';
 import { NO_FILE_SELECTED_TEXT } from 'chart-builder/src/components/constants/Common-constants';
-import { getCsvData, setLoadedFileId } from '../actions';
+import { getCsvData } from '../actions';
 
 import debounce from 'lodash.debounce';
 
@@ -19,25 +19,28 @@ const View = () => {
 function usePloneCsvData(file_path) {
   const { validateData } = useContext(ChartContext);
   const dispatch = useDispatch();
-  const { content, loaded, loadedId } = useSelector(
-    (state) => state.chartBuilderRawData,
-  );
 
   const file = file_path.length ? file_path[0] : null;
   const fileId = file?.['@id'];
 
+  const fileData = useSelector((state) =>
+    state.chartBuilderRawData.get(fileId),
+  );
+
   useEffect(() => {
     if (fileId != null) {
-      dispatch(setLoadedFileId(fileId));
       dispatch(getCsvData(fileId));
     }
   }, [fileId, dispatch]);
 
   useEffect(() => {
-    if (loaded && fileId === loadedId) {
-      validateData(content, loadedId);
+    if (fileData != null) {
+      const { content, loaded } = fileData;
+      if (loaded) {
+        validateData(content, fileId);
+      }
     }
-  }, [content, loaded, loadedId, fileId, validateData]);
+  }, [fileData, fileId, validateData]);
 }
 
 const Edit = (props) => {
