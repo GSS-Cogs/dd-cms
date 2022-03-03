@@ -12,8 +12,9 @@ pipeline {
             }
             steps {
                 dir('volto') {
-                    sh "yarn develop"
-                    sh "yarn install"
+                    /* only expecting this to be a soft link from a previous run */
+                    sh "rm -f ${env.WORKSPACE}/volto/node_modules"
+                    sh "ln -s /app/node_modules ${env.WORKSPACE}/volto/"
                     sh "yarn test"
                 }
             }
