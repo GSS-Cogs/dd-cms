@@ -3,7 +3,7 @@ version: '3.8'
 services:
     plone:
         build:
-            context: plone-5
+            context: ../plone-5
         volumes:
             - plone-data:/data:z
         networks:
@@ -12,13 +12,14 @@ services:
 
     volto-v1:
         build:
-            context: volto
+            context: ../volto
         environment:
             - RAZZLE_API_PATH=https://climate-1.ukstats.dev/api
             - NODE_ENV=production
             - VIRTUAL_HOST=climate-1.ukstats.dev
             - VIRTUAL_PORT=3000
             - LETSENCRYPT_HOST=climate-1.ukstats.dev
+            - ADDONS="@eeacms/volto-plotlycharts;@eeacms/volto-datablocks;@eeacms/volto-columns-block;volto-slate:asDefault;volto-authomatic;volto-govuk-theme;volto-chart-builder"
         command: "yarn start:prod"
         init: true
         networks:
@@ -27,14 +28,15 @@ services:
 
     volto-v2:
         build:
-            context: volto
-            dockerfile: Dockerfile-cc2
+            context: ../volto
+            dockerfile: Dockerfile
         environment:
             - RAZZLE_API_PATH=https://climate-2.ukstats.dev/api
             - NODE_ENV=production
             - VIRTUAL_HOST=climate-2.ukstats.dev
             - VIRTUAL_PORT=3000
             - LETSENCRYPT_HOST=climate-2.ukstats.dev
+            - ADDONS="@eeacms/volto-plotlycharts;@eeacms/volto-datablocks;@eeacms/volto-columns-block;volto-slate:asDefault;volto-authomatic;volto-govuk-theme;volto-chart-builder;volto-climatechange-elements"
         command: "yarn start:prod"
         init: true
         networks:

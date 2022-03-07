@@ -7,13 +7,17 @@ services:
         environment:
             - FIND_LINKS=https://eggrepo.eea.europa.eu/simple/
             - SITE=Plone
-            - ADDONS=kitconcept.volto eea.api.dataconnector eea.restapi
+            - ADDONS=kitconcept.volto eea.api.dataconnector eea.restapi ukstats.article_type
             - ZCML=kitconcept.volto.cors
             - PROFILES=kitconcept.volto:default-homepage
+            - DEVELOP=src/ukstats.article_type
         ports:
             - "127.0.0.1:8080:8080"
         volumes:
             - plone-data:/data
+            - type: bind
+              source: ./plone-5/instance/src/ukstats.article_type
+              target: /plone/instance/src/ukstats.article_type
     volto:
         image: node:14
         container_name: dd-cms-frontend
