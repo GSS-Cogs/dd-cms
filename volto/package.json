@@ -21,18 +21,15 @@
     "src/addons/volto-govuk-theme",
     "src/addons/volto-climatechange-elements",
     "src/addons/volto-chart-builder",
-    "src/addons/chart-builder",
-    "src/addons/volto-climatechange-elements"
+    "src/addons/chart-builder"
   ],
   "addons": [
     "@eeacms/volto-plotlycharts",
     "@eeacms/volto-datablocks",
     "@eeacms/volto-columns-block",
     "volto-slate:asDefault",
-    "volto-authomatic",
     "volto-govuk-theme",
-    "volto-chart-builder",
-    "volto-climatechange-elements"
+    "volto-chart-builder"
   ],
   "jest": {
     "modulePathIgnorePatterns": [
