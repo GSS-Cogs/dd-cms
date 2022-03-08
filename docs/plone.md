@@ -30,6 +30,8 @@ with Homebrew:
 brew install pipenv
 ```
 
+Docker is used to extract a baseline `buildout` config. plone will be run in a Pipenv locally.
+
 Finally, run `./bootstrap.sh` to create a local, virtualenv (Pipenv) separate environment with all the right dependencies
 fetched by `buildout` and placed into the `buildout-cache` directory.
 
