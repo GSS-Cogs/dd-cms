@@ -20,7 +20,22 @@ There are two ways to work on volto; locally with node, or in a `docker-compose`
 ## Addons
 
 The addons that volto loads are normally specified in the `package.json:addons` array. That can be
-overridden using the ADDONS env var.  
+overridden using the ADDONS env var.
+
+There are two aspects to using a volto addon. 
+
+First, the add on must be available as either a `node_module` or as a `mrs-developer` managed workspace in 
+this project. This step means the addon source will be present, and any dependencies it has will also be installed.
+
+Second, to use the addon, it must be present in the `package.json:addons` array. This will cause the volto to load 
+the addon when it starts.
+
+Volto also checks for a `ADDONS` environment var, with ";" separated addons, and overrides the value from package.json
+if this env var exists.
+
+We are using this to support multiple concurrent deployments of volto. We include all addons we use in any deployment
+in package.json, so it is present in the docker container, and then use the `ADDONS` env var in the 
+docker-compose project to configure which addons are loaded when volto starts.
 
 So during dev for an addon that won't necessarily be used in every instance, you can use a 
 `.env` file to override the addons. There's an example already in the CCv2 components. 
