@@ -29,7 +29,6 @@ services:
     volto-v2:
         build:
             context: ../volto
-            dockerfile: Dockerfile
         environment:
             - RAZZLE_API_PATH=https://climate-2.ukstats.dev/api
             - NODE_ENV=production
