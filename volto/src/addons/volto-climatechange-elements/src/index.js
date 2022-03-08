@@ -1,10 +1,12 @@
 import tableSVG from '@plone/volto/icons/table.svg';
+import globeSVG from '@plone/volto/icons/globe.svg';
 import { DashboardTileView } from './GssCogsElements/DashboardTile/DashboardTileView';
 import { DashboardTileEdit } from './GssCogsElements/DashboardTile/DashboardTileEdit';
 import { CcHeroHeaderView } from './GssCogsElements/CcHeroHeader/CcHeroHeaderView';
 import { CcHeroHeaderEdit } from './GssCogsElements/CcHeroHeader/CcHeroHeaderEdit';
 import { CcV2Overview } from './GssCogsElements/CcV2Preview/CcV2Overview';
 import { CcV2ArticleView } from './GssCogsElements/CcV2Preview/CcV2ArticleView';
+import { CcRelatedLinks } from './GssCogsElements/CcRelatedLinks/CcRelatedLinks';
 
 const applyConfig = (config) => {
     config.blocks.blocksConfig.dashboardTile = {
@@ -30,6 +32,22 @@ const applyConfig = (config) => {
         group: 'common',
         view: CcHeroHeaderView,
         edit: CcHeroHeaderEdit,
+        restricted: false,
+        mostUsed: true,
+        sidebarTab: 1,
+        security: {
+            addPermission: [],
+            view: [],
+        },
+    };
+
+    config.blocks.blocksConfig.relatedLinks = {
+        id: 'relatedLinks',
+        title: 'Related Links',
+        icon: globeSVG,
+        group: 'common',
+        view: CcRelatedLinks,
+        edit: CcRelatedLinks,
         restricted: false,
         mostUsed: true,
         sidebarTab: 1,

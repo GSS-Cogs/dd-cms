@@ -42,7 +42,8 @@ import {
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 import * as Sentry from '@sentry/browser';
-import MultilingualRedirector from '../MultilingualRedirector/MultilingualRedirector';
+import MultilingualRedirector from '@plone/volto/components/theme/MultilingualRedirector/MultilingualRedirector';
+
 /**
  * @export
  * @class App

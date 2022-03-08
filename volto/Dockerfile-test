@@ -2,9 +2,9 @@ FROM node:14
 
 WORKDIR /app
 # restrict files/directories to copy in .dockerignore
-COPY .eslintrc.js babel.config.js jsconfig.json package.json razzle.config.js yarn.lock mrs.developer.json /app/
+COPY jsconfig.json package.json yarn.lock mrs.developer.json /app/
 RUN \
     yarn global add mrs-developer && \
     mkdir -p src/addons && \
     yarn develop && \
-    yarn install
+    yarn install --frozen-lockfile

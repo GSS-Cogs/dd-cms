@@ -9,6 +9,26 @@ import Anontools from './Anontools';
 const mockStore = configureStore();
 
 describe('Anontools', () => {
+  it('should not render an anontools component when a token is specified', () => {
+    const store = mockStore({
+      userSession: { token: '1234' },
+      content: { data: {} },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Anontools />
+        </MemoryRouter>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+
   it('renders an anontools component when no token is specified', () => {
     const store = mockStore({
       userSession: { token: null },
@@ -29,24 +49,5 @@ describe('Anontools', () => {
     expect(json).toMatchSnapshot();
   });
 
-  it('should not render an anontools component when a token is specified', () => {
-    const store = mockStore({
-      userSession: { token: '1234' },
-      content: { data: {} },
-      intl: {
-        locale: 'en',
-        messages: {},
-      },
-    });
-    const component = renderer.create(
-      <Provider store={store}>
-        <MemoryRouter>
-          <Anontools />
-        </MemoryRouter>
-      </Provider>,
-    );
-    const json = component.toJSON();
-    // expect(json).toMatchSnapshot();
-    expect(json).not.toBe(null);
-  });
+
 });
