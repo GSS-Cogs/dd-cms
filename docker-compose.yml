@@ -29,6 +29,7 @@ services:
               target: /home/node/app
         environment:
             - RAZZLE_DEV_PROXY_API_PATH=http://plone:8080/Plone
+            - "ADDONS=${ADDONS-}"
         ports:
             - "127.0.0.1:3000:3000"
             - "127.0.0.1:3001:3001"

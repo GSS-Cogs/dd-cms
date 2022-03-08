@@ -17,6 +17,16 @@ example, doesn't like to have separate versions installed.
 
 There are two ways to work on volto; locally with node, or in a `docker-compose` app.
 
+## Addons
+
+The addons that volto loads are normally specified in the `package.json:addons` array. That can be
+overridden using the ADDONS env var.  
+
+So during dev for an addon that won't necessarily be used in every instance, you can use a 
+`.env` file to override the addons. There's an example already in the CCv2 components. 
+
+To use it, run `docker-compose --env-file=.env.ccv2 up`
+
 ## Working on volto
 
 ### With `docker-compose`
