@@ -1,8 +1,12 @@
 import imageSVG from '@plone/volto/icons/image.svg';
 import { ChartBuilderEdit } from './components/ChartBuilderEdit';
 import { ChartBuilderView } from './components/ChartBuilderView';
-import { FigureTitleEdit } from './components/FigureTitleEdit';
-import { FigureTitleView } from './components/FigureTitleView';
+import { FigureTitleEdit } from './components/Figure/FigureTitleEdit';
+import { FigureTitleView } from './components/Figure/FigureTitleView';
+import { FigureMetaTextEdit } from './components/Figure/FigureMetaTextEdit';
+import { FigureMetaTextView } from './components/Figure/FigureMetaTextView';
+import { FigureSourceEdit } from './components/Figure/FigureSourceEdit';
+import { FigureSourceView } from './components/Figure/FigureSourceView';
 
 import { chartBuilderRawData } from './reducers';
 
@@ -30,6 +34,38 @@ const applyConfig = (config) => {
     group: 'common',
     view: FigureTitleView,
     edit: FigureTitleEdit,
+    restricted: false,
+    mostUsed: true,
+    sidebarTab: 1,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+  };
+
+  config.blocks.blocksConfig.figureMetaText = {
+    id: 'figureMetaText',
+    title: 'Figure Text',
+    icon: imageSVG,
+    group: 'common',
+    view: FigureMetaTextView,
+    edit: FigureMetaTextEdit,
+    restricted: false,
+    mostUsed: true,
+    sidebarTab: 1,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+  };
+
+  config.blocks.blocksConfig.figureSource = {
+    id: 'figureSource',
+    title: 'Figure Source',
+    icon: imageSVG,
+    group: 'common',
+    view: FigureSourceView,
+    edit: FigureSourceEdit,
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,

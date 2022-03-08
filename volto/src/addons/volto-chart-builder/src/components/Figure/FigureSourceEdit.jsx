@@ -1,12 +1,12 @@
 import React from 'react';
 import { Segment } from 'semantic-ui-react';
 import { SidebarPortal, InlineForm } from '@plone/volto/components';
-import { FigureTitleSchema } from './schema';
-import { FigureTitleView } from './FigureTitleView';
+import { FigureSourceSchema } from './schema';
+import { FigureSourceView } from './FigureSourceView';
 
-export const FigureTitleEdit = (props) => {
+export const FigureSourceEdit = (props) => {
   const { selected, onChangeBlock, block, data } = props;
-  const schema = FigureTitleSchema(props);
+  const schema = FigureSourceSchema(props);
 
   return (
     <div>
@@ -26,7 +26,7 @@ export const FigureTitleEdit = (props) => {
         </Segment.Group>
       </SidebarPortal>
 
-      <FigureTitleView {...props} />
+      <FigureSourceView {...props} />
     </div>
   );
 };
