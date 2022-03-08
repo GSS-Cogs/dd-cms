@@ -16,27 +16,26 @@ beforeAll(() => {
 
 const mockStore = configureStore();
 
-jest.mock('../../manage/Toolbar/Toolbar', () =>
-  jest.fn(() => <div id="toolbar" />),
-);
-jest.mock('../Header/Header', () => jest.fn(() => <div id="toolbar" />));
-jest.mock('../Breadcrumbs/Breadcrumbs', () =>
-  jest.fn(() => <div id="breadcrumbs" />),
-);
-jest.mock('../../manage/Messages/Messages', () =>
-  jest.fn(() => <div id="messages" />),
-);
-jest.mock('../Navigation/Navigation', () =>
-  jest.fn(() => <div id="navigation" />),
-);
+jest.mock('@plone/volto/components', () => ({
+  'Toolbar': () => null,
+  'Header': () => null,
+  'Breadcrumbs': () => null,
+  'Messages': () => null,
+  'Navigation': () => null,
+  'Footer': () => null,
+  'SkipLinks': () => null,
+  'OutdatedBrowser': () => null,
+  'Icon': () => null,
+  'AppExtras': () => null,
+}));
+
 jest.mock('semantic-ui-react', () => ({
   Segment: jest.fn(() => <div id="segment" />),
   Container: jest.fn(() => <div id="container" />),
 }));
-jest.mock('../Footer/Footer', () => jest.fn(() => <div id="footer" />));
 
 describe('App', () => {
-  it('renders a app component', () => {
+  it('renders a CCv2 style app component', () => {
     const store = mockStore({
       userSession: {
         token: 'abcdefgh',

@@ -23,6 +23,6 @@ describe('Footer', () => {
               </MemoryRouter>
             </Provider>,
         );
-        expect(container).toHaveTextContent('Plone');
+        expect(container).toMatchSnapshot();
     });
 });

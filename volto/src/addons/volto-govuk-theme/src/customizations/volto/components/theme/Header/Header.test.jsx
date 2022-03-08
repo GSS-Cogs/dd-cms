@@ -8,12 +8,10 @@ import Header from './Header';
 const mockStore = configureStore();
 
 
-jest.mock('../Anontools/Anontools', () =>
-  jest.fn(() => <div id="anontools" />),
-);
-jest.mock('../Navigation/Navigation', () =>
-  jest.fn(() => <div id="navigation" />),
-);
+jest.mock('@plone/volto/components', () => ({
+  'Anontools': () => null,
+  'Navigation': () => null,
+}));
 
 describe('Header', () => {
   it('renders a header component', () => {
@@ -23,6 +21,9 @@ describe('Header', () => {
         locale: 'en',
         messages: {},
       },
+      navigation: {
+        items: [],
+      }
     });
 
     const component = renderer.create(
