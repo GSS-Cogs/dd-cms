@@ -49,7 +49,7 @@ export const FigureSourceSchema = ({ intl }) => ({
     {
       id: 'default',
       title: intl.formatMessage(messages.defaultFieldset),
-      fields: ['text', 'url'],
+      fields: ['text', 'url', 'text1', 'url1', 'text2', 'url2'],
     },
   ],
 
@@ -59,6 +59,22 @@ export const FigureSourceSchema = ({ intl }) => ({
       title: intl.formatMessage(messages.text),
     },
     url: {
+      type: 'string',
+      title: intl.formatMessage(messages.url),
+    },
+    text1: {
+      type: 'string',
+      title: intl.formatMessage(messages.text),
+    },
+    url1: {
+      type: 'string',
+      title: intl.formatMessage(messages.url),
+    },
+    text2: {
+      type: 'string',
+      title: intl.formatMessage(messages.text),
+    },
+    url2: {
       type: 'string',
       title: intl.formatMessage(messages.url),
     },
