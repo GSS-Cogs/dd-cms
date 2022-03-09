@@ -8,6 +8,8 @@ import { FigureMetaTextView } from './components/Figure/FigureMetaTextView';
 import { FigureSourceEdit } from './components/Figure/FigureSourceEdit';
 import { FigureSourceView } from './components/Figure/FigureSourceView';
 
+import FigureView from './components/Figure/FigureView';
+
 import { chartBuilderRawData } from './reducers';
 
 const applyConfig = (config) => {
@@ -92,6 +94,8 @@ const applyConfig = (config) => {
   };
 
   config.addonReducers.chartBuilderRawData = chartBuilderRawData;
+
+  config.views.layoutViews.figure_view = FigureView;
 
   return config;
 };
