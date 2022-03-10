@@ -95,22 +95,6 @@ const applyConfig = (config) => {
     },
   };
 
-  config.blocks.blocksConfig.title = {
-    id: 'title',
-    title: 'Title',
-    icon: imageSVG,
-    group: 'text',
-    view: FigureTitleView,
-    edit: FigureTitleEdit,
-    restricted: false,
-    mostUsed: true,
-    sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
-  };
-
   config.addonReducers.chartBuilderRawData = chartBuilderRawData;
   config.addonReducers.figureBlockData = figureBlockData;
 

@@ -29,7 +29,7 @@ const messages = defineMessages({
   },
 });
 
-const FigureView = ({ content, intl, location }) => {
+const FigureView = ({ content, location }) => {
   const blocksFieldname = getBlocksFieldname(content);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
 
@@ -47,7 +47,11 @@ const FigureView = ({ content, intl, location }) => {
           config.blocks.blocksConfig[
             content[blocksFieldname]?.[block]?.['@type']
           ]?.['view'] || null;
-        return Block !== null ? (
+
+        const notTitleBlock =
+          content[blocksFieldname]?.[block]?.['@type'] !== 'title';
+
+        return Block !== null && notTitleBlock ? (
           <Block
             key={block}
             id={block}
@@ -55,13 +59,7 @@ const FigureView = ({ content, intl, location }) => {
             data={content[blocksFieldname][block]}
             path={getBaseUrl(location?.pathname || '')}
           />
-        ) : (
-          <div key={block}>
-            {intl.formatMessage(messages.unknownBlock, {
-              block: content[blocksFieldname]?.[block]?.['@type'],
-            })}
-          </div>
-        );
+        ) : null;
       })}
     </div>
   ) : (
