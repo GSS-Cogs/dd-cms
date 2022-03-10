@@ -37,6 +37,8 @@ const FigureView = ({ content, intl, location }) => {
     { val: content.Background.title, prefix: 'figure--bg-' },
   ]);
 
+  console.log('content', content);
+
   return hasBlocksData(content) ? (
     <div id="page-document" className={`figure ${customClasses}`}>
       {map(content[blocksLayoutFieldname].items, (block) => {
