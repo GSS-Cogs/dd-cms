@@ -34,10 +34,11 @@ const FigureView = ({ content, intl, location }) => {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
 
   const customClasses = classes([
-    { val: content.Background.title, prefix: 'figure--bg-' },
+    {
+      val: content.Background ? content.Background.title : null,
+      prefix: 'figure--bg-',
+    },
   ]);
-
-  console.log('content', content);
 
   return hasBlocksData(content) ? (
     <div id="page-document" className={`figure ${customClasses}`}>

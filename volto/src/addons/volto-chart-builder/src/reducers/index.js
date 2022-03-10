@@ -83,6 +83,7 @@ export function figureBlockData(state = initialState, action = {}) {
             id: action.result['@id'],
             blocks: action.result.blocks,
             blocks_layout: action.result.blocks_layout,
+            Background: action.result.Background,
           },
         ]),
         loaded: true,
