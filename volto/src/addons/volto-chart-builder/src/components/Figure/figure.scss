@@ -1,5 +1,10 @@
 .figure {
   margin-right: 32px;
+  max-width: 1280px;
+
+  &__text {
+    width: 66.67%;
+  }
 
   &--bg-white-smoke {
     padding: 24px;

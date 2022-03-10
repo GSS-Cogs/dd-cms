@@ -35,7 +35,6 @@ const FigureView = ({ content, intl, location }) => {
 
   const customClasses = classes([
     { val: content.Background.title, prefix: 'figure--bg-' },
-    { val: content.Chart_Width.title, prefix: 'figure--chart-' },
   ]);
 
   return hasBlocksData(content) ? (

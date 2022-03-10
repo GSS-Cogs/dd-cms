@@ -12,16 +12,16 @@ export const FigureSourceView = ({ data }) => {
   const isLastItem = (index) => index == sources.length - 1;
 
   return (
-    <p className="govuk-!-margin-top-6 govuk-caption-m">
+    <p className="figure__text govuk-!-margin-top-6 govuk-caption-m">
       Source:{' '}
       {sources.map(({ text, url }, index) => {
         return (
-          <>
+          <span key={text}>
             <a href={url} className="govuk-link">
               {text}
             </a>
             {isLastItem(index) ? '' : ', '}
-          </>
+          </span>
         );
       })}
     </p>
