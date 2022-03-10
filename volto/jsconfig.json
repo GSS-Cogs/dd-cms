@@ -6,6 +6,9 @@
             ],
             "chart-builder": [
                 "addons/chart-builder"
+            ],
+            "volto-chart-builder": [
+                "addons/volto-chart-builder"
             ]
         },
         "baseUrl": "src"
