@@ -29,7 +29,6 @@
     "@eeacms/volto-datablocks",
     "@eeacms/volto-columns-block",
     "volto-slate:asDefault",
-    "volto-authomatic",
     "volto-govuk-theme",
     "volto-chart-builder"
   ],
