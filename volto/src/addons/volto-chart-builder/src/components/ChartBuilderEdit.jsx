@@ -31,6 +31,11 @@ const Edit = (props) => {
               widget="object_browser"
               mode="link"
               title="Data file"
+              widgetOptions={{
+                pattern_options: {
+                  selectableTypes: ['File', 'discodataconnector'],
+                }
+              }}
               value={data.file_path || []}
               onChange={(id, value) => {
                 onChangeBlock(block, {
