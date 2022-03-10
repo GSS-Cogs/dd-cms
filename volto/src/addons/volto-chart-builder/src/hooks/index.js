@@ -1,31 +1,36 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import ChartContext from "chart-builder/src/context/ChartContext";
-import { getCsvData } from "../actions";
+import ChartContext from 'chart-builder/src/context/ChartContext';
+import { getCsvData } from '../actions';
 
-export function usePloneCsvData(file_path) {
+export function usePloneCsvData(plone_ref) {
   const { validateData } = useContext(ChartContext);
   const dispatch = useDispatch();
 
-  const file = file_path.length ? file_path[0] : null;
-  const fileId = file?.['@id'];
+  const file = plone_ref.length ? plone_ref[0] : null;
 
   const fileData = useSelector((state) =>
-    state.chartBuilderRawData.get(fileId),
+    file ? state.chartBuilderRawData.get(file['@id']) : null,
   );
 
   useEffect(() => {
-    if (fileId != null) {
-      dispatch(getCsvData(fileId));
-    }
-  }, [fileId, dispatch]);
-
-  useEffect(() => {
-    if (fileData != null) {
-      const { content, loaded } = fileData;
-      if (loaded) {
-        validateData(content, fileId);
+    if (file != null) {
+      switch (file['@type']) {
+        case 'File':
+          dispatch(getCsvData(file['@id']));
+          break;
       }
     }
-  }, [fileData, fileId, validateData]);
+  }, [file, dispatch]);
+
+  useEffect(() => {
+    if (
+      fileData != null &&
+      file != null &&
+      fileData.loaded &&
+      file['@type'] === 'File'
+    ) {
+      validateData(fileData.content, file['@id']);
+    }
+  }, [fileData, file, validateData]);
 }

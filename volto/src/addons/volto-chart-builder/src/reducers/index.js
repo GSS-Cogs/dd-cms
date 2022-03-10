@@ -11,7 +11,6 @@ const initialEntry = Object.freeze({
   content: [],
   loaded: false,
   loading: false,
-  loadedId: null,
 });
 
 /**
