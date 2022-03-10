@@ -7,7 +7,7 @@ import SidePanel from 'chart-builder/src/components/side-panel/SidePanel';
 import ChartPreview from 'chart-builder/src/components/chart-panel/chart-preview/ChartPreview';
 import ChartContext from 'chart-builder/src/context/ChartContext';
 import { NO_FILE_SELECTED_TEXT } from 'chart-builder/src/components/constants/Common-constants';
-import { usePloneCsvData } from '../hook';
+import { usePloneCsvData } from '../hooks';
 import debounce from 'lodash.debounce';
 
 const View = () => {
