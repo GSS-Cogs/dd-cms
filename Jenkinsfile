@@ -22,7 +22,7 @@ pipeline {
                     sh "git clean -f ${env.WORKSPACE}/volto/src/addons"
                     sh "ln -s /app/node_modules ${env.WORKSPACE}/volto/"
                     sh "for n in \$(find /app/src/addons -type d -mindepth 1 -maxdepth 1); do ln -s \$n ${env.WORKSPACE}/volto/src/addons/\$(basename \$n); done;"
-                    sh "yarn test"
+                    sh "yarn test-ci"
                 }
             }
         }

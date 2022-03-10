@@ -10,7 +10,8 @@
     "omelette": "ln -sf node_modules/@plone/volto/ omelette",
     "patches": "/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true",
     "build": "razzle build",
-    "test": "jest --env=jest-environment-jsdom-sixteen --watchAll=false --ci --reporters=default --reporters=jest-junit",
+    "test": "jest --env=jest-environment-jsdom-sixteen --watch",
+    "test-ci": "jest --env=jest-environment-jsdom-sixteen --watchAll=false --ci --reporters=default --reporters=jest-junit",
     "start:prod": "NODE_ENV=production node build/server.js",
     "i18n": "NODE_ENV=production node node_modules/@plone/volto/src/i18n.js",
     "develop": "missdev --config=jsconfig.json --output=addons --fetch-https",
@@ -28,7 +29,6 @@
     "@eeacms/volto-datablocks",
     "@eeacms/volto-columns-block",
     "volto-slate:asDefault",
-    "volto-authomatic",
     "volto-govuk-theme",
     "volto-chart-builder"
   ],

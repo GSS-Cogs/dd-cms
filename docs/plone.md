@@ -30,6 +30,8 @@ with Homebrew:
 brew install pipenv
 ```
 
+Docker is used to extract a baseline `buildout` config. plone will be run in a Pipenv locally.
+
 Finally, run `./bootstrap.sh` to create a local, virtualenv (Pipenv) separate environment with all the right dependencies
 fetched by `buildout` and placed into the `buildout-cache` directory.
 
@@ -49,6 +51,17 @@ dependencies:
 ```bash
 awk 'match($0, /(buildout-cache[^'\'']*)/, a) {print "      <sourceFolder url=\"file://$MODULE_DIR$/" a[1] "\" isTestSource=\"false\" />"}' instance/bin/instance
 ```
+
+## Known issues
+
+If you've used the `docker-compose` app, the plone container `chown`s 
+its instance directory to avoid permission problems, including
+any of our `instance/src/` extensions that are mounted into it.
+
+So if you have permission problems with addons, make sure you own
+the files:
+
+`chown -R instance/src/addons`
 
 ## Configure Plone
 
