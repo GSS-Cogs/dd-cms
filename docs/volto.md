@@ -30,7 +30,7 @@ this project. This step means the addon source will be present, and any dependen
 Second, to use the addon, it must be present in the `package.json:addons` array. This will cause the volto to load 
 the addon when it starts.
 
-Volto also checks for a `ADDONS` environment var, with ";" separated addons, and overrides the value from package.json
+Volto also checks for an [`ADDONS` environment var](https://docs.voltocms.com/configuration/environmentvariables/#use-add-ons-via-the-addons-environment-variable), with ";" separated addons, and overrides the value from package.json
 if this env var exists.
 
 We are using this to support multiple concurrent deployments of volto. We include all addons we use in any deployment
