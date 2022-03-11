@@ -2,7 +2,7 @@
  * news items reducer.
  */
 
-import { GET_CSV_DATA } from '../constants/ActionTypes';
+import { GET_CHART_BUILDER_DATA } from '../constants/ActionTypes';
 
 const initialState = new Map();
 
@@ -22,7 +22,7 @@ const initialEntry = Object.freeze({
  */
 export function chartBuilderRawData(state = initialState, action = {}) {
   switch (action.type) {
-    case `${GET_CSV_DATA}_PENDING`:
+    case `${GET_CHART_BUILDER_DATA}_PENDING`:
       return new Map([
         ...state,
         [
@@ -33,7 +33,7 @@ export function chartBuilderRawData(state = initialState, action = {}) {
           },
         ],
       ]);
-    case `${GET_CSV_DATA}_SUCCESS`:
+    case `${GET_CHART_BUILDER_DATA}_SUCCESS`:
       return new Map([
         ...state,
         [
@@ -47,7 +47,7 @@ export function chartBuilderRawData(state = initialState, action = {}) {
           },
         ],
       ]);
-    case `${GET_CSV_DATA}_FAIL`:
+    case `${GET_CHART_BUILDER_DATA}_FAIL`:
       return new Map([
         ...state,
         [
