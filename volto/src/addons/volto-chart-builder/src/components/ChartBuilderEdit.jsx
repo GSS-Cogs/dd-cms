@@ -86,11 +86,6 @@ export function useBlockChartContextState(props) {
     'selectedFilename',
     NO_FILE_SELECTED_TEXT,
   );
-  const [columnNames, setColumnNames] = useVoltoBlockDataState(
-    data,
-    'columnNames',
-    [],
-  );
   const [dataSelection, setDataSelection] = useVoltoBlockDataState(
     data,
     'dataSelection',
@@ -137,7 +132,6 @@ export function useBlockChartContextState(props) {
         chartDefinition: JSON.stringify(chartDefinition),
         chartProperties: JSON.stringify(chartProperties),
         selectedFilename: JSON.stringify(selectedFilename),
-        columnNames: JSON.stringify(columnNames),
         dataSelection: JSON.stringify(dataSelection),
         availableDimensions: JSON.stringify(availableDimensions),
         selectedColumns: JSON.stringify(selectedColumns),
@@ -151,7 +145,6 @@ export function useBlockChartContextState(props) {
     chartDefinition,
     chartProperties,
     selectedFilename,
-    columnNames,
     dataSelection,
     availableDimensions,
     selectedColumns,
@@ -167,8 +160,6 @@ export function useBlockChartContextState(props) {
     setChartProperties,
     selectedFilename,
     setSelectedFilename,
-    columnNames,
-    setColumnNames,
     dataSelection,
     setDataSelection,
     availableDimensions,
