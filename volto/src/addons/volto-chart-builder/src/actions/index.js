@@ -1,12 +1,11 @@
-import {
-  GET_CSV_DATA,
-  GET_FIGURE_BLOCK_DATA,
-  CSV_DATA_SET_LOADED_FILE_ID,
-} from '../constants/ActionTypes';
+import { GET_CSV_DATA, GET_FIGURE_BLOCK_DATA } from '../constants/ActionTypes';
 
 export function getCsvData(contentId) {
   return {
     type: GET_CSV_DATA,
+    payload: {
+      contentId,
+    },
     request: {
       op: 'get',
       path: contentId + '/@@download',
@@ -20,15 +19,6 @@ export function getFigureBlockData(id) {
     request: {
       op: 'get',
       path: id,
-    },
-  };
-}
-
-export function setLoadedFileId(contentId) {
-  return {
-    type: CSV_DATA_SET_LOADED_FILE_ID,
-    payload: {
-      contentId,
     },
   };
 }
