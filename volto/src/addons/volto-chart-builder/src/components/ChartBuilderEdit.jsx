@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Field, SidebarPortal } from '@plone/volto/components';
 import { Form, Segment } from 'semantic-ui-react';
 import { useChartContext } from 'chart-builder/src/context/ChartContextProvider';
-import initialChartState from 'chart-builder/src/context/initialChartState';
+import initialChartProperties from 'chart-builder/src/context/initialChartProperties';
 import SidePanel from 'chart-builder/src/components/side-panel/SidePanel';
 import ChartPreview from 'chart-builder/src/components/chart-panel/chart-preview/ChartPreview';
 import ChartContext from 'chart-builder/src/context/ChartContext';
@@ -79,7 +79,7 @@ export function useBlockChartContextState(props) {
   const [chartProperties, setChartProperties] = useVoltoBlockDataState(
     data,
     'chartProperties',
-    initialChartState,
+    initialChartProperties,
   );
   const [selectedFilename, setSelectedFilename] = useVoltoBlockDataState(
     data,
