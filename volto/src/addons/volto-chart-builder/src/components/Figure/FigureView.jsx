@@ -63,32 +63,7 @@ const FigureView = ({ content, location }) => {
       })}
     </div>
   ) : (
-    <Container id="page-document">
-      <h1 className="documentFirstHeading">{content.title}</h1>
-      {content.description && (
-        <p className="documentDescription">{content.description}</p>
-      )}
-      {content.image && (
-        <Image
-          className="document-image"
-          src={content.image.scales.thumb.download}
-          floated="right"
-        />
-      )}
-      {content.remoteUrl && (
-        <span>
-          The link address is:
-          <a href={content.remoteUrl}>{content.remoteUrl}</a>
-        </span>
-      )}
-      {content.text && (
-        <div
-          dangerouslySetInnerHTML={{
-            __html: content.text.data,
-          }}
-        />
-      )}
-    </Container>
+    <div>Add Figure Block</div>
   );
 };
 
