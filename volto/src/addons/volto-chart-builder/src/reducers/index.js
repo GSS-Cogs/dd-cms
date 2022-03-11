@@ -2,17 +2,7 @@
  * news items reducer.
  */
 
-<<<<<<< HEAD
-import { uniq } from 'lodash';
-
-import {
-  GET_CSV_DATA,
-  GET_FIGURE_BLOCK_DATA,
-  CSV_DATA_SET_LOADED_FILE_ID,
-} from '../constants/ActionTypes';
-=======
-import { GET_CSV_DATA } from '../constants/ActionTypes';
->>>>>>> main
+import { GET_CSV_DATA, GET_FIGURE_BLOCK_DATA } from '../constants/ActionTypes';
 
 const initialState = new Map();
 
@@ -91,7 +81,7 @@ export function figureBlockData(state = initialState, action = {}) {
       return {
         ...state,
         error: null,
-        data: uniq([
+        data: new Map([
           ...state.data,
           {
             id: action.result['@id'],
