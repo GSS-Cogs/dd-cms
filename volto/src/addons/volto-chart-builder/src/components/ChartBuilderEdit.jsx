@@ -70,7 +70,6 @@ function useVoltoBlockDataState(data, id, initialValue) {
 export function useBlockChartContextState(props) {
   const { block, data, onChangeBlock } = props;
 
-  const [tidyData, setTidyData] = useVoltoBlockDataState(data, 'tidyData', []);
   const [chartDefinition, setChartDefinition] = useVoltoBlockDataState(
     data,
     'chartDefinition',
@@ -128,7 +127,6 @@ export function useBlockChartContextState(props) {
     debouncedOnChangeBlock(() => {
       onChangeBlock(block, {
         ...data,
-        tidyData: JSON.stringify(tidyData),
         chartDefinition: JSON.stringify(chartDefinition),
         chartProperties: JSON.stringify(chartProperties),
         selectedFilename: JSON.stringify(selectedFilename),
@@ -141,7 +139,6 @@ export function useBlockChartContextState(props) {
   }, [
     // data, // don't include, we only want to include our changes
     // onChangeBlock, // isn't memoized :(
-    tidyData,
     chartDefinition,
     chartProperties,
     selectedFilename,
@@ -152,8 +149,6 @@ export function useBlockChartContextState(props) {
   ]);
 
   return {
-    tidyData,
-    setTidyData,
     chartDefinition,
     setChartDefinition,
     chartProperties,
