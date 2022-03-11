@@ -2,13 +2,14 @@
  * news items reducer.
  */
 
+import { uniq } from 'lodash';
+
 import { GET_CSV_DATA, GET_FIGURE_BLOCK_DATA } from '../constants/ActionTypes';
 
 const initialState = new Map();
 
 const initialEntry = Object.freeze({
   error: null,
-  data: [],
   content: [],
   loaded: false,
   loading: false,
@@ -68,7 +69,19 @@ export function chartBuilderRawData(state = initialState, action = {}) {
   }
 }
 
-export function figureBlockData(state = initialState, action = {}) {
+const initialFigureBlockDataState = {
+  error: null,
+  items: [],
+  data: [],
+  loaded: false,
+  loading: false,
+  loadedId: null,
+};
+
+export function figureBlockData(
+  state = initialFigureBlockDataState,
+  action = {},
+) {
   switch (action.type) {
     case `${GET_FIGURE_BLOCK_DATA}_PENDING`:
       return {
@@ -81,7 +94,7 @@ export function figureBlockData(state = initialState, action = {}) {
       return {
         ...state,
         error: null,
-        data: new Map([
+        data: uniq([
           ...state.data,
           {
             id: action.result['@id'],

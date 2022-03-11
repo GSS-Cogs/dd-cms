@@ -12,7 +12,7 @@ export const FigureBlockView = (props) => {
 
   let content = {};
 
-  if (isFigure) {
+  if (isFigure && data) {
     content = data.filter(
       (item) => item.id === props.data.figure[0]['getURL'],
     )[0];
