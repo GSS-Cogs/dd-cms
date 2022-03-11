@@ -29,7 +29,7 @@ const messages = defineMessages({
   },
 });
 
-const FigureView = ({ content, location }) => {
+const FigureViewComponent = ({ content, location }) => {
   const blocksFieldname = getBlocksFieldname(content);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
 
@@ -72,7 +72,7 @@ const FigureView = ({ content, location }) => {
  * @property {Object} propTypes Property types.
  * @static
  */
-FigureView.propTypes = {
+FigureViewComponent.propTypes = {
   /**
    * Content of the object
    */
@@ -97,4 +97,4 @@ FigureView.propTypes = {
   }).isRequired,
 };
 
-export default injectIntl(FigureView);
+export const FigureView = injectIntl(FigureViewComponent);

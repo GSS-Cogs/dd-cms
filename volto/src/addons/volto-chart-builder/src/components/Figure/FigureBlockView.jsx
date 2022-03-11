@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import FigureView from './FigureView';
+import { FigureView } from './FigureView';
 
 import { getFigureBlockData } from '../../actions';
 

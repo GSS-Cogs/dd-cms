@@ -1,20 +1,33 @@
 import imageSVG from '@plone/volto/icons/image.svg';
 import { ChartBuilderEdit } from './components/ChartBuilderEdit';
 import { ChartBuilderView } from './components/ChartBuilderView';
-import { FigureTitleEdit } from './components/Figure/FigureTitleEdit';
-import { FigureTitleView } from './components/Figure/FigureTitleView';
-import { FigureMetaTextEdit } from './components/Figure/FigureMetaTextEdit';
-import { FigureMetaTextView } from './components/Figure/FigureMetaTextView';
-import { FigureSourceEdit } from './components/Figure/FigureSourceEdit';
-import { FigureSourceView } from './components/Figure/FigureSourceView';
-import { FigureBlockEdit } from './components/Figure/FigureBlockEdit';
-import { FigureBlockView } from './components/Figure/FigureBlockView';
-
-import FigureView from './components/Figure/FigureView';
+import {
+  FigureTitleEdit,
+  FigureTitleView,
+  FigureMetaTextEdit,
+  FigureMetaTextView,
+  FigureSourceEdit,
+  FigureSourceView,
+  FigureBlockEdit,
+  FigureBlockView,
+  FigureView,
+} from './components/Figure';
 
 import { chartBuilderRawData, figureBlockData } from './reducers';
 
 const applyConfig = (config) => {
+  const defaultOptions = {
+    icon: imageSVG,
+    group: 'common',
+    restricted: false,
+    mostUsed: true,
+    sidebarTab: 1,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+  };
+
   config.blocks.blocksConfig.chartBuilder = {
     id: 'chartBuilder',
     title: 'Chart Builder',
@@ -32,67 +45,35 @@ const applyConfig = (config) => {
   };
 
   config.blocks.blocksConfig.figureTitle = {
+    ...defaultOptions,
     id: 'figureTitle',
     title: 'Figure Title',
-    icon: imageSVG,
-    group: 'common',
     view: FigureTitleView,
     edit: FigureTitleEdit,
-    restricted: false,
-    mostUsed: true,
-    sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   };
 
   config.blocks.blocksConfig.figureMetaText = {
+    ...defaultOptions,
     id: 'figureMetaText',
     title: 'Figure Text',
-    icon: imageSVG,
-    group: 'common',
     view: FigureMetaTextView,
     edit: FigureMetaTextEdit,
-    restricted: false,
-    mostUsed: true,
-    sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   };
 
   config.blocks.blocksConfig.figureSource = {
+    ...defaultOptions,
     id: 'figureSource',
     title: 'Figure Source',
-    icon: imageSVG,
-    group: 'common',
     view: FigureSourceView,
     edit: FigureSourceEdit,
-    restricted: false,
-    mostUsed: true,
-    sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   };
 
   config.blocks.blocksConfig.figureBlock = {
+    ...defaultOptions,
     id: 'figureBlock',
     title: 'Figure Block',
-    icon: imageSVG,
-    group: 'common',
     view: FigureBlockView,
     edit: FigureBlockEdit,
-    restricted: false,
-    mostUsed: true,
-    sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   };
 
   config.addonReducers.chartBuilderRawData = chartBuilderRawData;
