@@ -8,12 +8,14 @@ import {
   FigureMetaTextView,
   FigureSourceEdit,
   FigureSourceView,
-  FigureBlockEdit,
-  FigureBlockView,
   FigureView,
 } from './components/Figure';
 
-import { chartBuilderRawData, figureBlockData } from './reducers';
+import { ChartView } from './components/Chart/ChartView';
+
+import { AddItemEdit, AddItemView } from './components/AddItem';
+
+import { chartBuilderRawData, addItemBlockData } from './reducers';
 
 const applyConfig = (config) => {
   const defaultOptions = {
@@ -68,17 +70,18 @@ const applyConfig = (config) => {
     edit: FigureSourceEdit,
   };
 
-  config.blocks.blocksConfig.figureBlock = {
+  config.blocks.blocksConfig.addItemBlock = {
     ...defaultOptions,
-    id: 'figureBlock',
-    title: 'Figure Block',
-    view: FigureBlockView,
-    edit: FigureBlockEdit,
+    id: 'addItemBlock',
+    title: 'Add Item Block',
+    view: AddItemView,
+    edit: AddItemEdit,
   };
 
   config.addonReducers.chartBuilderRawData = chartBuilderRawData;
-  config.addonReducers.figureBlockData = figureBlockData;
+  config.addonReducers.addItemBlockData = addItemBlockData;
 
+  config.views.layoutViews.chart_view = ChartView;
   config.views.layoutViews.figure_view = FigureView;
 
   return config;

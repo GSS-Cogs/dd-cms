@@ -4,6 +4,4 @@ export { FigureMetaTextEdit } from './FigureMetaTextEdit';
 export { FigureMetaTextView } from './FigureMetaTextView';
 export { FigureSourceEdit } from './FigureSourceEdit';
 export { FigureSourceView } from './FigureSourceView';
-export { FigureBlockEdit } from './FigureBlockEdit';
-export { FigureBlockView } from './FigureBlockView';
 export { FigureView } from './FigureView';

@@ -12,16 +12,4 @@
     border: 1px solid #f3f2f1;
     background: rgb(245, 245, 245);
   }
-
-  &--chart-one-third #chart-preview {
-    width: 33.333%;
-  }
-
-  &--chart-two-thirds #chart-preview {
-    width: 66.667%;
-  }
-
-  &--chart-full-width #chart-preview {
-    width: 100%;
-  }
 }

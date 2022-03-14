@@ -4,7 +4,10 @@
 
 import { uniq } from 'lodash';
 
-import { GET_CSV_DATA, GET_FIGURE_BLOCK_DATA } from '../constants/ActionTypes';
+import {
+  GET_CSV_DATA,
+  GET_ADD_ITEM_BLOCK_DATA,
+} from '../constants/ActionTypes';
 
 const initialState = new Map();
 
@@ -69,7 +72,7 @@ export function chartBuilderRawData(state = initialState, action = {}) {
   }
 }
 
-const initialFigureBlockDataState = {
+const initialAddItemBlockDataState = {
   error: null,
   items: [],
   data: [],
@@ -78,19 +81,19 @@ const initialFigureBlockDataState = {
   loadedId: null,
 };
 
-export function figureBlockData(
-  state = initialFigureBlockDataState,
+export function addItemBlockData(
+  state = initialAddItemBlockDataState,
   action = {},
 ) {
   switch (action.type) {
-    case `${GET_FIGURE_BLOCK_DATA}_PENDING`:
+    case `${GET_ADD_ITEM_BLOCK_DATA}_PENDING`:
       return {
         ...state,
         error: null,
         loading: true,
         loaded: false,
       };
-    case `${GET_FIGURE_BLOCK_DATA}_SUCCESS`:
+    case `${GET_ADD_ITEM_BLOCK_DATA}_SUCCESS`:
       return {
         ...state,
         error: null,
@@ -98,6 +101,7 @@ export function figureBlockData(
           ...state.data,
           {
             id: action.result['@id'],
+            type: action.result['@type'],
             blocks: action.result.blocks,
             blocks_layout: action.result.blocks_layout,
             Background: action.result.Background,
@@ -106,7 +110,7 @@ export function figureBlockData(
         loaded: true,
         loading: false,
       };
-    case `${GET_FIGURE_BLOCK_DATA}_FAIL`:
+    case `${GET_ADD_ITEM_BLOCK_DATA}_FAIL`:
       return {
         ...state,
         error: action.error,

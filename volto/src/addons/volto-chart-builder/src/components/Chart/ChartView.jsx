@@ -18,42 +18,21 @@ import {
   getBaseUrl,
 } from '@plone/volto/helpers';
 
-import { classes } from '../../utils';
+import './chart.scss';
 
-import { FigureTitleView } from './FigureTitleView';
-
-import './figure.scss';
-
-const messages = defineMessages({
-  unknownBlock: {
-    id: 'Unknown Block',
-    defaultMessage: 'Unknown Block {block}',
-  },
-});
-
-const FigureViewComponent = ({ content, location }) => {
+const ChartViewComponent = ({ content, location }) => {
   const blocksFieldname = getBlocksFieldname(content);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
 
-  const customClasses = classes([
-    {
-      val: content.Background ? content.Background.title : null,
-      prefix: 'figure--bg-',
-    },
-  ]);
-
   return hasBlocksData(content) ? (
-    <div className={`figure ${customClasses}`}>
+    <div className={'chart'}>
       {map(content[blocksLayoutFieldname].items, (block) => {
         const Block =
           config.blocks.blocksConfig[
             content[blocksFieldname]?.[block]?.['@type']
           ]?.['view'] || null;
 
-        const notTitleBlock =
-          content[blocksFieldname]?.[block]?.['@type'] !== 'title';
-
-        return Block !== null && notTitleBlock ? (
+        return Block !== null ? (
           <Block
             key={block}
             id={block}
@@ -65,7 +44,7 @@ const FigureViewComponent = ({ content, location }) => {
       })}
     </div>
   ) : (
-    <div>Add Figure Block</div>
+    <div>Add Chart Block</div>
   );
 };
 
@@ -74,7 +53,7 @@ const FigureViewComponent = ({ content, location }) => {
  * @property {Object} propTypes Property types.
  * @static
  */
-FigureViewComponent.propTypes = {
+ChartViewComponent.propTypes = {
   /**
    * Content of the object
    */
@@ -99,4 +78,4 @@ FigureViewComponent.propTypes = {
   }).isRequired,
 };
 
-export const FigureView = injectIntl(FigureViewComponent);
+export const ChartView = injectIntl(ChartViewComponent);

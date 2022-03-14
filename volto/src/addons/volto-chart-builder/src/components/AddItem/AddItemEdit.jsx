@@ -1,9 +1,9 @@
 import React from 'react';
 import { Segment, Form } from 'semantic-ui-react';
 import { SidebarPortal, Field } from '@plone/volto/components';
-import { FigureBlockView } from './FigureBlockView';
+import { AddItemView } from './AddItemView';
 
-export const FigureBlockEdit = (props) => {
+export const AddItemEdit = (props) => {
   const { selected, onChangeBlock, block, data } = props;
 
   return (
@@ -11,15 +11,15 @@ export const FigureBlockEdit = (props) => {
       <SidebarPortal selected={selected}>
         <Segment.Group raised>
           <header className="header pulled">
-            <h2>Add figure</h2>
+            <h2>Add item</h2>
           </header>
           <Form>
             <Field
-              id="figure"
+              id="item"
               widget="object_browser"
               mode="link"
-              title="Figure"
-              value={data.figure || []}
+              title="Item"
+              value={data.item || []}
               onChange={(id, value) => {
                 onChangeBlock(block, {
                   ...data,
@@ -31,7 +31,7 @@ export const FigureBlockEdit = (props) => {
         </Segment.Group>
       </SidebarPortal>
 
-      <FigureBlockView {...props} />
+      <AddItemView {...props} />
     </div>
   );
 };

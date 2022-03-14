@@ -1,4 +1,7 @@
-import { GET_CSV_DATA, GET_FIGURE_BLOCK_DATA } from '../constants/ActionTypes';
+import {
+  GET_CSV_DATA,
+  GET_ADD_ITEM_BLOCK_DATA,
+} from '../constants/ActionTypes';
 
 export function getCsvData(contentId) {
   return {
@@ -13,9 +16,9 @@ export function getCsvData(contentId) {
   };
 }
 
-export function getFigureBlockData(id) {
+export function getAddItemBlockData(id) {
   return {
-    type: GET_FIGURE_BLOCK_DATA,
+    type: GET_ADD_ITEM_BLOCK_DATA,
     request: {
       op: 'get',
       path: id,
