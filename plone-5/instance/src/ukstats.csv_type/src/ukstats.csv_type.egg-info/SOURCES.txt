@@ -19,7 +19,6 @@ src/ukstats.csv_type.egg-info/requires.txt
 src/ukstats.csv_type.egg-info/top_level.txt
 src/ukstats/csv_type/__init__.py
 src/ukstats/csv_type/configure.zcml
-src/ukstats/csv_type/csv.py
 src/ukstats/csv_type/interfaces.py
 src/ukstats/csv_type/permissions.zcml
 src/ukstats/csv_type/setuphandlers.py
@@ -28,6 +27,9 @@ src/ukstats/csv_type/browser/__init__.py
 src/ukstats/csv_type/browser/configure.zcml
 src/ukstats/csv_type/browser/overrides/.gitkeep
 src/ukstats/csv_type/browser/static/.gitkeep
+src/ukstats/csv_type/content/__init__.py
+src/ukstats/csv_type/content/csv_type.py
+src/ukstats/csv_type/content/csv_type.xml
 src/ukstats/csv_type/locales/README.rst
 src/ukstats/csv_type/locales/__init__.py
 src/ukstats/csv_type/locales/ukstats.csv_type.pot
@@ -40,6 +42,7 @@ src/ukstats/csv_type/profiles/default/catalog.xml
 src/ukstats/csv_type/profiles/default/metadata.xml
 src/ukstats/csv_type/profiles/default/rolemap.xml
 src/ukstats/csv_type/profiles/default/registry/main.xml
+src/ukstats/csv_type/profiles/default/types/csv_type.xml
 src/ukstats/csv_type/profiles/uninstall/browserlayer.xml
 src/ukstats/csv_type/tests/__init__.py
 src/ukstats/csv_type/tests/test_robot.py
