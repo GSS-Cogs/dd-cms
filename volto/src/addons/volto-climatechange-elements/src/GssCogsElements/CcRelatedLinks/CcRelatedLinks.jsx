@@ -3,7 +3,7 @@ import { H3, H4 } from 'govuk-react';
 
 import './RelatedLinks.scss';
 
-export const CcRelatedLinks = ({ properties, limit }) => (
+export const CcRelatedLinks = ({ properties = {}, limit }) => (
   <div className="cc-related-links">
     <H3>Related Links</H3>
     <ul className="cc-related-links--list">
