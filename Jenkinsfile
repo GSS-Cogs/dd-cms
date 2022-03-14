@@ -12,8 +12,12 @@ pipeline {
             }
             steps {
                 dir('volto') {
-                    /* only expecting this to be a soft link from a previous run */
-                    sh "rm -f ${env.WORKSPACE}/volto/node_modules"
+                    /* only expecting this to be a soft link from a previous run
+                       but it could be a dir in existing jenkins workspaces, so
+                       recursively delete it there
+                    */
+                    sh "(test -d ${env.WORKSPACE}/volto/node_modules && rm -rf ${env.WORKSPACE}/volto/node_modules) || true"
+                    sh "(test -f ${env.WORKSPACE}/volto/node_modules && rm -f ${env.WORKSPACE}/volto/node_modules) || true"
                     /* this is a safer version of the git clean, but in Jenkins we have various
                        "dirty" workspaces from before the caching attempts.
                         so leave the git clean in for a bit, and when this is merged, after a while,
@@ -22,7 +26,7 @@ pipeline {
                     sh "git clean -f ${env.WORKSPACE}/volto/src/addons"
                     sh "ln -s /app/node_modules ${env.WORKSPACE}/volto/"
                     sh "for n in \$(find /app/src/addons -type d -mindepth 1 -maxdepth 1); do ln -s \$n ${env.WORKSPACE}/volto/src/addons/\$(basename \$n); done;"
-                    sh "yarn test"
+                    sh "yarn test-ci"
                 }
             }
         }

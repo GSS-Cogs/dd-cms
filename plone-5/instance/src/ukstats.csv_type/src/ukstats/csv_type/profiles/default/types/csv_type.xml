@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    name="article_type"
+    name="csv_type"
     meta_type="Dexterity FTI"
-    i18n:domain="ukstats.article_type">
+    i18n:domain="ukstats.csv_type">
 
   <!-- Basic properties -->
   <property

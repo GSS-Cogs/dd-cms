@@ -1,5 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Field, SidebarPortal } from '@plone/volto/components';
 import { Form, Segment } from 'semantic-ui-react';
 import { useChartContext } from 'chart-builder/src/context/ChartContextProvider';
@@ -8,37 +7,12 @@ import SidePanel from 'chart-builder/src/components/side-panel/SidePanel';
 import ChartPreview from 'chart-builder/src/components/chart-panel/chart-preview/ChartPreview';
 import ChartContext from 'chart-builder/src/context/ChartContext';
 import { NO_FILE_SELECTED_TEXT } from 'chart-builder/src/components/constants/Common-constants';
-import { getCsvData, setLoadedFileId } from '../actions';
-
+import { usePloneCsvData } from '../hooks';
 import debounce from 'lodash.debounce';
 
 const View = () => {
   return <ChartPreview />;
 };
-
-function usePloneCsvData(file_path) {
-  const { validateData } = useContext(ChartContext);
-  const dispatch = useDispatch();
-  const { content, loaded, loadedId } = useSelector(
-    (state) => state.chartBuilderRawData,
-  );
-
-  const file = file_path.length ? file_path[0] : null;
-  const fileId = file?.['@id'];
-
-  useEffect(() => {
-    if (fileId != null) {
-      dispatch(setLoadedFileId(fileId));
-      dispatch(getCsvData(fileId));
-    }
-  }, [fileId, dispatch]);
-
-  useEffect(() => {
-    if (loaded && fileId === loadedId) {
-      validateData(content, loadedId);
-    }
-  }, [content, loaded, loadedId, fileId, validateData]);
-}
 
 const Edit = (props) => {
   const { selected, onChangeBlock, block, data } = props;
