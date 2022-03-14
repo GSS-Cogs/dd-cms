@@ -101,6 +101,9 @@ export function useBlockChartContextState(props) {
     [],
   );
 
+  const [mapData, setMapData] = useVoltoBlockDataState(data, 'mapData', []);
+  const [geoJson, setGeoJson] = useVoltoBlockDataState(data, 'geoJson', []);
+
   // debounce updates to the block state e.g, for text property changes
   // that can change rapidly
   const debouncedOnChangeBlock = useCallback(
@@ -154,6 +157,10 @@ export function useBlockChartContextState(props) {
     setSelectedColumns,
     selectedDimensions,
     setSelectedDimensions,
+    mapData,
+    setMapData,
+    geoJson,
+    setGeoJson,
   };
 }
 
