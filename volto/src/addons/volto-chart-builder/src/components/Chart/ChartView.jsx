@@ -18,6 +18,8 @@ import {
   getBaseUrl,
 } from '@plone/volto/helpers';
 
+import { FigureTitleView } from '../Figure/FigureTitleView';
+
 import './chart.scss';
 
 const ChartViewComponent = ({ content, location }) => {
@@ -27,10 +29,14 @@ const ChartViewComponent = ({ content, location }) => {
   return hasBlocksData(content) ? (
     <div className={'chart'}>
       {map(content[blocksLayoutFieldname].items, (block) => {
-        const Block =
-          config.blocks.blocksConfig[
-            content[blocksFieldname]?.[block]?.['@type']
-          ]?.['view'] || null;
+        const isTitleBlock =
+          content[blocksFieldname]?.[block]?.['@type'] === 'title';
+
+        let Block = isTitleBlock
+          ? (props) => <FigureTitleView {...props} />
+          : config.blocks.blocksConfig[
+              content[blocksFieldname]?.[block]?.['@type']
+            ]?.['view'] || null;
 
         return Block !== null ? (
           <Block

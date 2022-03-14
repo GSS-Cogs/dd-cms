@@ -1,10 +1,10 @@
 import React from 'react';
 import { defaultText } from '../../utils';
 
-export const FigureTitleView = ({ data }) => {
+export const FigureTitleView = (props = {}) => {
   return (
     <h2 className="figure__text govuk-heading-m govuk-!-margin-bottom-7">
-      {defaultText(data.title, 'Add Title')}
+      {defaultText(props.data.title || props.properties.title, 'Add Title')}
     </h2>
   );
 };

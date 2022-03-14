@@ -94,6 +94,7 @@ export function addItemBlockData(
         loaded: false,
       };
     case `${GET_ADD_ITEM_BLOCK_DATA}_SUCCESS`:
+      console.log('action.result', action.result);
       return {
         ...state,
         error: null,
@@ -101,6 +102,7 @@ export function addItemBlockData(
           ...state.data,
           {
             id: action.result['@id'],
+            title: action.result['title'],
             type: action.result['@type'],
             blocks: action.result.blocks,
             blocks_layout: action.result.blocks_layout,

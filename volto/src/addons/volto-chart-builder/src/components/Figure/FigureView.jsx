@@ -45,15 +45,16 @@ const FigureViewComponent = ({ content, location }) => {
   return hasBlocksData(content) ? (
     <div className={`figure ${customClasses}`}>
       {map(content[blocksLayoutFieldname].items, (block) => {
-        const Block =
-          config.blocks.blocksConfig[
-            content[blocksFieldname]?.[block]?.['@type']
-          ]?.['view'] || null;
+        const isTitleBlock =
+          content[blocksFieldname]?.[block]?.['@type'] === 'title';
 
-        const notTitleBlock =
-          content[blocksFieldname]?.[block]?.['@type'] !== 'title';
+        let Block = isTitleBlock
+          ? (props) => <FigureTitleView {...props} />
+          : config.blocks.blocksConfig[
+              content[blocksFieldname]?.[block]?.['@type']
+            ]?.['view'] || null;
 
-        return Block !== null && notTitleBlock ? (
+        return Block !== null ? (
           <Block
             key={block}
             id={block}
