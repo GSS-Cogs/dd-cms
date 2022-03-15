@@ -10,6 +10,7 @@
 !patches
 !public
 !src
+src/addons/chart-builder
 !theme
 !mrs.developer.json
 **/node_modules
