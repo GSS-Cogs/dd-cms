@@ -3,7 +3,7 @@ import { CcHeroHeaderView } from '../CcHeroHeader/CcHeroHeaderView';
 import { DashboardTileView } from '../DashboardTile/DashboardTileView';
 import { TileGroup } from '../DashboardTile/TileGroup';
 import { CcArticleList } from '../CcArticleList/CcArticleList';
-import { RelatedLinks } from '../RelatedLinks/RelatedLinks';
+import { CcRelatedLinks } from '../CcRelatedLinks/CcRelatedLinks';
 
 export const CcV2Overview = () => (
   <div>
@@ -72,7 +72,7 @@ export const CcV2Overview = () => (
           <CcArticleList />
         </div>
         <div className="govuk-grid-column-one-third">
-          <RelatedLinks />
+          <CcRelatedLinks />
         </div>
       </div>
     </div>
