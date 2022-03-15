@@ -9,5 +9,9 @@
       <description/>
       <title>CSV File</title>
     </field>
+    <field name="metadata" type="plone.namedfile.field.NamedBlobFile">
+      <description/>
+      <title>JSON Metadata File</title>
+    </field>
   </schema>
 </model>
