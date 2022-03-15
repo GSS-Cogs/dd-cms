@@ -8,60 +8,63 @@ import { CcV2Overview } from './GssCogsElements/CcV2Preview/CcV2Overview';
 import { CcV2ArticleView } from './GssCogsElements/CcV2Preview/CcV2ArticleView';
 import { CcRelatedLinks } from './GssCogsElements/CcRelatedLinks/CcRelatedLinks';
 
+import { relatedItemsData } from './reducers';
+
 const applyConfig = (config) => {
-    config.blocks.blocksConfig.dashboardTile = {
-        id: 'dashboardTile',
-        title: 'Dashboard Tile',
-        icon: tableSVG,
-        group: 'common',
-        view: DashboardTileView,
-        edit: DashboardTileEdit,
-        restricted: false,
-        mostUsed: true,
-        sidebarTab: 1,
-        security: {
-            addPermission: [],
-            view: [],
-        },
-    };
+  config.blocks.blocksConfig.dashboardTile = {
+    id: 'dashboardTile',
+    title: 'Dashboard Tile',
+    icon: tableSVG,
+    group: 'common',
+    view: DashboardTileView,
+    edit: DashboardTileEdit,
+    restricted: false,
+    mostUsed: true,
+    sidebarTab: 1,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+  };
 
-    config.blocks.blocksConfig.heroHeader = {
-        id: 'heroHeader',
-        title: 'Hero Header',
-        icon: tableSVG,
-        group: 'common',
-        view: CcHeroHeaderView,
-        edit: CcHeroHeaderEdit,
-        restricted: false,
-        mostUsed: true,
-        sidebarTab: 1,
-        security: {
-            addPermission: [],
-            view: [],
-        },
-    };
+  config.blocks.blocksConfig.heroHeader = {
+    id: 'heroHeader',
+    title: 'Hero Header',
+    icon: tableSVG,
+    group: 'common',
+    view: CcHeroHeaderView,
+    edit: CcHeroHeaderEdit,
+    restricted: false,
+    mostUsed: true,
+    sidebarTab: 1,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+  };
 
-    config.blocks.blocksConfig.relatedLinks = {
-        id: 'relatedLinks',
-        title: 'Related Links',
-        icon: globeSVG,
-        group: 'common',
-        view: CcRelatedLinks,
-        edit: CcRelatedLinks,
-        restricted: false,
-        mostUsed: true,
-        sidebarTab: 1,
-        security: {
-            addPermission: [],
-            view: [],
-        },
-    };
+  config.blocks.blocksConfig.relatedLinks = {
+    id: 'relatedLinks',
+    title: 'Related Links',
+    icon: globeSVG,
+    group: 'common',
+    view: CcRelatedLinks,
+    edit: CcRelatedLinks,
+    restricted: false,
+    mostUsed: true,
+    sidebarTab: 1,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+  };
 
-    config.views.layoutViews.cc_preview = CcV2ArticleView;
-    config.views.layoutViews.cc_preview2 = CcV2Overview;
+  config.views.layoutViews.cc_preview = CcV2ArticleView;
+  config.views.layoutViews.cc_preview2 = CcV2Overview;
 
+  config.addonReducers.relatedItemsData = relatedItemsData;
 
-    return config;
+  return config;
 };
 
 export default applyConfig;
