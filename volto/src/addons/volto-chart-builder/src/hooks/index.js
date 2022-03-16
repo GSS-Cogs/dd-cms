@@ -21,6 +21,7 @@ export function usePloneCsvData(plone_ref) {
           break;
         case 'discodataconnector':
         case 'sparql_dataconnector':
+        case 'csv_type':
           dispatch(getChartBuilderData(contentRef['@id'], '@connector-data'));
           break;
       }
@@ -39,6 +40,7 @@ export function usePloneCsvData(plone_ref) {
           break;
         case 'discodataconnector':
         case 'sparql_dataconnector':
+        case 'csv_type':
           importEeaData(content.content, contentRef['@id']);
           break;
       }
