@@ -2,15 +2,12 @@
    If you want to learn more about writing documentation, please check out: http://docs.plone.org/about/documentation_styleguide.html
    This text does not appear on pypi or github. It is a comment.
 
-.. image:: https://github.com/collective/ukstats.csv_type/actions/workflows/plone-package.yml/badge.svg
-    :target: https://github.com/collective/ukstats.csv_type/actions/workflows/plone-package.yml
+.. image:: https://travis-ci.org/collective/ukstats.csv_type.svg?branch=master
+    :target: https://travis-ci.org/collective/ukstats.csv_type
 
-.. image:: https://coveralls.io/repos/github/collective/ukstats.csv_type/badge.svg?branch=main
-    :target: https://coveralls.io/github/collective/ukstats.csv_type?branch=main
+.. image:: https://coveralls.io/repos/github/collective/ukstats.csv_type/badge.svg?branch=master
+    :target: https://coveralls.io/github/collective/ukstats.csv_type?branch=master
     :alt: Coveralls
-
-.. image:: https://codecov.io/gh/collective/ukstats.csv_type/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/collective/ukstats.csv_type
 
 .. image:: https://img.shields.io/pypi/v/ukstats.csv_type.svg
     :target: https://pypi.python.org/pypi/ukstats.csv_type/
@@ -74,20 +71,6 @@ Install ukstats.csv_type by adding it to your buildout::
 
 
 and then running ``bin/buildout``
-
-
-Authors
--------
-
-Provided by awesome people ;)
-
-
-Contributors
-------------
-
-Put your name here, you deserve it!
-
-- ?
 
 
 Contribute

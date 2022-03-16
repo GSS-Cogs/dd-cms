@@ -1,8 +1,4 @@
 # -*- coding: utf-8 -*-
-from plone.app.textfield import RichText
-from plone.supermodel import model
-from zope import schema
-
 """Module where all interfaces, events and exceptions live."""
 
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer

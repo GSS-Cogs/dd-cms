@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
-import os
-import unittest
-
-import robotsuite
 from plone.app.testing import ROBOT_TEST_LEVEL
 from plone.testing import layered
-
 from ukstats.csv_type.testing import UKSTATS_CSV_TYPE_ACCEPTANCE_TESTING  # noqa: E501
+
+import os
+import robotsuite
+import unittest
 
 
 def test_suite():

@@ -6,4 +6,4 @@ Changelog
 ------------------
 
 - Initial release.
-  [anojmperera@gmail.com]
+  [anojmperera]

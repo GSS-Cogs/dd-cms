@@ -2,4 +2,5 @@
 """Init and utils."""
 from zope.i18nmessageid import MessageFactory
 
+
 _ = MessageFactory('ukstats.csv_type')

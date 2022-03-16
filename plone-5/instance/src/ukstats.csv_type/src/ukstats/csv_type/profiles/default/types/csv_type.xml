@@ -10,7 +10,7 @@
       name="title">CSV</property>
   <property
       i18n:translate=""
-      name="description">CSV Content Type</property>
+      name="description">CSV Type for DD-CMS</property>
 
   <property name="allow_discussion">False</property>
   <property name="factory">csv_type</property>

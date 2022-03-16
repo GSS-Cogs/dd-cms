@@ -19,6 +19,7 @@ src/ukstats.csv_type.egg-info/requires.txt
 src/ukstats.csv_type.egg-info/top_level.txt
 src/ukstats/csv_type/__init__.py
 src/ukstats/csv_type/configure.zcml
+src/ukstats/csv_type/csv.py
 src/ukstats/csv_type/interfaces.py
 src/ukstats/csv_type/permissions.zcml
 src/ukstats/csv_type/setuphandlers.py
@@ -41,6 +42,7 @@ src/ukstats/csv_type/profiles/default/browserlayer.xml
 src/ukstats/csv_type/profiles/default/catalog.xml
 src/ukstats/csv_type/profiles/default/metadata.xml
 src/ukstats/csv_type/profiles/default/rolemap.xml
+src/ukstats/csv_type/profiles/default/types.xml
 src/ukstats/csv_type/profiles/default/registry/main.xml
 src/ukstats/csv_type/profiles/default/types/csv_type.xml
 src/ukstats/csv_type/profiles/uninstall/browserlayer.xml

@@ -2,10 +2,10 @@
 from plone.app.contenttypes.testing import PLONE_APP_CONTENTTYPES_FIXTURE
 from plone.app.robotframework.testing import REMOTE_LIBRARY_BUNDLE_FIXTURE
 from plone.app.testing import (
+    applyProfile,
     FunctionalTesting,
     IntegrationTesting,
     PloneSandboxLayer,
-    applyProfile,
 )
 from plone.testing import z2
 

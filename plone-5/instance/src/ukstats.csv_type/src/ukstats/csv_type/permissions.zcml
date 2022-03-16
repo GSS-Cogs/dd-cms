@@ -5,10 +5,7 @@
 
   <configure zcml:condition="installed AccessControl.security">
   <!-- -*- extra stuff goes here -*- -->
-    <permission
-        id="ukstats.csv_type.AddCSVType"
-        title="ukstats.csv_type: Add CSV Type"
-    />
+
 
   </configure>
 

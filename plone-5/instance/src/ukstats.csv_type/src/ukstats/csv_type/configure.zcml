@@ -16,13 +16,12 @@
   <include package=".browser" />
 
   <include file="permissions.zcml" />
-  <!-- <include file="behavior.zcml" /> -->
 
   <genericsetup:registerProfile
       name="default"
-      title="CSV Content Type"
+      title="ukstats.csv_type"
       directory="profiles/default"
-      description="Installs UK Stats CSV content type add-on."
+      description="Installs the ukstats.csv_type add-on."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       post_handler=".setuphandlers.post_install"
       />

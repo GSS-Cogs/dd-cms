@@ -13,15 +13,12 @@ Description: .. This README is meant for consumption by humans and pypi. Pypi ca
            If you want to learn more about writing documentation, please check out: http://docs.plone.org/about/documentation_styleguide.html
            This text does not appear on pypi or github. It is a comment.
         
-        .. image:: https://github.com/collective/ukstats.csv_type/actions/workflows/plone-package.yml/badge.svg
-            :target: https://github.com/collective/ukstats.csv_type/actions/workflows/plone-package.yml
+        .. image:: https://travis-ci.org/collective/ukstats.csv_type.svg?branch=master
+            :target: https://travis-ci.org/collective/ukstats.csv_type
         
-        .. image:: https://coveralls.io/repos/github/collective/ukstats.csv_type/badge.svg?branch=main
-            :target: https://coveralls.io/github/collective/ukstats.csv_type?branch=main
+        .. image:: https://coveralls.io/repos/github/collective/ukstats.csv_type/badge.svg?branch=master
+            :target: https://coveralls.io/github/collective/ukstats.csv_type?branch=master
             :alt: Coveralls
-        
-        .. image:: https://codecov.io/gh/collective/ukstats.csv_type/branch/master/graph/badge.svg
-            :target: https://codecov.io/gh/collective/ukstats.csv_type
         
         .. image:: https://img.shields.io/pypi/v/ukstats.csv_type.svg
             :target: https://pypi.python.org/pypi/ukstats.csv_type/
@@ -87,20 +84,6 @@ Description: .. This README is meant for consumption by humans and pypi. Pypi ca
         and then running ``bin/buildout``
         
         
-        Authors
-        -------
-        
-        Provided by awesome people ;)
-        
-        
-        Contributors
-        ------------
-        
-        Put your name here, you deserve it!
-        
-        - ?
-        
-        
         Contribute
         ----------
         
@@ -136,7 +119,7 @@ Description: .. This README is meant for consumption by humans and pypi. Pypi ca
         ------------------
         
         - Initial release.
-          [anojmperera@gmail.com]
+          [anojmperera]
         
 Keywords: Python Plone CMS
 Platform: UNKNOWN
@@ -144,12 +127,10 @@ Classifier: Environment :: Web Environment
 Classifier: Framework :: Plone
 Classifier: Framework :: Plone :: Addon
 Classifier: Framework :: Plone :: 5.2
-Classifier: Framework :: Plone :: 6.0
 Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
 Classifier: Programming Language :: Python :: 3.7
-Classifier: Programming Language :: Python :: 3.8
-Classifier: Programming Language :: Python :: 3.9
 Classifier: Operating System :: OS Independent
 Classifier: License :: OSI Approved :: GNU General Public License v2 (GPLv2)
-Requires-Python: >=3.7
+Requires-Python: ==2.7, >=3.6
 Provides-Extra: test

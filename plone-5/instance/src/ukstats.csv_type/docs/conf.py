@@ -43,8 +43,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'ukstats.csv_type'
-copyright = u'Anoj Perera (anojmperera@gmail.com)'
-author = u'Anoj Perera (anojmperera@gmail.com)'
+copyright = u'Anoj Perera (anojmperera)'
+author = u'Anoj Perera (anojmperera)'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
