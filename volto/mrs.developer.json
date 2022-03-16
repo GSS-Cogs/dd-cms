@@ -1,6 +1,12 @@
 {
-  "govuk-react-jsx": {
-    "url": "https://github.com/surevine/govuk-react-jsx.git",
-    "branch": "v6.2.1"
+  "volto-climatechange-elements": {
+    "local": "addons/volto-climatechange-elements"
+  },
+  "volto-chart-builder": {
+    "local": "addons/volto-chart-builder"
+  },
+  "chart-builder": {
+    "url": "https://github.com/GSS-Cogs/chart-builder/",
+    "branch": "v0.1.0"
   }
 }

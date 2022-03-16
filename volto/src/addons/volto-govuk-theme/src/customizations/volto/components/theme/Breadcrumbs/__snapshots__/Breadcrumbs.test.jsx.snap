@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
+<div>
+  <div
+    className="Breadcrumbs"
+  >
+    <div
+      className="govuk-breadcrumbs  "
+    >
+      <ol
+        className="govuk-breadcrumbs__list"
+      >
+        <li
+          className="govuk-breadcrumbs__list-item"
+        >
+          <a
+            className="govuk-breadcrumbs__link"
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+        <li
+          className="govuk-breadcrumbs__list-item"
+        >
+          <a
+            className="govuk-breadcrumbs__link"
+            href="/blog"
+          >
+            Blog
+          </a>
+        </li>
+        <li
+          className="govuk-breadcrumbs__list-item"
+        >
+          <a
+            className="govuk-breadcrumbs__link"
+            href="/blog/my-first-blog"
+          >
+            My first blog
+          </a>
+        </li>
+      </ol>
+    </div>
+    <div
+      className="govuk-phase-banner "
+    >
+      <p
+        className="govuk-phase-banner__content"
+      >
+        <strong
+          className="govuk-tag govuk-phase-banner__content__tag "
+        >
+          beta
+        </strong>
+        <span
+          className="govuk-phase-banner__text"
+        >
+          This part of GOV.UK is being rebuilt –
+           
+          <a
+            href="/https://example.com"
+            onClick={[Function]}
+          >
+            find out what that means
+          </a>
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
+`;

@@ -3,6 +3,7 @@
 !babel.config.js
 !jsconfig.json
 !package.json
+!package-cc2.json
 !razzle.config.js
 !yarn.lock
 !locales
@@ -11,3 +12,4 @@
 !src
 !theme
 !mrs.developer.json
+**/node_modules

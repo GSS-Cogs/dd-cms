@@ -1,0 +1,32 @@
+{
+  "google": {
+    "id": 1,
+    "display": {
+      "title": "Google",
+      "cssclasses": {
+        "button": "plone-btn plone-btn-default",
+        "icon": "glypicon glyphicon-google"
+      },
+      "as_form": false
+    },
+    "propertymap": {
+      "email": "email",
+      "link": "home_page",
+      "location": "location",
+      "name": "fullname"
+    },
+    "class_": "authomatic.providers.oauth2.Google",
+    "consumer_key": "{key from https://console.cloud.google.com/apis/credentials}",
+    "consumer_secret": "{secret from https://console.cloud.google.com/apis/credentials}",
+    "scope": [
+      "profile",
+      "email"
+    ],
+    "user_authorization_params": {
+      "hd": "gsscogs.uk"
+    },
+    "access_headers": {
+      "User-Agent": "Plone (pas.plugins.authomatic)"
+    }
+  }
+}

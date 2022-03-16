@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation renders a navigation component without active items 1`] = `
+<nav
+  className="Navigation"
+  id="Navigation"
+>
+  <div
+    className="hamburger-wrapper mobile tablet only"
+  >
+    <button
+      aria-label="Open menu"
+      className="hamburger hamburger--collapse"
+      onClick={[Function]}
+      title="Open menu"
+      type="button"
+    >
+      <span
+        className="hamburger-box"
+      >
+        <span
+          className="hamburger-inner"
+        />
+      </span>
+    </button>
+  </div>
+  <div
+    className="ui pointing secondary stackable computer large screen widescreen only NavigationSideNav menu"
+    id="NavigationSideNav"
+    onClick={[Function]}
+  >
+    <aside>
+      <nav>
+        <ul>
+          <li>
+            <a
+              href="/blog"
+            >
+              Blog
+            </a>
+          </li>
+          <li>
+            <a
+              href="/users"
+            >
+              Users
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+  </div>
+</nav>
+`;
