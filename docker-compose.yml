@@ -14,6 +14,9 @@ services:
             - type: bind
               source: ./plone-5/instance/src/ukstats.article_type
               target: /plone/instance/src/ukstats.article_type
+            - type: bind
+              source: ./plone-5/instance/src/ukstats.csv_type
+              target: /plone/instance/src/ukstats.csv_type
     volto:
         image: node:14
         container_name: dd-cms-frontend
