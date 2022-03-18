@@ -29,15 +29,15 @@ for Mac, or [alternately one can use Homebrew](https://dhwaneetbhatt.com/blog/ru
 to install `hyperkit`, `minikube` and the docker cli commands. Once Docker is installed, the other tools can be installed
 with Homebrew:
 ```bash
-brew install pipenv
-brew install zlib
+brew install pipenv zlib libjpeg
 ```
 
 **Note** you may need to manually adjust LDFLAGS and/or CPPFLAGS to make zlib accessible
 ```
 # zlib
-export LDFLAGS="-L/usr/local/opt/zlib/lib"
-export CPPFLAGS="-I/usr/local/opt/zlib/include"
+ZLIB_BASE=$(brew --prefix zlib)
+export LDFLAGS="-L${ZLIB_BASE}/lib"
+export CPPFLAGS="-I${ZLIB_BASE}/include"
 ```
 
 ## 2. Bootstrap
