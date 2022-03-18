@@ -1,33 +1,23 @@
 import React from 'react';
-import { H1, Paragraph } from 'govuk-react';
+
 import { CcRecentArticles } from '../CcArticleList/CcArticleList';
 import { CcMasthead } from '../CcMasthead/CcMasthead';
-import { FeedSignUps } from '../RelatedLinks/FeedSignUps';
+import { FeedSignUps } from '../CcRelatedLinks/FeedSignUps';
 import './CcArticleHeader.scss';
 
-export const CcArticleHeader = () => {
+export const CcArticleHeader = ({data}) => {
   return (
     <CcMasthead className="cc-masthead-wrapper--article">
       <div className="cc-article-header govuk-width-container">
         <div className="govuk-grid-row">
-          <div className="govuk-grid-column-two-thirds">
-            <H1>
-              The UK’s climate is changing. What is driving this? How is the UK
-              responding?
-            </H1>
-            <Paragraph>
-              The latest report from the Intergovernmental Panel on Climate
-              Change (IPCC), a United Nations body providing science-led
-              comprehensive assessments of climate change science, found that
-              climate change is already happening, with global surface
-              temperatures between 2001 and 2020 around 1°C higher than during
-              1850 to 1900, and that this is having effects across the world and
-              in the UK including making extreme weather events more likely.
-            </Paragraph>
+          <div className="govuk-grid-column-two-thirds govuk-!-padding-right-6">
+            <h1 className="govuk-heading-xl govuk-!-margin-bottom-6">{data.title}</h1>
+            <p className="govuk-caption-m govuk-!-margin-bottom-6">{data.created} by <span className="cc-article-header__date">{data.creators}</span></p>
+            <p className="govuk-body-l">{data.summary}</p>
           </div>
           <div className="govuk-grid-column-one-third">
             <FeedSignUps />
-            <CcRecentArticles />
+            <CcRecentArticles articles={data.relatedItems} />
           </div>
         </div>
       </div>
