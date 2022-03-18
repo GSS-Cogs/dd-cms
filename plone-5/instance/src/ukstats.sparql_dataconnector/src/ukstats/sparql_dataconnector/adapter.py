@@ -7,8 +7,8 @@ from zope.component import adapter
 from zope.interface import implementer
 from zope.publisher.interfaces.browser import IBrowserRequest
 
-from eea.api.dataconnector.interfaces import IConnectorDataProvider, IDataProvider
-from .interfaces import ISPARQLConnectorDataProvider, ISPARQLDataProvider
+from eea.api.dataconnector.interfaces import IDataProvider
+from .interfaces import ISPARQLDataConnector
 from eea.restapi.utils import timing
 
 from SPARQLWrapper import SPARQLWrapper, JSON
@@ -16,8 +16,8 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 logger = logging.getLogger(__name__)
 
 
-@adapter(ISPARQLConnectorDataProvider, IBrowserRequest)
-@implementer(ISPARQLDataProvider)
+@adapter(ISPARQLDataConnector, IBrowserRequest)
+@implementer(IDataProvider)
 class SPARQLDataProviderForConnectors(object):
     """ data provider for connectors """
 

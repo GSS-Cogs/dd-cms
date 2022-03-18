@@ -7,7 +7,7 @@
 
   <i18n:registerTranslations directory="locales" />
 
-<!--  <adapter factory=".adapter.SPARQLDataProviderForConnectors" />-->
+  <adapter factory=".adapter.SPARQLDataProviderForConnectors" />
 
   <include package=".browser" />
 

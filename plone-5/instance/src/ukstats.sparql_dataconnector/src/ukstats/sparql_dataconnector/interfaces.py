@@ -17,7 +17,6 @@ class IUkstatsSparqlDataconnectorLayer(IDefaultBrowserLayer):
     """Marker interface that defines a browser layer."""
 
 
-
 class ISPARQLDataConnector(Container):
     """ Another marker """
 
