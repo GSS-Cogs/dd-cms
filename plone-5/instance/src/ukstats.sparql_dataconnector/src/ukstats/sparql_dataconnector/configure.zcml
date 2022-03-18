@@ -7,11 +7,11 @@
 
   <i18n:registerTranslations directory="locales" />
 
-  <adapter factory=".adapter.SPARQLDataProviderForConnectors" />
+<!--  <adapter factory=".adapter.SPARQLDataProviderForConnectors" />-->
 
   <include package=".browser" />
-  <include package=".api" />
-  <include file="behavior.zcml" />
+
+  <include file="permissions.zcml" />
   <include file="profiles.zcml" />
 
 </configure>

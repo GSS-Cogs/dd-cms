@@ -4,6 +4,7 @@ from plone.app.z3cform.widget import QueryStringFieldWidget
 from plone import schema
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.autoform import directives as form
+from plone.dexterity.content import Container
 from plone.supermodel import model
 from zope.interface import provider
 from zope.interface import Interface
@@ -16,8 +17,12 @@ class IUkstatsSparqlDataconnectorLayer(IDefaultBrowserLayer):
     """Marker interface that defines a browser layer."""
 
 
-@provider(IFormFieldProvider)
-class ISPARQLDataConnector(model.Schema):
+
+class ISPARQLDataConnector(Container):
+    """ Another marker """
+
+
+class ISPARQLDataConnectorSchema(model.Schema):
     """A SPARQL connector"""
 
     endpoint_url = schema.TextLine(
@@ -35,16 +40,3 @@ class ISPARQLDataConnector(model.Schema):
         """
     )
 
-
-class ISPARQLDataProvider(IBasicDataProvider):
-    """An export of data for remote purposes"""
-
-    provided_data = Attribute("Data made available by this data provider")
-
-
-class ISPARQLFileDataProvider(IBasicDataProvider):
-    """Marker interface for objects that provide data to visualizations"""
-
-
-class ISPARQLConnectorDataProvider(IBasicDataProvider):
-    """Marker interface for objects that provide data to visualizations"""
