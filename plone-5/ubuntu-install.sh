@@ -35,7 +35,6 @@ pipenv install SPARQLWrapper
 # cd instance/
 pipenv run buildout -c custom.cfg
 cd ..
-patch -N -r - -s -p0 < sparql-dataconnector.patch
 
 # Tidy Up
 find ../../ -name 'Plone-5.2.5-UnifiedInstaller-1.0*' -exec rm -rf {} \;
