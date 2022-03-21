@@ -8,32 +8,45 @@ Since building Plone is already scripted as a Dockerfile and built as a Docker I
 the configuration and scripts to re-create a local environment that can be used in IntelliJ/PyCharm to run and debug
 our Plone backend.
 
-## Build the local environment
+## 1. Pre-requisites
 
-Firstly, ensure that you have the necessary tools installed: Docker, pipenv, git, patch, sed.
+Firstly, ensure that you have the necessary tools installed: Docker, pipenv, git, patch, sed, zlib.
 
-For Fedora:
+### For Fedora:
 ```bash
 sudo dnf install docker pipenv sed patch git
 ```
 
-For Ubuntu:
+### For Ubuntu:
 ```bash
 sudo apt-get install docker.io build-essential pipenv
 ```
 
-For Mac/OSX, Docker can be installed using the official [Docker Desktop](https://www.docker.com/products/docker-desktop)
+### For Mac/OSX
+
+Docker can be installed using the official [Docker Desktop](https://www.docker.com/products/docker-desktop)
 for Mac, or [alternately one can use Homebrew](https://dhwaneetbhatt.com/blog/run-docker-without-docker-desktop-on-macos)
 to install `hyperkit`, `minikube` and the docker cli commands. Once Docker is installed, the other tools can be installed
 with Homebrew:
 ```bash
-brew install pipenv
+brew install pipenv zlib libjpeg
 ```
 
+**Note** you may need to manually adjust LDFLAGS and/or CPPFLAGS to make zlib accessible
+```
+# zlib
+ZLIB_BASE=$(brew --prefix zlib)
+export LDFLAGS="-L${ZLIB_BASE}/lib"
+export CPPFLAGS="-I${ZLIB_BASE}/include"
+```
+
+## 2. Bootstrap
 Docker is used to extract a baseline `buildout` config. plone will be run in a Pipenv locally.
 
 Finally, run `./bootstrap.sh` to create a local, virtualenv (Pipenv) separate environment with all the right dependencies
 fetched by `buildout` and placed into the `buildout-cache` directory.
+
+## 3. Launch
 
 Once buildout completes, the `instance` directory will contain all necessary dependencies and scripts used to launch
 Plone. This can be launched directly:
@@ -54,7 +67,7 @@ awk 'match($0, /(buildout-cache[^'\'']*)/, a) {print "      <sourceFolder url=\"
 
 ## Known issues
 
-If you've used the `docker-compose` app, the plone container `chown`s 
+If you've used the `docker-compose` app, the plone container `chown`s
 its instance directory to avoid permission problems, including
 any of our `instance/src/` extensions that are mounted into it.
 
