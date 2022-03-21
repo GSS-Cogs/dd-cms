@@ -1,0 +1,14 @@
+--- node_modules/@plone/volto/razzle.config.js	2022-03-17 10:38:19.911000000 +0000
++++ node_modules/@plone/volto/razzle.config.js	2022-03-18 14:41:25.907868249 +0000
+@@ -225,6 +225,11 @@
+   if (packageJson.name !== '@plone/volto') {
+     include.push(fs.realpathSync(`${registry.voltoPath}/src`));
+   }
++
++  if (process.env.ADDONS) {
++    packageJson.addons = process.env.ADDONS.split(';');
++  }
++
+   // Add babel support external (ie. node_modules npm published packages)
+   if (packageJson.addons) {
+     registry.addonNames.forEach((addon) => {
