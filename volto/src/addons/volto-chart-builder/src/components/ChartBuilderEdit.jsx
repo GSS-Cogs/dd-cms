@@ -100,6 +100,11 @@ export function useBlockChartContextState(props) {
     'selectedDimensions',
     [],
   );
+  const [sparqlQuery, setSparqlQuery] = useVoltoBlockDataState(
+    data,
+    'sparqlQuery',
+    '',
+  );
 
   const [mapData, setMapData] = useVoltoBlockDataState(data, 'mapData', []);
   const [geoJson, setGeoJson] = useVoltoBlockDataState(data, 'geoJson', []);
@@ -131,6 +136,7 @@ export function useBlockChartContextState(props) {
         dataSelection: JSON.stringify(dataSelection),
         selectedColumns: JSON.stringify(selectedColumns),
         selectedDimensions: JSON.stringify(selectedDimensions),
+        sparqlQuery: JSON.stringify(sparqlQuery),
       });
     });
   }, [
@@ -142,6 +148,7 @@ export function useBlockChartContextState(props) {
     dataSelection,
     selectedColumns,
     selectedDimensions,
+    sparqlQuery,
   ]);
 
   return {
@@ -161,6 +168,8 @@ export function useBlockChartContextState(props) {
     setMapData,
     geoJson,
     setGeoJson,
+    sparqlQuery,
+    setSparqlQuery,
   };
 }
 
