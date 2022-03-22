@@ -1,17 +1,17 @@
 import {
-  GET_CSV_DATA,
+  GET_CHART_BUILDER_DATA,
   GET_ADD_ITEM_BLOCK_DATA,
 } from '../constants/ActionTypes';
 
-export function getCsvData(contentId) {
+export function getChartBuilderData(contentId, subRoute) {
   return {
-    type: GET_CSV_DATA,
+    type: GET_CHART_BUILDER_DATA,
     payload: {
       contentId,
     },
     request: {
       op: 'get',
-      path: contentId + '/@@download',
+      path: contentId + '/' + subRoute,
     },
   };
 }

@@ -216,13 +216,15 @@ export default compose(
     },
   ]),
   connect(
-    (state, props) => ({
-      pathname: props.location.pathname,
-      token: state.userSession.token,
-      content: state.content.data,
-      apiError: state.apierror.error,
-      connectionRefused: state.apierror.connectionRefused,
-    }),
+    (state, props) => {
+      return {
+        pathname: props.location.pathname,
+        token: state.userSession.token,
+        content: state.content.data,
+        apiError: state.apierror.error,
+        connectionRefused: state.apierror.connectionRefused,
+      }
+    },
     null,
   ),
 )(App);

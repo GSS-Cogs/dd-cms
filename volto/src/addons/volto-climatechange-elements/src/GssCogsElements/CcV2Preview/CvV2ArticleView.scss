@@ -1,0 +1,28 @@
+@import 'govuk-frontend/govuk/all.scss';
+
+.ccv2-article-body {
+  h2 {
+    @extend %govuk-heading-l;
+  }
+
+  h3 {
+    @extend %govuk-heading-m;
+  }
+
+  h4 {
+    @extend %govuk-heading-s;
+  }
+
+  p {
+    @extend %govuk-body-m;
+  }
+
+  a {
+    @extend %govuk-link;
+  }
+
+  ul {
+    @extend %govuk-list;
+    @extend %govuk-list--bullet;
+  }
+}
