@@ -5,7 +5,7 @@
 import { uniq } from 'lodash';
 
 import {
-  GET_CSV_DATA,
+  GET_CHART_BUILDER_DATA,
   GET_ADD_ITEM_BLOCK_DATA,
 } from '../constants/ActionTypes';
 
@@ -16,7 +16,6 @@ const initialEntry = Object.freeze({
   content: [],
   loaded: false,
   loading: false,
-  loadedId: null,
 });
 
 /**
@@ -28,7 +27,7 @@ const initialEntry = Object.freeze({
  */
 export function chartBuilderRawData(state = initialState, action = {}) {
   switch (action.type) {
-    case `${GET_CSV_DATA}_PENDING`:
+    case `${GET_CHART_BUILDER_DATA}_PENDING`:
       return new Map([
         ...state,
         [
@@ -39,7 +38,7 @@ export function chartBuilderRawData(state = initialState, action = {}) {
           },
         ],
       ]);
-    case `${GET_CSV_DATA}_SUCCESS`:
+    case `${GET_CHART_BUILDER_DATA}_SUCCESS`:
       return new Map([
         ...state,
         [
@@ -53,7 +52,7 @@ export function chartBuilderRawData(state = initialState, action = {}) {
           },
         ],
       ]);
-    case `${GET_CSV_DATA}_FAIL`:
+    case `${GET_CHART_BUILDER_DATA}_FAIL`:
       return new Map([
         ...state,
         [
