@@ -1,6 +1,6 @@
 import React from 'react';
-import { Segment, Form } from 'semantic-ui-react';
-import { SidebarPortal, InlineForm, Field } from '@plone/volto/components';
+import { Segment } from 'semantic-ui-react';
+import { SidebarPortal, InlineForm } from '@plone/volto/components';
 import { FigureTitleSchema } from './schema';
 import { FigureTitleView } from './FigureTitleView';
 

@@ -5,9 +5,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { defineMessages, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 
-import { Container, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
 import config from '@plone/volto/registry';
 
@@ -23,13 +22,6 @@ import { classes } from '../../utils';
 import { FigureTitleView } from './FigureTitleView';
 
 import './figure.scss';
-
-const messages = defineMessages({
-  unknownBlock: {
-    id: 'Unknown Block',
-    defaultMessage: 'Unknown Block {block}',
-  },
-});
 
 const FigureViewComponent = ({ content, location }) => {
   const blocksFieldname = getBlocksFieldname(content);
