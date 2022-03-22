@@ -11,7 +11,7 @@ apt-get install -y g++
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt install nodejs
 
-## Install NVM 16
+## Install NVM 0.34.0
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 source ~/.nvm/nvm.sh
 nvm install 14
