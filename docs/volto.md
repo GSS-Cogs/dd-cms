@@ -33,12 +33,14 @@ the addon when it starts.
 Volto also checks for an [`ADDONS` environment var](https://docs.voltocms.com/configuration/environmentvariables/#use-add-ons-via-the-addons-environment-variable), with ";" separated addons, and overrides the value from package.json
 if this env var exists.
 
-We are using this to support multiple concurrent deployments of volto. We include all addons we use in any deployment
-in package.json, so it is present in the docker container, and then use the `ADDONS` env var in the 
-docker-compose project to configure which addons are loaded when volto starts.
+We use this to support concurrent deployments of volto in "prod". We include the addons as package.json 
+or mrs-developer deps, so they are present in every docker container. Then we use an `addons` argument, which is mapped
+to the `ADDONS` env var in the build step for the container, to configure which addons are built with volto.
 
-So during dev for an addon that won't necessarily be used in every instance, you can use a 
-`.env` file to override the addons. There's an example already in the CCv2 components. 
+ADDONS is only supported in volto 14+; we run a patch to make it possible in volto 13.
+
+During dev for an addon that won't necessarily be used in every instance, you can use a local `.env` file to override 
+the addons. There's an example already for the CCv2 components. 
 
 To use it, run `docker-compose --env-file=.env.ccv2 up`
 
