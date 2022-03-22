@@ -1,7 +1,5 @@
 """ adapter module - Based on eea.api.dataconnector add-on"""
 
-import logging
-
 from plone.memoize import ram
 from zope.component import adapter
 from zope.interface import implementer
@@ -13,13 +11,14 @@ from eea.restapi.utils import timing
 
 from SPARQLWrapper import SPARQLWrapper, JSON
 
-logger = logging.getLogger(__name__)
-
 
 @adapter(ISPARQLDataConnector, IBrowserRequest)
 @implementer(IDataProvider)
 class SPARQLDataProviderForConnectors(object):
-    """ data provider for connectors """
+    """
+    queries the SPARQL endpoint and formats the data in a way
+    compatible with the EEAs existing @connector-data route
+    """
 
     def __init__(self, context, request):
         self.context = context
@@ -27,13 +26,8 @@ class SPARQLDataProviderForConnectors(object):
 
     @timing
     def _get_data(self):
-        """_get_data."""
-        # query = urllib.parse.quote_plus(self.query)
         endpoint_url = self.context.endpoint_url
         query = self.context.sparql_query
-
-        print(endpoint_url)
-        print(query)
 
         sparql = SPARQLWrapper(endpoint_url)
         sparql.setQuery(query)
@@ -69,7 +63,6 @@ class SPARQLDataProviderForConnectors(object):
 
         data = self._get_data()
 
-        print("Data before wrangle:", data)
         rotate_data = self.change_orientation(data["results"]["bindings"])
         return rotate_data
 

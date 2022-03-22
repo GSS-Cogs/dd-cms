@@ -14,15 +14,23 @@ from eea.api.dataconnector.interfaces import IBasicDataProvider
 
 
 class IUkstatsSparqlDataconnectorLayer(IDefaultBrowserLayer):
-    """Marker interface that defines a browser layer."""
+    """
+    Marker interface that defines a browser layer.
+    There are no Plone templates for this; it's only editable
+    using the form schema
+    """
 
 
 class ISPARQLDataConnector(Container):
-    """ Another marker """
+    """
+    Marker interface that defines the content type,
+    and allows us to target an adapter to produce
+    @connector-data compatible output.
+    """
 
 
 class ISPARQLDataConnectorSchema(model.Schema):
-    """A SPARQL connector"""
+    """A SPARQL connectors form definition"""
 
     endpoint_url = schema.TextLine(
         title="SPARQL endpoint URL",
