@@ -1,13 +1,14 @@
-from ukstats.csv_type import _
-from plone.supermodel import model
+"""CSV Content Type Schema."""
 from plone.namedfile.field import NamedBlobFile
-from zope import schema
+from plone.supermodel import model
+from ukstats.csv_type import _
 
 
 class ICSV(model.Schema):
-    """A conference program. Programs can contain Sessions."""
+    """Schema for CSV Content Type."""
+
     csv = NamedBlobFile(
-        title=_(u'csv'),
-        description=_(u'Upload your csv file'),
+        title=_("CSV File"),
+        description=_("Upload your csv file"),
         required=True,
     )
