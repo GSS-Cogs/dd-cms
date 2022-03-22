@@ -2,8 +2,6 @@
  * news items reducer.
  */
 
-import { uniq } from 'lodash';
-
 import {
   GET_CSV_DATA,
   GET_ADD_ITEM_BLOCK_DATA,
@@ -72,14 +70,16 @@ export function chartBuilderRawData(state = initialState, action = {}) {
   }
 }
 
-const initialAddItemBlockDataState = {
+const initialAddItemBlockDataState = new Map();
+
+const initialAddItemBlockDataEntry = Object.freeze({
   error: null,
   items: [],
   data: [],
   loaded: false,
   loading: false,
   loadedId: null,
-};
+});
 
 export function addItemBlockData(
   state = initialAddItemBlockDataState,
@@ -87,38 +87,52 @@ export function addItemBlockData(
 ) {
   switch (action.type) {
     case `${GET_ADD_ITEM_BLOCK_DATA}_PENDING`:
-      return {
+      return new Map([
         ...state,
-        error: null,
-        loading: true,
-        loaded: false,
-      };
-    case `${GET_ADD_ITEM_BLOCK_DATA}_SUCCESS`:
-      return {
-        ...state,
-        error: null,
-        data: uniq([
-          ...state.data,
+        [
+          action.payload.contentId,
           {
-            id: action.result['@id'],
-            title: action.result['title'],
-            type: action.result['@type'],
-            blocks: action.result.blocks,
-            blocks_layout: action.result.blocks_layout,
-            Background: action.result.Background,
+            ...initialAddItemBlockDataEntry,
+            loading: true,
           },
-        ]),
-        loaded: true,
-        loading: false,
-      };
-    case `${GET_ADD_ITEM_BLOCK_DATA}_FAIL`:
-      return {
+        ],
+      ]);
+    case `${GET_ADD_ITEM_BLOCK_DATA}_SUCCESS`:
+      return new Map([
         ...state,
-        error: action.error,
-        items: [],
-        loading: false,
-        loaded: false,
-      };
+        [
+          action.payload.contentId,
+          {
+            ...initialAddItemBlockDataEntry,
+            error: null,
+            data: {
+              id: action.result['@id'],
+              title: action.result['title'],
+              type: action.result['@type'],
+              blocks: action.result.blocks,
+              blocks_layout: action.result.blocks_layout,
+              Background: action.result.Background,
+            },
+            loaded: true,
+            loading: false,
+          },
+        ],
+      ]);
+
+    case `${GET_ADD_ITEM_BLOCK_DATA}_FAIL`:
+      return new Map([
+        ...state,
+        [
+          action.payload.contentId,
+          {
+            ...initialAddItemBlockDataEntry,
+            error: action.error,
+            content: [],
+            loading: false,
+            loaded: false,
+          },
+        ],
+      ]);
     default:
       return state;
   }

@@ -7,16 +7,20 @@ import { FigureView } from '../Figure/FigureView';
 import { getAddItemBlockData } from '../../actions';
 
 export const AddItemView = (props) => {
-  const { data } = useSelector((state) => state.addItemBlockData);
   const isItem = props.data.item && props.data.item[0];
   const dispatch = useDispatch();
 
   let content = {};
   let contentType = '';
 
-  if (isItem && data && data.length >= 1) {
-    content =
-      data.filter((item) => item.id === props.data.item[0]['getURL'])[0] || {};
+  const addItemData = useSelector((state) => {
+    return isItem
+      ? state.addItemBlockData.get(props.data.item[0]['@id'])
+      : null;
+  });
+
+  if (isItem && addItemData) {
+    content = addItemData.data;
     contentType = content.type;
   }
 

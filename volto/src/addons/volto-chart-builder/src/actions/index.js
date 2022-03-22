@@ -16,12 +16,15 @@ export function getCsvData(contentId) {
   };
 }
 
-export function getAddItemBlockData(id) {
+export function getAddItemBlockData(contentId) {
   return {
     type: GET_ADD_ITEM_BLOCK_DATA,
+    payload: {
+      contentId,
+    },
     request: {
       op: 'get',
-      path: id,
+      path: contentId,
     },
   };
 }
