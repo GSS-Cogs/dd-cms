@@ -37,5 +37,5 @@ export const AddItemView = (props) => {
 
   const View = ViewBlockMap[contentType];
 
-  return View ? <View content={{ ...content }} /> : <div>Add an item</div>;
+  return View ? <View content={content} /> : <div>Add an item</div>;
 };
