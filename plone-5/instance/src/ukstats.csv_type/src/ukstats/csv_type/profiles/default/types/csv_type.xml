@@ -5,13 +5,6 @@
     i18n:domain="ukstats.csv_type">
 
   <!-- Basic properties -->
-  <property
-      i18n:translate=""
-      name="title">CSV</property>
-  <property
-      i18n:translate=""
-      name="description">CSV Content Type</property>
-
   <property name="allow_discussion">False</property>
   <property name="factory">csv_type</property>
   <property name="icon_expr"></property>
@@ -29,9 +22,9 @@
   <!-- Schema, class and security -->
   <property name="add_permission">ukstats.csv_type.AddCSVType</property>
   <property name="klass">plone.dexterity.content.Container</property>
-  <property name="model_file">ukstats.csv_type.content:csv_type.xml</property>
+  <property name="model_file"></property>
   <property name="model_source"></property>
-  <property name="schema"></property>
+  <property name="schema">ukstats.csv_type.csv.ICSV</property>
 
   <!-- Enabled behaviors -->
   <property name="behaviors" purge="false">
