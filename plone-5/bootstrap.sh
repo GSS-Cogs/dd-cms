@@ -30,4 +30,3 @@ pipenv install requests pip==$PIP setuptools==$SETUPTOOLS zc.buildout==$ZC_BUILD
 cd instance
 pipenv run buildout -c custom.cfg
 cd ..
-patch -N -r - -s -p0 < sparql-dataconnector.patch

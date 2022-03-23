@@ -33,7 +33,7 @@ const Edit = (props) => {
               title="Data file"
               widgetOptions={{
                 pattern_options: {
-                  selectableTypes: ['File', 'discodataconnector'],
+                  selectableTypes: ['File', 'discodataconnector', 'sparql_dataconnector'],
                 }
               }}
               value={data.file_path || []}
