@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Field, SidebarPortal } from '@plone/volto/components';
 import { Form, Segment } from 'semantic-ui-react';
 import { useChartContext } from 'chart-builder/src/context/ChartContextProvider';
-import initialChartState from 'chart-builder/src/context/initialChartState';
+import initialChartProperties from 'chart-builder/src/context/initialChartProperties';
 import SidePanel from 'chart-builder/src/components/side-panel/SidePanel';
 import ChartPreview from 'chart-builder/src/components/chart-panel/chart-preview/ChartPreview';
 import ChartContext from 'chart-builder/src/context/ChartContext';
@@ -31,6 +31,11 @@ const Edit = (props) => {
               widget="object_browser"
               mode="link"
               title="Data file"
+              widgetOptions={{
+                pattern_options: {
+                  selectableTypes: ['File', 'discodataconnector', 'sparql_dataconnector'],
+                }
+              }}
               value={data.file_path || []}
               onChange={(id, value) => {
                 onChangeBlock(block, {
@@ -65,7 +70,6 @@ function useVoltoBlockDataState(data, id, initialValue) {
 export function useBlockChartContextState(props) {
   const { block, data, onChangeBlock } = props;
 
-  const [tidyData, setTidyData] = useVoltoBlockDataState(data, 'tidyData', []);
   const [chartDefinition, setChartDefinition] = useVoltoBlockDataState(
     data,
     'chartDefinition',
@@ -74,27 +78,17 @@ export function useBlockChartContextState(props) {
   const [chartProperties, setChartProperties] = useVoltoBlockDataState(
     data,
     'chartProperties',
-    initialChartState,
+    initialChartProperties,
   );
   const [selectedFilename, setSelectedFilename] = useVoltoBlockDataState(
     data,
     'selectedFilename',
     NO_FILE_SELECTED_TEXT,
   );
-  const [columnNames, setColumnNames] = useVoltoBlockDataState(
-    data,
-    'columnNames',
-    [],
-  );
   const [dataSelection, setDataSelection] = useVoltoBlockDataState(
     data,
     'dataSelection',
     null,
-  );
-  const [availableDimensions, setAvailableDimensions] = useVoltoBlockDataState(
-    data,
-    'availableDimensions',
-    [],
   );
   const [selectedColumns, setSelectedColumns] = useVoltoBlockDataState(
     data,
@@ -106,6 +100,9 @@ export function useBlockChartContextState(props) {
     'selectedDimensions',
     [],
   );
+
+  const [mapData, setMapData] = useVoltoBlockDataState(data, 'mapData', []);
+  const [geoJson, setGeoJson] = useVoltoBlockDataState(data, 'geoJson', []);
 
   // debounce updates to the block state e.g, for text property changes
   // that can change rapidly
@@ -128,13 +125,10 @@ export function useBlockChartContextState(props) {
     debouncedOnChangeBlock(() => {
       onChangeBlock(block, {
         ...data,
-        tidyData: JSON.stringify(tidyData),
         chartDefinition: JSON.stringify(chartDefinition),
         chartProperties: JSON.stringify(chartProperties),
         selectedFilename: JSON.stringify(selectedFilename),
-        columnNames: JSON.stringify(columnNames),
         dataSelection: JSON.stringify(dataSelection),
-        availableDimensions: JSON.stringify(availableDimensions),
         selectedColumns: JSON.stringify(selectedColumns),
         selectedDimensions: JSON.stringify(selectedDimensions),
       });
@@ -142,36 +136,31 @@ export function useBlockChartContextState(props) {
   }, [
     // data, // don't include, we only want to include our changes
     // onChangeBlock, // isn't memoized :(
-    tidyData,
     chartDefinition,
     chartProperties,
     selectedFilename,
-    columnNames,
     dataSelection,
-    availableDimensions,
     selectedColumns,
     selectedDimensions,
   ]);
 
   return {
-    tidyData,
-    setTidyData,
     chartDefinition,
     setChartDefinition,
     chartProperties,
     setChartProperties,
     selectedFilename,
     setSelectedFilename,
-    columnNames,
-    setColumnNames,
     dataSelection,
     setDataSelection,
-    availableDimensions,
-    setAvailableDimensions,
     selectedColumns,
     setSelectedColumns,
     selectedDimensions,
     setSelectedDimensions,
+    mapData,
+    setMapData,
+    geoJson,
+    setGeoJson,
   };
 }
 

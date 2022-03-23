@@ -1,0 +1,32 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="ukstats">
+
+  <five:registerPackage package="." initialize=".initialize" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="ukstats.sparql_dataconnector"
+      directory="profiles/default"
+      description="Installs the ukstats.sparql_dataconnector add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.post_install"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="ukstats.sparql_dataconnector (uninstall)"
+      directory="profiles/uninstall"
+      description="Uninstalls the ukstats.sparql_dataconnector add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.uninstall"
+      />
+
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="ukstats.sparql_dataconnector-hiddenprofiles"
+      />
+
+</configure>

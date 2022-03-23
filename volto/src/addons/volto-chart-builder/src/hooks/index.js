@@ -1,31 +1,47 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import ChartContext from "chart-builder/src/context/ChartContext";
-import { getCsvData } from "../actions";
+import ChartContext from 'chart-builder/src/context/ChartContext';
+import { getChartBuilderData } from '../actions';
 
-export function usePloneCsvData(file_path) {
-  const { validateData } = useContext(ChartContext);
+export function usePloneCsvData(plone_ref) {
+  const { importCsvData, importEeaData } = useContext(ChartContext);
   const dispatch = useDispatch();
 
-  const file = file_path.length ? file_path[0] : null;
-  const fileId = file?.['@id'];
+  const contentRef = plone_ref.length ? plone_ref[0] : null;
 
-  const fileData = useSelector((state) =>
-    state.chartBuilderRawData.get(fileId),
+  const content = useSelector((state) =>
+    contentRef ? state.chartBuilderRawData.get(contentRef['@id']) : null,
   );
 
   useEffect(() => {
-    if (fileId != null) {
-      dispatch(getCsvData(fileId));
-    }
-  }, [fileId, dispatch]);
-
-  useEffect(() => {
-    if (fileData != null) {
-      const { content, loaded } = fileData;
-      if (loaded) {
-        validateData(content, fileId);
+    if (contentRef != null) {
+      switch (contentRef['@type']) {
+        case 'File':
+          dispatch(getChartBuilderData(contentRef['@id'], '@@download'));
+          break;
+        case 'discodataconnector':
+        case 'sparql_dataconnector':
+          dispatch(getChartBuilderData(contentRef['@id'], '@connector-data'));
+          break;
       }
     }
-  }, [fileData, fileId, validateData]);
+  }, [contentRef, dispatch]);
+
+  useEffect(() => {
+    if (
+      content != null &&
+      contentRef != null &&
+      content.loaded
+    ) {
+      switch (contentRef['@type']) {
+        case 'File':
+          importCsvData(content.content, contentRef['@id']);
+          break;
+        case 'discodataconnector':
+        case 'sparql_dataconnector':
+          importEeaData(content.content, contentRef['@id']);
+          break;
+      }
+    }
+  }, [content, contentRef, importCsvData, importEeaData]);
 }

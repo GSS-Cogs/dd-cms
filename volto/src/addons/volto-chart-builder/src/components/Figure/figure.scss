@@ -1,0 +1,15 @@
+.figure {
+  margin-right: 32px;
+  max-width: 1280px;
+  margin-bottom: 32px;
+
+  &__text {
+    width: 66.67%;
+  }
+
+  &--bg-white-smoke {
+    padding: 24px;
+    border: 1px solid #f3f2f1;
+    background: rgb(245, 245, 245);
+  }
+}

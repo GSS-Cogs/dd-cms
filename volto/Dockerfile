@@ -1,5 +1,8 @@
 FROM node:14 as stage1
 
+ARG ADDONS
+ENV ADDONS=$ADDONS
+
 WORKDIR /app
 # restrict files/directories to copy in .dockerignore
 COPY . /app/
