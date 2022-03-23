@@ -61,17 +61,15 @@ module.exports.modifyWebpackConfig = ({
 
     res.plugins = [
       ...res.plugins,
-      new CopyPlugin({
-        patterns: [
-          {
-            from: path.join(
-              __dirname,
-              '/node_modules/govuk-frontend/govuk/assets',
-            ),
-            to: path.join(__dirname, '/public/assets'),
-          },
-        ],
-      }),
+      new CopyPlugin([
+        {
+          from: path.join(
+            __dirname,
+            '/node_modules/govuk-frontend/govuk/assets',
+          ),
+          to: path.join(__dirname, `/${dev ? '' : 'build/'}public/assets`),
+        },
+      ]),
     ];
   }
 
