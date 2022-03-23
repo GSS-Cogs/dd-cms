@@ -19,12 +19,18 @@ volto/node_modules
 volto/omelette
 volto/locales/*.json
 volto/src/addons/*/node_modules/
+volto/src/addons/chart-builder/
 volto/junit.xml
 
 plone-5/buildout-cache/
 plone-5/Pipfile
 plone-5/Pipfile.lock
-plone-5/instance/
 plone-5/*UnifiedInstaller*/
+
 plone-5/plone/tmp/
+
+plone-5/instance/**/*
 !plone-5/instance/custom.cfg
+!plone-5/instance/src/
+!plone-5/instance/src/**/*
+plone-5/instance/**/__pycache__/
