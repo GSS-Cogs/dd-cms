@@ -4,6 +4,7 @@
  */
 
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const jsConfig = require('./jsconfig').compilerOptions;
 
@@ -57,6 +58,19 @@ module.exports.modifyWebpackConfig = ({
         return origExternals(context, request, callback);
       }
     };
+
+    res.plugins = [
+      ...res.plugins,
+      new CopyPlugin([
+        {
+          from: path.join(
+            __dirname,
+            '/node_modules/govuk-frontend/govuk/assets',
+          ),
+          to: path.join(__dirname, `/${dev ? '' : 'build/'}public/assets`),
+        },
+      ]),
+    ];
   }
 
   return res;

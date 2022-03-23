@@ -21,6 +21,7 @@ volto/locales/*.json
 volto/src/addons/*/node_modules/
 volto/src/addons/chart-builder/
 volto/junit.xml
+volto/public/assets
 
 plone-5/buildout-cache/
 plone-5/Pipfile
