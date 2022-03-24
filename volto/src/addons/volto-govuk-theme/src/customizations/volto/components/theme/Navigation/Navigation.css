@@ -45,8 +45,9 @@
   border-left: 4px solid #1d70b8;
 }
 
-#NavigationSideNav {
+.volto-width-container--wide #NavigationSideNav {
   border-bottom: none;
+  margin-top: 0;
 }
 
 @media screen and (max-width: 768px) {

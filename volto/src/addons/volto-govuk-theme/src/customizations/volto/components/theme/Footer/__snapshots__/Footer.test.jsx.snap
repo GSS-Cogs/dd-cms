@@ -7,7 +7,7 @@ exports[`Footer renders a footer component 1`] = `
     role="contentinfo"
   >
     <div
-      class="govuk-width-container "
+      class="govuk-width-container volto-width-container--wide"
     >
       <div
         class="govuk-footer__meta"

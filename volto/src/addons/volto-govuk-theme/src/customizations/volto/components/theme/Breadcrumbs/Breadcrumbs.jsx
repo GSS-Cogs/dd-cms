@@ -69,7 +69,7 @@ class Breadcrumbs extends Component {
 
     return (
       <div>
-        <div className="Breadcrumbs govuk-width-container">
+        <div className="Breadcrumbs volto-width-container--wide">
           {hasBreadcrumbItems && (
             <GovukBreadcrumbs
               items={[

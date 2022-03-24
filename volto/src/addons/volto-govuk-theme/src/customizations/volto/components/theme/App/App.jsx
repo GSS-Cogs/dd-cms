@@ -136,22 +136,24 @@ class App extends Component {
         <Breadcrumbs pathname={path} />
         <MultilingualRedirector pathname={this.props.pathname}>
           <Segment basic className="content-area">
-            <Navigation pathname={this.props.pathname} />
-            <main>
-              <OutdatedBrowser />
-              {this.props.connectionRefused ? (
-                <ConnectionRefusedView />
-              ) : this.state.hasError ? (
-                <Error
-                  message={this.state.error.message}
-                  stackTrace={this.state.errorInfo.componentStack}
-                />
-              ) : (
-                renderRoutes(this.props.route.routes, {
-                  staticContext: this.props.staticContext,
-                })
-              )}
-            </main>
+            <div className="volto-width-container--wide">
+              <Navigation pathname={this.props.pathname} />
+              <main>
+                <OutdatedBrowser />
+                {this.props.connectionRefused ? (
+                  <ConnectionRefusedView />
+                ) : this.state.hasError ? (
+                  <Error
+                    message={this.state.error.message}
+                    stackTrace={this.state.errorInfo.componentStack}
+                  />
+                ) : (
+                  renderRoutes(this.props.route.routes, {
+                    staticContext: this.props.staticContext,
+                  })
+                )}
+              </main>
+            </div>
           </Segment>
         </MultilingualRedirector>
         <Footer />

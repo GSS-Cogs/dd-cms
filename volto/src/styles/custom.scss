@@ -1,3 +1,5 @@
+@import 'govuk-frontend/govuk/all.scss';
+
 #ddcms_login {
   position: absolute;
   top: 10px;
@@ -23,8 +25,12 @@
   }
 }
 
-
 // hide the purple accent line from Volto main headings
 .documentFirstHeading::before {
   border-bottom: none;
+}
+
+.volto-width-container--wide {
+  @include govuk-width-container(1920px);
+  padding: 16px;
 }

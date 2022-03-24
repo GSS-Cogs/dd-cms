@@ -1,15 +1,27 @@
 main {
   display: block;
 }
-.content-area {
-  min-height: 100%;
-  margin: 0 32px;
-  display: grid;
-  grid-template-columns: 256px auto;
-  grid-template-rows: auto;
-  grid-template-areas:
-    "header header"
-    "sidebar main"
-    "footer footer";
-  column-gap: 32px;
+
+/* big landscape tablets, laptops, and desktops */
+@media (min-width: 1025px) {
+
+  .content-area > .volto-width-container--wide {
+    min-height: 100%;
+    display: grid;
+    grid-template-columns: 256px auto;
+    column-gap: 32px;
+  }
+
 }
+
+.volto-width-container--wide .hamburger {
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+}
+
+.ui.segment.content-area {
+  padding: 0;
+  margin: 0;
+}
+
