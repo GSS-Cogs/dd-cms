@@ -6,25 +6,25 @@
  import React from 'react';
  import PropTypes from 'prop-types';
  import { defineMessages, injectIntl } from 'react-intl';
- 
+
  import { Container, Image } from 'semantic-ui-react';
  import { map } from 'lodash';
  import config from '@plone/volto/registry';
- 
+
  import {
    getBlocksFieldname,
    getBlocksLayoutFieldname,
    hasBlocksData,
    getBaseUrl,
  } from '@plone/volto/helpers';
- 
+
  const messages = defineMessages({
    unknownBlock: {
      id: 'Unknown Block',
      defaultMessage: 'Unknown Block {block}',
    },
  });
- 
+
  /**
   * Component to display the default view.
   * @function DefaultView
@@ -34,9 +34,9 @@
  const DefaultView = ({ content, intl, location }) => {
    const blocksFieldname = getBlocksFieldname(content);
    const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
- 
+
    return hasBlocksData(content) ? (
-     <div id="page-document" className="govuk-width-container">
+     <div id="page-document">
        {map(content[blocksLayoutFieldname].items, (block) => {
          const Block =
            config.blocks.blocksConfig[
@@ -88,7 +88,7 @@
      </Container>
    );
  };
- 
+
  /**
   * Property types.
   * @property {Object} propTypes Property types.
@@ -118,6 +118,5 @@
      }),
    }).isRequired,
  };
- 
+
  export default injectIntl(DefaultView);
- 
