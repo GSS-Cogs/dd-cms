@@ -1,8 +1,8 @@
-<?xml version="1.0"?>
-<object name="article_workflow">
-    <bindings>
-        <type type_id="ukstats.article_type.article">
-            <bound-workflow workflow_id="ukstats.article_type.article_workflow"/>
-        </type>
-    </bindings>
+<?xml version="1.0" encoding="utf-8"?>
+<object name="portal_workflow" meta_type="Plone Workflow Tool">
+ <bindings>
+  <type type_id="article_type">
+   <bound-workflow workflow_id="comment_review_workflow"/>
+  </type>
+ </bindings>
 </object>
