@@ -22,3 +22,9 @@
     max-width: 900px;
   }
 }
+
+
+// hide the purple accent line from Volto main headings
+.documentFirstHeading::before {
+  border-bottom: none;
+}
