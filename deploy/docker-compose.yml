@@ -10,6 +10,15 @@ services:
             - cogs_proxy
         restart: always
 
+    plone-cc2:
+        build:
+            context: ../plone-5
+        volumes:
+            - cc2-data:/data:z
+        networks:
+            - cogs_proxy
+        restart: always
+
     volto-v1:
         build:
             context: ../volto
@@ -46,6 +55,7 @@ services:
 
 volumes:
     plone-data:
+    cc2-data:
 
 networks:
     cogs_proxy:
