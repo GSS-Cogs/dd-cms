@@ -16,6 +16,7 @@ import { Footer as GovukFooter } from 'govuk-react-jsx';
 const Footer = ({ intl }) => {
   return (
     <GovukFooter
+      containerClassName="volto-width-container--wide"
       meta={{
         items: [
           {

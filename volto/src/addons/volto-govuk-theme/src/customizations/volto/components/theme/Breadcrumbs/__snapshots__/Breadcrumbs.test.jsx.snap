@@ -3,7 +3,7 @@
 exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
 <div>
   <div
-    className="Breadcrumbs govuk-width-container"
+    className="Breadcrumbs volto-width-container--wide"
   >
     <div
       className="govuk-breadcrumbs  "
