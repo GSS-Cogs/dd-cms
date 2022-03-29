@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { ChartView } from '../Chart/ChartView';
 import { FigureView } from '../Figure/FigureView';
+import { ImageView } from '../Image/ImageView';
 
 import { getAddItemBlockData } from '../../actions';
 
@@ -33,6 +34,7 @@ export const AddItemView = (props) => {
   const ViewBlockMap = {
     chart: ChartView,
     figure: FigureView,
+    Image: ImageView,
   };
 
   const View = ViewBlockMap[contentType];

@@ -117,6 +117,7 @@ export function addItemBlockData(
               blocks: action.result.blocks,
               blocks_layout: action.result.blocks_layout,
               Background: action.result.Background,
+              image: { ...action.result.image },
             },
             loaded: true,
             loading: false,
