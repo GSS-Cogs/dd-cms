@@ -3,3 +3,4 @@ location ~ /api($|/.*) {
   proxy_pass http://plone-cc2:8080;
 }
 rewrite ^(/\+\+plone\+\+static/.*)$ /api/$1 last;
+client_max_body_size 100m;
