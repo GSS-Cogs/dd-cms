@@ -2,6 +2,23 @@ main {
   display: block;
 }
 
+#toolbar .toolbar-actions .govuk-link,
+#toolbar .toolbar-actions .edit.govuk-link,
+#toolbar .toolbar-actions .save.govuk-link,
+#toolbar .toolbar-actions .cancel.govuk-link {
+  color: black;
+}
+
+#toolbar .toolbar .govuk.toolbar-handler button {
+  opacity: 1;
+}
+
+#toolbar .govuk.toolbar-handler button::before,
+#toolbar .govuk.toolbar-handler button.private::before {
+  background-color: #1d70b8;
+  left: 16px;
+}
+
 /* big landscape tablets, laptops, and desktops */
 @media (min-width: 1025px) {
 
