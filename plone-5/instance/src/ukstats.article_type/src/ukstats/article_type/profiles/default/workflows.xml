@@ -10,7 +10,7 @@
 <object name="portal_workflow">
   <bindings>
     <default>
-      <bound-workflow workflow_id="comment_review_workflow"/>
+      <bound-workflow workflow_id="simple_publication_workflow"/>
     </default>
   </bindings>
 </object>
