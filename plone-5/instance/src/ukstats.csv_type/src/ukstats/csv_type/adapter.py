@@ -28,7 +28,6 @@ class DataProviderForCsvws(object):
     @ram.cache(lambda func, self: (self.context.modified(), self.request.form))
     def _provided_data(self):
         """ provided data """
-        print(self.context.csv)
 
         results = {}
         reader = csv.reader(StringIO(self.context.csv.data.decode('utf8')))
