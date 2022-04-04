@@ -26,6 +26,11 @@ export const AddItemEdit = (props) => {
                   [id]: value,
                 });
               }}
+              widgetOptions={{
+                pattern_options: {
+                  selectableTypes: ['chart', 'figure', 'Image'],
+                },
+              }}
             />
           </Form>
         </Segment.Group>

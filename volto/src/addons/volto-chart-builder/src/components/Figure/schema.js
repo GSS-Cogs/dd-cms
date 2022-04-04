@@ -22,7 +22,7 @@ export const FigureTitleSchema = ({ intl }) => ({
 });
 
 export const FigureMetaTextSchema = ({ intl }) => ({
-  title: 'Figure Text',
+  title: 'Figure Meta Text Block',
 
   fieldsets: [
     {
