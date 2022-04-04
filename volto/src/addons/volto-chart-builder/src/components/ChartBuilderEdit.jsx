@@ -48,13 +48,35 @@ const Edit = (props) => {
   );
 };
 
+function migrateFromPropertiesSchemaAndValue(chartPropertiesSchema) {
+  return chartPropertiesSchema.reduce((acc, section) => {
+    acc[section.name] = section.properties.reduce((acc, prop) => {
+      acc[prop.name] = prop.value;
+      return acc;
+    }, {});
+    return acc;
+  }, {});
+}
+
 // try to extract the initialValue for the react state hook
 // from the block config.
 // we store the values in the block config down in the effect
 // in useBlockChartContextState
 function useVoltoBlockDataState(data, id, initialValue) {
   const [value, updater] = useState(() => {
-    return data.hasOwnProperty(id) ? JSON.parse(data[id]) : initialValue;
+    const result = data.hasOwnProperty(id)
+      ? JSON.parse(data[id])
+      : initialValue;
+
+    if (id === 'chartProperties' && Array.isArray(result)) {
+      return migrateFromPropertiesSchemaAndValue(result);
+    }
+
+    if (typeof initialValue === 'function') {
+      return initialValue();
+    }
+
+    return result;
   });
 
   return [value, updater];
@@ -73,7 +95,7 @@ export function useBlockChartContextState(props) {
   const [chartProperties, setChartProperties] = useVoltoBlockDataState(
     data,
     'chartProperties',
-    initialChartProperties,
+    () => getInitialChartProperties(ChartPropertiesSchema),
   );
   const [selectedFilename, setSelectedFilename] = useVoltoBlockDataState(
     data,
