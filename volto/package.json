@@ -21,8 +21,7 @@
   "workspaces": [
     "src/addons/volto-govuk-theme",
     "src/addons/volto-climatechange-elements",
-    "src/addons/volto-chart-builder",
-    "src/addons/chart-builder"
+    "src/addons/volto-chart-builder"
   ],
   "addons": [
     "@eeacms/volto-plotlycharts",
@@ -132,8 +131,10 @@
     "govuk-frontend": "4.0.0",
     "govuk-react": "0.10.0",
     "govuk-react-jsx": "6.2.1",
+    "gss-cogs-chart-builder": "^0.5.6",
     "mrs-developer": "1.6.1",
     "react-helmet": "6.1.0",
+    "react-plotly.js": "^2.5.1",
     "volto-authomatic": "1.0.3",
     "volto-slate": "5.3.3"
   },

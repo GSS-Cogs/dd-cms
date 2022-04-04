@@ -4,9 +4,6 @@
             "volto-climatechange-elements": [
                 "addons/volto-climatechange-elements"
             ],
-            "chart-builder": [
-                "addons/chart-builder"
-            ],
             "volto-chart-builder": [
                 "addons/volto-chart-builder"
             ]
