@@ -43,6 +43,14 @@
       name="ukstats.csv_type-hiddenprofiles"
       />
 
+  <browser:page
+      name="view"
+      for="ukstats.csv_type.ICSV"
+      class="ukstats.csv_type.CSVView"
+      template="templates/csvview.pt"
+      permission="zope2.View"
+      />
+
   <!-- -*- extra stuff goes here -*- -->
 
 </configure>
