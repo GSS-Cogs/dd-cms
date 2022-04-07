@@ -12,3 +12,9 @@ class ICSV(model.Schema):
         description=_("Upload your csv file"),
         required=True,
     )
+
+    json = NamedBlobFile(
+        title=_("JSON Metadata"),
+        description=_("Upload your JSON Metadata file"),
+        required=True,
+    )
