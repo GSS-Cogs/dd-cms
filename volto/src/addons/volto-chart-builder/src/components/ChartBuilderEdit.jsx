@@ -92,7 +92,7 @@ export function useBlockChartContextState(props) {
     'chartDefinition',
     {},
   );
-  const [chartProperties, setChartProperties] = useVoltoBlockDataState(
+  const [chartProperties, setAllChartProperties] = useVoltoBlockDataState(
     data,
     'chartProperties',
     () => getInitialChartProperties(ChartPropertiesSchema),
@@ -167,6 +167,21 @@ export function useBlockChartContextState(props) {
     selectedDimensions,
     sparqlQuery,
   ]);
+
+  const setChartProperties = useCallback(
+    (section, field, value) => {
+      setAllChartProperties((existing) => {
+        return {
+          ...existing,
+          [section]: {
+            ...existing[section],
+            [field]: value,
+          },
+        };
+      });
+    },
+    [setAllChartProperties],
+  );
 
   return {
     chartDefinition,
