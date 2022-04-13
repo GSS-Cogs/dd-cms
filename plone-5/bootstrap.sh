@@ -14,7 +14,7 @@ else
     sed -i 's|var-dir=/data|var-dir=data|;/RelStorage\|psycopg2\|mysqlclient\|cx-Oracle\|ldap/d' instance/buildout.cfg
 fi
 
-pipenv --python 3.8
+pipenv --python 3.9
 
 # preserve my path to reset it after the below...
 mypath=$PATH
@@ -26,7 +26,7 @@ export $(docker inspect --format='{{join .Config.Env " "}}' plone:5.2.5)
 # restore my path variable
 export PATH=$mypath
 
-pipenv install requests pip==$PIP setuptools==$SETUPTOOLS zc.buildout==$ZC_BUILDOUT wheel==$WHEEL SPARQLWrapper
+pipenv install requests==2.27.1 pip==$PIP setuptools==$SETUPTOOLS zc.buildout==$ZC_BUILDOUT wheel==$WHEEL SPARQLWrapper
 cd instance
 pipenv run buildout -c custom.cfg
 cd ..
