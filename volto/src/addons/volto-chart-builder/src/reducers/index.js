@@ -80,26 +80,32 @@ const initialAddItemBlockDataEntry = Object.freeze({
   loadedId: null,
 });
 
+const mapData = (state, newEntry) => {
+  if (state[Symbol.iterator]) {
+    return [...state[Symbol.iterator](), newEntry];
+  }
+
+  return [newEntry];
+};
+
 export function addItemBlockData(
   state = initialAddItemBlockDataState,
   action = {},
 ) {
   switch (action.type) {
     case `${GET_ADD_ITEM_BLOCK_DATA}_PENDING`:
-      return new Map([
-        ...state,
-        [
+      return new Map(
+        mapData(state, [
           action.payload.contentId,
           {
             ...initialAddItemBlockDataEntry,
             loading: true,
           },
-        ],
-      ]);
+        ]),
+      );
     case `${GET_ADD_ITEM_BLOCK_DATA}_SUCCESS`:
-      return new Map([
-        ...state,
-        [
+      return new Map(
+        mapData(state, [
           action.payload.contentId,
           {
             ...initialAddItemBlockDataEntry,
@@ -111,17 +117,17 @@ export function addItemBlockData(
               blocks: action.result.blocks,
               blocks_layout: action.result.blocks_layout,
               Background: action.result.Background,
+              image: { ...action.result.image },
             },
             loaded: true,
             loading: false,
           },
-        ],
-      ]);
+        ]),
+      );
 
     case `${GET_ADD_ITEM_BLOCK_DATA}_FAIL`:
-      return new Map([
-        ...state,
-        [
+      return new Map(
+        mapData(state, [
           action.payload.contentId,
           {
             ...initialAddItemBlockDataEntry,
@@ -130,8 +136,8 @@ export function addItemBlockData(
             loading: false,
             loaded: false,
           },
-        ],
-      ]);
+        ]),
+      );
     default:
       return state;
   }

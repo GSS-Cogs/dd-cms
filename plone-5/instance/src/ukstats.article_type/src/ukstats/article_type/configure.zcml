@@ -19,7 +19,7 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="ukstats.article_type"
+      title="Article Content Type"
       directory="profiles/default"
       description="Installs the ukstats.dev Article content type."
       provides="Products.GenericSetup.interfaces.EXTENSION"
