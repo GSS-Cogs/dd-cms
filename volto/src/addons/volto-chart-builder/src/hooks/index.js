@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import ChartContext from 'chart-builder/src/context/ChartContext';
+import { ChartContext } from 'gss-cogs-chart-builder';
 import { getChartBuilderData } from '../actions';
 
 export function usePloneCsvData(plone_ref) {
