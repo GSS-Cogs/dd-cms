@@ -35,7 +35,7 @@ class ISPARQLDataConnectorSchema(model.Schema):
     endpoint_url = schema.TextLine(
         title="SPARQL endpoint URL",
         required=True,
-        default="http://dbpedia.org/sparql",
+        default="https://beta.gss-data.org.uk/sparql",
     )
     sparql_query = schema.Text(
         title="SPARQL Query",
