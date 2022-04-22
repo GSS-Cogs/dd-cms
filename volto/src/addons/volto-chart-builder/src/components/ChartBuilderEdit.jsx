@@ -1,12 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Field, SidebarPortal } from '@plone/volto/components';
 import { Form, Segment } from 'semantic-ui-react';
-import { useChartContext } from 'chart-builder/src/context/ChartContextProvider';
-import initialChartProperties from 'chart-builder/src/context/initialChartProperties';
-import SidePanel from 'chart-builder/src/components/side-panel/SidePanel';
-import ChartPreview from 'chart-builder/src/components/chart-panel/chart-preview/ChartPreview';
-import ChartContext from 'chart-builder/src/context/ChartContext';
-import { NO_FILE_SELECTED_TEXT } from 'chart-builder/src/components/constants/Common-constants';
+import { ChartContext, ChartPreview, getInitialChartProperties, ChartPropertiesSchema, SidePanel, useChartContext } from 'gss-cogs-chart-builder';
 import { usePloneCsvData } from '../hooks';
 import debounce from 'lodash.debounce';
 
@@ -53,13 +48,35 @@ const Edit = (props) => {
   );
 };
 
+function migrateFromPropertiesSchemaAndValue(chartPropertiesSchema) {
+  return chartPropertiesSchema.reduce((acc, section) => {
+    acc[section.name] = section.properties.reduce((acc, prop) => {
+      acc[prop.name] = prop.value;
+      return acc;
+    }, {});
+    return acc;
+  }, {});
+}
+
 // try to extract the initialValue for the react state hook
 // from the block config.
 // we store the values in the block config down in the effect
 // in useBlockChartContextState
 function useVoltoBlockDataState(data, id, initialValue) {
   const [value, updater] = useState(() => {
-    return data.hasOwnProperty(id) ? JSON.parse(data[id]) : initialValue;
+    const result = data.hasOwnProperty(id)
+      ? JSON.parse(data[id])
+      : initialValue;
+
+    if (id === 'chartProperties' && Array.isArray(result)) {
+      return migrateFromPropertiesSchemaAndValue(result);
+    }
+
+    if (typeof initialValue === 'function') {
+      return initialValue();
+    }
+
+    return result;
   });
 
   return [value, updater];
@@ -75,15 +92,15 @@ export function useBlockChartContextState(props) {
     'chartDefinition',
     {},
   );
-  const [chartProperties, setChartProperties] = useVoltoBlockDataState(
+  const [chartProperties, setAllChartProperties] = useVoltoBlockDataState(
     data,
     'chartProperties',
-    initialChartProperties,
+    () => getInitialChartProperties(ChartPropertiesSchema),
   );
   const [selectedFilename, setSelectedFilename] = useVoltoBlockDataState(
     data,
     'selectedFilename',
-    NO_FILE_SELECTED_TEXT,
+    'No file selected',
   );
   const [dataSelection, setDataSelection] = useVoltoBlockDataState(
     data,
@@ -150,6 +167,21 @@ export function useBlockChartContextState(props) {
     selectedDimensions,
     sparqlQuery,
   ]);
+
+  const setChartProperties = useCallback(
+    (section, field, value) => {
+      setAllChartProperties((existing) => {
+        return {
+          ...existing,
+          [section]: {
+            ...existing[section],
+            [field]: value,
+          },
+        };
+      });
+    },
+    [setAllChartProperties],
+  );
 
   return {
     chartDefinition,

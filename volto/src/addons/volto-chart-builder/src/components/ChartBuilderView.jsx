@@ -1,5 +1,6 @@
 import React from 'react';
-import { ActualChart } from 'chart-builder/src/components/chart-panel/chart-preview/ChartPreview';
+import { ActualChart } from 'gss-cogs-chart-builder';
+import 'gss-cogs-chart-builder/gss-cogs-chart-builder.css';
 
 export const ChartBuilderView = ({ data }) => {
   if (!data.chartDefinition) return null;
