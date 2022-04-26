@@ -18,6 +18,8 @@
   <include file="permissions.zcml" />
   <!-- <include file="behavior.zcml" /> -->
 
+    <adapter factory=".adapter.DataProviderForCsvws" />
+
   <genericsetup:registerProfile
       name="default"
       title="CSV Content Type"

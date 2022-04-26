@@ -36,6 +36,7 @@ src/ukstats/article_type/locales/__init__.py
 src/ukstats/article_type/locales/ukstats.article_type.pot
 src/ukstats/article_type/locales/update.py
 src/ukstats/article_type/locales/update.sh
+src/ukstats/article_type/locales/en/LC_MESSAGES/ukstats.article_type.mo
 src/ukstats/article_type/locales/en/LC_MESSAGES/ukstats.article_type.po
 src/ukstats/article_type/profiles/default/browserlayer.xml
 src/ukstats/article_type/profiles/default/catalog.xml
