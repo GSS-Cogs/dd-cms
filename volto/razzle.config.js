@@ -73,13 +73,6 @@ module.exports.modifyWebpackConfig = ({
     ];
   }
 
-  // alias for gss-cogs-chart-builder that means we can keep our imports looking
-  // like they use an npm package, while still retaining the mrsdev approach for now.
-  // these will both need to be dropped when we actually switch to chart-builder as a
-  // package.json dependency.
-  res.resolve.alias['gss-cogs-chart-builder/gss-cogs-chart-builder.css'] = path.resolve(__dirname, 'src/addons/volto-chart-builder/dev.css');
-  res.resolve.alias['gss-cogs-chart-builder'] = path.resolve(__dirname, 'src/addons/chart-builder/src/library.js');
-
   return res;
 };
 
