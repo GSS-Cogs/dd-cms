@@ -47,15 +47,17 @@ setup(
     package_dir={"": "src"},
     include_package_data=True,
     zip_safe=False,
-    python_requires=">=3.7",
+    python_requires=">=3.9",
     install_requires=[
         "setuptools",
         # -*- Extra requirements: -*-
         "z3c.jbot",
         "plone.api>=1.8.4",
         "plone.app.dexterity",
-        'plone.namedfile',
-        'plone.formwidget.namedfile',
+        "plone.namedfile",
+        "plone.formwidget.namedfile",
+        "csvcubed",
+        "csvcubed-models",
     ],
     extras_require={
         "test": [
