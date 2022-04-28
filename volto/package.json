@@ -132,6 +132,7 @@
     "govuk-react-jsx": "6.2.1",
     "mrs-developer": "1.6.1",
     "react-helmet": "6.1.0",
+    "styled-components": "5.3.5",
     "volto-authomatic": "1.0.3",
     "volto-slate": "5.3.3"
   },
