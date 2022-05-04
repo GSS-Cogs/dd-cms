@@ -64,7 +64,7 @@ export class Anontools extends Component {
       </Link>
     ) : (
       <Link
-        aria-label="logout"
+        aria-label="login"
         to={`/logout${
           this.props.content
             ? `?return_url=${this.props.content['@id'].replace(
@@ -73,7 +73,7 @@ export class Anontools extends Component {
               )}`
             : ''
         }`}
-        id="ddcms_logout"
+        id="ddcms_login"
       >
         <Button className="govuk-!-margin-0">Log out</Button>
       </Link>
