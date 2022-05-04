@@ -9,10 +9,10 @@ import Anontools from './Anontools';
 const mockStore = configureStore();
 
 describe('Anontools', () => {
-  it('should not render an anontools component when a token is specified', () => {
+  it('should render an anontools component when a token is specified to logout', () => {
     const store = mockStore({
       userSession: { token: '1234' },
-      content: { data: {} },
+      content: { data: { '@id': 'myid' } },
       intl: {
         locale: 'en',
         messages: {},
