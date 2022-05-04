@@ -64,7 +64,7 @@ export class Anontools extends Component {
       </Link>
     ) : (
       <Link
-        aria-label="login"
+        aria-label="logout"
         to={`/logout${
           this.props.content
             ? `?return_url=${this.props.content['@id'].replace(
