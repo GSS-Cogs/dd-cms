@@ -50,7 +50,7 @@ class Footer extends Component {
     const returnUrl = this.props.content
       ? `?return_url=${this.props.content['@id'].replace(settings.apiPath, '')}`
       : '';
-    console.log('This is here');
+
     if (this.props.token) {
       items = [
         {
@@ -69,8 +69,8 @@ class Footer extends Component {
     } else {
       items = [
         {
-          children: 'Item 1',
-          href: '/',
+          children: 'Log In',
+          href: '/login${returnUrl}',
         },
         {
           children: 'Item 2',
