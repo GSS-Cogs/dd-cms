@@ -3,11 +3,7 @@
  * @module components/theme/Footer/Footer
  */
 
-<<<<<<< HEAD
 import React, { Component } from 'react';
-=======
-import React, {Component} from 'react';
->>>>>>> e750bb3510bfdbdc86bbcb4feafd6de20210f773
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import config from '@plone/volto/registry';
@@ -63,14 +59,14 @@ class Footer extends Component {
         },
         {
           children: 'Item 3',
-          href: '/',
+          href: '#',
         },
       ];
     } else {
       items = [
         {
           children: 'Log In',
-          href: '/login${returnUrl}',
+          href: `/login${returnUrl}`,
         },
         {
           children: 'Item 2',
@@ -78,7 +74,7 @@ class Footer extends Component {
         },
         {
           children: 'Item 3',
-          href: '/',
+          href: '#',
         },
       ];
     }
