@@ -3,19 +3,19 @@
  * @module components/theme/Footer/Footer
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import config from '@plone/volto/registry';
 import { Footer as GovukFooter } from 'govuk-react-jsx';
+import './Footer.css';
 
 /**
  * Component to display the footer.
  * @class Footer
  * @extends Component
  */
-export class Footer extends Component {
-
+class Footer extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -27,7 +27,6 @@ export class Footer extends Component {
       '@id': PropTypes.string,
     }),
   };
-
 
   /**
    * Default properties.
@@ -45,48 +44,46 @@ export class Footer extends Component {
     const { settings } = config;
     let items = [];
     const returnUrl = this.props.content
-      ? `?return_url=${this.props.content['@id'].replace(
-        settings.apiPath,
-        '',
-      )}`
-      : ''
+      ? `?return_url=${this.props.content['@id'].replace(settings.apiPath, '')}`
+      : '';
+    console.log('This is here');
     if (this.props.token) {
-      items =
-        [{
+      items = [
+        {
           children: 'Log Out',
-          href: `/logout${returnUrl}`
+          href: `/logout${returnUrl}`,
         },
         {
           children: 'Item 2',
-          href: '/footer-meta-item-2'
+          href: '/footer-meta-item-2',
         },
         {
           children: 'Item 3',
-          href: '/'
-        }
-        ];
+          href: '/',
+        },
+      ];
     } else {
-      items =
-        [{
+      items = [
+        {
           children: 'Item 1',
-          href: '/'
+          href: '/',
         },
         {
           children: 'Item 2',
-          href: '/footer-meta-item-2'
+          href: '/footer-meta-item-2',
         },
         {
           children: 'Item 3',
-          href: '/'
-        }
-        ];
+          href: '/',
+        },
+      ];
     }
     return (
       <GovukFooter
         containerClassName="volto-width-container--wide"
         meta={{
           items,
-          visuallyHiddenTitle: 'Support links'
+          visuallyHiddenTitle: 'Support links',
         }}
       />
     );
