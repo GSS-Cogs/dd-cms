@@ -22,6 +22,7 @@ src/ukstats/article_type/article.py
 src/ukstats/article_type/configure.zcml
 src/ukstats/article_type/interfaces.py
 src/ukstats/article_type/permissions.zcml
+src/ukstats/article_type/reviewers.py
 src/ukstats/article_type/setuphandlers.py
 src/ukstats/article_type/testing.py
 src/ukstats/article_type/browser/__init__.py
@@ -43,6 +44,7 @@ src/ukstats/article_type/profiles/default/catalog.xml
 src/ukstats/article_type/profiles/default/metadata.xml
 src/ukstats/article_type/profiles/default/rolemap.xml
 src/ukstats/article_type/profiles/default/types.xml
+src/ukstats/article_type/profiles/default/workflows.xml
 src/ukstats/article_type/profiles/default/registry/main.xml
 src/ukstats/article_type/profiles/default/types/article_type.xml
 src/ukstats/article_type/profiles/uninstall/browserlayer.xml

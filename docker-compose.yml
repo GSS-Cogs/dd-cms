@@ -20,22 +20,22 @@ services:
             - type: bind
               source: ./plone-5/instance/src/ukstats.sparql_dataconnector
               target: /plone/instance/src/ukstats.sparql_dataconnector
-    volto:
-        image: node:14
-        container_name: dd-cms-frontend
-        user: 'node'
-        working_dir: /home/node/app
-        volumes:
-            - type: bind
-              source: ./volto/
-              target: /home/node/app
-        environment:
-            - RAZZLE_DEV_PROXY_API_PATH=http://plone:8080/Plone
-            - "ADDONS=${ADDONS-}"
-        ports:
-            - "127.0.0.1:3000:3000"
-            - "127.0.0.1:3001:3001"
-        command: 'bash -c "yarn global add mrs-developer && yarn develop && yarn install && yarn start"'
+    # volto:
+    #     image: node:14
+    #     container_name: dd-cms-frontend
+    #     user: 'node'
+    #     working_dir: /home/node/app
+    #     volumes:
+    #         - type: bind
+    #           source: ./volto/
+    #           target: /home/node/app
+    #     environment:
+    #         - RAZZLE_DEV_PROXY_API_PATH=http://plone:8080/Plone
+    #         - "ADDONS=${ADDONS-}"
+    #     ports:
+    #         - "127.0.0.1:3000:3000"
+    #         - "127.0.0.1:3001:3001"
+    #     command: 'bash -c "yarn global add mrs-developer && yarn develop && yarn install && yarn start"'
 
 volumes:
     plone-data: ~

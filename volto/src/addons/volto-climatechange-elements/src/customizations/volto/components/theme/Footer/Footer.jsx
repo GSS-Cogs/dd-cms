@@ -3,7 +3,11 @@
  * @module components/theme/Footer/Footer
  */
 
+<<<<<<< HEAD
 import React, { Component } from 'react';
+=======
+import React, {Component} from 'react';
+>>>>>>> e750bb3510bfdbdc86bbcb4feafd6de20210f773
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import config from '@plone/volto/registry';
