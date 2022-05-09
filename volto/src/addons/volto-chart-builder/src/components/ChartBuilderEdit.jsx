@@ -48,10 +48,13 @@ const Edit = (props) => {
   );
 };
 
-function migrateFromPropertiesSchemaAndValue(chartPropertiesSchema) {
-  return chartPropertiesSchema.reduce((acc, section) => {
+function migrateFromPropertiesSchemaAndValue(storedSchema) {
+  return ChartPropertiesSchema.reduce((acc, section) => {
+    const storedSection = storedSchema.find(x => x.name.toLowerCase() === section.name.toLowerCase());
     acc[section.name] = section.properties.reduce((acc, prop) => {
-      acc[prop.name] = prop.value;
+      const storedValue = storedSection?.properties?.find(x => x.name.toLowerCase() === prop.name.toLowerCase());
+      // if (!storedValue) console.warn('Did not find', section.name, prop.name);
+      acc[prop.name] = storedValue ? storedValue.value : prop.defaultValue;
       return acc;
     }, {});
     return acc;
