@@ -43,9 +43,16 @@ class Footer extends Component {
   render() {
     const { settings } = config;
     let items = [];
-    const returnUrl = this.props.content
-      ? `?return_url=${this.props.content['@id'].replace(settings.apiPath, '')}`
-      : '';
+
+    let returnUrl;
+    if (this.props.content && this.props.content['@id']) {
+      returnUrl = `?return_url=${this.props.content['@id'].replace(
+        settings.apiPath,
+        '',
+      )}`;
+    } else {
+      returnUrl = '';
+    }
 
     if (this.props.token) {
       items = [
