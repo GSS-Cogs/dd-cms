@@ -53,24 +53,6 @@ services:
             - cogs_proxy
         restart: always
 
-    volto-review:
-        build:
-            context: ../volto
-            args:
-                ADDONS: "@eeacms/volto-plotlycharts;@eeacms/volto-datablocks;@eeacms/volto-columns-block;volto-slate:asDefault;volto-govuk-theme;volto-chart-builder"
-        environment:
-            - RAZZLE_API_PATH=https://climate-review.ukstats.dev/api
-            - NODE_ENV=production
-            - VIRTUAL_HOST=climate-review.ukstats.dev
-            - VIRTUAL_PORT=3000
-            - LETSENCRYPT_HOST=climate-review.ukstats.dev
-        command: "yarn start:prod"
-        init: true
-        networks:
-            - cogs_proxy
-        restart: always
-
-
 volumes:
     plone-data:
     cc2-data:
