@@ -4,8 +4,10 @@ import { ChartContext } from 'gss-cogs-chart-builder';
 import { getChartBuilderData } from '../actions';
 
 export function usePloneCsvData(plone_ref) {
-  const { importCsvData, importEeaData } = useContext(ChartContext);
+  const { importCsvData, importEeaData, chartProperties, loadMapData } = useContext(ChartContext);
   const dispatch = useDispatch();
+
+  const chartType = chartProperties?.chartTypes?.chartType;
 
   const contentRef = plone_ref.length ? plone_ref[0] : null;
 
@@ -34,16 +36,20 @@ export function usePloneCsvData(plone_ref) {
       contentRef != null &&
       content.loaded
     ) {
-      switch (contentRef['@type']) {
-        case 'File':
-          importCsvData(content.content, contentRef['@id']);
-          break;
-        case 'discodataconnector':
-        case 'sparql_dataconnector':
-        case 'csv_type':
-          importEeaData(content.content, contentRef['@id']);
-          break;
+      if (chartType === 'Map') {
+        loadMapData(content.content.data);
+      } else {
+        switch (contentRef['@type']) {
+          case 'File':
+            importCsvData(content.content, contentRef['@id']);
+            break;
+          case 'discodataconnector':
+          case 'sparql_dataconnector':
+          case 'csv_type':
+            importEeaData(content.content, contentRef['@id']);
+            break;
+        }
       }
     }
-  }, [content, contentRef, importCsvData, importEeaData]);
+  }, [content, contentRef, importCsvData, importEeaData, loadMapData, chartType]);
 }
