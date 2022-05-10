@@ -18,6 +18,7 @@ src/ukstats.csv_type.egg-info/not-zip-safe
 src/ukstats.csv_type.egg-info/requires.txt
 src/ukstats.csv_type.egg-info/top_level.txt
 src/ukstats/csv_type/__init__.py
+src/ukstats/csv_type/adapter.py
 src/ukstats/csv_type/configure.zcml
 src/ukstats/csv_type/csv.py
 src/ukstats/csv_type/interfaces.py
@@ -28,9 +29,7 @@ src/ukstats/csv_type/browser/__init__.py
 src/ukstats/csv_type/browser/configure.zcml
 src/ukstats/csv_type/browser/overrides/.gitkeep
 src/ukstats/csv_type/browser/static/.gitkeep
-src/ukstats/csv_type/content/__init__.py
 src/ukstats/csv_type/content/csv_type.py
-src/ukstats/csv_type/content/csv_type.xml
 src/ukstats/csv_type/locales/README.rst
 src/ukstats/csv_type/locales/__init__.py
 src/ukstats/csv_type/locales/ukstats.csv_type.pot
