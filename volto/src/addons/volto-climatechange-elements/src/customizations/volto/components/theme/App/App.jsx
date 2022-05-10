@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { asyncConnect } from '@plone/volto/helpers';
-import { Segment } from 'semantic-ui-react';
 import { renderRoutes } from 'react-router-config';
 import { Slide, ToastContainer, toast } from 'react-toastify';
 import split from 'lodash/split';
@@ -24,13 +23,12 @@ import './App.css';
 import {
   AppExtras,
   Breadcrumbs,
-  Footer,
   Header,
   Icon,
-  Navigation,
   OutdatedBrowser,
   SkipLinks,
 } from '@plone/volto/components';
+import Footer from '../Footer/Footer';
 import { BodyClass, getBaseUrl, getView, isCmsUi } from '@plone/volto/helpers';
 import {
   getBreadcrumbs,
@@ -104,7 +102,6 @@ class App extends Component {
     const action = getView(this.props.pathname);
     const isCmsUI = isCmsUi(this.props.pathname);
     const ConnectionRefusedView = views.errorViews.ECONNREFUSED;
-
     return (
       <PluggablesProvider>
         <BodyClass className={`view-${action}view`} />
@@ -215,16 +212,13 @@ export default compose(
         __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
     },
   ]),
-  connect(
-    (state, props) => {
-      return {
-        pathname: props.location.pathname,
-        token: state.userSession.token,
-        content: state.content.data,
-        apiError: state.apierror.error,
-        connectionRefused: state.apierror.connectionRefused,
-      }
-    },
-    null,
-  ),
+  connect((state, props) => {
+    return {
+      pathname: props.location.pathname,
+      token: state.userSession.token,
+      content: state.content.data,
+      apiError: state.apierror.error,
+      connectionRefused: state.apierror.connectionRefused,
+    };
+  }, null),
 )(App);

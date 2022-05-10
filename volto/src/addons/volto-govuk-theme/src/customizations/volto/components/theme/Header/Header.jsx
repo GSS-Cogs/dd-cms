@@ -46,7 +46,7 @@ class Header extends Component {
           navigationClassName="govuk-!-padding-left-0"
           navigation={[
             {
-              children: !this.props.token && <Anontools />,
+              children: <Anontools />,
             },
           ]}
           serviceName="GOV.UK Open Data"
