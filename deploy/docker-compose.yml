@@ -42,34 +42,16 @@ services:
             args:
                 ADDONS: "@eeacms/volto-datablocks;@eeacms/volto-columns-block;volto-slate:asDefault;volto-authomatic;volto-govuk-theme;volto-chart-builder;volto-climatechange-elements"
         environment:
-            - RAZZLE_API_PATH=https://climate-2.ukstats.dev/api
+            - RAZZLE_API_PATH=https://staging.climate-change.data.gov.uk/api
             - NODE_ENV=production
-            - VIRTUAL_HOST=climate-2.ukstats.dev
+            - VIRTUAL_HOST=staging.climate-change.data.gov.uk
             - VIRTUAL_PORT=3000
-            - LETSENCRYPT_HOST=climate-2.ukstats.dev
+            - LETSENCRYPT_HOST=staging.climate-change.data.gov.uk
         command: "yarn start:prod"
         init: true
         networks:
             - cogs_proxy
         restart: always
-
-    volto-review:
-        build:
-            context: ../volto
-            args:
-                ADDONS: "@eeacms/volto-plotlycharts;@eeacms/volto-datablocks;@eeacms/volto-columns-block;volto-slate:asDefault;volto-govuk-theme;volto-chart-builder"
-        environment:
-            - RAZZLE_API_PATH=https://climate-review.ukstats.dev/api
-            - NODE_ENV=production
-            - VIRTUAL_HOST=climate-review.ukstats.dev
-            - VIRTUAL_PORT=3000
-            - LETSENCRYPT_HOST=climate-review.ukstats.dev
-        command: "yarn start:prod"
-        init: true
-        networks:
-            - cogs_proxy
-        restart: always
-
 
 volumes:
     plone-data:

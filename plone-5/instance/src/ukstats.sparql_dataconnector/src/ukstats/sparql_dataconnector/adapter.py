@@ -39,7 +39,6 @@ class SPARQLDataProviderForConnectors(object):
 
     def change_orientation(self, data):
         """ change orientation """
-        print("Data:", data)
         res = {}
 
         if not data:

@@ -1,5 +1,5 @@
 location ~ /api($|/.*) {
-  rewrite ^/api($|/.*) /VirtualHostBase/https/climate-2.ukstats.dev:443/Plone/VirtualHostRoot/_vh_api$1 break;
+  rewrite ^/api($|/.*) /VirtualHostBase/https/staging.climate-change.data.gov.uk:443/Plone/VirtualHostRoot/_vh_api$1 break;
   proxy_pass http://plone-cc2:8080;
 }
 rewrite ^(/\+\+plone\+\+static/.*)$ /api/$1 last;
