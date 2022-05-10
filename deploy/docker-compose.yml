@@ -42,11 +42,11 @@ services:
             args:
                 ADDONS: "@eeacms/volto-datablocks;@eeacms/volto-columns-block;volto-slate:asDefault;volto-authomatic;volto-govuk-theme;volto-chart-builder;volto-climatechange-elements"
         environment:
-            - RAZZLE_API_PATH=https://climate-2.ukstats.dev/api
+            - RAZZLE_API_PATH=https://staging.climate-change.data.gov.uk/api
             - NODE_ENV=production
-            - VIRTUAL_HOST=climate-2.ukstats.dev
+            - VIRTUAL_HOST=staging.climate-change.data.gov.uk
             - VIRTUAL_PORT=3000
-            - LETSENCRYPT_HOST=climate-2.ukstats.dev
+            - LETSENCRYPT_HOST=staging.climate-change.data.gov.uk
         command: "yarn start:prod"
         init: true
         networks:
