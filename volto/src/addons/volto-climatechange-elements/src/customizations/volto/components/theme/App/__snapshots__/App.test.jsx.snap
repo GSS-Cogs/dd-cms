@@ -8,7 +8,7 @@ Array [
     role="contentinfo"
   >
     <div
-      className="govuk-width-container volto-width-container--wide"
+      className="govuk-width-container "
     >
       <div
         className="govuk-footer__meta"
