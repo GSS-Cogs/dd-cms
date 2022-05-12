@@ -1,0 +1,440 @@
+{
+  "@type": "Document",
+  "blocks": {
+    "0f6075ea-f6e9-462d-94d8-b9fd90d5bb1e": {
+      "@type": "slate",
+      "plaintext": "Silders & carousels can be used to show a slider or carousel from items located elsewhere in your website.",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "Silders & carousels can be used to show a slider or carousel from items located elsewhere in your website."
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    },
+    "3534cea4-7502-414d-b1d4-c8b9265def2c": {
+      "@type": "slate",
+      "plaintext": "Carousel",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "Carousel"
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    },
+    "5f58dbdd-4bae-4d22-bc76-f5185768fe3c": {
+      "@type": "slider",
+      "slides": [
+        {
+          "@id": "180c415b-1029-4f14-947c-69e714731749",
+          "description": "The simulation of complex systems in natural science or engineering depends on the development of adequate mathematical models. Thus the development of realistic and yet efficient models is one of our core activities.",
+          "head_title": null,
+          "href": [
+            {
+              "@id": "/examples/page-1",
+              "Description": "The simulation of complex systems in natural science or engineering depends on the development of adequate mathematical models. Thus the development of realistic and yet efficient models is one of our core activities.",
+              "Title": "Modelling and Simulation",
+              "hasPreviewImage": true,
+              "head_title": null,
+              "title": "Modelling and Simulation"
+            }
+          ],
+          "title": "Modelling and Simulation"
+        },
+        {
+          "@id": "72183a21-ca77-4fd1-93cd-0e07c16251c6",
+          "description": "There is a broad class of algorithms and methods that are common to several scientific or engineering problems. Ideally, the development of simulation programs follows a layered design in which generic methods are applied to create or extend domain-specific solutions.",
+          "href": [
+            {
+              "@id": "/examples/page-2",
+              "Description": "There is a broad class of algorithms and methods that are common to several scientific or engineering problems. Ideally, the development of simulation programs follows a layered design in which generic methods are applied to create or extend domain-specific solutions.",
+              "Title": "Algorithms and Methods",
+              "hasPreviewImage": true,
+              "image_field": "preview_image",
+              "title": "Algorithms and Methods"
+            }
+          ],
+          "title": "Algorithms and Methods"
+        },
+        {
+          "@id": "2765bd25-8cb0-4bff-9e9d-caa90c29ad6d",
+          "description": "Through research on resource and data management, workflows, virtualisation, and security we foster the easy and secure access to distributed systems and data that builds the foundation for the exploitation of results across scientific domains.",
+          "head_title": null,
+          "href": [
+            {
+              "@id": "/examples/page-3",
+              "Description": "Through research on resource and data management, workflows, virtualisation, and security we foster the easy and secure access to distributed systems and data that builds the foundation for the exploitation of results across scientific domains.",
+              "Title": "Distributed Computing",
+              "hasPreviewImage": true,
+              "head_title": null,
+              "title": "Distributed Computing"
+            }
+          ],
+          "title": "Distributed Computing"
+        },
+        {
+          "@id": "55d5c522-7612-4f3b-b65e-e97beee713d2",
+          "description": "In the human disease retinitis pigmentosa the photoreceptors degenerate, leading to blindness. Electrical prostheses can elicit visual sensations in patients; however, processes secondary to photoreceptor death lead to pathological rhythmic activity in the remaining retinal network that seems to interfere with this therapeutic approach.",
+          "head_title": null,
+          "href": [
+            {
+              "@id": "/examples/page-4",
+              "Description": "In the human disease retinitis pigmentosa the photoreceptors degenerate, leading to blindness. Electrical prostheses can elicit visual sensations in patients; however, processes secondary to photoreceptor death lead to pathological rhythmic activity in the remaining retinal network that seems to interfere with this therapeutic approach.",
+              "Title": "Novel therapeutic options for human diseases",
+              "hasPreviewImage": true,
+              "head_title": null,
+              "title": "Novel therapeutic options for human diseases"
+            }
+          ],
+          "title": "Novel therapeutic options for human diseases"
+        }
+      ]
+    },
+    "65b4a0bd-2935-448d-bfa9-e5a7a4fafc14": {
+      "@type": "slate",
+      "plaintext": "Hide the description",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "Hide the description"
+            }
+          ],
+          "type": "h3"
+        }
+      ]
+    },
+    "6c405ac7-bac6-402e-950e-a2a48010922e": {
+      "@type": "carousel",
+      "columns": [
+        {
+          "@id": "b522a30a-321d-49c5-8712-98ebd66e9710",
+          "description": "The simulation of complex systems in natural science or engineering depends on the development of adequate mathematical models. Thus the development of realistic and yet efficient models is one of our core activities.",
+          "href": [
+            {
+              "@id": "/examples/page-1",
+              "Description": "The simulation of complex systems in natural science or engineering depends on the development of adequate mathematical models. Thus the development of realistic and yet efficient models is one of our core activities.",
+              "Title": "Modelling and Simulation",
+              "image_field": "preview_image",
+              "title": "Modelling and Simulation"
+            }
+          ],
+          "title": "Modelling and Simulation"
+        },
+        {
+          "@id": "28054ffb-91b8-48f6-9401-1e37d9dace15",
+          "description": "There is a broad class of algorithms and methods that are common to several scientific or engineering problems. Ideally, the development of simulation programs follows a layered design in which generic methods are applied to create or extend domain-specific solutions.",
+          "href": [
+            {
+              "@id": "/examples/page-2",
+              "Description": "There is a broad class of algorithms and methods that are common to several scientific or engineering problems. Ideally, the development of simulation programs follows a layered design in which generic methods are applied to create or extend domain-specific solutions.",
+              "Title": "Algorithms and Methods",
+              "image_field": "preview_image",
+              "title": "Algorithms and Methods"
+            }
+          ],
+          "title": "Algorithms and Methods"
+        },
+        {
+          "@id": "505931e2-a21f-4d3d-b3a6-63d720248be1",
+          "description": "Through research on resource and data management, workflows, virtualisation, and security we foster the easy and secure access to distributed systems and data that builds the foundation for the exploitation of results across scientific domains.",
+          "href": [
+            {
+              "@id": "/examples/page-3",
+              "Description": "Through research on resource and data management, workflows, virtualisation, and security we foster the easy and secure access to distributed systems and data that builds the foundation for the exploitation of results across scientific domains.",
+              "Title": "Distributed Computing",
+              "image_field": "preview_image",
+              "title": "Distributed Computing"
+            }
+          ],
+          "title": "Distributed Computing"
+        },
+        {
+          "@id": "933be5a4-b558-49c4-9555-9ac3f3fda497",
+          "description": "In the human disease retinitis pigmentosa the photoreceptors degenerate, leading to blindness. Electrical prostheses can elicit visual sensations in patients; however, processes secondary to photoreceptor death lead to pathological rhythmic activity in the remaining retinal network that seems to interfere with this therapeutic approach.",
+          "href": [
+            {
+              "@id": "/examples/page-4",
+              "Description": "In the human disease retinitis pigmentosa the photoreceptors degenerate, leading to blindness. Electrical prostheses can elicit visual sensations in patients; however, processes secondary to photoreceptor death lead to pathological rhythmic activity in the remaining retinal network that seems to interfere with this therapeutic approach.",
+              "Title": "Novel therapeutic options for human diseases",
+              "image_field": "preview_image",
+              "title": "Novel therapeutic options for human diseases"
+            }
+          ],
+          "title": "Novel therapeutic options for human diseases"
+        },
+        {
+          "@id": "1425d52f-c385-4c66-95f9-69e27b366ddf",
+          "description": "Monogenetic diseases provide a direct link between a change in protein function to cell and organ dysfunction. Studying monogenetic diseases often permits identification of cellular roles of ion channels. Moreover, disease-causing mutations usually affect important functions of the affected proteins, and analysis of the functional consequences of such mutations thus provides novel insights into the molecular determinants of protein functions.",
+          "href": [
+            {
+              "@id": "/examples/page-5",
+              "Description": "Monogenetic diseases provide a direct link between a change in protein function to cell and organ dysfunction. Studying monogenetic diseases often permits identification of cellular roles of ion channels. Moreover, disease-causing mutations usually affect important functions of the affected proteins, and analysis of the functional consequences of such mutations thus provides novel insights into the molecular determinants of protein functions.",
+              "Title": "Pathomechanisms of human diseases",
+              "image_field": "preview_image",
+              "title": "Pathomechanisms of human diseases"
+            }
+          ],
+          "title": "Pathomechanisms of human diseases"
+        },
+        {
+          "@id": "6158bb8d-5a49-4e22-ad13-80923b6609ba",
+          "description": "Information processing in the central nervous system relies on the precise interplay of electrical and chemical signals. Action potential generation, propagation, and the initiating events causing transmitter release from the synaptic terminus are determined by the activity of a variety of ion channels. The transfer of information between neurons and target cells is achieved by chemical transmitter substances crossing the synaptic cleft. Neurotransmitter are accumulated in presynaptic vesicles whose fusion with the cell membrane results in neurotransmitter release.",
+          "href": [
+            {
+              "@id": "/examples/page-6",
+              "Description": "Information processing in the central nervous system relies on the precise interplay of electrical and chemical signals. Action potential generation, propagation, and the initiating events causing transmitter release from the synaptic terminus are determined by the activity of a variety of ion channels. The transfer of information between neurons and target cells is achieved by chemical transmitter substances crossing the synaptic cleft. Neurotransmitter are accumulated in presynaptic vesicles whose fusion with the cell membrane results in neurotransmitter release.",
+              "Title": "Generation, propagation and transmission of cellular signals",
+              "image_field": "preview_image",
+              "title": "Generation, propagation and transmission of cellular signals"
+            }
+          ],
+          "title": "Generation, propagation and transmission of cellular signals"
+        }
+      ],
+      "hide_description": true
+    },
+    "736c6ec1-0206-48a0-abdf-d69398fcc432": {
+      "@type": "title"
+    },
+    "8e96a4c8-95a0-4158-be54-a210139ef0e6": {
+      "@type": "slate",
+      "plaintext": "Basic slider",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "Basic slider"
+            }
+          ],
+          "type": "h3"
+        }
+      ]
+    },
+    "959b4083-8197-4452-854b-b9d0bef1f824": {
+      "@type": "slate",
+      "plaintext": "",
+      "value": [
+        {
+          "children": [
+            {
+              "text": ""
+            }
+          ],
+          "type": "p"
+        }
+      ]
+    },
+    "979fbb11-b2a5-4162-9d99-fcbf0ff667cf": {
+      "@type": "carousel",
+      "columns": [
+        {
+          "@id": "1f46e9aa-1b75-4905-8921-922865acdf53",
+          "description": "The simulation of complex systems in natural science or engineering depends on the development of adequate mathematical models. Thus the development of realistic and yet efficient models is one of our core activities.",
+          "href": [
+            {
+              "@id": "/examples/page-1",
+              "Description": "The simulation of complex systems in natural science or engineering depends on the development of adequate mathematical models. Thus the development of realistic and yet efficient models is one of our core activities.",
+              "Title": "Modelling and Simulation",
+              "image_field": "preview_image",
+              "title": "Modelling and Simulation"
+            }
+          ],
+          "title": "Modelling and Simulation"
+        },
+        {
+          "@id": "9e913bb5-6bee-4f9f-90f4-a5a1ef1d5d51",
+          "description": "There is a broad class of algorithms and methods that are common to several scientific or engineering problems. Ideally, the development of simulation programs follows a layered design in which generic methods are applied to create or extend domain-specific solutions.",
+          "href": [
+            {
+              "@id": "/examples/page-2",
+              "Description": "There is a broad class of algorithms and methods that are common to several scientific or engineering problems. Ideally, the development of simulation programs follows a layered design in which generic methods are applied to create or extend domain-specific solutions.",
+              "Title": "Algorithms and Methods",
+              "image_field": "preview_image",
+              "title": "Algorithms and Methods"
+            }
+          ],
+          "title": "Algorithms and Methods"
+        },
+        {
+          "@id": "8798143f-accb-4b0e-ba57-e3409965885e",
+          "description": "Through research on resource and data management, workflows, virtualisation, and security we foster the easy and secure access to distributed systems and data that builds the foundation for the exploitation of results across scientific domains.",
+          "href": [
+            {
+              "@id": "/examples/page-3",
+              "Description": "Through research on resource and data management, workflows, virtualisation, and security we foster the easy and secure access to distributed systems and data that builds the foundation for the exploitation of results across scientific domains.",
+              "Title": "Distributed Computing",
+              "image_field": "preview_image",
+              "title": "Distributed Computing"
+            }
+          ],
+          "title": "Distributed Computing"
+        },
+        {
+          "@id": "35908233-34b1-4afe-b9aa-6446da59fcf0",
+          "description": "In the human disease retinitis pigmentosa the photoreceptors degenerate, leading to blindness. Electrical prostheses can elicit visual sensations in patients; however, processes secondary to photoreceptor death lead to pathological rhythmic activity in the remaining retinal network that seems to interfere with this therapeutic approach.",
+          "href": [
+            {
+              "@id": "/examples/page-4",
+              "Description": "In the human disease retinitis pigmentosa the photoreceptors degenerate, leading to blindness. Electrical prostheses can elicit visual sensations in patients; however, processes secondary to photoreceptor death lead to pathological rhythmic activity in the remaining retinal network that seems to interfere with this therapeutic approach.",
+              "Title": "Novel therapeutic options for human diseases",
+              "image_field": "preview_image",
+              "title": "Novel therapeutic options for human diseases"
+            }
+          ],
+          "title": "Novel therapeutic options for human diseases"
+        },
+        {
+          "@id": "08bf57e8-62f5-43ec-847c-dffe22c1b647",
+          "description": "Monogenetic diseases provide a direct link between a change in protein function to cell and organ dysfunction. Studying monogenetic diseases often permits identification of cellular roles of ion channels. Moreover, disease-causing mutations usually affect important functions of the affected proteins, and analysis of the functional consequences of such mutations thus provides novel insights into the molecular determinants of protein functions.",
+          "href": [
+            {
+              "@id": "/examples/page-5",
+              "Description": "Monogenetic diseases provide a direct link between a change in protein function to cell and organ dysfunction. Studying monogenetic diseases often permits identification of cellular roles of ion channels. Moreover, disease-causing mutations usually affect important functions of the affected proteins, and analysis of the functional consequences of such mutations thus provides novel insights into the molecular determinants of protein functions.",
+              "Title": "Pathomechanisms of human diseases",
+              "image_field": "preview_image",
+              "title": "Pathomechanisms of human diseases"
+            }
+          ],
+          "title": "Pathomechanisms of human diseases"
+        },
+        {
+          "@id": "c64c2900-5446-4240-8535-539bbff46fa8",
+          "description": "Enabling Novel X-ray Sources to Deliver Tumor-Killing Radiation. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+          "href": [
+            {
+              "@id": "/examples/image-6",
+              "Description": "Enabling Novel X-ray Sources to Deliver Tumor-Killing Radiation. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+              "Title": "Image 6",
+              "image_field": "image",
+              "title": "Image 6"
+            }
+          ],
+          "title": "Image 6"
+        }
+      ],
+      "hide_description": false
+    },
+    "de71a9f0-301c-4fd7-a5ec-d4523e75a1da": {
+      "@type": "slate",
+      "plaintext": "Variable amount of columns",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "Variable amount of columns"
+            }
+          ],
+          "type": "h3"
+        }
+      ]
+    },
+    "e158b7b2-28ef-417c-9858-d2fc067746c8": {
+      "@type": "slate",
+      "plaintext": "Slider",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "Slider"
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    },
+    "e26cad13-82e3-495a-ac98-7eccc3d4887e": {
+      "@type": "carousel",
+      "columns": [
+        {
+          "@id": "7476a931-d57d-4636-81c0-8231b385ccfe",
+          "description": "The simulation of complex systems in natural science or engineering depends on the development of adequate mathematical models. Thus the development of realistic and yet efficient models is one of our core activities.",
+          "href": [
+            {
+              "@id": "/examples/page-1",
+              "Description": "The simulation of complex systems in natural science or engineering depends on the development of adequate mathematical models. Thus the development of realistic and yet efficient models is one of our core activities.",
+              "Title": "Modelling and Simulation",
+              "image_field": "preview_image",
+              "title": "Modelling and Simulation"
+            }
+          ],
+          "title": "Modelling and Simulation"
+        },
+        {
+          "@id": "7c558483-0da6-4c40-8f1d-cef48c9e200c",
+          "description": "There is a broad class of algorithms and methods that are common to several scientific or engineering problems. Ideally, the development of simulation programs follows a layered design in which generic methods are applied to create or extend domain-specific solutions.",
+          "href": [
+            {
+              "@id": "/examples/page-2",
+              "Description": "There is a broad class of algorithms and methods that are common to several scientific or engineering problems. Ideally, the development of simulation programs follows a layered design in which generic methods are applied to create or extend domain-specific solutions.",
+              "Title": "Algorithms and Methods",
+              "image_field": "preview_image",
+              "title": "Algorithms and Methods"
+            }
+          ],
+          "title": "Algorithms and Methods"
+        },
+        {
+          "@id": "c17ba1b7-c71d-468c-b4f1-682fac8f3742",
+          "description": "Through research on resource and data management, workflows, virtualisation, and security we foster the easy and secure access to distributed systems and data that builds the foundation for the exploitation of results across scientific domains.",
+          "href": [
+            {
+              "@id": "/examples/page-3",
+              "Description": "Through research on resource and data management, workflows, virtualisation, and security we foster the easy and secure access to distributed systems and data that builds the foundation for the exploitation of results across scientific domains.",
+              "Title": "Distributed Computing",
+              "image_field": "preview_image",
+              "title": "Distributed Computing"
+            }
+          ],
+          "title": "Distributed Computing"
+        },
+        {
+          "@id": "bd8d3b9d-aad5-4646-8458-d6e095700e9a",
+          "description": "In the human disease retinitis pigmentosa the photoreceptors degenerate, leading to blindness. Electrical prostheses can elicit visual sensations in patients; however, processes secondary to photoreceptor death lead to pathological rhythmic activity in the remaining retinal network that seems to interfere with this therapeutic approach.",
+          "href": [
+            {
+              "@id": "/examples/page-4",
+              "Description": "In the human disease retinitis pigmentosa the photoreceptors degenerate, leading to blindness. Electrical prostheses can elicit visual sensations in patients; however, processes secondary to photoreceptor death lead to pathological rhythmic activity in the remaining retinal network that seems to interfere with this therapeutic approach.",
+              "Title": "Novel therapeutic options for human diseases",
+              "image_field": "preview_image",
+              "title": "Novel therapeutic options for human diseases"
+            }
+          ],
+          "title": "Novel therapeutic options for human diseases"
+        }
+      ],
+      "items_to_show": "3"
+    }
+  },
+  "blocks_layout": {
+    "items": [
+      "736c6ec1-0206-48a0-abdf-d69398fcc432",
+      "0f6075ea-f6e9-462d-94d8-b9fd90d5bb1e",
+      "e158b7b2-28ef-417c-9858-d2fc067746c8",
+      "5f58dbdd-4bae-4d22-bc76-f5185768fe3c",
+      "3534cea4-7502-414d-b1d4-c8b9265def2c",
+      "8e96a4c8-95a0-4158-be54-a210139ef0e6",
+      "979fbb11-b2a5-4162-9d99-fcbf0ff667cf",
+      "de71a9f0-301c-4fd7-a5ec-d4523e75a1da",
+      "e26cad13-82e3-495a-ac98-7eccc3d4887e",
+      "65b4a0bd-2935-448d-bfa9-e5a7a4fafc14",
+      "6c405ac7-bac6-402e-950e-a2a48010922e",
+      "959b4083-8197-4452-854b-b9d0bef1f824"
+    ]
+  },
+  "description": "Silders & carousels can be used to show a slider or carousel from items located elsewhere in your website.",
+  "id": "sliders-carousels",
+  "review_state": "published",
+  "subjects": [],
+  "title": "Sliders & Carousels",
+  "set_local_image": {
+    "image": "block-slider.png"
+  }
+}

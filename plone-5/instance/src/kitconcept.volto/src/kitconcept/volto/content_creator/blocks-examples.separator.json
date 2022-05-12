@@ -1,0 +1,70 @@
+{
+  "@type": "Document",
+  "blocks": {
+    "26c73fbe-9729-41aa-b255-dd4355649593": {
+      "@type": "separator"
+    },
+    "28d34470-aca5-4b04-a826-916d2cc00c93": {
+      "@type": "slate",
+      "plaintext": "Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque vitae mauris ut justo fringilla euismod. Suspendisse varius varius dapibus. Pellentesque quis tellus maximus, vulputate urna a, varius sapien. Nunc porttitor est eget lacus sollicitudin porttitor. Aliquam dictum risus sit amet lacus elementum, quis sagittis erat tempor. Phasellus porta sagittis odio sit amet interdum. Suspendisse nisi dolor, sagittis nec scelerisque eget, molestie et mi. Fusce lacus magna, ullamcorper nec posuere vitae, tempus eu massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In faucibus, leo in faucibus sodales, eros est tincidunt urna, eget volutpat lectus lectus et magna. Duis eu ornare ligula.",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque vitae mauris ut justo fringilla euismod. Suspendisse varius varius dapibus. Pellentesque quis tellus maximus, vulputate urna a, varius sapien. Nunc porttitor est eget lacus sollicitudin porttitor. Aliquam dictum risus sit amet lacus elementum, quis sagittis erat tempor. Phasellus porta sagittis odio sit amet interdum. Suspendisse nisi dolor, sagittis nec scelerisque eget, molestie et mi. Fusce lacus magna, ullamcorper nec posuere vitae, tempus eu massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In faucibus, leo in faucibus sodales, eros est tincidunt urna, eget volutpat lectus lectus et magna. Duis eu ornare ligula."
+            }
+          ],
+          "type": "p"
+        }
+      ]
+    },
+    "39e50a43-6a27-4242-bfd6-0f52530f5b56": {
+      "@type": "slate",
+      "plaintext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel volutpat lectus. Cras semper pretium sagittis. Nulla interdum diam sed nulla fermentum, vitae viverra libero vulputate. Etiam vulputate massa sed metus malesuada, ut gravida velit aliquam. Vivamus consectetur, nulla sit amet varius iaculis, neque libero hendrerit diam, at bibendum ligula dolor eget lorem. Proin nec sapien non nunc vulputate vestibulum quis et nulla. Proin eu lacus lectus. Phasellus commodo auctor tempor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus mauris lectus, tristique eget turpis vitae, venenatis facilisis risus. Donec eget nibh aliquet, posuere libero ac, lacinia elit. Sed sit amet sodales odio, ac fringilla lectus. Sed rhoncus facilisis gravida. Maecenas viverra vitae ex sed tincidunt.",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel volutpat lectus. Cras semper pretium sagittis. Nulla interdum diam sed nulla fermentum, vitae viverra libero vulputate. Etiam vulputate massa sed metus malesuada, ut gravida velit aliquam. Vivamus consectetur, nulla sit amet varius iaculis, neque libero hendrerit diam, at bibendum ligula dolor eget lorem. Proin nec sapien non nunc vulputate vestibulum quis et nulla. Proin eu lacus lectus. Phasellus commodo auctor tempor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus mauris lectus, tristique eget turpis vitae, venenatis facilisis risus. Donec eget nibh aliquet, posuere libero ac, lacinia elit. Sed sit amet sodales odio, ac fringilla lectus. Sed rhoncus facilisis gravida. Maecenas viverra vitae ex sed tincidunt."
+            }
+          ],
+          "type": "p"
+        }
+      ]
+    },
+    "438b5761-f1cf-42ce-a62a-4538f316bd36": {
+      "@type": "slate",
+      "plaintext": "The separator blocks allows you to add a separator between content.",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "The separator blocks allows you to add a separator between content."
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    },
+    "8fbdb62d-5d05-48c6-b1b3-e80f53dded57": {
+      "@type": "title"
+    }
+  },
+  "blocks_layout": {
+    "items": [
+      "8fbdb62d-5d05-48c6-b1b3-e80f53dded57",
+      "438b5761-f1cf-42ce-a62a-4538f316bd36",
+      "39e50a43-6a27-4242-bfd6-0f52530f5b56",
+      "26c73fbe-9729-41aa-b255-dd4355649593",
+      "28d34470-aca5-4b04-a826-916d2cc00c93"
+    ]
+  },
+  "description": "The separator blocks allows you to add a separator between content.",
+  "id": "separator",
+  "review_state": "published",
+  "subjects": [],
+  "title": "Separator",
+  "set_local_image": {
+    "image": "block-separator.png"
+  }
+}

@@ -1,0 +1,908 @@
+{
+  "@type": "Document",
+  "blocks": {
+    "02f0bd5d-f537-4cca-b93a-609f0d95593e": {
+      "@type": "slate",
+      "plaintext": "Basic table",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "Basic table"
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    },
+    "054f9268-4da5-43c9-a4ef-2568280c1a11": {
+      "@type": "slateTable",
+      "table": {
+        "basic": false,
+        "celled": true,
+        "compact": false,
+        "fixed": true,
+        "hideHeaders": false,
+        "inverted": true,
+        "rows": [
+          {
+            "cells": [
+              {
+                "key": "7p9b7",
+                "type": "header",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "Lorem ipsum dolor sit amet"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              },
+              {
+                "key": "8s2vk",
+                "type": "header",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "consectetur"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            ],
+            "key": "d8k0s"
+          },
+          {
+            "cells": [
+              {
+                "key": "3jd0m",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "consectetur"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              },
+              {
+                "key": "2b3jf",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "commodo"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            ],
+            "key": "8pnr4"
+          }
+        ],
+        "striped": false
+      }
+    },
+    "2e8744dc-d0ca-4766-a170-37fc8807f2f4": {
+      "@type": "slate",
+      "plaintext": "Compact table",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "Compact table"
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    },
+    "4b1c4ded-8f49-40ea-9f70-56390a9ca563": {
+      "@type": "slate",
+      "plaintext": "Inverted colors",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "Inverted colors"
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    },
+    "607907ac-871d-475e-97ff-8a87f7156191": {
+      "@type": "slate",
+      "plaintext": "Stripe alternating rows with color",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "Stripe alternating rows with color"
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    },
+    "7b478071-1179-452e-b44a-d14a24c1ca07": {
+      "@type": "slateTable",
+      "table": {
+        "basic": false,
+        "celled": true,
+        "compact": false,
+        "fixed": true,
+        "hideHeaders": false,
+        "inverted": false,
+        "rows": [
+          {
+            "cells": [
+              {
+                "key": "7p9b7",
+                "type": "header",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "Lorem ipsum dolor sit amet"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              },
+              {
+                "key": "8s2vk",
+                "type": "header",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "Lorem ipsum dolor sit amet"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            ],
+            "key": "d8k0s"
+          },
+          {
+            "cells": [
+              {
+                "key": "3jd0m",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "consectetur"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              },
+              {
+                "key": "2b3jf",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "consectetur"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            ],
+            "key": "8pnr4"
+          },
+          {
+            "cells": [
+              {
+                "key": "fqgs0",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "aliquam"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              },
+              {
+                "key": "7085d",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "nibh"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            ],
+            "key": "449qc"
+          },
+          {
+            "cells": [
+              {
+                "key": "afehi",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "nibh"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              },
+              {
+                "key": "du4im",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "nibh"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            ],
+            "key": "5g9st"
+          },
+          {
+            "cells": [
+              {
+                "key": "3bkhk",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "nibh"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              },
+              {
+                "key": "airlc",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "faucibus"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            ],
+            "key": "erle1"
+          }
+        ],
+        "striped": true
+      }
+    },
+    "851b88e4-e947-4429-80b1-f5c6ba3a8357": {
+      "@type": "slateTable",
+      "table": {
+        "basic": false,
+        "celled": true,
+        "compact": true,
+        "fixed": true,
+        "hideHeaders": false,
+        "inverted": false,
+        "rows": [
+          {
+            "cells": [
+              {
+                "key": "7p9b7",
+                "type": "header",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "Lorem ipsum dolor sit amet"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              },
+              {
+                "key": "8s2vk",
+                "type": "header",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "consectetur"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            ],
+            "key": "d8k0s"
+          },
+          {
+            "cells": [
+              {
+                "key": "3jd0m",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "vestibulum"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              },
+              {
+                "key": "2b3jf",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "vestibulum"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            ],
+            "key": "8pnr4"
+          }
+        ],
+        "striped": false
+      }
+    },
+    "8f64aae1-face-4df2-9ff4-97aa52a2e571": {
+      "@type": "slate",
+      "plaintext": "Simple table",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "Simple table"
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    },
+    "9ce9e3cb-03cb-42e5-b3d7-4378940b8441": {
+      "@type": "slate",
+      "plaintext": "Sortable table",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "Sortable table"
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    },
+    "c61a89f1-7ce3-4a88-95e4-cb70fa0b768f": {
+      "@type": "slateTable",
+      "table": {
+        "basic": false,
+        "celled": true,
+        "compact": false,
+        "fixed": true,
+        "hideHeaders": false,
+        "inverted": false,
+        "rows": [
+          {
+            "cells": [
+              {
+                "key": "7p9b7",
+                "type": "header",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "Lorem ipsum dolor sit amet"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              },
+              {
+                "key": "8s2vk",
+                "type": "header",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "consectetur"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            ],
+            "key": "d8k0s"
+          },
+          {
+            "cells": [
+              {
+                "key": "3jd0m",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "vestibulum"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              },
+              {
+                "key": "2b3jf",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "commodo"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            ],
+            "key": "8pnr4"
+          }
+        ],
+        "striped": false
+      }
+    },
+    "cd1b87bb-70d1-4563-b744-38da2bf2b6b7": {
+      "@type": "slate",
+      "plaintext": "Fixed width table",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "Fixed width table"
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    },
+    "d4653d4c-9c0e-49da-9ca7-4877eb80abe8": {
+      "@type": "slate",
+      "plaintext": "The table blocks lets you insert data tables in all shapes, sizes and styles.",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "The table blocks lets you insert data tables in all shapes, sizes and styles."
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    },
+    "d62d24c8-73cb-46f9-8a96-2d9ceedb7f23": {
+      "@type": "title"
+    },
+    "d76cfdd5-75b4-4d86-b033-85ecc4e49b97": {
+      "@type": "slateTable",
+      "table": {
+        "basic": false,
+        "celled": true,
+        "compact": false,
+        "fixed": true,
+        "hideHeaders": false,
+        "inverted": false,
+        "rows": [
+          {
+            "cells": [
+              {
+                "key": "7p9b7",
+                "type": "header",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "Lorem ipsum dolor sit amet"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              },
+              {
+                "key": "8s2vk",
+                "type": "header",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "Lorem ipsum dolor sit amet"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            ],
+            "key": "d8k0s"
+          },
+          {
+            "cells": [
+              {
+                "key": "3jd0m",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "consectetur"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              },
+              {
+                "key": "2b3jf",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "commodo"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            ],
+            "key": "8pnr4"
+          },
+          {
+            "cells": [
+              {
+                "key": "a68d8",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "aliquam"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              },
+              {
+                "key": "fpkb1",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "nibh"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            ],
+            "key": "fjdg3"
+          },
+          {
+            "cells": [
+              {
+                "key": "53g0f",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "tincidunt"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              },
+              {
+                "key": "tgrk",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "malesuada"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            ],
+            "key": "5341t"
+          },
+          {
+            "cells": [
+              {
+                "key": "5fuc7",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "blandit"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              },
+              {
+                "key": "e3jc2",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "faucibus"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            ],
+            "key": "f4ia4"
+          }
+        ],
+        "sortable": true,
+        "striped": false
+      }
+    },
+    "e284a8cc-69fb-476b-8b36-a837d3ed65da": {
+      "@type": "slateTable",
+      "table": {
+        "basic": false,
+        "celled": true,
+        "compact": false,
+        "fixed": false,
+        "hideHeaders": false,
+        "inverted": false,
+        "rows": [
+          {
+            "cells": [
+              {
+                "key": "7p9b7",
+                "type": "header",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "Lorem ipsum dolor sit amet"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              },
+              {
+                "key": "8s2vk",
+                "type": "header",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "consectetur"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            ],
+            "key": "d8k0s"
+          },
+          {
+            "cells": [
+              {
+                "key": "3jd0m",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "vestibulum"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              },
+              {
+                "key": "2b3jf",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "commodo"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            ],
+            "key": "8pnr4"
+          }
+        ],
+        "sortable": false,
+        "striped": false
+      }
+    },
+    "f39d8f08-da88-4065-b68d-e88de6be6cdb": {
+      "@type": "slateTable",
+      "table": {
+        "basic": true,
+        "celled": true,
+        "compact": false,
+        "fixed": true,
+        "hideHeaders": false,
+        "inverted": false,
+        "rows": [
+          {
+            "cells": [
+              {
+                "key": "7p9b7",
+                "type": "header",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "Lorem ipsum dolor sit amet"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              },
+              {
+                "key": "8s2vk",
+                "type": "header",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "consectetur"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            ],
+            "key": "d8k0s"
+          },
+          {
+            "cells": [
+              {
+                "key": "3jd0m",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "vestibulum"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              },
+              {
+                "key": "2b3jf",
+                "type": "data",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "vestibulum"
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            ],
+            "key": "8pnr4"
+          }
+        ],
+        "striped": false
+      }
+    }
+  },
+  "blocks_layout": {
+    "items": [
+      "d62d24c8-73cb-46f9-8a96-2d9ceedb7f23",
+      "d4653d4c-9c0e-49da-9ca7-4877eb80abe8",
+      "02f0bd5d-f537-4cca-b93a-609f0d95593e",
+      "e284a8cc-69fb-476b-8b36-a837d3ed65da",
+      "cd1b87bb-70d1-4563-b744-38da2bf2b6b7",
+      "c61a89f1-7ce3-4a88-95e4-cb70fa0b768f",
+      "8f64aae1-face-4df2-9ff4-97aa52a2e571",
+      "f39d8f08-da88-4065-b68d-e88de6be6cdb",
+      "2e8744dc-d0ca-4766-a170-37fc8807f2f4",
+      "851b88e4-e947-4429-80b1-f5c6ba3a8357",
+      "4b1c4ded-8f49-40ea-9f70-56390a9ca563",
+      "054f9268-4da5-43c9-a4ef-2568280c1a11",
+      "9ce9e3cb-03cb-42e5-b3d7-4378940b8441",
+      "d76cfdd5-75b4-4d86-b033-85ecc4e49b97",
+      "607907ac-871d-475e-97ff-8a87f7156191",
+      "7b478071-1179-452e-b44a-d14a24c1ca07"
+    ]
+  },
+  "description": "The table blocks lets you insert data tables in all shapes, sizes and styles.",
+  "id": "table",
+  "review_state": "published",
+  "subjects": [],
+  "title": "Table",
+  "set_local_image": {
+    "image": "block-table.png"
+  }
+}

@@ -1,0 +1,479 @@
+{
+  "@type": "Document",
+  "blocks": {
+    "4bc39232-fdb8-4871-b259-f8b7ca555fe7": {
+      "@type": "slate",
+      "plaintext": "Basic accordion",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "Basic accordion"
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    },
+    "5aa2c019-02ca-4565-9ac1-82ac1852d85e": {
+      "@type": "slate",
+      "plaintext": "",
+      "value": [
+        {
+          "children": [
+            {
+              "text": ""
+            }
+          ],
+          "type": "p"
+        }
+      ]
+    },
+    "5e54f8da-5840-4c93-b59b-3345a9794d62": {
+      "@type": "slate",
+      "plaintext": "",
+      "value": [
+        {
+          "children": [
+            {
+              "text": ""
+            }
+          ],
+          "type": "p"
+        }
+      ]
+    },
+    "6b16341c-aec7-4611-807f-5b951844b4a0": {
+      "@type": "accordion",
+      "collapsed": true,
+      "data": {
+        "blocks": {
+          "272a09fa-6c7f-4595-adc9-76f6bd80f356": {
+            "@type": "accordionPanel",
+            "blocks": {
+              "ad417029-d261-483b-bf76-81ac28b1af7a": {
+                "@type": "slate",
+                "plaintext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel volutpat lectus. Cras semper pretium sagittis. Nulla interdum diam sed nulla fermentum, vitae viverra libero vulputate. Etiam vulputate massa sed metus malesuada, ut gravida velit aliquam. Vivamus consectetur, nulla sit amet varius iaculis, neque libero hendrerit diam, at bibendum ligula dolor eget lorem. Proin nec sapien non nunc vulputate vestibulum quis et nulla. Proin eu lacus lectus. Phasellus commodo auctor tempor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus mauris lectus, tristique eget turpis vitae, venenatis facilisis risus. Donec eget nibh aliquet, posuere libero ac, lacinia elit. Sed sit amet sodales odio, ac fringilla lectus. Sed rhoncus facilisis gravida. Maecenas viverra vitae ex sed tincidunt.",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel volutpat lectus. Cras semper pretium sagittis. Nulla interdum diam sed nulla fermentum, vitae viverra libero vulputate. Etiam vulputate massa sed metus malesuada, ut gravida velit aliquam. Vivamus consectetur, nulla sit amet varius iaculis, neque libero hendrerit diam, at bibendum ligula dolor eget lorem. Proin nec sapien non nunc vulputate vestibulum quis et nulla. Proin eu lacus lectus. Phasellus commodo auctor tempor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus mauris lectus, tristique eget turpis vitae, venenatis facilisis risus. Donec eget nibh aliquet, posuere libero ac, lacinia elit. Sed sit amet sodales odio, ac fringilla lectus. Sed rhoncus facilisis gravida. Maecenas viverra vitae ex sed tincidunt."
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            },
+            "blocks_layout": {
+              "items": ["ad417029-d261-483b-bf76-81ac28b1af7a"]
+            },
+            "title": "Panel 1"
+          },
+          "c5ff89af-f158-43e5-9d08-3b69950c4f4a": {
+            "@type": "accordionPanel",
+            "blocks": {
+              "aaf507d0-8279-4cb2-9516-d5e105d0a338": {
+                "@type": "slate",
+                "plaintext": "Morbi condimentum augue purus, nec dignissim risus dictum imperdiet. Quisque nec hendrerit enim. Vestibulum eu lacus sit amet sem venenatis egestas. Aenean pharetra facilisis ullamcorper. Aenean lobortis tortor est, at tristique massa fringilla id. Duis egestas mauris eu purus cursus, non malesuada ex sodales. Cras blandit porttitor elit, non commodo est tristique id. Cras dictum ultricies vehicula. Cras quis tortor ex. Etiam ac nunc sem. Integer vehicula risus sapien, vel dapibus sapien semper et. Aliquam venenatis quis mi id condimentum. Donec aliquam semper tortor, eget scelerisque magna convallis sit amet. Morbi et nibh posuere, faucibus lacus a, sollicitudin ligula.",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "Morbi condimentum augue purus, nec dignissim risus dictum imperdiet. Quisque nec hendrerit enim. Vestibulum eu lacus sit amet sem venenatis egestas. Aenean pharetra facilisis ullamcorper. Aenean lobortis tortor est, at tristique massa fringilla id. Duis egestas mauris eu purus cursus, non malesuada ex sodales. Cras blandit porttitor elit, non commodo est tristique id. Cras dictum ultricies vehicula. Cras quis tortor ex. Etiam ac nunc sem. Integer vehicula risus sapien, vel dapibus sapien semper et. Aliquam venenatis quis mi id condimentum. Donec aliquam semper tortor, eget scelerisque magna convallis sit amet. Morbi et nibh posuere, faucibus lacus a, sollicitudin ligula."
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            },
+            "blocks_layout": {
+              "items": ["aaf507d0-8279-4cb2-9516-d5e105d0a338"]
+            },
+            "title": "Panel 3"
+          },
+          "cc764199-12b4-4247-bb96-bcfab3ed6560": {
+            "@type": "accordionPanel",
+            "blocks": {
+              "6087fd57-ce7a-4c62-8a0d-e204f6e20d6e": {
+                "@type": "slate",
+                "plaintext": "Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque vitae mauris ut justo fringilla euismod. Suspendisse varius varius dapibus. Pellentesque quis tellus maximus, vulputate urna a, varius sapien. Nunc porttitor est eget lacus sollicitudin porttitor. Aliquam dictum risus sit amet lacus elementum, quis sagittis erat tempor. Phasellus porta sagittis odio sit amet interdum. Suspendisse nisi dolor, sagittis nec scelerisque eget, molestie et mi. Fusce lacus magna, ullamcorper nec posuere vitae, tempus eu massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In faucibus, leo in faucibus sodales, eros est tincidunt urna, eget volutpat lectus lectus et magna. Duis eu ornare ligula.",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque vitae mauris ut justo fringilla euismod. Suspendisse varius varius dapibus. Pellentesque quis tellus maximus, vulputate urna a, varius sapien. Nunc porttitor est eget lacus sollicitudin porttitor. Aliquam dictum risus sit amet lacus elementum, quis sagittis erat tempor. Phasellus porta sagittis odio sit amet interdum. Suspendisse nisi dolor, sagittis nec scelerisque eget, molestie et mi. Fusce lacus magna, ullamcorper nec posuere vitae, tempus eu massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In faucibus, leo in faucibus sodales, eros est tincidunt urna, eget volutpat lectus lectus et magna. Duis eu ornare ligula."
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            },
+            "blocks_layout": {
+              "items": ["6087fd57-ce7a-4c62-8a0d-e204f6e20d6e"]
+            },
+            "title": "Panel 2"
+          }
+        },
+        "blocks_layout": {
+          "items": [
+            "272a09fa-6c7f-4595-adc9-76f6bd80f356",
+            "cc764199-12b4-4247-bb96-bcfab3ed6560",
+            "c5ff89af-f158-43e5-9d08-3b69950c4f4a"
+          ]
+        }
+      },
+      "non_exclusive": true,
+      "right_arrows": true
+    },
+    "6c7419f6-2c8d-46c3-aca8-903111d40276": {
+      "@type": "title"
+    },
+    "7220384b-b272-40a4-9047-dd24a65b126c": {
+      "@type": "slate",
+      "plaintext": "Only one panel can be open at a time.",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "Only one panel can be open at a time."
+            }
+          ],
+          "type": "p"
+        }
+      ]
+    },
+    "7c2d8e8b-371b-485f-9967-6899e4f67901": {
+      "@type": "accordion",
+      "collapsed": true,
+      "data": {
+        "blocks": {
+          "7639c60f-af63-440e-83f1-323ea07b6b75": {
+            "@type": "accordionPanel",
+            "blocks": {
+              "f3a093f2-91aa-4d60-a427-8b5c181f221a": {
+                "@type": "slate",
+                "plaintext": "Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque vitae mauris ut justo fringilla euismod. Suspendisse varius varius dapibus. Pellentesque quis tellus maximus, vulputate urna a, varius sapien. Nunc porttitor est eget lacus sollicitudin porttitor. Aliquam dictum risus sit amet lacus elementum, quis sagittis erat tempor. Phasellus porta sagittis odio sit amet interdum. Suspendisse nisi dolor, sagittis nec scelerisque eget, molestie et mi. Fusce lacus magna, ullamcorper nec posuere vitae, tempus eu massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In faucibus, leo in faucibus sodales, eros est tincidunt urna, eget volutpat lectus lectus et magna. Duis eu ornare ligula.",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque vitae mauris ut justo fringilla euismod. Suspendisse varius varius dapibus. Pellentesque quis tellus maximus, vulputate urna a, varius sapien. Nunc porttitor est eget lacus sollicitudin porttitor. Aliquam dictum risus sit amet lacus elementum, quis sagittis erat tempor. Phasellus porta sagittis odio sit amet interdum. Suspendisse nisi dolor, sagittis nec scelerisque eget, molestie et mi. Fusce lacus magna, ullamcorper nec posuere vitae, tempus eu massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In faucibus, leo in faucibus sodales, eros est tincidunt urna, eget volutpat lectus lectus et magna. Duis eu ornare ligula."
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            },
+            "blocks_layout": {
+              "items": ["f3a093f2-91aa-4d60-a427-8b5c181f221a"]
+            },
+            "title": "The last panel"
+          },
+          "9ab342bb-e903-465f-8065-efea757e0ac3": {
+            "@type": "accordionPanel",
+            "blocks": {
+              "4a55982c-20ec-4c5c-b3d2-e43556c22247": {
+                "@type": "image",
+                "alt": "",
+                "url": "http://localhost:3000/examples/image-1"
+              }
+            },
+            "blocks_layout": {
+              "items": ["4a55982c-20ec-4c5c-b3d2-e43556c22247"]
+            },
+            "title": "A panel with an image"
+          },
+          "df94f1c2-6f9f-4942-a367-a5a2d7dc4b93": {
+            "@type": "accordionPanel",
+            "blocks": {
+              "0c97ad3d-ff53-48dc-8826-adf0ccf5b046": {
+                "@type": "slate",
+                "plaintext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel volutpat lectus. Cras semper pretium sagittis. Nulla interdum diam sed nulla fermentum, vitae viverra libero vulputate. Etiam vulputate massa sed metus malesuada, ut gravida velit aliquam. Vivamus consectetur, nulla sit amet varius iaculis, neque libero hendrerit diam, at bibendum ligula dolor eget lorem. Proin nec sapien non nunc vulputate vestibulum quis et nulla. Proin eu lacus lectus. Phasellus commodo auctor tempor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus mauris lectus, tristique eget turpis vitae, venenatis facilisis risus. Donec eget nibh aliquet, posuere libero ac, lacinia elit. Sed sit amet sodales odio, ac fringilla lectus. Sed rhoncus facilisis gravida. Maecenas viverra vitae ex sed tincidunt.",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel volutpat lectus. Cras semper pretium sagittis. Nulla interdum diam sed nulla fermentum, vitae viverra libero vulputate. Etiam vulputate massa sed metus malesuada, ut gravida velit aliquam. Vivamus consectetur, nulla sit amet varius iaculis, neque libero hendrerit diam, at bibendum ligula dolor eget lorem. Proin nec sapien non nunc vulputate vestibulum quis et nulla. Proin eu lacus lectus. Phasellus commodo auctor tempor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus mauris lectus, tristique eget turpis vitae, venenatis facilisis risus. Donec eget nibh aliquet, posuere libero ac, lacinia elit. Sed sit amet sodales odio, ac fringilla lectus. Sed rhoncus facilisis gravida. Maecenas viverra vitae ex sed tincidunt."
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            },
+            "blocks_layout": {
+              "items": ["0c97ad3d-ff53-48dc-8826-adf0ccf5b046"]
+            },
+            "title": "A basic panel"
+          }
+        },
+        "blocks_layout": {
+          "items": [
+            "df94f1c2-6f9f-4942-a367-a5a2d7dc4b93",
+            "9ab342bb-e903-465f-8065-efea757e0ac3",
+            "7639c60f-af63-440e-83f1-323ea07b6b75"
+          ]
+        }
+      },
+      "non_exclusive": true,
+      "title": "Basic accordion"
+    },
+    "8eb5bc0c-713d-4d03-8542-0f8cffbcbf25": {
+      "@type": "slate",
+      "plaintext": "Exclusive accordion",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "Exclusive accordion"
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    },
+    "9ba553d0-19ad-48d9-82ec-fd28cf5c17b7": {
+      "@type": "slate",
+      "plaintext": "Icon on the right",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "Icon on the right"
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    },
+    "9f39d79c-e68a-439e-83d1-df8f640cf70a": {
+      "@type": "accordion",
+      "collapsed": true,
+      "data": {
+        "blocks": {
+          "81b8017a-c966-42eb-ba3f-de6151d6b9e3": {
+            "@type": "accordionPanel",
+            "blocks": {
+              "fc223580-a9bd-49e8-bd04-2b795b17e29e": {
+                "@type": "slate",
+                "plaintext": "Morbi condimentum augue purus, nec dignissim risus dictum imperdiet. Quisque nec hendrerit enim. Vestibulum eu lacus sit amet sem venenatis egestas. Aenean pharetra facilisis ullamcorper. Aenean lobortis tortor est, at tristique massa fringilla id. Duis egestas mauris eu purus cursus, non malesuada ex sodales. Cras blandit porttitor elit, non commodo est tristique id. Cras dictum ultricies vehicula. Cras quis tortor ex. Etiam ac nunc sem. Integer vehicula risus sapien, vel dapibus sapien semper et. Aliquam venenatis quis mi id condimentum. Donec aliquam semper tortor, eget scelerisque magna convallis sit amet. Morbi et nibh posuere, faucibus lacus a, sollicitudin ligula.",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "Morbi condimentum augue purus, nec dignissim risus dictum imperdiet. Quisque nec hendrerit enim. Vestibulum eu lacus sit amet sem venenatis egestas. Aenean pharetra facilisis ullamcorper. Aenean lobortis tortor est, at tristique massa fringilla id. Duis egestas mauris eu purus cursus, non malesuada ex sodales. Cras blandit porttitor elit, non commodo est tristique id. Cras dictum ultricies vehicula. Cras quis tortor ex. Etiam ac nunc sem. Integer vehicula risus sapien, vel dapibus sapien semper et. Aliquam venenatis quis mi id condimentum. Donec aliquam semper tortor, eget scelerisque magna convallis sit amet. Morbi et nibh posuere, faucibus lacus a, sollicitudin ligula."
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            },
+            "blocks_layout": {
+              "items": ["fc223580-a9bd-49e8-bd04-2b795b17e29e"]
+            },
+            "title": "Panel 3"
+          },
+          "ef33832d-30f0-4488-b711-d0dee871b247": {
+            "@type": "accordionPanel",
+            "blocks": {
+              "1ae10c6a-5608-4c02-8d16-b322ea415ffa": {
+                "@type": "slate",
+                "plaintext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel volutpat lectus. Cras semper pretium sagittis. Nulla interdum diam sed nulla fermentum, vitae viverra libero vulputate. Etiam vulputate massa sed metus malesuada, ut gravida velit aliquam. Vivamus consectetur, nulla sit amet varius iaculis, neque libero hendrerit diam, at bibendum ligula dolor eget lorem. Proin nec sapien non nunc vulputate vestibulum quis et nulla. Proin eu lacus lectus. Phasellus commodo auctor tempor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus mauris lectus, tristique eget turpis vitae, venenatis facilisis risus. Donec eget nibh aliquet, posuere libero ac, lacinia elit. Sed sit amet sodales odio, ac fringilla lectus. Sed rhoncus facilisis gravida. Maecenas viverra vitae ex sed tincidunt.",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel volutpat lectus. Cras semper pretium sagittis. Nulla interdum diam sed nulla fermentum, vitae viverra libero vulputate. Etiam vulputate massa sed metus malesuada, ut gravida velit aliquam. Vivamus consectetur, nulla sit amet varius iaculis, neque libero hendrerit diam, at bibendum ligula dolor eget lorem. Proin nec sapien non nunc vulputate vestibulum quis et nulla. Proin eu lacus lectus. Phasellus commodo auctor tempor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus mauris lectus, tristique eget turpis vitae, venenatis facilisis risus. Donec eget nibh aliquet, posuere libero ac, lacinia elit. Sed sit amet sodales odio, ac fringilla lectus. Sed rhoncus facilisis gravida. Maecenas viverra vitae ex sed tincidunt."
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            },
+            "blocks_layout": {
+              "items": ["1ae10c6a-5608-4c02-8d16-b322ea415ffa"]
+            },
+            "title": "Panel 1"
+          },
+          "f25fcc0a-011f-4295-a66d-9bc7f9b7eb2b": {
+            "@type": "accordionPanel",
+            "blocks": {
+              "6799dbf8-1f62-4f57-8cd0-f930fde6ab95": {
+                "@type": "slate",
+                "plaintext": "Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque vitae mauris ut justo fringilla euismod. Suspendisse varius varius dapibus. Pellentesque quis tellus maximus, vulputate urna a, varius sapien. Nunc porttitor est eget lacus sollicitudin porttitor. Aliquam dictum risus sit amet lacus elementum, quis sagittis erat tempor. Phasellus porta sagittis odio sit amet interdum. Suspendisse nisi dolor, sagittis nec scelerisque eget, molestie et mi. Fusce lacus magna, ullamcorper nec posuere vitae, tempus eu massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In faucibus, leo in faucibus sodales, eros est tincidunt urna, eget volutpat lectus lectus et magna. Duis eu ornare ligula.",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque vitae mauris ut justo fringilla euismod. Suspendisse varius varius dapibus. Pellentesque quis tellus maximus, vulputate urna a, varius sapien. Nunc porttitor est eget lacus sollicitudin porttitor. Aliquam dictum risus sit amet lacus elementum, quis sagittis erat tempor. Phasellus porta sagittis odio sit amet interdum. Suspendisse nisi dolor, sagittis nec scelerisque eget, molestie et mi. Fusce lacus magna, ullamcorper nec posuere vitae, tempus eu massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In faucibus, leo in faucibus sodales, eros est tincidunt urna, eget volutpat lectus lectus et magna. Duis eu ornare ligula."
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            },
+            "blocks_layout": {
+              "items": ["6799dbf8-1f62-4f57-8cd0-f930fde6ab95"]
+            },
+            "title": "Panel 2"
+          }
+        },
+        "blocks_layout": {
+          "items": [
+            "ef33832d-30f0-4488-b711-d0dee871b247",
+            "f25fcc0a-011f-4295-a66d-9bc7f9b7eb2b",
+            "81b8017a-c966-42eb-ba3f-de6151d6b9e3"
+          ]
+        }
+      },
+      "non_exclusive": false,
+      "right_arrows": false
+    },
+    "a3ea02a3-88ca-4f3c-88b5-4d2796d0bd48": {
+      "@type": "slate",
+      "plaintext": "First panel open by default",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "First panel open by default"
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    },
+    "ab19fa9b-43eb-484b-86a4-b05c4b6062d5": {
+      "@type": "accordion",
+      "collapsed": false,
+      "data": {
+        "blocks": {
+          "0171f324-47ca-40f3-9647-4bc8aa0fda42": {
+            "@type": "accordionPanel",
+            "blocks": {
+              "9b2954bf-f87d-4fd6-8539-c7c661bff2a4": {
+                "@type": "slate",
+                "plaintext": "Morbi condimentum augue purus, nec dignissim risus dictum imperdiet. Quisque nec hendrerit enim. Vestibulum eu lacus sit amet sem venenatis egestas. Aenean pharetra facilisis ullamcorper. Aenean lobortis tortor est, at tristique massa fringilla id. Duis egestas mauris eu purus cursus, non malesuada ex sodales. Cras blandit porttitor elit, non commodo est tristique id. Cras dictum ultricies vehicula. Cras quis tortor ex. Etiam ac nunc sem. Integer vehicula risus sapien, vel dapibus sapien semper et. Aliquam venenatis quis mi id condimentum. Donec aliquam semper tortor, eget scelerisque magna convallis sit amet. Morbi et nibh posuere, faucibus lacus a, sollicitudin ligula.",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "Morbi condimentum augue purus, nec dignissim risus dictum imperdiet. Quisque nec hendrerit enim. Vestibulum eu lacus sit amet sem venenatis egestas. Aenean pharetra facilisis ullamcorper. Aenean lobortis tortor est, at tristique massa fringilla id. Duis egestas mauris eu purus cursus, non malesuada ex sodales. Cras blandit porttitor elit, non commodo est tristique id. Cras dictum ultricies vehicula. Cras quis tortor ex. Etiam ac nunc sem. Integer vehicula risus sapien, vel dapibus sapien semper et. Aliquam venenatis quis mi id condimentum. Donec aliquam semper tortor, eget scelerisque magna convallis sit amet. Morbi et nibh posuere, faucibus lacus a, sollicitudin ligula."
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            },
+            "blocks_layout": {
+              "items": ["9b2954bf-f87d-4fd6-8539-c7c661bff2a4"]
+            },
+            "title": "Panel 3"
+          },
+          "0cd3140a-c507-4e52-93b4-325a539127df": {
+            "@type": "accordionPanel",
+            "blocks": {
+              "6500535a-b8e6-4989-ab2f-b5904ec8dcb6": {
+                "@type": "slate",
+                "plaintext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel volutpat lectus. Cras semper pretium sagittis. Nulla interdum diam sed nulla fermentum, vitae viverra libero vulputate. Etiam vulputate massa sed metus malesuada, ut gravida velit aliquam. Vivamus consectetur, nulla sit amet varius iaculis, neque libero hendrerit diam, at bibendum ligula dolor eget lorem. Proin nec sapien non nunc vulputate vestibulum quis et nulla. Proin eu lacus lectus. Phasellus commodo auctor tempor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus mauris lectus, tristique eget turpis vitae, venenatis facilisis risus. Donec eget nibh aliquet, posuere libero ac, lacinia elit. Sed sit amet sodales odio, ac fringilla lectus. Sed rhoncus facilisis gravida. Maecenas viverra vitae ex sed tincidunt.",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel volutpat lectus. Cras semper pretium sagittis. Nulla interdum diam sed nulla fermentum, vitae viverra libero vulputate. Etiam vulputate massa sed metus malesuada, ut gravida velit aliquam. Vivamus consectetur, nulla sit amet varius iaculis, neque libero hendrerit diam, at bibendum ligula dolor eget lorem. Proin nec sapien non nunc vulputate vestibulum quis et nulla. Proin eu lacus lectus. Phasellus commodo auctor tempor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus mauris lectus, tristique eget turpis vitae, venenatis facilisis risus. Donec eget nibh aliquet, posuere libero ac, lacinia elit. Sed sit amet sodales odio, ac fringilla lectus. Sed rhoncus facilisis gravida. Maecenas viverra vitae ex sed tincidunt."
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            },
+            "blocks_layout": {
+              "items": ["6500535a-b8e6-4989-ab2f-b5904ec8dcb6"]
+            },
+            "title": "Panel 1"
+          },
+          "b6b90341-72c5-484d-af23-e052ec6711eb": {
+            "@type": "accordionPanel",
+            "blocks": {
+              "5cdf1519-2f11-49f9-b086-9242a0381966": {
+                "@type": "slate",
+                "plaintext": "Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque vitae mauris ut justo fringilla euismod. Suspendisse varius varius dapibus. Pellentesque quis tellus maximus, vulputate urna a, varius sapien. Nunc porttitor est eget lacus sollicitudin porttitor. Aliquam dictum risus sit amet lacus elementum, quis sagittis erat tempor. Phasellus porta sagittis odio sit amet interdum. Suspendisse nisi dolor, sagittis nec scelerisque eget, molestie et mi. Fusce lacus magna, ullamcorper nec posuere vitae, tempus eu massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In faucibus, leo in faucibus sodales, eros est tincidunt urna, eget volutpat lectus lectus et magna. Duis eu ornare ligula.",
+                "value": [
+                  {
+                    "children": [
+                      {
+                        "text": "Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque vitae mauris ut justo fringilla euismod. Suspendisse varius varius dapibus. Pellentesque quis tellus maximus, vulputate urna a, varius sapien. Nunc porttitor est eget lacus sollicitudin porttitor. Aliquam dictum risus sit amet lacus elementum, quis sagittis erat tempor. Phasellus porta sagittis odio sit amet interdum. Suspendisse nisi dolor, sagittis nec scelerisque eget, molestie et mi. Fusce lacus magna, ullamcorper nec posuere vitae, tempus eu massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In faucibus, leo in faucibus sodales, eros est tincidunt urna, eget volutpat lectus lectus et magna. Duis eu ornare ligula."
+                      }
+                    ],
+                    "type": "p"
+                  }
+                ]
+              }
+            },
+            "blocks_layout": {
+              "items": ["5cdf1519-2f11-49f9-b086-9242a0381966"]
+            },
+            "title": "Panel 2"
+          }
+        },
+        "blocks_layout": {
+          "items": [
+            "0cd3140a-c507-4e52-93b4-325a539127df",
+            "b6b90341-72c5-484d-af23-e052ec6711eb",
+            "0171f324-47ca-40f3-9647-4bc8aa0fda42"
+          ]
+        }
+      },
+      "non_exclusive": true
+    },
+    "bcc25dc5-a576-49f1-80c6-1c1c7cc27284": {
+      "@type": "slate",
+      "plaintext": "The accordion block allows you to add an accordion to your website. Different layouts and behaviors can be selected to customize your accordion. Accordion panels can contain any blocks.",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "The accordion block allows you to add an accordion to your website. Different layouts and behaviors can be selected to customize your accordion. Accordion panels can contain any blocks."
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    }
+  },
+  "blocks_layout": {
+    "items": [
+      "6c7419f6-2c8d-46c3-aca8-903111d40276",
+      "bcc25dc5-a576-49f1-80c6-1c1c7cc27284",
+      "4bc39232-fdb8-4871-b259-f8b7ca555fe7",
+      "7c2d8e8b-371b-485f-9967-6899e4f67901",
+      "8eb5bc0c-713d-4d03-8542-0f8cffbcbf25",
+      "7220384b-b272-40a4-9047-dd24a65b126c",
+      "9f39d79c-e68a-439e-83d1-df8f640cf70a",
+      "9ba553d0-19ad-48d9-82ec-fd28cf5c17b7",
+      "6b16341c-aec7-4611-807f-5b951844b4a0",
+      "5e54f8da-5840-4c93-b59b-3345a9794d62",
+      "a3ea02a3-88ca-4f3c-88b5-4d2796d0bd48",
+      "ab19fa9b-43eb-484b-86a4-b05c4b6062d5",
+      "5aa2c019-02ca-4565-9ac1-82ac1852d85e"
+    ]
+  },
+  "description": "The accordion block allows you to add an accordion to your website. Different layouts and behaviors can be selected to customize your accordion. Accordion panels can contain any blocks.",
+  "id": "accordion",
+  "review_state": "published",
+  "subjects": [],
+  "title": "Accordion",
+  "set_local_image": {
+    "image": "block-accordion.png"
+  }
+}

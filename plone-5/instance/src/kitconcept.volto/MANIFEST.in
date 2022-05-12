@@ -1,0 +1,7 @@
+graft src/kitconcept/volto
+graft docs
+include *.rst
+exclude .flake8
+global-exclude *.pyc
+exclude requirements.txt
+exclude Makefile

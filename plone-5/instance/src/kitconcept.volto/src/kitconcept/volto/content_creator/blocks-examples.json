@@ -1,0 +1,25 @@
+{
+  "@type": "Document",
+  "blocks": {
+    "27559f17-be24-4bbe-bb70-bc099fb0e20a": {
+      "@type": "listing",
+      "block": "27559f17-be24-4bbe-bb70-bc099fb0e20a",
+      "query": [],
+      "variation": "summary"
+    },
+    "605ecb67-eeda-44b5-bec8-8c11b2d32151": {
+      "@type": "title"
+    }
+  },
+  "blocks_layout": {
+    "items": [
+      "605ecb67-eeda-44b5-bec8-8c11b2d32151",
+      "27559f17-be24-4bbe-bb70-bc099fb0e20a"
+    ]
+  },
+  "id": "blocks-examples",
+  "review_state": "published",
+  "title": "Blocks",
+  "description": "",
+  "subjects": []
+}

@@ -1,0 +1,121 @@
+{
+  "@type": "Document",
+  "blocks": {
+    "3b5bfd6c-9966-4475-9140-5e5de81d44a5": {
+      "@type": "buttonBlock",
+      "align": "center",
+      "href": [],
+      "title": "Click me"
+    },
+    "3e9605cc-819a-4204-8e27-8a85bb0dc4d1": {
+      "@type": "buttonBlock",
+      "align": "left",
+      "title": "Click me"
+    },
+    "3f316018-450f-4639-aca2-2faf106bb051": {
+      "@type": "slate",
+      "plaintext": "A full width button",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "A full width button"
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    },
+    "41f80c7b-066d-4b67-a1b2-45f04d42dcd9": {
+      "@type": "slate",
+      "plaintext": "A left aligned button",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "A left aligned button"
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    },
+    "8c9d3e6d-9edc-46f1-b400-e93166e06215": {
+      "@type": "slate",
+      "plaintext": "The button block allows you to add buttons which can link to a specific page. You can use these for \"call to actions\" with different layout variants.",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "The button block allows you to add buttons which can link to a specific page. You can use these for \"call to actions\" with different layout variants."
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    },
+    "9265ad5c-5a85-41b2-a97f-6c5af0e89569": {
+      "@type": "slate",
+      "plaintext": "A right aligned button",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "A right aligned button"
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    },
+    "a65cfa77-7017-4415-ac4a-4f9a86e01bff": {
+      "@type": "buttonBlock",
+      "align": "right",
+      "title": "Click me"
+    },
+    "cc906f9d-77d1-4d8d-a5a6-103152a5c345": {
+      "@type": "buttonBlock",
+      "align": "full",
+      "title": "Click me"
+    },
+    "e110ac0a-6d3b-41dc-8d54-219023c9baf0": {
+      "@type": "title"
+    },
+    "f18f8a06-1e6f-4fbd-894d-b923b28cbd5e": {
+      "@type": "slate",
+      "plaintext": "A centered button",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "A centered button"
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    }
+  },
+  "blocks_layout": {
+    "items": [
+      "e110ac0a-6d3b-41dc-8d54-219023c9baf0",
+      "8c9d3e6d-9edc-46f1-b400-e93166e06215",
+      "f18f8a06-1e6f-4fbd-894d-b923b28cbd5e",
+      "3b5bfd6c-9966-4475-9140-5e5de81d44a5",
+      "41f80c7b-066d-4b67-a1b2-45f04d42dcd9",
+      "3e9605cc-819a-4204-8e27-8a85bb0dc4d1",
+      "9265ad5c-5a85-41b2-a97f-6c5af0e89569",
+      "a65cfa77-7017-4415-ac4a-4f9a86e01bff",
+      "3f316018-450f-4639-aca2-2faf106bb051",
+      "cc906f9d-77d1-4d8d-a5a6-103152a5c345"
+    ]
+  },
+  "description": "The button block allows you to add buttons which can link to a specific page. You can use these for \"call to actions\" with different layout variants.",
+  "id": "button",
+  "review_state": "published",
+  "subjects": [],
+  "title": "Button",
+  "set_local_image": {
+    "image": "block-button.png"
+  }
+}

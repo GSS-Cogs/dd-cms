@@ -1,0 +1,68 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:monkey="http://namespaces.plone.org/monkey"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="kitconcept.volto"
+    >
+
+  <i18n:registerTranslations directory="locales" />
+
+  <include package="plone.volto" />
+  <include package="kitconcept.contentcreator" />
+
+  <include file="upgrades.zcml" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="kitconcept.volto site (kitconcept.volto)"
+      description="Installs the kitconcept.volto add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/default"
+      post_handler=".setuphandlers.post_install"
+      />
+
+  <genericsetup:registerProfile
+      name="content"
+      title="Example Content"
+      description="Create a Plone site with example content"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/content"
+      post_handler=".setuphandlers.import_example_content"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="kitconcept.volto site (kitconcept.volto): uninstall"
+      description="Uninstalls the kitconcept.volto add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/uninstall"
+      post_handler=".setuphandlers.uninstall"
+      />
+
+  <genericsetup:registerProfile
+      name="default-homepage"
+      title="kitconcept.volto site (Default content on homepage)"
+      description="Creates a default page for the site"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/homepage"
+      post_handler=".setuphandlers.create_default_homepage"
+      />
+
+  <genericsetup:registerProfile
+      name="richtext"
+      title="kitconcept.volto p51 profile"
+      description="Specific profile for re-adding the richtext behavior"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/richtext"
+      />
+
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="kitconcept.volto-hiddenprofiles"
+      />
+
+</configure>

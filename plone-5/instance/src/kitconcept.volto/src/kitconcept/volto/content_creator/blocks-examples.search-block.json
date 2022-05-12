@@ -1,0 +1,113 @@
+{
+  "@type": "Document",
+  "blocks": {
+    "55f360a7-3f41-4fa2-be0e-c4b665b11008": {
+      "@type": "title"
+    },
+    "b676d328-3aa1-4ce5-909e-c192516ba3e1": {
+      "@type": "slate",
+      "plaintext": "",
+      "value": [
+        {
+          "children": [
+            {
+              "text": ""
+            }
+          ],
+          "type": "p"
+        }
+      ]
+    },
+    "f35e6f8c-b618-4959-8a6e-4b1d8896a014": {
+      "@type": "search",
+      "facets": [
+        {
+          "@id": "e7a497a8-bc45-4636-9ca8-961bb1956018",
+          "field": {
+            "label": "Type",
+            "value": "portal_type"
+          }
+        },
+        {
+          "@id": "a15baadc-631f-457a-a8f3-0d6a7b1beeaa",
+          "field": {
+            "label": "Tag",
+            "value": "Subject"
+          },
+          "multiple": true,
+          "type": "checkboxFacet"
+        },
+        {
+          "@id": "53c80768-1290-4d19-b156-9bb800d96f39",
+          "field": {
+            "label": "Effective date",
+            "value": "effective"
+          },
+          "type": "daterangeFacet"
+        },
+        {
+          "@id": "be9445de-77de-471c-9277-d6fd816a9232",
+          "field": {
+            "label": "Review state",
+            "value": "review_state"
+          },
+          "multiple": false,
+          "type": "checkboxFacet"
+        },
+        {
+          "@id": "6b0108fd-64a8-440d-8bcc-76833bc4c9b3",
+          "field": {
+            "label": "Show Inactive",
+            "value": "show_inactive"
+          },
+          "type": "toggleFacet"
+        }
+      ],
+      "listingBodyTemplate": "default",
+      "query": {
+        "query": [
+          {
+            "i": "path",
+            "o": "plone.app.querystring.operation.string.absolutePath",
+            "v": "/examples"
+          }
+        ],
+        "sort_order": "ascending"
+      },
+      "showSearchButton": false,
+      "showSearchInput": true,
+      "showSortOn": true,
+      "variation": "facetsRightSide"
+    },
+    "f8f53c47-4d65-4145-9904-97eb77c5edff": {
+      "@type": "slate",
+      "plaintext": "The search block allows you to add a search page anywhere on your site. You can also add facets and search options like sorting.",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "The search block allows you to add a search page anywhere on your site. You can also add facets and search options like sorting."
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    }
+  },
+  "blocks_layout": {
+    "items": [
+      "55f360a7-3f41-4fa2-be0e-c4b665b11008",
+      "f8f53c47-4d65-4145-9904-97eb77c5edff",
+      "f35e6f8c-b618-4959-8a6e-4b1d8896a014",
+      "b676d328-3aa1-4ce5-909e-c192516ba3e1"
+    ]
+  },
+  "description": "The search block allows you to add a search page anywhere on your site. You can also add facets and search options like sorting.",
+  "id": "search-block",
+  "review_state": "published",
+  "subjects": [],
+  "title": "Search",
+  "set_local_image": {
+    "image": "block-search.png"
+  }
+}
