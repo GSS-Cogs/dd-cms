@@ -47,7 +47,7 @@ const Edit = (props) => {
               title="GEOJSON file"
               widgetOptions={{
                 pattern_options: {
-                  selectableTypes: ['sparql_dataconnector'],
+                  selectableTypes: ['discodataconnector', 'csv_type', 'sparql_dataconnector'],
                 }
               }}
               value={data.geojson_path || []}
