@@ -32,5 +32,8 @@
 
 .volto-width-container--wide {
   @include govuk-width-container(1920px);
-  padding: 16px;
+}
+
+main > * > * > :not(.cc-masthead-wrapper) {
+  @include govuk-width-container(1920px);
 }
