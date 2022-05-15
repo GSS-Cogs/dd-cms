@@ -50,7 +50,7 @@ class Header extends Component {
               })
             ),
           ]}
-          className="Header"
+          className={this.props.pathname === '' ? 'root-header' : 'non-root-header'}
         />
       </>
     );

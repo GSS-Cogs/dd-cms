@@ -1,3 +1,15 @@
-header.govuk-header.Header {
-  border-bottom: 10px solid #1d70b8;
+header.govuk-header.root-header {
+  border-bottom-color: #1D70B8;
+}
+
+header.govuk-header.root-header .govuk-header__container {
+  border-bottom-color: #FFDD00;
+}
+
+header.govuk-header.non-root-header {
+  border-bottom-color: #F3F2F1;
+}
+
+header.govuk-header.non-root-header .govuk-header__container {
+  border-bottom-color: #1D70B8;
 }
