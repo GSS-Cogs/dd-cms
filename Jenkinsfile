@@ -32,16 +32,18 @@ pipeline {
         }
         stage('End user tests') {
             steps {
-                dir('test') {
-                    sh "docker-compose build"
-                    sh "docker-compose up -d plone"
-                    sh "docker-compose up -d volto"
-                    sh "docker-compose up -d proxy"
-                    def puppeteer = docker.image('test_test')
-                    puppeteer.inside("--rm --entrypoint= --network test_test_net") { testContainer ->
-                        sh './run.sh'
+                script {
+                    dir('test') {
+                        sh "docker-compose build"
+                        sh "docker-compose up -d plone"
+                        sh "docker-compose up -d volto"
+                        sh "docker-compose up -d proxy"
+                        def puppeteer = docker.image('test_test')
+                        puppeteer.inside("--rm --entrypoint= --network test_test_net") { testContainer ->
+                            sh './run.sh'
+                        }
+                        sh "docker-compose down"
                     }
-                    sh "docker-compose down"
                 }
             }
         }
