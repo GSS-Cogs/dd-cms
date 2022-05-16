@@ -50,7 +50,9 @@ class Header extends Component {
               })
             ),
           ]}
+          productName="Climate Change "
           className="Header"
+          containerClassName="volto-width-container--wide"
         />
       </>
     );
