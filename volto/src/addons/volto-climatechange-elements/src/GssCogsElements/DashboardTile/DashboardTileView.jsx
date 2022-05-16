@@ -2,8 +2,8 @@ import React from 'react';
 import { Eg1, Eg2 } from './examples';
 
 // example static data - to be replaced with data from volto and removed
-import { emissionsData } from './TileVis/data';
-import { renewablesData } from './TileVis/data';
+import { emissionsData } from './TileVis/mock/data';
+import { renewablesData } from './TileVis/mock/data';
 
 import './DashboardTile.scss';
 import SparkLine from './TileVis/SparkLine/SparkLine';

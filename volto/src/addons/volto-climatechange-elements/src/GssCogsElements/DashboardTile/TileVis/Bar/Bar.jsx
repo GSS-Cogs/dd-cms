@@ -19,7 +19,7 @@ const Bar = ({ data, height }) => {
 		);
 	});
 	return (
-		<div className="cc-bar-container">
+		<div className="cc-bar-container" data-testid="bar">
 			<div style={{ 'height': `${height}` }} className="cc-bar">
 				{bars}
 			</div>

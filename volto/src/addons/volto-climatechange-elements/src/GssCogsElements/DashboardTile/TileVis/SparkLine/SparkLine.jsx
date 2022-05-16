@@ -86,6 +86,7 @@ const SparkLine = ({ data, height, lineColor }) => {
 			className="cc-spark-line-container"
 			style={{ 'height': `${height}px` }}
 			ref={containerRef}
+			data-testid="spark-line"
 		>
 			<svg ref={svgRef} />
 			<ValuesBlock
