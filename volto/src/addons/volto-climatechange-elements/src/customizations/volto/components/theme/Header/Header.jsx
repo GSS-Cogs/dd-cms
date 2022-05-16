@@ -50,7 +50,9 @@ class Header extends Component {
               })
             ),
           ]}
+          productName="Climate Change "
           className={this.props.pathname === '' ? 'root-header' : 'non-root-header'}
+          containerClassName="volto-width-container--wide"
         />
       </>
     );

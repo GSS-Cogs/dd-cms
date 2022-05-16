@@ -129,7 +129,7 @@ class App extends Component {
         />
         <SkipLinks />
         <Header pathname={path} />
-        <Breadcrumbs pathname={path} />
+        {this.props.pathname !== '/' && <Breadcrumbs pathname={path} />}
         <MultilingualRedirector pathname={this.props.pathname}>
           <main>
             <OutdatedBrowser />
