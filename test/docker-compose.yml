@@ -25,12 +25,9 @@ services:
 
 
   proxy:
-    image: nginxproxy/nginx-proxy:alpine
+    build:
+      context: ./proxy
     domainname: data.gov.uk
-    volumes:
-      - ../volto/vhosts.d/climate-change.data.gov.uk:/etc/nginx/vhost.d/climate-change.data.gov.uk:z
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-    privileged: true
     networks:
       test_net:
         aliases:
