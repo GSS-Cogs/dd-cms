@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Field, SidebarPortal } from '@plone/volto/components';
 import { Form, Segment } from 'semantic-ui-react';
 import { ChartContext, ChartPreview, getInitialChartProperties, ChartPropertiesSchema, SidePanel, useChartContext } from 'gss-cogs-chart-builder';
-import { usePloneCsvData } from '../hooks';
+import { usePloneCsvData, usePloneGeoJson } from '../hooks';
 import debounce from 'lodash.debounce';
 
 const View = () => {
@@ -12,6 +12,7 @@ const View = () => {
 const Edit = (props) => {
   const { selected, onChangeBlock, block, data } = props;
   usePloneCsvData(data.file_path || []);
+  usePloneGeoJson(data.geojson_path || []);
 
   return (
     <SidebarPortal selected={selected}>
@@ -32,6 +33,24 @@ const Edit = (props) => {
                 }
               }}
               value={data.file_path || []}
+              onChange={(id, value) => {
+                onChangeBlock(block, {
+                  ...data,
+                  [id]: value,
+                });
+              }}
+            />
+            <Field
+              id="geojson_path"
+              widget="object_browser"
+              mode="link"
+              title="GEOJSON file"
+              widgetOptions={{
+                pattern_options: {
+                  selectableTypes: ['discodataconnector', 'csv_type', 'sparql_dataconnector'],
+                }
+              }}
+              value={data.geojson_path || []}
               onChange={(id, value) => {
                 onChangeBlock(block, {
                   ...data,
@@ -75,7 +94,7 @@ function useVoltoBlockDataState(data, id, initialValue) {
       return migrateFromPropertiesSchemaAndValue(result);
     }
 
-    if (typeof initialValue === 'function') {
+    if (result === initialValue && typeof initialValue === 'function') {
       return initialValue();
     }
 
