@@ -94,7 +94,7 @@ function useVoltoBlockDataState(data, id, initialValue) {
       return migrateFromPropertiesSchemaAndValue(result);
     }
 
-    if (typeof initialValue === 'function') {
+    if (result === initialValue && typeof initialValue === 'function') {
       return initialValue();
     }
 
