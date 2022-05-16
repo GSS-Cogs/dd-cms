@@ -37,19 +37,17 @@ class SPARQLDataProviderForConnectors(object):
 
         return results
 
-    def change_orientation(self, data):
+    def change_orientation(self, keys, data):
         """ change orientation """
         res = {}
 
         if not data:
             return res
 
-        keys = data[0].keys()
-
         # TO DO: in-memory built, should optimize
 
         for k in keys:
-            res[k] = [row[k]["value"] for row in data]
+            res[k] = [row[k]["value"] if k in row else None for row in data]
 
         return res
 
@@ -62,7 +60,7 @@ class SPARQLDataProviderForConnectors(object):
 
         data = self._get_data()
 
-        rotate_data = self.change_orientation(data["results"]["bindings"])
+        rotate_data = self.change_orientation(data['head']['vars'], data["results"]["bindings"])
         return rotate_data
 
     @property
