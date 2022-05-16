@@ -51,7 +51,7 @@ class Header extends Component {
             ),
           ]}
           productName="Climate Change "
-          className="Header"
+          className={this.props.pathname === '' ? 'root-header' : 'non-root-header'}
           containerClassName="volto-width-container--wide"
         />
       </>
