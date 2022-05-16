@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Test') {
+        stage('Frontend tests') {
             agent {
                 dockerfile {
                     dir 'volto'
@@ -30,12 +30,22 @@ pipeline {
                 }
             }
         }
+        stage('End user tests') {
+            steps {
+                sh "docker-compose -f test/docker-compose-test.yml build"
+                sh "docker-compose -f test/docker-compose-test.yml run --rm test ./run.sh"
+                sh "docker-compose -f test/docker-compose-test.yml down"
+            }
+        }
     }
     post {
         always {
             script {
                 dir('volto') {
                     junit allowEmptyResults: true, testResults: '*.xml'
+                }
+                dir('test') {
+                    cucumber 'test-results.json'
                 }
             }
         }

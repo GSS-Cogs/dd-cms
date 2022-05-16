@@ -38,13 +38,13 @@ services:
 
   test:
     build:
-      context: ../test
+      context: ./
     depends_on:
       - plone
       - volto
       - proxy
     volumes:
-      - ../test/:/app:z
+      - ./:/app:z
     working_dir: /app
     entrypoint: ''
     networks:
