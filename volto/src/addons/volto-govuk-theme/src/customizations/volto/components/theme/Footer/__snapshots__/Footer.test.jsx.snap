@@ -20,40 +20,6 @@ exports[`Footer renders a footer component 1`] = `
           >
             Support links
           </h2>
-          <ul
-            class="govuk-footer__inline-list"
-          >
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link "
-                href="/"
-              >
-                Item 1
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link "
-                href="/footer-meta-item-2"
-              >
-                Item 2
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link "
-                href="/"
-              >
-                Item 3
-              </a>
-            </li>
-          </ul>
           <svg
             aria-hidden="true"
             class="govuk-footer__licence-logo"

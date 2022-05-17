@@ -34,26 +34,6 @@ Array [
                 Log Out
               </a>
             </li>
-            <li
-              className="govuk-footer__inline-list-item"
-            >
-              <a
-                className="govuk-footer__link "
-                href="/footer-meta-item-2"
-              >
-                Item 2
-              </a>
-            </li>
-            <li
-              className="govuk-footer__inline-list-item"
-            >
-              <a
-                className="govuk-footer__link "
-                href="#"
-              >
-                Item 3
-              </a>
-            </li>
           </ul>
           <svg
             aria-hidden="true"
