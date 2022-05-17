@@ -14,7 +14,7 @@ export function useTileVisData(plone_ref) {
   const [sparkLineData, setSparkLineData] = useState(null);
   const [barData, setBarData] = useState(null);
 
-  const contentRef = plone_ref.length ? plone_ref[0] : null;
+  const contentRef = plone_ref?.length ? plone_ref[0] : null;
   const dispatch = useDispatch();
 
   useEffect(() => {
