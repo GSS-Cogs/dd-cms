@@ -9,6 +9,11 @@ export const DashboardTileSchema = ({ intl }) => ({
             title: intl.formatMessage(messages.defaultFieldset),
             fields: ['topic', 'title'],
         },
+        {
+            id: 'footer',
+            title: intl.formatMessage(messages.footerLinkFieldset),
+            fields: ['href', 'linkTitle'],
+        },
     ],
 
     properties: {
@@ -20,6 +25,14 @@ export const DashboardTileSchema = ({ intl }) => ({
             type: 'string',
             title: intl.formatMessage(messages.title),
         },
+        href: {
+            type: 'string',
+            title: intl.formatMessage(messages.href),
+        },
+        linkTitle: {
+            type: 'string',
+            title: intl.formatMessage(messages.linkTitle),
+        },
     },
 
     required: ['topic', 'title'],
@@ -30,6 +43,10 @@ const messages = defineMessages({
         id: 'Default',
         defaultMessage: 'Default',
     },
+    footerLinkFieldset: {
+        id: 'footerLinkFieldset',
+        defaultMessage: 'Footer Link',
+    },
     topic: {
         id: 'Topic',
         defaultMessage: 'Topic',
@@ -37,5 +54,13 @@ const messages = defineMessages({
     title: {
         id: 'Title',
         defaultMessage: 'Title',
+    },
+    href: {
+        id: 'HREF',
+        defaultMessage: 'Link Address',
+    },
+    linkTitle: {
+        id: 'linkTitle',
+        defaultMessage: 'Link Title',
     },
 });
