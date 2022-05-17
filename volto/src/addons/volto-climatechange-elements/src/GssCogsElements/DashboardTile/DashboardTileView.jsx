@@ -12,7 +12,7 @@ import { useTileVisData } from '../../hooks';
 import { VIS_SPARK_LINE, VIS_BAR } from './schema';
 
 export const DashboardTileView = ({data}) => {
-  const {sparkLineData} = useTileVisData(data.data_source);
+  const {sparkLineData, barData} = useTileVisData(data.data_source);
 
   return (
     <div className="cc-dashboard-tile">
@@ -26,8 +26,8 @@ export const DashboardTileView = ({data}) => {
       {sparkLineData && data.vis_type === VIS_SPARK_LINE
         ? <SparkLine data={sparkLineData} lineColor={'#1D70B8'} height={150}/>
         : null}
-      {data.vis_type === VIS_BAR
-        ? <Bar data={renewablesData} height={'24px'}/>
+      {barData && data.vis_type === VIS_BAR
+        ? <Bar data={barData} height={'24px'}/>
         : null
       }
 
