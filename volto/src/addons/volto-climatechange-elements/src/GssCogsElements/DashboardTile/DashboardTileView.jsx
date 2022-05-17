@@ -8,8 +8,11 @@ import { renewablesData } from './TileVis/mock/data';
 import './DashboardTile.scss';
 import SparkLine from './TileVis/SparkLine/SparkLine';
 import Bar from './TileVis/Bar/Bar';
+import { useSparkLineData } from '../../hooks';
 
 export const DashboardTileView = ({ data }) => {
+    const { sparkLineData } = useSparkLineData(data.data_source);
+
     return (
         <div className="cc-dashboard-tile">
             <div className="cc-dashboard-tile--header">
