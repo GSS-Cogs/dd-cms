@@ -3,6 +3,10 @@ FROM node:14
 WORKDIR /app
 # restrict files/directories to copy in .dockerignore
 COPY jsconfig.json package.json yarn.lock mrs.developer.json /app/
+COPY src/addons/volto-climatechange-elements/package.json /app/src/addons/volto-climatechange-elements/package.json
+COPY src/addons/volto-chart-builder/package.json /app/src/addons/volto-chart-builder/package.json
+COPY src/addons/volto-govuk-theme/package.json /app/src/addons/volto-govuk-theme/package.json
+
 RUN \
     yarn global add mrs-developer && \
     mkdir -p src/addons && \

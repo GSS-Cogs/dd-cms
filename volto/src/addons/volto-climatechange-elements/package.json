@@ -14,6 +14,7 @@
     "i18n": "rm -rf build/messages && NODE_ENV=production i18n --addon"
   },
   "dependencies": {
-    "@plone/scripts": "*"
+    "@plone/scripts": "*",
+    "@react-hook/resize-observer": "1.2.5"
   }
 }
