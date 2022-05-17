@@ -60,28 +60,12 @@ class Footer extends Component {
           children: 'Log Out',
           href: `/logout${returnUrl}`,
         },
-        {
-          children: 'Item 2',
-          href: '/footer-meta-item-2',
-        },
-        {
-          children: 'Item 3',
-          href: '#',
-        },
       ];
     } else {
       items = [
         {
           children: 'Log In',
           href: `/login${returnUrl}`,
-        },
-        {
-          children: 'Item 2',
-          href: '/footer-meta-item-2',
-        },
-        {
-          children: 'Item 3',
-          href: '#',
         },
       ];
     }

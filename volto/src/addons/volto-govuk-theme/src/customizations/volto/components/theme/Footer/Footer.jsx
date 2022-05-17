@@ -18,21 +18,8 @@ const Footer = ({ intl }) => {
     <GovukFooter
       containerClassName="volto-width-container--wide"
       meta={{
-        items: [
-          {
-            children: 'Item 1',
-            href: '/'
-          },
-          {
-            children: 'Item 2',
-            href: '/footer-meta-item-2'
-          },
-          {
-            children: 'Item 3',
-            href: '/'
-          }
-        ],
-        visuallyHiddenTitle: 'Support links'
+        items: [],
+        visuallyHiddenTitle: 'Support links',
       }}
     />
   );
