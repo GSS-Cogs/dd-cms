@@ -1,5 +1,8 @@
 import { defineMessages } from 'react-intl';
 
+export const VIS_SPARK_LINE = 'spark_line';
+export const VIS_BAR = 'bar';
+
 export const DashboardTileSchema = ({ intl }) => ({
     title: 'Dashboard Tile',
 
@@ -12,7 +15,7 @@ export const DashboardTileSchema = ({ intl }) => ({
         {
             id: 'data',
             title: intl.formatMessage(messages.dataFieldset),
-            fields: ['data_source'],
+            fields: ['vis_type', 'data_source'],
         },
         {
             id: 'footer',
@@ -29,6 +32,10 @@ export const DashboardTileSchema = ({ intl }) => ({
         title: {
             type: 'string',
             title: intl.formatMessage(messages.title),
+        },
+        vis_type: {
+            title: intl.formatMessage(messages.vis_type),
+            choices: [[VIS_SPARK_LINE, 'Spark Line'], [VIS_BAR, 'Bar']],
         },
         data_source: {
             widget: 'object_browser',
@@ -84,5 +91,9 @@ const messages = defineMessages({
     data_source: {
         id: 'data',
         defaultMessage: 'Data'
-    }
+    },
+    vis_type: {
+        id: 'vis_type',
+        defaultMessage: 'Visualisation Type',
+    },
 });

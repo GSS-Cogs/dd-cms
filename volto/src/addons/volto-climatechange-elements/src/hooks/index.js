@@ -5,7 +5,7 @@ import { getChartBuilderData } from 'volto-chart-builder/src/actions';
 // I'm sure there's a hook in the EEA stuff that abstracts this
 // or maybe a HOC.  Worth a look to remove this random use of the
 // chart builder machinery...
-export function useSparkLineData(plone_ref) {
+export function useTileVisData(plone_ref) {
   const [sparkLineData, setSparkLineData] = useState(null);
 
   const contentRef = plone_ref.length ? plone_ref[0] : null;
