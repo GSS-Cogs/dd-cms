@@ -6,6 +6,7 @@
   color: govuk-colour("dark-grey");
   font-size: 16px;
   padding: 16px;
+  height: 270px;
 
   display: flex;
   flex-direction: column;
@@ -14,17 +15,27 @@
     padding: govuk-spacing(3);
   }
 
+  &--content {
+    background: blue;
+  }
+
+  &--values {
+    background: red;
+  }
+
   &--topic {
     color: govuk-colour("mid-grey");
     font-weight: 400;
     font-size: 16px;
     padding: 0;
+    line-height: 24px;
   }
 
   &--title {
     font-weight: bold;
     font-size: 19px;
     padding-top: govuk-spacing(1);
+    line-height: 24px;
   }
 
   &--footer {
