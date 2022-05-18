@@ -1,3 +1,4 @@
+import { Fragment, } from 'react';
 import './bar.scss';
 import ValuesBlock from '../ValuesBlock/ValuesBlock';
 
@@ -19,19 +20,21 @@ const Bar = ({ data, height }) => {
 		);
 	});
 	return (
-		<div className="cc-bar-container" data-testid="bar">
-			<div style={{ 'height': `${height}` }} className="cc-bar">
-				{bars}
+		<Fragment>
+			<div className="cc-bar-container cc-dashboard-tile--content" data-testid="bar">
+				<div style={{ 'height': `${height}` }} className="cc-bar">
+					{bars}
+				</div>
 			</div>
 			<ValuesBlock
 				xStart={data[0].category}
 				xEnd={data[1].category}
-				yStart={`${data[0].value}%`}
-				yEnd={`${data[1].value}%`}
+				yStart={`${Math.floor(data[0].value)}%`}
+				yEnd={`${Math.floor(data[1].value)}%`}
 				xColor={data[0].color}
 				yColor={data[0].color}
 			/>
-		</div>
+			</Fragment>
 	);
 };
 export default Bar;

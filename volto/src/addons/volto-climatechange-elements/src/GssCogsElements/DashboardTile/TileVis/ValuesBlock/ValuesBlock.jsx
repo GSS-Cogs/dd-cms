@@ -10,7 +10,7 @@ import './values-block.scss';
 
 const ValuesBlock = ({ xStart, xEnd, yStart, yEnd, xColor, yColor }) => {
 	return (
-		<div data-testid = "values-block">
+		<div data-testid = "values-block" className='cc-dashboard-tile--values'>
 			<div className="cc-start-end-values" style={{ color: `${xColor}` }}>
 				<div className="cc-xValue">{xStart}</div>
 				<div className="cc-xValue">{xEnd}</div>

@@ -1,24 +1,24 @@
-import { useRef, useEffect } from 'react';
+import { Fragment, useRef, useEffect } from 'react';
 import './spark-line.scss';
 import * as d3 from 'd3';
 import ValuesBlock from '../ValuesBlock/ValuesBlock';
 import useResizeObserver from '@react-hook/resize-observer'
 
 const useSize = (target) => {
-    const [size, setSize] = React.useState()
-  
-    useEffect(() => {
-      setSize(target.current.getBoundingClientRect())
-    }, [target])
-  
-    useResizeObserver(target, (entry) => setSize(entry.contentRect))
-    return size
-  }
+		const [size, setSize] = React.useState()
+	
+		useEffect(() => {
+			setSize(target.current.getBoundingClientRect())
+		}, [target])
+	
+		useResizeObserver(target, (entry) => setSize(entry.contentRect))
+		return size
+	}
 
 // SparkLine takes the following parameters:
-//  - data: array of arrays with two elements, the first element is the x value and the second element is the y value
-//  - height: string with height of spark line visualisation in pixels
-//  - lineColor: string that sets the color of the spark line and also the color of the Y values for the values block
+//	- data: array of arrays with two elements, the first element is the x value and the second element is the y value
+//	- height: string with height of spark line visualisation in pixels
+//	- lineColor: string that sets the color of the spark line and also the color of the Y values for the values block
 const SparkLine = ({ data, height, lineColor }) => {
 	// Keep a reference to the SVG element for d3 to control
 	const svgRef = useRef();
@@ -82,22 +82,24 @@ const SparkLine = ({ data, height, lineColor }) => {
 	};
 
 	return (
-		<div
-			className="cc-spark-line-container"
-			style={{ 'height': `${height}px` }}
-			ref={containerRef}
-			data-testid="spark-line"
-		>
-			<svg ref={svgRef} />
+		<Fragment>
+			<div
+				className="cc-spark-line-container cc-dashboard-tile--content"
+				style={{ 'height': `${height}px` }}
+				ref={containerRef}
+				data-testid="spark-line"
+			>
+				<svg ref={svgRef} />
+			</div>
 			<ValuesBlock
 				xStart={xStart}
 				xEnd={xEnd}
-				yStart={yStart}
-				yEnd={yEnd}
+				yStart={Number(yStart).toFixed(2)}
+				yEnd={Number(yEnd).toFixed(2)}
 				xColor={lineColor}
 				yColor={lineColor}
 			/>
-		</div>
+		</Fragment>
 	);
 };
 export default SparkLine;
