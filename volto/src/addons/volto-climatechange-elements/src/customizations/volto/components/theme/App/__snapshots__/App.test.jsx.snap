@@ -8,7 +8,7 @@ Array [
     role="contentinfo"
   >
     <div
-      className="govuk-width-container "
+      className="govuk-width-container volto-width-container--wide"
     >
       <div
         className="govuk-footer__meta"
@@ -32,26 +32,6 @@ Array [
                 href="/logout"
               >
                 Log Out
-              </a>
-            </li>
-            <li
-              className="govuk-footer__inline-list-item"
-            >
-              <a
-                className="govuk-footer__link "
-                href="/footer-meta-item-2"
-              >
-                Item 2
-              </a>
-            </li>
-            <li
-              className="govuk-footer__inline-list-item"
-            >
-              <a
-                className="govuk-footer__link "
-                href="#"
-              >
-                Item 3
               </a>
             </li>
           </ul>
