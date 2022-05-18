@@ -14,20 +14,18 @@ services:
         ADDONS: "@eeacms/volto-datablocks;@eeacms/volto-columns-block;volto-slate:asDefault;volto-authomatic;volto-govuk-theme;volto-chart-builder;volto-climatechange-elements"
     environment:
       - RAZZLE_API_PATH=http://climate-change.data.gov.uk/api
-#      - RAZZLE_DEV_PROXY_API_PATH=http://plone:8080/Plone
       - NODE_ENV=production
-      - VIRTUAL_HOST=climate-change.data.gov.uk
-      - VIRTUAL_PORT=3000
     command: "yarn start:prod"
-    # command: "yarn start" # run in dev mode to avoid CORS
     networks:
       - test_net
-
 
   proxy:
     build:
       context: ./proxy
     domainname: data.gov.uk
+    depends_on:
+      - plone
+      - volto
     networks:
       test_net:
         aliases:
@@ -37,8 +35,6 @@ services:
     build:
       context: ./
     depends_on:
-      - plone
-      - volto
       - proxy
     volumes:
       - ./:/app:z

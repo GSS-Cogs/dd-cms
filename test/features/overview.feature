@@ -1,4 +1,4 @@
-Feature: Charts
+Feature: Overview
 
   As an end user, I can view the overview page and teaser charts.
 
