@@ -6,21 +6,21 @@
   color: govuk-colour("dark-grey");
   font-size: 16px;
   padding: 16px;
-  height: 270px;
 
   display: flex;
   flex-direction: column;
 
   &--header {
     padding: govuk-spacing(3);
+    min-height: 110px;
   }
 
   &--content {
-    //background: blue;
+    min-height: 140px;
   }
 
   &--values {
-    //background: red;
+    min-height: 70px;
   }
 
   &--topic {
@@ -43,6 +43,7 @@
     padding: govuk-spacing(3);
     margin-top: govuk-spacing(3);
     font-weight: bold;
+    min-height: 60px;
   }
 }
 
