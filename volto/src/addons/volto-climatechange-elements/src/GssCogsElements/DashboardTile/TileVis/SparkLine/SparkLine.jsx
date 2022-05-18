@@ -92,8 +92,8 @@ const SparkLine = ({ data, height, lineColor }) => {
 			<ValuesBlock
 				xStart={xStart}
 				xEnd={xEnd}
-				yStart={yStart}
-				yEnd={yEnd}
+				yStart={Number(yStart).toFixed(2)}
+				yEnd={Number(yEnd).toFixed(2)}
 				xColor={lineColor}
 				yColor={lineColor}
 			/>
