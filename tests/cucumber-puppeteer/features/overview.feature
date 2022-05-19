@@ -4,7 +4,6 @@ Feature: Overview
 
   Background:
     Given I open the url "http://climate-change.data.gov.uk/"
-    And I wait for navigation to complete
     And I expect the element "#main" is visible
 
   Scenario: Front page is visible

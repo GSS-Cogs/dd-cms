@@ -37,7 +37,7 @@ services:
     depends_on:
       - proxy
     volumes:
-      - ./:/app:z
+      - ./cucumber-puppeteer:/app:z
     working_dir: /app
     entrypoint: ''
     networks:
