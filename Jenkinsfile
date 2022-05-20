@@ -33,13 +33,13 @@ pipeline {
         stage('End user tests') {
             steps {
                 script {
-                    dir('test') {
+                    dir('tests/climate-change-v2') {
                         sh "docker-compose build"
                         sh "docker-compose up -d plone"
                         sh "docker-compose up -d volto"
                         sh "docker-compose up -d proxy"
-                        def puppeteer = docker.image('test_test')
-                        puppeteer.inside("--rm --entrypoint= --network test_test_net") { testContainer ->
+                        def puppeteer = docker.image('climate-change-v2_test')
+                        puppeteer.inside("--rm --entrypoint= --network climate-change-v2_test_net") { testContainer ->
                             sh './run.sh'
                         }
                         sh "docker-compose down"

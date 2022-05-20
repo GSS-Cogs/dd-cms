@@ -1,7 +1,10 @@
 #!/bin/sh
 
-timeout 20 sh -c "until nc -z plone 8080; do sleep 1; done"
-timeout 20 sh -c "until nc -z volto 3000; do sleep 1; done"
+echo -n "Waiting for plone..."
+timeout 120 sh -c "until nc -z plone 8080; do sleep 1; echo -n '.'; done"
+echo -ne "ready.\nWaiting for volto..."
+timeout 120 sh -c "until nc -z volto 3000; do sleep 1; echo -n '.'; done"
+echo "ready."
 # Todo: need to check that plone is running and the /Plone site is installed
 TESTDIR=$PWD
 cd /home/node/app
