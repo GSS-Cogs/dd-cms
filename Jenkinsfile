@@ -54,7 +54,7 @@ pipeline {
                 dir('volto') {
                     junit allowEmptyResults: true, testResults: '*.xml'
                 }
-                dir('test') {
+                dir('tests/climate-change-v2') {
                     cucumber 'test-results.json'
                 }
             }
