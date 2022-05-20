@@ -1,9 +1,11 @@
 #!/bin/sh
 
+set -eo pipefail
+
 echo -n "Waiting for plone..."
-timeout 120 sh -c "until nc -z plone 8080; do sleep 1; echo -n '.'; done"
+timeout 120 sh -c "until nc -z -w 1 plone 8080; do sleep 1; echo -n '.'; done"
 echo -ne "ready.\nWaiting for volto..."
-timeout 120 sh -c "until nc -z volto 3000; do sleep 1; echo -n '.'; done"
+timeout 120 sh -c "until nc -z -w 1 volto 3000; do sleep 1; echo -n '.'; done"
 echo "ready."
 
 TESTDIR=$PWD
