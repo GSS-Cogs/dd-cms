@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Test') {
+        stage('Frontend tests') {
             agent {
                 dockerfile {
                     dir 'volto'
@@ -30,6 +30,22 @@ pipeline {
                 }
             }
         }
+        stage('End user tests') {
+            steps {
+                script {
+                    dir('tests/climate-change-v2') {
+                        sh "docker-compose build"
+                        sh "docker-compose up -d plone"
+                        sh "docker-compose up -d volto"
+                        sh "docker-compose up -d proxy"
+                        def puppeteer = docker.image('climate-change-v2_test')
+                        puppeteer.inside("--rm --entrypoint= --network climate-change-v2_test_net") { testContainer ->
+                            sh './run.sh'
+                        }
+                    }
+                }
+            }
+        }
     }
     post {
         always {
@@ -37,6 +53,10 @@ pipeline {
                 dir('volto') {
                     junit allowEmptyResults: true, testResults: '*.xml'
                 }
+                dir('tests/climate-change-v2') {
+                    cucumber 'test-results.json'
+                }
+                sh "docker-compose down"
             }
         }
     }
