@@ -42,7 +42,6 @@ pipeline {
                         puppeteer.inside("--rm --entrypoint= --network climate-change-v2_test_net") { testContainer ->
                             sh './run.sh'
                         }
-                        sh "docker-compose down"
                     }
                 }
             }
@@ -57,6 +56,7 @@ pipeline {
                 dir('tests/climate-change-v2') {
                     cucumber 'test-results.json'
                 }
+                sh "docker-compose down"
             }
         }
     }
