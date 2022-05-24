@@ -30,6 +30,11 @@
   border-bottom: none;
 }
 
+// hide the grey bottom border from Volto main headings
+.documentFirstHeading {
+  border-bottom: none;
+}
+
 .volto-width-container--wide {
   @include govuk-width-container(1920px);
 }
