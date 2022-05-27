@@ -42,7 +42,7 @@ export const CcV2ArticleView = (props) => {
           relatedItems: data,
         }}
       />
-      <div className="govuk-width-container ccv2-article-body">
+      <div className="volto-width-container--wide ccv2-article-body">
         <div className="govuk-grid-row">
           <div className="govuk-grid-column-two-thirds govuk-!-padding-right-6">
             {map(content[blocksLayoutFieldname].items, (block) => {

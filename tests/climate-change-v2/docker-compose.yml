@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  plone:
+    build:
+      context: ../../plone-5
+    networks:
+      - test_net
+
+  volto:
+    build:
+      context: ../../volto
+      args:
+        ADDONS: "@eeacms/volto-datablocks;@eeacms/volto-columns-block;volto-slate:asDefault;volto-authomatic;volto-govuk-theme;volto-chart-builder;volto-climatechange-elements"
+    environment:
+      - RAZZLE_API_PATH=http://climate-change.data.gov.uk/api
+      - NODE_ENV=production
+    command: "yarn start:prod"
+    networks:
+      - test_net
+
+  proxy:
+    build:
+      context: ./proxy
+    domainname: data.gov.uk
+    depends_on:
+      - plone
+      - volto
+    networks:
+      test_net:
+        aliases:
+          - climate-change.data.gov.uk
+
+  test:
+    build:
+      context: ../
+    depends_on:
+      - proxy
+    volumes:
+      - ./:/app:z
+    working_dir: /app
+    entrypoint: ''
+    command: ./run.sh
+    networks:
+      - test_net
+
+networks:
+  test_net:

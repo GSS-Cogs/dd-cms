@@ -8,7 +8,7 @@ import './CcArticleHeader.scss';
 export const CcArticleHeader = ({data}) => {
   return (
     <CcMasthead className="cc-masthead-wrapper--article">
-      <div className="cc-article-header govuk-width-container">
+      <div className="cc-article-header volto-width-container--wide">
         <div className="govuk-grid-row">
           <div className="govuk-grid-column-two-thirds govuk-!-padding-right-6">
             <h1 className="govuk-heading-xl govuk-!-margin-bottom-6">{data.title}</h1>

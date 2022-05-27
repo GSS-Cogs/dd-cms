@@ -25,3 +25,7 @@ main {
   margin: 0;
 }
 
+#field-sparql_query {
+  min-height: 300px;
+}
+

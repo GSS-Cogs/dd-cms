@@ -127,6 +127,7 @@
     "@eeacms/volto-columns-block": "4.0.0",
     "@eeacms/volto-datablocks": "^3.0.11",
     "@plone/volto": "^15.0",
+    "d3": "6",
     "govuk-frontend": "4.0.0",
     "govuk-react": "0.10.0",
     "govuk-react-jsx": "6.2.1",

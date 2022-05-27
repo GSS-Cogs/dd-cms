@@ -8,5 +8,6 @@ RUN \
     cd .. && \
     pip install SPARQLWrapper && \
     cd instance && \
+    rm bin/develop && \
     find /data  -not -user plone -exec chown plone:plone {} \+ && \
     find /plone -not -user plone -exec chown plone:plone {} \+
