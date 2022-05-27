@@ -7,6 +7,7 @@ import { CcHeroHeaderEdit } from './GssCogsElements/CcHeroHeader/CcHeroHeaderEdi
 import { CcV2Overview } from './GssCogsElements/CcV2Preview/CcV2Overview';
 import { CcV2ArticleView } from './GssCogsElements/CcV2Preview/CcV2ArticleView';
 import { CcRelatedLinks } from './GssCogsElements/CcRelatedLinks/CcRelatedLinks';
+import { CcSummaryView } from './GssCogsElements/View/CcSummaryView';
 
 import { relatedItemsData } from './reducers';
 
@@ -61,6 +62,7 @@ const applyConfig = (config) => {
 
   config.views.layoutViews.cc_preview = CcV2ArticleView;
   config.views.layoutViews.cc_preview2 = CcV2Overview;
+  config.views.layoutViews.cc_SummaryView = CcSummaryView;
 
   config.addonReducers.relatedItemsData = relatedItemsData;
 
