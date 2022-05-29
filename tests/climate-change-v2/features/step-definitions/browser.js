@@ -33,3 +33,16 @@ When(
         await this.page.waitForNetworkIdle();
     }
 )
+
+When(
+    'I type {string} in the {string} element', async function(text, element) {
+        await this.page.focus(element);
+        await this.page.keyboard.type(text);
+    }
+)
+
+When(
+    'I wait for xpath {string} to be visible', async function(xpath) {
+        await this.page.waitForXPath(xpath, {visible: true});
+    }
+)
