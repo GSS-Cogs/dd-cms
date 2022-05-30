@@ -6,7 +6,7 @@ import { FeedSignUps } from '../CcRelatedLinks/FeedSignUps';
 
 export const CcArticleHeader = ({data}) => {
   return (
-    <CcMasthead className="cc-masthead-wrapper--article">
+    <CcMasthead className="app-masthead--article">
       <div className="cc-article-header volto-width-container--wide">
         <div className="govuk-grid-row">
           <div className="govuk-grid-column-two-thirds govuk-!-padding-right-6">

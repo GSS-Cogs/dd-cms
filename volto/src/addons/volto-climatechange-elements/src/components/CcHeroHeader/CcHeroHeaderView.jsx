@@ -8,7 +8,7 @@ import earth from './Earth.svg';
 
 export const CcHeroHeaderView = (props) => {
     return (
-        <CcMasthead>
+        <CcMasthead className="app-masthead--bottom-overlap">
             <div className="govuk-grid-column-two-thirds-from-desktop">
                 <Tag className="govuk-tag--grey app-masthead__tag">NEW ARTICLE</Tag>
                 <h1 className="govuk-heading-xl app-masthead__title">{props.data.title}</h1>

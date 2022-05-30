@@ -3,7 +3,14 @@
 .app-masthead {
     @include govuk-responsive-padding(6, "top");
     @include govuk-responsive-padding(6, "bottom");
-    border-bottom: 1px solid govuk-colour("blue");
     color: govuk-colour("white");
     background-color: govuk-colour("blue");
+
+    &--article {
+        background-color: govuk-colour('light-grey');
+      }
+
+    &--bottom-overlap {
+        margin-bottom: govuk-spacing(-6);
+    }
 }
