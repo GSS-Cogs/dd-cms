@@ -1,5 +1,4 @@
 import { Fragment, useRef, useEffect } from 'react';
-import './spark-line.scss';
 import * as d3 from 'd3';
 import ValuesBlock from '../ValuesBlock/ValuesBlock';
 import useResizeObserver from '@react-hook/resize-observer'
@@ -44,7 +43,7 @@ const SparkLine = ({ data, height, lineColor }) => {
 		const svg = d3
 			.select(svgRef.current)
 			.attr('width', "100%")
-			.attr('height', height - 65	);
+			.attr('height', height);
 
 		// Calculate the x scale assuming categorical string values for x
 		const xScale = d3
@@ -60,7 +59,7 @@ const SparkLine = ({ data, height, lineColor }) => {
 		const yScale = d3
 			.scaleLinear()
 			.domain([yMin, yMax])
-			.range([height - 65, 0])
+			.range([height, 0])
 			.nice();
 
 		// Line function that calculates the pixel coordinates for the line from the scales

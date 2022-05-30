@@ -1,5 +1,3 @@
-import './values-block.scss';
-
 //ValuesBlock takes the following parameters:
 // - xStart: string with the start value for the x axis
 // - xEnd: string with the end value for the x axis

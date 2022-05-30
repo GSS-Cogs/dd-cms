@@ -1,5 +1,4 @@
 import { Fragment, } from 'react';
-import './bar.scss';
 import ValuesBlock from '../ValuesBlock/ValuesBlock';
 
 // Bar takes the following parameters:
