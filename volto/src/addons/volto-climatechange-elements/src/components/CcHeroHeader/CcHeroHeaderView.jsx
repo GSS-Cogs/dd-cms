@@ -4,8 +4,6 @@ import { CcMasthead } from '../CcMasthead/CcMasthead';
 
 import earth from './Earth.svg';
 
-import './CcHeroHeader.scss';
-
 export const CcHeroHeaderView = (props) => {
   return (
     <CcMasthead className="cc-masthead-wrapper--bottom-overlap cc-masthead-wrapper--hero">

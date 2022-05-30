@@ -1,8 +1,6 @@
 import React from 'react';
 import { H1, H3, H4 } from 'govuk-react';
 
-import './CcArticleList.scss';
-
 const CcArticlePreview = ({ data, skipSummary }) => {
   return (
     <article className="cc-article-preview">

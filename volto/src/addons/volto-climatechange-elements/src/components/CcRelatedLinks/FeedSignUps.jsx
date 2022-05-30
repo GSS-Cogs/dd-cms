@@ -3,8 +3,6 @@ import { H3, H4 } from 'govuk-react';
 import EmailOutlineIcon from '@icons/material/EmailOutlineIcon';
 import RssIcon from '@icons/material/RssIcon';
 
-import './RelatedLinks.scss';
-
 export const FeedSignUps = ({limit}) => (
   <div className="cc-related-links">
     <H3>Sign up and manage updates</H3>

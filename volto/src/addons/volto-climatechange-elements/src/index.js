@@ -1,14 +1,16 @@
 import tableSVG from '@plone/volto/icons/table.svg';
 import globeSVG from '@plone/volto/icons/globe.svg';
-import { DashboardTileView } from './GssCogsElements/DashboardTile/DashboardTileView';
-import { DashboardTileEdit } from './GssCogsElements/DashboardTile/DashboardTileEdit';
-import { CcHeroHeaderView } from './GssCogsElements/CcHeroHeader/CcHeroHeaderView';
-import { CcHeroHeaderEdit } from './GssCogsElements/CcHeroHeader/CcHeroHeaderEdit';
-import { CcV2Overview } from './GssCogsElements/CcV2Preview/CcV2Overview';
-import { CcV2ArticleView } from './GssCogsElements/CcV2Preview/CcV2ArticleView';
-import { CcRelatedLinks } from './GssCogsElements/CcRelatedLinks/CcRelatedLinks';
+import { DashboardTileView } from './components/DashboardTile/DashboardTileView';
+import { DashboardTileEdit } from './components/DashboardTile/DashboardTileEdit';
+import { CcHeroHeaderView } from './components/CcHeroHeader/CcHeroHeaderView';
+import { CcHeroHeaderEdit } from './components/CcHeroHeader/CcHeroHeaderEdit';
+import { CcV2Overview } from './components/CcV2Preview/CcV2Overview';
+import { CcV2ArticleView } from './components/CcV2Preview/CcV2ArticleView';
+import { CcRelatedLinks } from './components/CcRelatedLinks/CcRelatedLinks';
 
 import { relatedItemsData } from './reducers';
+
+import "../theme/main.scss";
 
 const applyConfig = (config) => {
   config.blocks.blocksConfig.dashboardTile = {

@@ -12,8 +12,6 @@ import { CcArticleHeader } from '../CcArticleHeader/CcArticleHeader';
 import { getRelatedItemsData } from '../../actions';
 import { formattedDate } from '../../utils';
 
-import './CvV2ArticleView.scss';
-
 export const CcV2ArticleView = (props) => {
   const { content, location } = props;
   const blocksFieldname = getBlocksFieldname(content);

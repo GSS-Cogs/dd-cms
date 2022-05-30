@@ -3,7 +3,6 @@ import React from 'react';
 import { CcRecentArticles } from '../CcArticleList/CcArticleList';
 import { CcMasthead } from '../CcMasthead/CcMasthead';
 import { FeedSignUps } from '../CcRelatedLinks/FeedSignUps';
-import './CcArticleHeader.scss';
 
 export const CcArticleHeader = ({data}) => {
   return (

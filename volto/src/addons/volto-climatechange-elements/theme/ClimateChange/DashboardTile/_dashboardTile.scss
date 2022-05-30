@@ -1,5 +1,7 @@
 @import "../../colors.scss";
-@import "govuk-frontend/govuk/all.scss";
+@import "./TileVis/Bar/bar";
+@import "./TileVis/Sparkline/sparkLine";
+@import "./TileVis/ValuesBlock/valuesBlock";
 
 .cc-dashboard-tile {
   background: $dashboard_tile_background;

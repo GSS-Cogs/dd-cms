@@ -5,7 +5,6 @@ import { Eg1, Eg2 } from './examples';
 import { emissionsData } from './TileVis/mock/data';
 import { renewablesData } from './TileVis/mock/data';
 
-import './DashboardTile.scss';
 import SparkLine from './TileVis/SparkLine/SparkLine';
 import Bar from './TileVis/Bar/Bar';
 import { useTileVisData } from '../../hooks';
