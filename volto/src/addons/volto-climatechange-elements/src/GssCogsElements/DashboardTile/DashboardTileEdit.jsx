@@ -3,9 +3,11 @@ import { DashboardTileView } from './DashboardTileView';
 import { Segment } from 'semantic-ui-react';
 import { SidebarPortal, InlineForm } from '@plone/volto/components';
 import { DashboardTileSchema } from './schema';
+import { useTileVisValidation } from '../../hooks';
 
 export const DashboardTileEdit = (props) => {
-    const { selected, onChangeBlock, block, data } = props;
+    const { selected, onChangeBlock, block, data, } = props;
+    const { error: dataSourceErrors } = useTileVisValidation(data.data_source, data.vis_type);
     const schema = DashboardTileSchema(props);
 
     return (
@@ -22,6 +24,10 @@ export const DashboardTileEdit = (props) => {
                             });
                         }}
                         formData={data}
+                        errors={{
+                          ...(props.errors || {}),
+                          data_source: dataSourceErrors,
+                        }}
                     />
                 </Segment.Group>
             </SidebarPortal>
