@@ -29,9 +29,9 @@
   <!-- Schema, class and security -->
   <property name="add_permission">ukstats.article_type.AddArticleType</property>
   <property name="klass">plone.dexterity.content.Container</property>
-  <property name="model_file">ukstats.article_type.content:article_type.xml</property>
+  <property name="model_file"></property>
   <property name="model_source"></property>
-  <property name="schema"></property>
+  <property name="schema">ukstats.article_type.article.IArticle</property>
 
   <!-- Enabled behaviors -->
   <property name="behaviors" purge="false">
