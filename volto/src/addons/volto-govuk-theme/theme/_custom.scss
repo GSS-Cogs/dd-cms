@@ -32,6 +32,3 @@
   @include govuk-width-container(1920px);
 }
 
-main > * > * > :not(.cc-masthead-wrapper) {
-  @include govuk-width-container(1920px);
-}

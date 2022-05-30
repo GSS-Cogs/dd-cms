@@ -1,7 +1,11 @@
 import React from 'react';
 
 export const CcMasthead = ({ children, className }) => (
-  <div className={`cc-masthead-wrapper ${className || ''}`}>
-    {children}
-  </div>
-)
+    <div className={`app-masthead ${className || ''}`}>
+        <div className="app-width-container">
+            <div className="govuk-grid-row">
+                {children}
+            </div>
+        </div>
+    </div>
+);
