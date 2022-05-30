@@ -19,7 +19,7 @@ const View = () => {
 const Edit = (props) => {
   const { selected, onChangeBlock, block, data } = props;
   usePloneCsvData(data.file_path || []);
-  usePloneGeoJson(data.geojson_path || []);
+  const { error: geoJsonError } = usePloneGeoJson(data.geojson_path || []);
 
   return (
     <SidebarPortal selected={selected}>
@@ -64,6 +64,7 @@ const Edit = (props) => {
                 widget="object_browser"
                 mode="link"
                 title="GEOJSON file"
+                error={geoJsonError}
                 widgetOptions={{
                   pattern_options: {
                     selectableTypes: [
