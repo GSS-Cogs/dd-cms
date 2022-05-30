@@ -69,6 +69,7 @@ export function usePloneGeoJson(plone_ref) {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    setError([]);
     if (contentRef != null) {
       dispatch(getChartBuilderData(contentRef['@id'], '@connector-data'));
     }
