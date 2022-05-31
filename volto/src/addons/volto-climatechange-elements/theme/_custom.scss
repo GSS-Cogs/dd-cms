@@ -1,0 +1,7 @@
+.app-width-container {
+  @include govuk-width-container(1280px);
+}
+
+main > * > * > :not(.app-masthead) {
+    @include govuk-width-container(1280px);
+  }

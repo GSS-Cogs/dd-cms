@@ -10,6 +10,12 @@ docker rm -v $plone
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     sed -Ei '' 's|var-dir=/data|var-dir=data|;/RelStorage|psycopg2|mysqlclient|cx-Oracle|ldap/d' instance/buildout.cfg
+  # I don't know enough about brew to know why this is needed,
+  # but one of the plone deps needs to build against zlib,
+  # and it doesn't find it without these env vars...
+  ZLIB_BASE=$(brew --prefix zlib)
+  export LDFLAGS="-L${ZLIB_BASE}/lib"
+  export CPPFLAGS="-I${ZLIB_BASE}/include"
 else
     sed -i 's|var-dir=/data|var-dir=data|;/RelStorage\|psycopg2\|mysqlclient\|cx-Oracle\|ldap/d' instance/buildout.cfg
 fi
