@@ -49,7 +49,10 @@ export function usePloneCsvData(plone_ref) {
           case 'discodataconnector':
           case 'sparql_dataconnector':
           case 'csv_type':
-            importEeaData(response.content, contentRef['@id']);
+            importEeaData({
+              id: response.content.id,
+              data: response.content.data.results,
+            }, contentRef['@id']);
             break;
         }
       }
@@ -84,17 +87,17 @@ export function usePloneGeoJson(plone_ref) {
     }
   }, [contentRef, dispatch]);
 
-  const content = useSelector((state) =>
+  const response = useSelector((state) =>
     contentRef ? state.chartBuilderRawData.get(contentRef['@id']) : null,
   );
 
   useEffect(() => {
-    if (content != null && contentRef != null && content.loaded) {
-      if (content.content?.data?.boundary) {
+    if (response != null && contentRef != null && response.loaded) {
+      if (response.content?.data?.boundary) {
         // content.content.data: { boundary: string[] } the strings are json fragments
         setGeoJson(
           convertSparqlToGeoJson({
-            boundary: content.content.data.boundary.map((x) => JSON.parse(x)),
+            boundary: response.content.data.boundary.map((x) => JSON.parse(x)),
           }),
         );
         setError([]);
@@ -102,7 +105,10 @@ export function usePloneGeoJson(plone_ref) {
         setError(['GEOJSON data must have a "boundary" property']);
       }
     }
-  }, [content, contentRef, setGeoJson]);
+    if (response != null && contentRef != null && response.error) {
+      setError([response.error.message]);
+    }
+  }, [response, contentRef, setGeoJson]);
 
   return {
     error,

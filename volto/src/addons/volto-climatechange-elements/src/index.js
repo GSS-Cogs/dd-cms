@@ -63,6 +63,7 @@ const applyConfig = (config) => {
 
   config.views.layoutViews.cc_preview = CcV2ArticleView;
   config.views.layoutViews.cc_preview2 = CcV2Overview;
+  config.views.contentTypesViews.sparql_dataconnector = config.views.contentTypesViews.discodataconnector;
 
   config.addonReducers.relatedItemsData = relatedItemsData;
 
