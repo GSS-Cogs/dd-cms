@@ -1,0 +1,16 @@
+// Adapted from https://github.com/alphagov/govuk-design-system/blob/main/src/stylesheets/components/_masthead.scss
+
+.app-masthead {
+    @include govuk-responsive-padding(6, "top");
+    @include govuk-responsive-padding(6, "bottom");
+    color: govuk-colour("white");
+    background-color: govuk-colour("blue");
+
+    &--article {
+        background-color: govuk-colour('light-grey');
+      }
+
+    &--bottom-overlap {
+        margin-bottom: govuk-spacing(-6);
+    }
+}

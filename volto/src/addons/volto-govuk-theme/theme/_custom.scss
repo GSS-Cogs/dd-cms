@@ -1,0 +1,34 @@
+#ddcms_login {
+  position: absolute;
+  top: 10px;
+  right: 0;
+}
+
+/* tablet, landscape iPad, lo-res laptops and desktops */
+@media (min-width: 801px) {
+  .block {
+    max-width: 500px;
+  }
+}
+/* big landscape tablets, laptops, and desktops */
+@media (min-width: 1025px) {
+  .block {
+    max-width: 700px;
+  }
+}
+/* hi-res laptops and desktops */
+@media (min-width: 1281px) {
+  .block {
+    max-width: 900px;
+  }
+}
+
+// hide the purple accent line from Volto main headings
+.documentFirstHeading::before {
+  border-bottom: none;
+}
+
+.volto-width-container--wide {
+  @include govuk-width-container(1920px);
+}
+
