@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getChartBuilderData } from 'volto-chart-builder/src/actions';
-import { VIS_SPARK_LINE, VIS_BAR } from '../GssCogsElements/DashboardTile/schema';
+import { VIS_SPARK_LINE, VIS_BAR } from '../components/DashboardTile/schema';
 
 const barColors = [
   'rgba(29, 112, 184, 1)',
