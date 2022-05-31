@@ -4,6 +4,7 @@ import { ChartContext, convertSparqlToGeoJson } from 'gss-cogs-chart-builder';
 import { getChartBuilderData } from '../actions';
 
 export function usePloneCsvData(plone_ref) {
+  const [error, setError] = useState([]);
   const {
     importCsvData,
     importEeaData,
@@ -16,7 +17,7 @@ export function usePloneCsvData(plone_ref) {
 
   const contentRef = plone_ref.length ? plone_ref[0] : null;
 
-  const content = useSelector((state) =>
+  const response = useSelector((state) =>
     contentRef ? state.chartBuilderRawData.get(contentRef['@id']) : null,
   );
 
@@ -36,30 +37,38 @@ export function usePloneCsvData(plone_ref) {
   }, [contentRef, dispatch]);
 
   useEffect(() => {
-    if (content != null && contentRef != null && content.loaded) {
+    if (response != null && contentRef != null && response.loaded) {
+      setError([]);
       if (chartType === 'Map') {
-        setMapData(content.content.data);
+        setMapData(response.content.data);
       } else {
         switch (contentRef['@type']) {
           case 'File':
-            importCsvData(content.content, contentRef['@id']);
+            importCsvData(response.content, contentRef['@id']);
             break;
           case 'discodataconnector':
           case 'sparql_dataconnector':
           case 'csv_type':
-            importEeaData(content.content, contentRef['@id']);
+            importEeaData(response.content, contentRef['@id']);
             break;
         }
       }
     }
+
+    if (response != null && contentRef != null && response.error) {
+      setError([response.error.message]);
+    }
+
   }, [
-    content,
+    response,
     contentRef,
     importCsvData,
     importEeaData,
     setMapData,
     chartType,
   ]);
+
+  return { error }
 }
 
 export function usePloneGeoJson(plone_ref) {
