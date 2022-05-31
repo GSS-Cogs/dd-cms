@@ -25,7 +25,10 @@ const SparkLine = ({ data, lineColor, width, height }) => {
     const [yMin, yMax] = d3.extent(yValues);
 
     // Calculate the y scale using the minimum and maximum values of y
-    const yScale = d3.scaleLinear().domain([yMin, yMax]).range([height, 0]);
+    const yScale = d3
+      .scaleLinear()
+      .domain([yMin, yMax])
+      .range([height - 2, 2]);
 
     // Line function that calculates the pixel coordinates for the line from the scales
     // yScale takes the y value and xScale takes the index of the current observation
