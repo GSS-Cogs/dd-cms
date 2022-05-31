@@ -6,13 +6,13 @@ import { emissionsData } from './TileVis/mock/data';
 import { renewablesData } from './TileVis/mock/data';
 
 import './DashboardTile.scss';
-import SparkLine from './TileVis/SparkLine/SparkLine';
 import Bar from './TileVis/Bar/Bar';
 import { useTileVisData } from '../../hooks';
 import { VIS_SPARK_LINE, VIS_BAR } from './schema';
+import SparkLineContainer from './TileVis/SparkLine/SparkLineContainer';
 
-export const DashboardTileView = ({data}) => {
-  const {sparkLineData, barData} = useTileVisData(data.data_source);
+export const DashboardTileView = ({ data }) => {
+  const { sparkLineData, barData } = useTileVisData(data.data_source);
 
   return (
     <div className="cc-dashboard-tile">
@@ -23,21 +23,19 @@ export const DashboardTileView = ({data}) => {
 
       {/*<Eg2/>*/}
 
-      {sparkLineData && data.vis_type === VIS_SPARK_LINE
-        ? <SparkLine data={sparkLineData} lineColor={'#1D70B8'} height={150}/>
-        : null}
-      {barData && data.vis_type === VIS_BAR
-        ? <Bar data={barData} height={'24px'}/>
-        : null
-      }
+      {sparkLineData && data.vis_type === VIS_SPARK_LINE ? (
+        <SparkLineContainer data={sparkLineData} lineColor={'#1D70B8'} />
+      ) : null}
 
-      {
-        data.href
-          ? <div className="cc-dashboard-tile--footer">
-            <a href={data.href}>{data.linkTitle}</a>
-          </div>
-          : null
-      }
+      {barData && data.vis_type === VIS_BAR ? (
+        <Bar data={barData} height={'24px'} />
+      ) : null}
+
+      {data.href ? (
+        <div className="cc-dashboard-tile--footer">
+          <a href={data.href}>{data.linkTitle}</a>
+        </div>
+      ) : null}
     </div>
   );
 };

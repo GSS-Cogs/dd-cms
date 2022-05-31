@@ -1,4 +1,4 @@
-import { Fragment, } from 'react';
+import { Fragment } from 'react';
 import './bar.scss';
 import ValuesBlock from '../ValuesBlock/ValuesBlock';
 
@@ -11,30 +11,30 @@ import ValuesBlock from '../ValuesBlock/ValuesBlock';
 // Note: the first object in the data array is the first bar and the second object is the second bar
 
 const Bar = ({ data, height }) => {
-	const bars = data.map((bar, index) => {
-		return (
-			<div
-				style={{ 'backgroundColor': `${bar.color}`, 'width': `${bar.value}%` }}
-				key={index}
-			/>
-		);
-	});
-	return (
-		<Fragment>
-			<div className="cc-bar-container cc-dashboard-tile--content" data-testid="bar">
-				<div style={{ 'height': `${height}` }} className="cc-bar">
-					{bars}
-				</div>
-			</div>
-			<ValuesBlock
-				xStart={data[0].category}
-				xEnd={data[1].category}
-				yStart={`${Math.floor(data[0].value)}%`}
-				yEnd={`${Math.floor(data[1].value)}%`}
-				xColor={data[0].color}
-				yColor={data[0].color}
-			/>
-			</Fragment>
-	);
+  const bars = data.map((bar, index) => {
+    return (
+      <div
+        style={{ backgroundColor: `${bar.color}`, width: `${bar.value}%` }}
+        key={index}
+      />
+    );
+  });
+  return (
+    <Fragment>
+      <div className="cc-bar-container" data-testid="bar">
+        <div style={{ height: `${height}` }} className="cc-bar">
+          {bars}
+        </div>
+      </div>
+      <ValuesBlock
+        xStart={data[0].category}
+        xEnd={data[1].category}
+        yStart={`${Math.floor(data[0].value)}%`}
+        yEnd={`${Math.floor(data[1].value)}%`}
+        xColor={data[0].color}
+        yColor={data[0].color}
+      />
+    </Fragment>
+  );
 };
 export default Bar;
