@@ -15,7 +15,6 @@ services:
     environment:
       - RAZZLE_API_PATH=http://climate-change.data.gov.uk/api
       - NODE_ENV=production
-    command: "yarn start:prod"
     networks:
       - test_net
 
