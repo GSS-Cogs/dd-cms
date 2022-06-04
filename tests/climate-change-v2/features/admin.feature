@@ -20,9 +20,9 @@ Feature: Administration
   Scenario: add-ons installed
     Given I expect the element "#toolbar-personal" is visible
     When I click the element "#toolbar-personal" and wait for the element "a[href='/controlpanel']"
-    And I wait for xpath "//a[@href='/controlpanel']" to be visible
+    And I wait for xpath "//a[contains(text(), 'Site Setup')]" to be visible
+    And I wait for 1 seconds
     And I take a screenshot
-    Then I expect the element "a[href='/controlpanel']" is visible
     When I click the link "a[href='/controlpanel']" and wait for the element "#main .controlpanel"
     And I take a screenshot
     And I click the xpath link "//a[@href='/controlpanel/addons']" and wait for the network to be idle
