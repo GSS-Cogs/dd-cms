@@ -23,6 +23,9 @@ export const DashboardTileView = ({ data }) => {
 
       {/*<Eg2/>*/}
 
+      {/* Include an empty div that fills the space in the middle of the tile if the data vis hasn't loaded yet */}
+      {!sparkLineData && !barData && <div style={{ flexGrow: 1 }} />}
+
       {sparkLineData && data.vis_type === VIS_SPARK_LINE ? (
         <SparkLineContainer data={sparkLineData} lineColor={'#1D70B8'} />
       ) : null}

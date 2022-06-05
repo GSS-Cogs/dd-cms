@@ -1,6 +1,13 @@
-.cc-spark-line-container {
-  width: 100%;
-  flex-direction: column;
+.cc-spark-line-wrapper {
   flex-grow: 1;
+  position: relative;
+  width: 100%;
   padding: 8px 0;
+}
+
+.cc-spark-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
