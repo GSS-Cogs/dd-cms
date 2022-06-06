@@ -55,8 +55,8 @@ pipeline {
                 }
                 dir('tests/climate-change-v2') {
                     cucumber 'test-results.json'
+                    sh "docker-compose down"
                 }
-                sh "docker-compose down"
             }
         }
     }
