@@ -40,7 +40,7 @@ export function useTileVisData(plone_ref) {
         && Array.isArray(response.content.data?.results?.x)
         && Array.isArray(response.content.data?.results?.y)
       ) {
-        setSparkLineData(response.content.data.x.map((xVal, index) => [xVal, response.content.data.y[index]]));
+        setSparkLineData(response.content.data.results.x.map((xVal, index) => [xVal, response.content.data.results.y[index]]));
       }
 
       if (
