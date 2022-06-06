@@ -9,7 +9,7 @@ COPY . /app/
 ENV BUILD_TARGET=server
 RUN yarn global add mrs-developer
 RUN yarn develop
-RUN yarn install --frozen-lockfile
+RUN yarn install --frozen-lockfile && yarn cache clean
 RUN yarn build
 
 CMD yarn start

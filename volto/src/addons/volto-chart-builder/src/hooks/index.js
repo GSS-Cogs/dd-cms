@@ -1,10 +1,15 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ChartContext, convertSparqlToGeoJson } from 'gss-cogs-chart-builder';
 import { getChartBuilderData } from '../actions';
 
 export function usePloneCsvData(plone_ref) {
-  const { importCsvData, importEeaData, chartProperties, setMapData } = useContext(ChartContext);
+  const {
+    importCsvData,
+    importEeaData,
+    chartProperties,
+    setMapData,
+  } = useContext(ChartContext);
   const dispatch = useDispatch();
 
   const chartType = chartProperties?.chartTypes?.chartType;
@@ -31,11 +36,7 @@ export function usePloneCsvData(plone_ref) {
   }, [contentRef, dispatch]);
 
   useEffect(() => {
-    if (
-      content != null &&
-      contentRef != null &&
-      content.loaded
-    ) {
+    if (content != null && contentRef != null && content.loaded) {
       if (chartType === 'Map') {
         setMapData(content.content.data);
       } else {
@@ -51,34 +52,50 @@ export function usePloneCsvData(plone_ref) {
         }
       }
     }
-  }, [content, contentRef, importCsvData, importEeaData, setMapData, chartType]);
+  }, [
+    content,
+    contentRef,
+    importCsvData,
+    importEeaData,
+    setMapData,
+    chartType,
+  ]);
 }
 
-
 export function usePloneGeoJson(plone_ref) {
-   const { setGeoJson } = useContext(ChartContext);
-   const contentRef = plone_ref.length ? plone_ref[0] : null;
-   const dispatch = useDispatch();
+  const [error, setError] = useState([]);
+  const { setGeoJson } = useContext(ChartContext);
+  const contentRef = plone_ref.length ? plone_ref[0] : null;
+  const dispatch = useDispatch();
 
-   useEffect(() => {
+  useEffect(() => {
+    setError([]);
     if (contentRef != null) {
-        dispatch(getChartBuilderData(contentRef['@id'], '@connector-data'));
-      }
+      dispatch(getChartBuilderData(contentRef['@id'], '@connector-data'));
+    }
   }, [contentRef, dispatch]);
 
-   const content = useSelector((state) =>
+  const content = useSelector((state) =>
     contentRef ? state.chartBuilderRawData.get(contentRef['@id']) : null,
   );
 
   useEffect(() => {
-    if (
-      content != null &&
-      contentRef != null &&
-      content.loaded
-    ) {
-      // content.content.data: { boundary: string[] } the strings are json fragments
-      setGeoJson(convertSparqlToGeoJson({ boundary: content.content.data.boundary.map(x => JSON.parse(x))}));
+    if (content != null && contentRef != null && content.loaded) {
+      if (content.content?.data?.boundary) {
+        // content.content.data: { boundary: string[] } the strings are json fragments
+        setGeoJson(
+          convertSparqlToGeoJson({
+            boundary: content.content.data.boundary.map((x) => JSON.parse(x)),
+          }),
+        );
+        setError([]);
+      } else {
+        setError(['GEOJSON data must have a "boundary" property']);
+      }
     }
   }, [content, contentRef, setGeoJson]);
 
+  return {
+    error,
+  };
 }
