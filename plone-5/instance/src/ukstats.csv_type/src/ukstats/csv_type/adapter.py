@@ -41,7 +41,10 @@ class DataProviderForCsvws(object):
                 for index, val in enumerate(row):
                     results[headers[index]].append(val)
 
-        return results
+        return {
+            "results": results,
+            "metadata": {},
+        }
 
     @property
     def provided_data(self):

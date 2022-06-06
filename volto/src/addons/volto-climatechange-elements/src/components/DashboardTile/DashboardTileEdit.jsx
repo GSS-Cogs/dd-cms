@@ -26,7 +26,7 @@ export const DashboardTileEdit = (props) => {
                         formData={data}
                         errors={{
                           ...(props.errors || {}),
-                          data_source: dataSourceErrors,
+                          ...(dataSourceErrors.length ? { data_source: dataSourceErrors } : {}),
                         }}
                     />
                 </Segment.Group>
