@@ -29,7 +29,8 @@
     "@eeacms/volto-columns-block",
     "volto-slate:asDefault",
     "volto-govuk-theme",
-    "volto-chart-builder"
+    "volto-chart-builder",
+    "volto-climatechange-elements"
   ],
   "jest": {
     "modulePathIgnorePatterns": [
