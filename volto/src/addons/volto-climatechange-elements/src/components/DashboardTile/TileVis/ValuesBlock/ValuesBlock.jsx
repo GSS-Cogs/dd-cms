@@ -7,18 +7,18 @@
 // - yColor: string with the color for the y values
 
 const ValuesBlock = ({ xStart, xEnd, yStart, yEnd, xColor, yColor }) => {
-	return (
-		<div data-testid = "values-block" className='cc-dashboard-tile--values'>
-			<div className="cc-start-end-values" style={{ color: `${xColor}` }}>
-				<div className="cc-xValue">{xStart}</div>
-				<div className="cc-xValue">{xEnd}</div>
-			</div>
-			<div className="cc-start-end-values" style={{ color: `${yColor}` }}>
-				<div className="cc-yValue">{yStart}</div>
-				<div className="cc-yValue">{yEnd}</div>
-			</div>
-		</div>
-	);
+  return (
+    <div data-testid="values-block" className="cc-dashboard-tile--values">
+      <div className="cc-start-end-values" style={{ color: `${xColor}` }}>
+        <div className="cc-xValue">{xStart}</div>
+        <div className="cc-xValue">{xEnd}</div>
+      </div>
+      <div className="cc-start-end-values" style={{ color: `${yColor}` }}>
+        <div className="cc-yValue">{yStart}</div>
+        <div className="cc-yValue">{yEnd}</div>
+      </div>
+    </div>
+  );
 };
 
 export default ValuesBlock;

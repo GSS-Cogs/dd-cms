@@ -11,11 +11,10 @@ services:
     build:
       context: ../../volto
       args:
-        ADDONS: "@eeacms/volto-datablocks;@eeacms/volto-columns-block;volto-slate:asDefault;volto-authomatic;volto-govuk-theme;volto-chart-builder;volto-climatechange-elements"
+        ADDONS: "@eeacms/volto-datablocks;@eeacms/volto-columns-block;volto-slate:asDefault;volto-govuk-theme;volto-chart-builder;volto-climatechange-elements"
     environment:
       - RAZZLE_API_PATH=http://climate-change.data.gov.uk/api
       - NODE_ENV=production
-    command: "yarn start:prod"
     networks:
       - test_net
 
