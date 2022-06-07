@@ -9,8 +9,10 @@ export const DashboardTileView = ({ data }) => {
   return (
     <div className="cc-dashboard-tile">
       <div className="cc-dashboard-tile--header">
-        <div className="cc-dashboard-tile--topic">{data.topic}</div>
-        <div className="cc-dashboard-tile--title">{data.title}</div>
+        <div className="govuk-caption-m">{data.topic}</div>
+        <div className="govuk-heading-m govuk-!-margin-bottom-0 govuk-!-margin-top-1">
+          {data.title}
+        </div>
       </div>
 
       {/* Include an empty div that fills the space in the middle of the tile if the data vis hasn't loaded yet */}
