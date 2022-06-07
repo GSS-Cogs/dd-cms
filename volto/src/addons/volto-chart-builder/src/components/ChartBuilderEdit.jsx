@@ -1,7 +1,14 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Field, SidebarPortal } from '@plone/volto/components';
-import { Form, Segment } from 'semantic-ui-react';
-import { ChartContext, ChartPreview, getInitialChartProperties, ChartPropertiesSchema, SidePanel, useChartContext } from 'gss-cogs-chart-builder';
+import { Form } from 'semantic-ui-react';
+import {
+  ChartContext,
+  ChartPreview,
+  getInitialChartProperties,
+  ChartPropertiesSchema,
+  SidePanel,
+  useChartContext,
+} from 'gss-cogs-chart-builder';
 import { usePloneCsvData, usePloneGeoJson } from '../hooks';
 import debounce from 'lodash.debounce';
 
@@ -11,57 +18,74 @@ const View = () => {
 
 const Edit = (props) => {
   const { selected, onChangeBlock, block, data } = props;
-  usePloneCsvData(data.file_path || []);
-  usePloneGeoJson(data.geojson_path || []);
+  const { error: dataError } = usePloneCsvData(data.file_path || []);
+  const { error: geoJsonError } = usePloneGeoJson(data.geojson_path || []);
 
   return (
     <SidebarPortal selected={selected}>
       <div id="chart-builder">
-        <Segment.Group raised>
-          <header className="header pulled">
-            <h2>CSV Data</h2>
-          </header>
-          <Form>
-            <Field
-              id="file_path"
-              widget="object_browser"
-              mode="link"
-              title="Data file"
-              widgetOptions={{
-                pattern_options: {
-                  selectableTypes: ['File', 'discodataconnector', 'sparql_dataconnector', 'csv_type'],
-                }
-              }}
-              value={data.file_path || []}
-              onChange={(id, value) => {
-                onChangeBlock(block, {
-                  ...data,
-                  [id]: value,
-                });
-              }}
-            />
-            <Field
-              id="geojson_path"
-              widget="object_browser"
-              mode="link"
-              title="GEOJSON file"
-              widgetOptions={{
-                pattern_options: {
-                  selectableTypes: ['discodataconnector', 'csv_type', 'sparql_dataconnector'],
-                }
-              }}
-              value={data.geojson_path || []}
-              onChange={(id, value) => {
-                onChangeBlock(block, {
-                  ...data,
-                  [id]: value,
-                });
-              }}
-            />
-          </Form>
-        </Segment.Group>
-
-        <SidePanel />
+        <SidePanel
+          renderDataSelector={() => (
+            <>
+              <header className="header pulled">
+                <h2>Data</h2>
+              </header>
+              <Form>
+                <Field
+                  id="file_path"
+                  widget="object_browser"
+                  mode="link"
+                  title="Data file"
+                  error={dataError}
+                  widgetOptions={{
+                    pattern_options: {
+                      selectableTypes: [
+                        'File',
+                        'discodataconnector',
+                        'sparql_dataconnector',
+                        'csv_type',
+                      ],
+                    },
+                  }}
+                  value={data.file_path || []}
+                  onChange={(id, value) => {
+                    onChangeBlock(block, {
+                      ...data,
+                      [id]: value,
+                    });
+                  }}
+                />
+              </Form>
+            </>
+          )}
+          renderGeoJsonSelector={() => (
+            <Form>
+              <Field
+                id="geojson_path"
+                widget="object_browser"
+                mode="link"
+                title="GEOJSON file"
+                error={geoJsonError}
+                widgetOptions={{
+                  pattern_options: {
+                    selectableTypes: [
+                      'discodataconnector',
+                      'csv_type',
+                      'sparql_dataconnector',
+                    ],
+                  },
+                }}
+                value={data.geojson_path || []}
+                onChange={(id, value) => {
+                  onChangeBlock(block, {
+                    ...data,
+                    [id]: value,
+                  });
+                }}
+              />
+            </Form>
+          )}
+        />
       </div>
     </SidebarPortal>
   );
@@ -69,9 +93,13 @@ const Edit = (props) => {
 
 function migrateFromPropertiesSchemaAndValue(storedSchema) {
   return ChartPropertiesSchema.reduce((acc, section) => {
-    const storedSection = storedSchema.find(x => x.name.toLowerCase() === section.name.toLowerCase());
+    const storedSection = storedSchema.find(
+      (x) => x.name.toLowerCase() === section.name.toLowerCase(),
+    );
     acc[section.name] = section.properties.reduce((acc, prop) => {
-      const storedValue = storedSection?.properties?.find(x => x.name.toLowerCase() === prop.name.toLowerCase());
+      const storedValue = storedSection?.properties?.find(
+        (x) => x.name.toLowerCase() === prop.name.toLowerCase(),
+      );
       // if (!storedValue) console.warn('Did not find', section.name, prop.name);
       acc[prop.name] = storedValue ? storedValue.value : prop.defaultValue;
       return acc;

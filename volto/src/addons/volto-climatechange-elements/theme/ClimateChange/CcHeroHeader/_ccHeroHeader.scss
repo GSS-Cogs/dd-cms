@@ -1,0 +1,37 @@
+// Adapted from https://github.com/alphagov/govuk-design-system/blob/main/src/stylesheets/components/_masthead.scss
+
+.app-masthead__tag {
+    color: govuk-colour("blue");
+    @include govuk-responsive-margin(2, "bottom");
+}
+
+.app-masthead__title {
+    color: govuk-colour("white");
+    @include govuk-responsive-margin(6, "bottom");
+}
+
+.app-masthead__description {
+    @include govuk-font(24);
+    @include govuk-responsive-margin(6, "bottom");
+}
+
+.app-masthead__start,
+.app-masthead__start:link,
+.app-masthead__start:visited,
+.app-masthead__start:active,
+.app-masthead__start:hover {
+    color: govuk-colour("blue");
+}
+
+.app-masthead__image {
+    display: none;
+
+    @include govuk-not-ie8 {
+        @include govuk-media-query($from: desktop) {
+            display: block;
+            width: 100%;
+            margin-top: govuk-spacing(-6);
+            margin-bottom: govuk-spacing(-6);
+        }
+    }
+}
