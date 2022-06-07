@@ -18,7 +18,7 @@ const View = () => {
 
 const Edit = (props) => {
   const { selected, onChangeBlock, block, data } = props;
-  usePloneCsvData(data.file_path || []);
+  const { error: dataError } = usePloneCsvData(data.file_path || []);
   const { error: geoJsonError } = usePloneGeoJson(data.geojson_path || []);
 
   return (
@@ -36,6 +36,7 @@ const Edit = (props) => {
                   widget="object_browser"
                   mode="link"
                   title="Data file"
+                  error={dataError}
                   widgetOptions={{
                     pattern_options: {
                       selectableTypes: [

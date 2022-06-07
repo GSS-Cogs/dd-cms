@@ -61,7 +61,10 @@ class SPARQLDataProviderForConnectors(object):
         data = self._get_data()
 
         rotate_data = self.change_orientation(data['head']['vars'], data["results"]["bindings"])
-        return rotate_data
+        return {
+            "results": rotate_data,
+            "metadata": {},
+        }
 
     @property
     def provided_data(self):
