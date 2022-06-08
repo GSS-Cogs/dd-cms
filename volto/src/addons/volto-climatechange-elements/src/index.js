@@ -8,7 +8,7 @@ import { CcV2Overview } from './components/CcV2Preview/CcV2Overview';
 import { CcV2ArticleView } from './components/CcV2Preview/CcV2ArticleView';
 import { CcRelatedLinks } from './components/CcRelatedLinks/CcRelatedLinks';
 
-import { relatedItemsData } from './reducers';
+import { relatedItemsData, rawData } from './reducers';
 
 import "../theme/main.scss";
 
@@ -67,7 +67,7 @@ const applyConfig = (config) => {
   config.views.contentTypesViews.csv_type = config.views.contentTypesViews.discodataconnector;
 
   config.addonReducers.relatedItemsData = relatedItemsData;
-
+  config.addonReducers.rawData = rawData;
   return config;
 };
 
