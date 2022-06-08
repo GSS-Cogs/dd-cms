@@ -37,6 +37,10 @@ const headerConfig = {
                 {
                     "label": "Mitigation",
                     "href": "/browse/mitigation"
+                },
+                {
+                    "label": "Adaptation",
+                    "href": "/browse/adaptation"
                 }
             ],
             "footer_links": [
