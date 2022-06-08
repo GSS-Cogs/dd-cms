@@ -3,11 +3,21 @@ import { Segment, Form } from 'semantic-ui-react';
 import { SidebarPortal, Field } from '@plone/volto/components';
 import { DashboardTileSchema } from './schema';
 import { CcHeroHeaderView } from './CcHeroHeaderView';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { getRawContent } from '../../actions';
 
 export const CcHeroHeaderEdit = (props) => {
   const { selected, onChangeBlock, block, data } = props;
   const schema = DashboardTileSchema(props);
+
+  const contentId = data.file_path[0]?.['@id'];
+  let path = contentId ? `${contentId}/@@download` : null;
+
+  const dispatch = useDispatch();
+  React.useDispatch(() => {
+    dispatch(getRawContent(path);
+  }, [path]);
 
   return (
     <div>
@@ -27,9 +37,8 @@ export const CcHeroHeaderEdit = (props) => {
               value={data.file_path || []}
               onChange={(id, value) => {
                 if (value.length > 0) {
-                  const contentId = value[0]?.['@id'];
-                  const path = contentId ? `${contentId}/@@download` : null;
-                  console.log(getRawContent(path));
+                  contentId = value[0]?.['@id'];
+                  path = contentId ? `${contentId}/@@download` : null;
                   console.log(data);
                   onChangeBlock(block, {
                     ...data,
@@ -41,7 +50,6 @@ export const CcHeroHeaderEdit = (props) => {
           </Form>
         </Segment.Group>
       </SidebarPortal>
-
       <CcHeroHeaderView {...props} />
     </div>
   );
