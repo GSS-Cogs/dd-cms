@@ -25,7 +25,7 @@ const SparkLine = ({ data, lineColor }) => {
       .range([2, width - 2]); // Pad each end of the path by 2px
 
     // Calculate the minimum and maximum values of y
-    const yValues = data.map((d) => d[1]);
+    const yValues = data.map((d) => parseInt(d[1], 10));
     const [yMin, yMax] = d3.extent(yValues);
 
     // Calculate the y scale using the minimum and maximum values of y
