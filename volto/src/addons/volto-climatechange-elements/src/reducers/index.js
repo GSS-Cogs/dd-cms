@@ -1,8 +1,5 @@
 import { uniq } from 'lodash';
-import {
-  GET_RELATED_ITEMS_DATA,
-  GET_RAW_CONTENT,
-} from '../constants/ActionTypes';
+import { GET_RELATED_ITEMS_DATA , GET_RAW_CONTENT } from '../constants/ActionTypes';
 import { formattedDate } from '../utils';
 
 const initialState = {
