@@ -24,11 +24,15 @@
 }
 
 // hide the purple accent line from Volto main headings
-.documentFirstHeading::before {
+h1.documentFirstHeading::before {
   border-bottom: none;
+}
+
+// hide the grey underline from Volto main headings
+h1.documentFirstHeading {
+  border: none;
 }
 
 .volto-width-container--wide {
   @include govuk-width-container(1920px);
 }
-
