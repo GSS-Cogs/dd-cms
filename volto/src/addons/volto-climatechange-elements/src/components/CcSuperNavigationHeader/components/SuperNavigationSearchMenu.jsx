@@ -105,7 +105,7 @@ function SuperNavigationSearchMenu(props) {
                                     <label htmlFor="search-main-1d4ac258" className="govuk-label govuk-label--m">{props.search_text}</label>
                                     <div className="gem-c-search__item-wrapper">
                                         <input
-                                            enterkeyhint="search"
+                                            enterKeyHint="search"
                                             className="gem-c-search__item gem-c-search__input js-class-toggle"
                                             id="search-main-1d4ac258"
                                             name="q"
@@ -116,7 +116,7 @@ function SuperNavigationSearchMenu(props) {
                                             <button
                                                 className="gem-c-search__submit"
                                                 type="submit"
-                                                enterkeyhint="search"
+                                                enterKeyHint="search"
                                             >
                                                 Search
                                                 <svg

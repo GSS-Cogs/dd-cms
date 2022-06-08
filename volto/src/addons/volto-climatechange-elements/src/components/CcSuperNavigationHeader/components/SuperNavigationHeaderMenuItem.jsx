@@ -7,7 +7,7 @@ function SuperNavigationHeaderMenuItem(props) {
             <div className="gem-c-layout-super-navigation-header__navigation-toggle-wrapper govuk-clearfix">
                 <a
                     className="gem-c-layout-super-navigation-header__navigation-item-link"
-                    href={props.menu}
+                    href={props.menu.href}
                     hidden="hidden"
                 >
                     {props.menu.label}
