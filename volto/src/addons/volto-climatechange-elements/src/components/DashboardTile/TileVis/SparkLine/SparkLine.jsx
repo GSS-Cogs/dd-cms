@@ -25,14 +25,14 @@ const SparkLine = ({ data, lineColor }) => {
       .range([2, width - 2]); // Pad each end of the path by 2px
 
     // Calculate the minimum and maximum values of y
-    const yValues = data.map((d) => d[1]);
+    const yValues = data.map((d) => parseInt(d[1], 10));
     const [yMin, yMax] = d3.extent(yValues);
 
     // Calculate the y scale using the minimum and maximum values of y
     const yScale = d3
       .scaleLinear()
       .domain([yMin, yMax])
-      .range([height - 2, 2]); // Pad top and bottom of the path by 2px
+      .range([height - 4, 4]); // Pad top and bottom of the path by 2px
 
     // Line function that calculates the pixel coordinates for the line from the scales
     // yScale takes the y value and xScale takes the index of the current observation
