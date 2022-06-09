@@ -1,5 +1,8 @@
 import { uniq } from 'lodash';
-import { GET_RELATED_ITEMS_DATA , GET_RAW_CONTENT } from '../constants/ActionTypes';
+import {
+  GET_RELATED_ITEMS_DATA,
+  GET_RAW_CONTENT,
+} from '../constants/ActionTypes';
 import { formattedDate } from '../utils';
 
 const initialState = {
@@ -50,7 +53,7 @@ export function relatedItemsData(state = initialState, action = {}) {
   }
 }
 
-export function rawdata(state = {}, action = {}) {
+export function rawData(state = {}, action = {}) {
   let { result, url } = action;
 
   switch (action.type) {
