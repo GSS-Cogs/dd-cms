@@ -1,0 +1,973 @@
+@import "mixins/prefixed-transform";
+@import "mixins/grid-helper";
+@import "./custom";
+
+$icon-size: 20px;
+$chevron-indent-spacing: 7px;
+$black-bar-height: 50px;
+$search-width-or-height: $black-bar-height;
+$pseudo-underline-height: 3px;
+$button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
+
+@mixin chevron($colour, $update: false) {
+  @if $update == true {
+    border-bottom-color: $colour;
+    border-right-color: $colour;
+  } @else {
+    @include prefixed-transform($rotate: 45deg, $translateY: -35%);
+    border-bottom: 2px solid $colour;
+    border-right: 2px solid $colour;
+    content: "";
+    display: inline-block;
+    height: 8px;
+    margin: 0 10px 0 2px;
+    vertical-align: middle;
+    width: 8px;
+  }
+}
+
+@mixin make-selectable-area-bigger {
+  background: none;
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+@mixin pseudo-underline($left: govuk-spacing(4), $right: govuk-spacing(4)) {
+  background: none;
+  bottom: 0;
+  content: "";
+  height: $pseudo-underline-height;
+  left: $left;
+  position: absolute;
+  right: $right;
+  top: auto;
+}
+
+@mixin focus-and-focus-visible {
+  &:focus {
+    @content;
+  }
+
+  &:focus-visible {
+    @content;
+  }
+}
+
+@mixin focus-not-focus-visible {
+  & {
+    @content;
+  }
+
+  &:focus:not(:focus-visible) {
+    @content;
+  }
+}
+
+// Header layout - black bar and logo.
+.gem-c-layout-super-navigation-header {
+  background: govuk-colour("black");
+  border-top: 1px solid govuk-colour("black");
+  margin-top: -1px;
+  position: relative;
+
+  .lte-ie8 & {
+    height: $black-bar-height;
+  }
+
+  [hidden] {
+    display: none;
+  }
+}
+
+.gem-c-layout-super-navigation-header__container {
+  position: relative;
+
+  @include govuk-media-query($from: "desktop") {
+    position: static;
+  }
+}
+
+.gem-c-layout-super-navigation-header__header-logo {
+  height: govuk-spacing(6);
+  padding-bottom: govuk-spacing(2);
+  padding-top: govuk-spacing(2);
+
+  @include govuk-media-query($from: "desktop") {
+    display: block;
+    float: left;
+  }
+}
+
+.gem-c-layout-super-navigation-header__content {
+  @include govuk-media-query($from: "desktop") {
+    display: block;
+    float: right;
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-toggle-wrapper {
+  position: relative;
+}
+
+// Top level navigation and search.
+.gem-c-layout-super-navigation-header__navigation-items,
+.gem-c-layout-super-navigation-header__search-items {
+  background: govuk-colour("light-grey");
+  display: block;
+  list-style: none;
+  margin: 0 (0 - govuk-spacing(3));
+  padding: 0;
+
+  @include govuk-media-query($from: "tablet") {
+    margin: 0 (0 - govuk-spacing(6));
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    background: none;
+    float: left;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-items {
+  @include govuk-media-query($from: "desktop") {
+    display: inline-block;
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-item,
+.gem-c-layout-super-navigation-header__search-item {
+  display: block;
+  margin: 0;
+  padding: govuk-spacing(2) govuk-spacing(3);
+  position: relative;
+
+  @include govuk-media-query($from: "tablet") {
+    margin: 0 govuk-spacing(6);
+    padding: govuk-spacing(2) 0;
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    background: govuk-colour("black");
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+    position: static;
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-item {
+  border-bottom: 1px solid $govuk-border-colour;
+
+  .js-module-initialised & {
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    border-bottom: 0;
+    padding: 0;
+
+    &:first-of-type {
+      margin-right: -1px;
+
+      .gem-c-layout-super-navigation-header__navigation-second-toggle-button-inner {
+        border-left: 1px solid $button-pipe-colour;
+        border-right: 1px solid $button-pipe-colour;
+      }
+    }
+  }
+}
+
+// Top level navigation links and search link.
+.gem-c-layout-super-navigation-header__navigation-item-link,
+.gem-c-layout-super-navigation-header__search-item-link,
+.gem-c-layout-super-navigation-header__navigation-second-toggle-button {
+  @include govuk-link-common;
+  @include govuk-link-style-no-visited-state;
+
+  display: inline-block;
+  font-size: 19px;
+  @if $govuk-typography-use-rem {
+    font-size: govuk-px-to-rem(19px);
+  }
+  font-weight: bold;
+  margin: govuk-spacing(3) 0;
+
+  @include govuk-media-query($from: "desktop") {
+    display: block;
+    margin: 0;
+  }
+
+  &:hover {
+    @include govuk-link-hover-decoration;
+  }
+
+  &,
+  &:link,
+  &:visited {
+    @include focus-and-focus-visible {
+      @include govuk-focused-text;
+    }
+
+    // Undoes the :focus styles *only* for browsers that support :focus-visible.
+    // See https://www.tpgi.com/focus-visible-and-backwards-compatibility/
+    &:focus:not(:focus-visible) {
+      background: none;
+      box-shadow: none;
+      color: $govuk-link-colour;
+
+      &:hover {
+        @include govuk-link-decoration;
+        @include govuk-link-hover-decoration;
+        color: $govuk-link-hover-colour;
+      }
+    }
+
+    &:after {
+      @include make-selectable-area-bigger;
+    }
+
+    @include govuk-media-query($from: "desktop") {
+      float: left;
+      font-size: 16px;
+
+      // stylelint-disable max-nesting-depth
+      @if $govuk-typography-use-rem {
+        font-size: govuk-px-to-rem(16px);
+      }
+      // stylelint-enable max-nesting-depth
+
+      height: govuk-spacing(4);
+      padding: govuk-spacing(3);
+      position: relative;
+
+      &:before {
+        @include chevron(govuk-colour("white"), true);
+      }
+
+      &:hover {
+        color: govuk-colour("mid-grey");
+
+        &:after {
+          background: govuk-colour("mid-grey");
+        }
+      }
+
+      // stylelint-disable max-nesting-depth
+      @include focus-and-focus-visible {
+        &,
+        &:hover {
+          box-shadow: none;
+          color: $govuk-focus-text-colour;
+
+          &:after {
+            background: $govuk-focus-text-colour;
+          }
+        }
+      }
+
+      @include focus-not-focus-visible {
+        &,
+        &:hover {
+          text-decoration: none;
+        }
+
+        & {
+          color: govuk-colour("white");
+        }
+
+        &:hover {
+          color: govuk-colour("mid-grey");
+
+          &:after {
+            background: govuk-colour("mid-grey");
+          }
+        }
+
+        &:after {
+          background: none;
+        }
+      }
+      // stylelint-enable max-nesting-depth
+
+      &:after {
+        @include pseudo-underline($left: govuk-spacing(5), $right: govuk-spacing(6));
+      }
+    }
+  }
+
+  &:after {
+    @include make-selectable-area-bigger;
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-item-link {
+  .js-module-initialised & {
+    margin-left: govuk-spacing(4);
+    @include govuk-link-style-no-underline;
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-second-toggle-button {
+  background: none;
+  border: 0;
+  color: $govuk-link-colour;
+  cursor: pointer;
+  padding: 0;
+
+  @include focus-not-focus-visible {
+    .gem-c-layout-super-navigation-header__navigation-second-toggle-button-inner {
+      &:before {
+        @include chevron($govuk-link-colour);
+      }
+    }
+  }
+
+  @include focus-not-focus-visible {
+    &:hover {
+      .gem-c-layout-super-navigation-header__navigation-second-toggle-button-inner {
+        &:before {
+          @include chevron($govuk-link-hover-colour, true);
+        }
+      }
+    }
+  }
+
+  &:focus {
+    .gem-c-layout-super-navigation-header__navigation-second-toggle-button-inner {
+      &:before {
+        @include chevron($govuk-focus-text-colour, true);
+      }
+    }
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    &:after {
+      @include pseudo-underline($left: govuk-spacing(5), $right: govuk-spacing(6));
+    }
+
+    @include focus-not-focus-visible {
+      color: govuk-colour("white");
+      float: left;
+      font-size: 16px;
+      @if $govuk-typography-use-rem {
+        font-size: govuk-px-to-rem(16px);
+      }
+      height: $black-bar-height;
+      position: relative;
+      text-decoration: none;
+
+      .gem-c-layout-super-navigation-header__navigation-second-toggle-button-inner {
+        border-color: $button-pipe-colour;
+
+        &:before {
+          @include chevron(govuk-colour("white"), true);
+        }
+      }
+    }
+    @include focus-not-focus-visible {
+      &:hover {
+        color: govuk-colour("mid-grey");
+        text-decoration: none;
+
+        &:after {
+          background: govuk-colour("mid-grey");
+        }
+
+        .gem-c-layout-super-navigation-header__navigation-second-toggle-button-inner {
+          &:before {
+            @include chevron(govuk-colour("mid-grey"), true);
+          }
+        }
+      }
+    }
+
+    @include focus-and-focus-visible {
+      color: $govuk-focus-text-colour;
+
+      &:after {
+        background: $govuk-focus-text-colour;
+      }
+
+      .gem-c-layout-super-navigation-header__navigation-second-toggle-button-inner {
+        border-color: $govuk-focus-colour;
+
+        &:before {
+          @include chevron($govuk-focus-text-colour, true);
+        }
+      }
+    }
+  }
+
+  &.gem-c-layout-super-navigation-header__open-button {
+    @include focus-not-focus-visible {
+      .gem-c-layout-super-navigation-header__navigation-second-toggle-button-inner {
+        &:before {
+          @include prefixed-transform($rotate: 225deg, $translateY: 1px);
+        }
+      }
+    }
+
+    @include govuk-media-query($from: "desktop") {
+      @include focus-not-focus-visible {
+        background: govuk-colour("light-grey");
+        color: $govuk-link-colour;
+
+        // stylelint-disable max-nesting-depth
+        .gem-c-layout-super-navigation-header__navigation-second-toggle-button-inner {
+          border-color: govuk-colour("light-grey");
+
+          &:before {
+            @include chevron($govuk-link-colour, true);
+          }
+        }
+
+        &:after {
+          background-color: $govuk-link-colour;
+        }
+      }
+
+      @include focus-and-focus-visible {
+        background-color: $govuk-focus-colour;
+        color: $govuk-focus-text-colour;
+
+        .gem-c-layout-super-navigation-header__navigation-second-toggle-button-inner {
+          border-color: $govuk-focus-colour;
+
+          &:before {
+            @include chevron($govuk-focus-text-colour, true);
+          }
+        }
+
+        &:after {
+          background: $govuk-focus-text-colour;
+        }
+      }
+    }
+  }
+  // stylelint-enable max-nesting-depth
+
+  .js-module-initialised & {
+    @include govuk-link-style-no-underline;
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-second-toggle-button-inner {
+  @include govuk-media-query($from: "desktop") {
+    display: inline-block;
+    padding: govuk-spacing(1) govuk-spacing(6) govuk-spacing(1) govuk-spacing(5);
+  }
+}
+
+// Search link and dropdown.
+.gem-c-layout-super-navigation-header__search-item-link {
+  &:link,
+  &:visited {
+    @include govuk-media-query($from: "desktop") {
+      background: $govuk-brand-colour;
+      border-bottom: 1px solid govuk-colour("dark-blue");
+
+      &:hover {
+        background: govuk-colour("black");
+
+        &:before {
+          left: 0;
+          right: 0;
+        }
+      }
+
+      &:focus {
+        background: $govuk-focus-colour;
+
+        &:before {
+          content: none;
+        }
+      }
+
+      &:after {
+        left: 0;
+        right: 0;
+      }
+
+      @include focus-not-focus-visible {
+        background: $govuk-link-colour;
+
+        &:hover {
+          background: govuk-colour("black");
+        }
+      }
+
+      @include focus-and-focus-visible {
+        &:hover {
+          background: $govuk-focus-colour;
+        }
+
+        &:after,
+        &:hover:after {
+          background: $govuk-focus-colour;
+        }
+      }
+    }
+  }
+}
+
+.gem-c-layout-super-navigation-header__search-item-link-text {
+  @include govuk-media-query($from: "desktop") {
+    @include govuk-visually-hidden;
+  }
+}
+
+.gem-c-layout-super-navigation-header__search-item-link-icon,
+.gem-c-layout-super-navigation-header__search-toggle-button-link-icon {
+  height: $icon-size;
+  pointer-events: none;
+  width: $icon-size;
+}
+
+.gem-c-layout-super-navigation-header__search-item-link-icon {
+  @include govuk-media-query($until: "desktop") {
+    @include govuk-visually-hidden;
+  }
+}
+
+// Search and popular content dropdown.
+.gem-c-layout-super-navigation-header__search-and-popular {
+  display: none;
+  padding-bottom: govuk-spacing(4);
+  padding-top: govuk-spacing(4);
+
+  .js-module-initialised & {
+    display: block;
+  }
+}
+
+// Styles for top level navigation toggle button.
+.gem-c-layout-super-navigation-header__navigation-top-toggle-button {
+  @include govuk-link-common;
+  @include govuk-link-style-no-visited-state;
+  @include govuk-link-style-no-underline;
+
+  font-size: 16px;
+  @if $govuk-typography-use-rem {
+    font-size: govuk-px-to-rem(16px);
+  }
+  font-weight: 700;
+  background: govuk-colour("black");
+  border: 0;
+  box-sizing: border-box;
+  color: govuk-colour("white");
+  cursor: pointer;
+  height: $black-bar-height;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  right: (($search-width-or-height - govuk-spacing(3)) - 1px); // width of the search button (50px) - 15px - 1px to create an overlap between buttons and stop the border appearing to hang off the buttons when they're focused/open
+  top: 0;
+  z-index: 10;
+
+  @include focus-and-focus-visible {
+    @include govuk-focused-text;
+    box-shadow: none;
+
+    .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+      border-color: $govuk-focus-colour;
+      color: govuk-colour("black");
+
+      @include govuk-media-query($from: 360px) {
+        &:before {
+          @include chevron(govuk-colour("black"), true);
+        }
+      }
+    }
+  }
+
+  // Undoes the :focus styles *only* for browsers that support :focus-visible.
+  // See https://www.tpgi.com/focus-visible-and-backwards-compatibility/
+  @include focus-not-focus-visible {
+    background: none;
+    box-shadow: none;
+
+    .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+      border-color: $button-pipe-colour;
+      color: govuk-colour("white");
+
+      @include govuk-media-query($from: 360px) {
+        &:before {
+          @include chevron(govuk-colour("white"), true);
+        }
+      }
+    }
+  }
+
+  // Open button modifier
+  &.gem-c-layout-super-navigation-header__open-button {
+    // stylelint-disable max-nesting-depth
+    @include focus-and-focus-visible {
+      @include govuk-focused-text;
+      box-shadow: none;
+
+      &:after {
+        background-color: $govuk-focus-colour;
+      }
+
+      .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+        color: govuk-colour("black");
+        border-color: $govuk-focus-colour;
+
+        @include govuk-media-query($from: 360px) {
+          &:before {
+            @include chevron(govuk-colour("black"), true);
+            @include prefixed-transform($rotate: 225deg, $translateY: 1px);
+          }
+        }
+      }
+    }
+
+    @include focus-not-focus-visible {
+      background: govuk-colour("light-grey");
+
+      &:after {
+        background-color: $govuk-link-colour;
+      }
+
+      .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+        color: $govuk-link-colour;
+        border-color: govuk-colour("light-grey");
+
+        @include govuk-media-query($from: 360px) {
+          &:before {
+            @include chevron($govuk-link-colour);
+            @include prefixed-transform($rotate: 225deg, $translateY: 1px);
+          }
+        }
+      }
+    }
+    // stylelint-enable max-nesting-depth
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+  display: inline-block;
+  border-left: 1px solid govuk-colour("white");
+  border-right: 1px solid govuk-colour("white");
+  margin: 0;
+  padding: govuk-spacing(2) govuk-spacing(4);
+
+  @include govuk-media-query($from: 360px) {
+    &:before {
+      @include chevron(govuk-colour("white"));
+    }
+  }
+}
+
+// Styles for search toggle button.
+.gem-c-layout-super-navigation-header__search-toggle-button {
+  @include govuk-font($size: 19, $weight: "bold", $line-height: 20px);
+  background: govuk-colour("black");
+  border: 0;
+  color: govuk-colour("white");
+  cursor: pointer;
+  height: $search-width-or-height;
+  padding: govuk-spacing(3);
+  position: absolute;
+  right: (0 - govuk-spacing(3));
+  top: 0;
+  width: $search-width-or-height;
+
+  @include focus-and-focus-visible {
+    @include govuk-focused-text;
+    border-color: $govuk-focus-colour;
+    box-shadow: none;
+    z-index: 11;
+  }
+
+  &:focus:not(:focus-visible) {
+    background: none;
+    border-color: govuk-colour("white");
+    box-shadow: none;
+    color: govuk-colour("white");
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    right: 0;
+
+    @include focus-not-focus-visible {
+      background: $govuk-brand-colour;
+      border-bottom: 1px solid govuk-colour("dark-blue");
+      border-left: none;
+      position: relative;
+    }
+
+    &:hover {
+      background: govuk-colour("black");
+      border-bottom: $pseudo-underline-height solid govuk-colour("mid-grey");
+      color: govuk-colour("mid-grey");
+    }
+
+    @include focus-and-focus-visible {
+      @include govuk-focused-text;
+      border-bottom-color: $govuk-focus-colour;
+      box-shadow: none;
+    }
+  }
+
+  // Open button modifier
+  &.gem-c-layout-super-navigation-header__open-button {
+    @include focus-and-focus-visible {
+      @include govuk-focused-text;
+      border-color: $govuk-focus-colour;
+      box-shadow: none;
+      color: $govuk-focus-colour;
+
+      @include govuk-media-query($from: 360px) {
+        &:before {
+          @include chevron($govuk-focus-colour, true);
+        }
+      }
+    }
+
+    @include focus-not-focus-visible {
+      background: govuk-colour("light-grey");
+      border-bottom-color: govuk-colour("light-grey");
+      color: govuk-colour("light-grey");
+    }
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-top-toggle-close-icon {
+  color: $govuk-text-colour;
+  display: none;
+  font-size: 36px;
+  font-weight: normal;
+  left: 0;
+  line-height: 22px;
+  padding: govuk-spacing(3) 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+
+  .gem-c-layout-super-navigation-header__open-button & {
+    display: block;
+  }
+}
+
+// Dropdown menu.
+.gem-c-layout-super-navigation-header__navigation-dropdown-menu {
+  background: govuk-colour("light-grey");
+
+  @include govuk-media-query($from: "desktop") {
+    border-bottom: 1px govuk-colour("mid-grey") solid;
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
+}
+
+// Dropdown menu description.
+.gem-c-layout-super-navigation-header__menu-description {
+  display: none;
+
+  @include govuk-media-query($from: "desktop") {
+    display: block;
+    padding: govuk-spacing(7) 0 govuk-spacing(7) 0;
+  }
+}
+
+// Dropdown menu items.
+.gem-c-layout-super-navigation-header__dropdown-list-item {
+  box-sizing: border-box;
+  padding: 0 0 govuk-spacing(4) 0;
+  position: relative;
+}
+
+// Navigation menu items.
+.gem-c-layout-super-navigation-header__navigation-second-items {
+  list-style: none;
+  margin: 0;
+  padding: govuk-spacing(6) govuk-spacing(4);
+
+  & > li {
+    margin: 0;
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    margin: 0 (0 - govuk-spacing(3));
+    padding: govuk-spacing(7) 0 govuk-spacing(8) 0;
+
+    & > li {
+      margin: 0 govuk-spacing(3);
+    }
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-second-items--topics {
+  @include govuk-media-query($from: "desktop") {
+    @include columns($items: 16, $columns: 2, $selector: "li", $flow: column);
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-second-items--government-activity {
+  @include govuk-media-query($from: "desktop") {
+    @include columns($items: 6, $columns: 2, $selector: "li", $flow: column);
+    padding-bottom: 0;
+
+    & > li {
+      box-sizing: border-box;
+      padding-bottom: govuk-spacing(4);
+    }
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-second-item-link {
+  font-size: 16px;
+  @if $govuk-typography-use-rem {
+    font-size: govuk-px-to-rem(16px);
+  }
+
+  &:after {
+    @include make-selectable-area-bigger;
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    font-weight: bold;
+    padding: 0;
+
+    &:after {
+      content: none;
+    }
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-second-item-link--with-description {
+  font-size: 16px;
+  @if $govuk-typography-use-rem {
+    font-size: govuk-px-to-rem(16px);
+  }
+  font-weight: bold;
+}
+
+// Dropdown menu footer links.
+.gem-c-layout-super-navigation-header__navigation-second-footer-break {
+  @include govuk-media-query($until: "desktop") {
+    display: none;
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-second-footer-list {
+  list-style: none;
+  padding: 0 0 govuk-spacing(8) govuk-spacing(4);
+
+  @include govuk-media-query($from: "desktop") {
+    @include columns($items: 2, $columns: 2, $selector: "li");
+    margin: 0 (0 - govuk-spacing(3));
+    padding: govuk-spacing(6) 0 govuk-spacing(7) 0;
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-second-footer-item {
+  padding: govuk-spacing(2) 0;
+  position: relative;
+
+  @include govuk-media-query($from: "desktop") {
+    padding: 0 govuk-spacing(3);
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-second-footer-link {
+  display: inline-block;
+  font-size: 16px;
+  @if $govuk-typography-use-rem {
+    font-size: govuk-px-to-rem(16px);
+  }
+  margin: govuk-spacing(1) 0;
+
+  &:after {
+    @include make-selectable-area-bigger;
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    display: inline;
+    padding: 0;
+
+    &:after {
+      content: none;
+    }
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-second-item-description {
+  @include govuk-typography-common;
+  font-size: 16px;
+  @if $govuk-typography-use-rem {
+    font-size: govuk-px-to-rem(16px);
+  }
+  font-weight: normal;
+  margin: govuk-spacing(1) 0 0 0;
+}
+
+// Search dropdown.
+.gem-c-layout-super-navigation-header__search-items {
+  background: govuk-colour("light-grey");
+  margin: 0 (0 - govuk-spacing(3));
+
+  @include govuk-media-query($from: "tablet") {
+    margin: 0 (0 - govuk-spacing(6));
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    margin: 0;
+
+    .js-module-initialised & {
+      left: 0;
+      position: absolute;
+      right: 0;
+    }
+  }
+}
+
+.gem-c-layout-super-navigation-header__search-form {
+  padding: govuk-spacing(3) 0 govuk-spacing(6) 0;
+}
+
+// Popular links.
+.gem-c-layout-super-navigation-header__popular-item {
+  position: relative;
+  padding: govuk-spacing(1) 0;
+}
+
+.gem-c-layout-super-navigation-header__popular-link {
+  display: inline-block;
+  font-size: 16px;
+  @if $govuk-typography-use-rem {
+    font-size: govuk-px-to-rem(16px);
+  }
+  padding: 0;
+
+  &:after {
+    @include make-selectable-area-bigger;
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    &:after {
+      content: none;
+    }
+  }
+}
+
+// To be used with .govuk-width-container - we only need the margins from
+// desktop onwards.
+.gem-c-layout-super-navigation-header__width-container {
+  @include govuk-media-query($until: "desktop") {
+    margin: 0;
+  }
+}

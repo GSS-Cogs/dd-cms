@@ -46,3 +46,9 @@ When(
         await this.page.waitForXPath(xpath, {visible: true});
     }
 )
+
+When(
+    'I click the {string} element containing {string}', async function(element, text) {
+        await this.page.$x(`//${element}[contains(text(), '${text}')]`).then(nodes => nodes[0].click())
+    }
+)
