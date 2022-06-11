@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        PROJ_NAME = env.BUILD_TAG.toLowerCase().replaceAll('[^\\w/]', '-')
+    }
     stages {
         stage('Frontend tests') {
             agent {
@@ -34,12 +37,12 @@ pipeline {
             steps {
                 script {
                     dir('tests/climate-change-v2') {
-                        sh "docker-compose build"
-                        sh "docker-compose up -d plone"
-                        sh "docker-compose up -d volto"
-                        sh "docker-compose up -d proxy"
-                        def puppeteer = docker.image('climate-change-v2_test')
-                        puppeteer.inside("--rm --entrypoint= --network climate-change-v2_test_net") { testContainer ->
+                        sh "docker-compose -p ${PROJ_NAME} build --no-rm"
+                        sh "docker-compose -p ${PROJ_NAME} up -d plone"
+                        sh "docker-compose -p ${PROJ_NAME} up -d volto"
+                        sh "docker-compose -p ${PROJ_NAME} up -d proxy"
+                        def puppeteer = docker.image("${PROJ_NAME}_test")
+                        puppeteer.inside("--rm --entrypoint= --network ${PROJ_NAME}_test_net") { testContainer ->
                             sh './run.sh'
                         }
                     }
@@ -55,7 +58,7 @@ pipeline {
                 }
                 dir('tests/climate-change-v2') {
                     cucumber 'test-results.json'
-                    sh "docker-compose down"
+                    sh "docker-compose -p ${PROJ_NAME} down"
                 }
             }
         }
