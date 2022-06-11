@@ -4,14 +4,14 @@ pipeline {
         stage('build') {
             steps {
                 dir('deploy') {
-                    sh "docker-compose build"
+                    sh "docker-compose build plone-cc2 volto-v2"
                 }
             }
         }
         stage('run') {
             steps {
                 dir('deploy') {
-                      sh "docker-compose up -d"
+                      sh "docker-compose up -d plone-cc2 volto-v2"
                 }
             }
         }
