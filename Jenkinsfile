@@ -34,7 +34,7 @@ pipeline {
             steps {
                 script {
                     dir('tests/climate-change-v2') {
-                        sh "docker-compose build --no-rm"
+                        sh "docker-compose -p ${env.BUILD_TAG.toLowerCase()} build --no-rm"
                         sh "docker-compose -p ${env.BUILD_TAG.toLowerCase()} up -d plone"
                         sh "docker-compose -p ${env.BUILD_TAG.toLowerCase()} up -d volto"
                         sh "docker-compose -p ${env.BUILD_TAG.toLowerCase()} up -d proxy"
