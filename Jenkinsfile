@@ -34,12 +34,12 @@ pipeline {
             steps {
                 script {
                     dir('tests/climate-change-v2') {
-                        sh "docker-compose build"
-                        sh "docker-compose up -d plone"
-                        sh "docker-compose up -d volto"
-                        sh "docker-compose up -d proxy"
-                        def puppeteer = docker.image('climate-change-v2_test')
-                        puppeteer.inside("--rm --entrypoint= --network climate-change-v2_test_net") { testContainer ->
+                        sh "docker-compose build --no-rm"
+                        sh "docker-compose -p ${env.BUILD_TAG.toLowerCase()} up -d plone"
+                        sh "docker-compose -p ${env.BUILD_TAG.toLowerCase()} up -d volto"
+                        sh "docker-compose -p ${env.BUILD_TAG.toLowerCase()} up -d proxy"
+                        def puppeteer = docker.image("${env.BUILD_TAG.toLowerCase()}_test")
+                        puppeteer.inside("--rm --entrypoint= --network ${env.BUILD_TAG.toLowerCase()}_test_net") { testContainer ->
                             sh './run.sh'
                         }
                     }
@@ -55,7 +55,7 @@ pipeline {
                 }
                 dir('tests/climate-change-v2') {
                     cucumber 'test-results.json'
-                    sh "docker-compose down"
+                    sh "docker-compose -p ${env.BUILD_TAG.toLowerCase()} down"
                 }
             }
         }
