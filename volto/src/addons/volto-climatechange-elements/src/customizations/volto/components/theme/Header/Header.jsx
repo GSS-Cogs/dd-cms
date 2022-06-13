@@ -32,15 +32,15 @@ const headerConfig = {
                 },
                 {
                     "label": "Impacts",
-                    "href": "/browse/impacts"
+                    "href": "/dashboards/impacts"
                 },
                 {
                     "label": "Mitigation",
-                    "href": "/browse/mitigation"
+                    "href": "/dashboards/mitigation"
                 },
                 {
                     "label": "Adaptation",
-                    "href": "/browse/adaptation"
+                    "href": "/dashboards/adaptation"
                 }
             ],
             "footer_links": [
