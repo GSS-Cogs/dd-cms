@@ -67,8 +67,11 @@
     border-bottom-color: #1D70B8;
 }
 
-// Make the title disappear on small screens
-.govuk-header__logotype-text {
+.govuk-header__product-name {
+    color: #fff;
+    font-size: 30px;
+
+// Make the product name disappear on small screens
     @include govuk-media-query($until: "tablet") {
         display: none;
     }
