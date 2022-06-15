@@ -17,4 +17,6 @@ Feature: Overview
     Then I take a screenshot
 
   Scenario: Related links
-    Then I wait for xpath "//*[contains(text(), 'Related Links')]" to be visible
+    When I wait for xpath "//*[contains(text(), 'Related Links')]" to be visible
+    And I wait for xpath "//*[contains(text(), 'Met Office')]" to be visible
+    Then I take a screenshot
