@@ -10,8 +10,9 @@ import { SuperNavigationHeader } from "../../../../../components/CcSuperNavigati
 
 const headerConfig = {
     "logo_link_title": "Go to the GOV.UK homepage",
-    "logo_text": "Climate change portal",
+    "logo_text": "GOV.UK",
     "logo_href": "/",
+    "service_name": "Climate Change",
     "navigation_links": [
         {
             "label": "Dashboards",
