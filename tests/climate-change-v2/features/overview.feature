@@ -15,3 +15,6 @@ Feature: Overview
     And I wait for xpath "//p[contains(text(), 'Dashboards about the different indicators of climate change')]" to be visible
     And I wait for xpath "//a[contains(text(), 'Emissions')]" to be visible
     Then I take a screenshot
+
+  Scenario: Related links
+    Then I wait for xpath "//*[contains(text(), 'Related Links')]" to be visible
