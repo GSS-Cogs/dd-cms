@@ -55,15 +55,37 @@ const TEST_ARTICLES = [
 ];
 
 export const CcArticleList = ({ items, linkTitle, linkHref, isEditMode }) => {
-  return (
-    <div className="cc-article-list">
-      <H1>Articles</H1>
-      {TEST_ARTICLES.map((data, i, idx) => (
-        <CcArticlePreview key={i} data={data} />
-      ))}
+  console.log(items);
+  let link = null;
+  let href = linkHref?.[0]?.['@id'] || '';
 
-      <a href="#">View all articles</a>
-    </div>
+  if (isInternalURL(href)) {
+    link = (
+      <ConditionalLink to={flattenToAppURL(href)} condition={!isEditMode}>
+        {linkTitle || href}
+      </ConditionalLink>
+    );
+  } else if (href) {
+    link = <a href={href}>{linkTitle || href}</a>;
+  }
+
+  return (
+    <>
+      <div className="items">
+        {items?.map((item) => (
+          <div className="listing-item" key={item['@id']}>
+            <ConditionalLink item={item} condition={!isEditMode}>
+              <div className="listing-body">
+                <h4>{item.title ? item.title : item.id}</h4>
+                <p>{item.description}</p>
+              </div>
+            </ConditionalLink>
+          </div>
+        ))}
+      </div>
+
+      {link && <div className="footer">{link}</div>}
+    </>
   );
 };
 
