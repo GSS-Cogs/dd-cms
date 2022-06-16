@@ -7,10 +7,11 @@ import { CcHeroHeaderEdit } from './components/CcHeroHeader/CcHeroHeaderEdit';
 import { CcV2Overview } from './components/CcV2Preview/CcV2Overview';
 import { CcV2ArticleView } from './components/CcV2Preview/CcV2ArticleView';
 import { CcRelatedLinks } from './components/CcRelatedLinks/CcRelatedLinks';
+import { CcArticleList } from './components/CcArticleList/CcArticleList';
 
 import { relatedItemsData, rawData } from './reducers';
 
-import "../theme/main.scss";
+import '../theme/main.scss';
 
 const applyConfig = (config) => {
   config.blocks.blocksConfig.dashboardTile = {
@@ -61,10 +62,18 @@ const applyConfig = (config) => {
     },
   };
 
+  config.blocks.blocksConfig.listing.variations.push({
+    id: 'articleList',
+    isDefault: true,
+    title: 'Article List',
+    template: CcArticleList,
+  });
   config.views.layoutViews.cc_preview = CcV2ArticleView;
   config.views.layoutViews.cc_preview2 = CcV2Overview;
-  config.views.contentTypesViews.sparql_dataconnector = config.views.contentTypesViews.discodataconnector;
-  config.views.contentTypesViews.csv_type = config.views.contentTypesViews.discodataconnector;
+  config.views.contentTypesViews.sparql_dataconnector =
+    config.views.contentTypesViews.discodataconnector;
+  config.views.contentTypesViews.csv_type =
+    config.views.contentTypesViews.discodataconnector;
 
   config.addonReducers.relatedItemsData = relatedItemsData;
   config.addonReducers.rawData = rawData;
