@@ -1,4 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { ConditionalLink } from '@plone/volto/components';
+import { flattenToAppURL } from '@plone/volto/helpers';
+
+import { isInternalURL } from '@plone/volto/helpers/Url/Url';
 import { H1, H3, H4 } from 'govuk-react';
 
 const CcArticlePreview = ({ data, skipSummary }) => {
@@ -49,7 +54,7 @@ const TEST_ARTICLES = [
   },
 ];
 
-export const CcArticleList = () => {
+export const CcArticleList = ({ items, linkTitle, linkHref, isEditMode }) => {
   return (
     <div className="cc-article-list">
       <H1>Articles</H1>
@@ -60,6 +65,12 @@ export const CcArticleList = () => {
       <a href="#">View all articles</a>
     </div>
   );
+};
+
+CcArticleList.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.any).isRequired,
+  linkMore: PropTypes.any,
+  isEditMode: PropTypes.bool,
 };
 
 export const CcRecentArticles = ({ articles = [] }) => {
