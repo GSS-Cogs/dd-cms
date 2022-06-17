@@ -7,7 +7,7 @@ import { isInternalURL } from '@plone/volto/helpers/Url/Url';
 import { H1, H2, H3, H4 } from 'govuk-react';
 import moment from 'moment';
 
-const CcArticlePreview = ({ data, skipSummary, isEditMode }) => {
+const CcArticlePreview = ({ data, skipSummary }) => {
   const publishedDate = data.EffectiveDate ?? data.CreationDate;
 
   return (
