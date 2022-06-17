@@ -5,11 +5,16 @@ import { flattenToAppURL } from '@plone/volto/helpers';
 
 import { isInternalURL } from '@plone/volto/helpers/Url/Url';
 import { H1, H2, H3, H4 } from 'govuk-react';
+import moment from 'moment';
 
 const CcArticlePreview = ({ data, skipSummary, isEditMode }) => {
+  const publishedDate = data.EffectiveDate ?? data.CreationDate;
+
   return (
     <article className="cc-article-preview">
-      <aside className="cc-article-preview--date">{data.publicationDate}</aside>
+      <aside className="cc-article-preview--date">
+        {moment(publishedDate).format('dddd D MMMM YYYY')}
+      </aside>
       <H3>
         <a href={data['@id']?.replace('/api', '')} className="govuk-link">
           {data.title}
