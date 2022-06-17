@@ -16,7 +16,7 @@ const CcArticlePreview = ({ data, skipSummary }) => {
         {moment(publishedDate).format('dddd D MMMM YYYY')}
       </aside>
       <H3>
-        <a href={data['@id']?.replace('/api', '')} className="govuk-link">
+        <a href={data['@id']?.replace('/api', '')} className="cc-article-list">
           {data.title}
         </a>
       </H3>
