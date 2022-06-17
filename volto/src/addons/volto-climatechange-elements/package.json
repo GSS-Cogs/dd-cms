@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@plone/scripts": "*",
-    "@react-hook/resize-observer": "1.2.5"
+    "@react-hook/resize-observer": "1.2.5",
+    "moment": "*"
   }
 }
