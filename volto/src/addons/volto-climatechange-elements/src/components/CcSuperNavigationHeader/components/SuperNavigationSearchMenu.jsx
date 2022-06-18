@@ -108,7 +108,7 @@ function SuperNavigationSearchMenu(props) {
                                             enterKeyHint="search"
                                             className="gem-c-search__item gem-c-search__input js-class-toggle"
                                             id="search-main-1d4ac258"
-                                            name="q"
+                                            name="SearchableText"
                                             title="Search"
                                             type="search"
                                         />
