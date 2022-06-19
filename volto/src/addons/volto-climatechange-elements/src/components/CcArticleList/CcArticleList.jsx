@@ -26,19 +26,7 @@ const CcArticlePreview = ({ data, skipSummary }) => {
 };
 
 export const CcArticleList = ({ items, linkTitle, linkHref, isEditMode }) => {
-  let link = null;
-  let href = linkHref?.[0]?.['@id'] || '';
-
-  if (isInternalURL(href)) {
-    link = (
-      <ConditionalLink to={flattenToAppURL(href)} condition={!isEditMode}>
-        {linkTitle || href}
-      </ConditionalLink>
-    );
-  } else if (href) {
-    link = <a href={href}>{linkTitle || href}</a>;
-  }
-
+  const folder = `/${items[0]['@id'].split('/').splice(1, 1).join('')}`;
   return (
     <>
       <div className="cc-article-list">
@@ -48,7 +36,11 @@ export const CcArticleList = ({ items, linkTitle, linkHref, isEditMode }) => {
         ))}
       </div>
 
-      {link && <div className="footer">{link}</div>}
+      <H4>
+        <a href={folder} className="cc-article-list">
+         View All Articles
+        </a>
+      </H4>
     </>
   );
 };
