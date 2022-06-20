@@ -1,9 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ConditionalLink } from '@plone/volto/components';
-import { flattenToAppURL } from '@plone/volto/helpers';
-
-import { isInternalURL } from '@plone/volto/helpers/Url/Url';
 import { H1, H2, H3, H4 } from 'govuk-react';
 import moment from 'moment';
 
@@ -38,7 +34,7 @@ export const CcArticleList = ({ items, linkTitle, linkHref, isEditMode }) => {
 
       <H4>
         <a href={folder} className="cc-article-list">
-         View All Articles
+          View All Articles
         </a>
       </H4>
     </>
