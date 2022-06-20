@@ -8,25 +8,25 @@ import { ImageView } from '../Image/ImageView';
 import { getAddItemBlockData } from '../../actions';
 
 export const AddItemView = (props) => {
-  const isItem = props.data.item && props.data.item[0];
+  const item = props.data.item && props.data.item[0];
   const dispatch = useDispatch();
+
+  if (item == null) return <div>Add an item</div>;
 
   let content = {};
   let contentType = '';
 
   const addItemData = useSelector((state) => {
-    return isItem
-      ? state.addItemBlockData.get(props.data.item[0]['@id'])
-      : null;
+    return item ? state.addItemBlockData.get(props.data.item[0]['@id']) : null;
   });
 
-  if (isItem && addItemData) {
+  if (item && addItemData) {
     content = addItemData.data;
     contentType = content.type;
   }
 
   useEffect(() => {
-    if (isItem) {
+    if (item) {
       dispatch(getAddItemBlockData(props.data.item[0]['@id']));
     }
   }, [props.data.item]);
@@ -39,5 +39,5 @@ export const AddItemView = (props) => {
 
   const View = ViewBlockMap[contentType];
 
-  return View ? <View content={content} /> : <div>Add an item</div>;
+  return View ? <View content={content} /> : null;
 };
