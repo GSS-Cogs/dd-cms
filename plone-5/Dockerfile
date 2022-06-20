@@ -6,6 +6,7 @@ RUN \
     sed -i '/RelStorage\|psycopg2\|mysqlclient\|cx-Oracle\|ldap/d' buildout.cfg && \
     buildout -c custom.cfg && \
     cd .. && \
+    pip install SPARQLWrapper && \
     cd instance && \
     rm bin/develop && \
     find /data  -not -user plone -exec chown plone:plone {} \+ && \
