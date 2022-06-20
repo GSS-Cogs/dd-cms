@@ -15,3 +15,13 @@ Feature: Overview
     And I wait for xpath "//p[contains(text(), 'Dashboards about the different indicators of climate change')]" to be visible
     And I wait for xpath "//a[contains(text(), 'Emissions')]" to be visible
     Then I take a screenshot
+
+  Scenario: Related links
+    When I wait for xpath "//*[contains(text(), 'Related Links')]" to be visible
+    And I wait for xpath "//*[contains(text(), 'Met Office')]" to be visible
+    Then I take a screenshot
+
+  Scenario: Dashboard tiles
+    When I wait for xpath "//*[contains(text(), 'Annual mean temperature')]" to be visible
+    Then I expect the element "svg.cc-spark-line" is visible
+    And I take a screenshot

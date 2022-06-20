@@ -1,4 +1,4 @@
-FROM plone:5.2.5-python38
+FROM plone:5.2.7-python38
 
 COPY instance/custom.cfg /plone/instance/
 COPY instance/src /plone/instance/src/

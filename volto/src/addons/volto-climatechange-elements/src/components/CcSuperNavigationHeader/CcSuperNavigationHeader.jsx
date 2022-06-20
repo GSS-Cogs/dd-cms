@@ -25,7 +25,7 @@ function SuperNavigationHeader(props) {
         <header role="banner" className={`gem-c-layout-super-navigation-header ${props.className}`}>
             <div className={`gem-c-layout-super-navigation-header__container app-width-container govuk-clearfix ${props.className}`}>
                 <div className="gem-c-layout-super-navigation-header__header-logo">
-                    <a 
+                    <a
                         className="govuk-header__link govuk-header__link--homepage"
                         href={props.navigation.logo_href}
                         id="logo"
@@ -49,6 +49,9 @@ function SuperNavigationHeader(props) {
                             </span>
                         </span>
                     </a>
+                    <span className="govuk-header__product-name">
+                        {props.navigation.service_name}
+                    </span>
                 </div>
                 <nav aria-labelledby="super-navigation-menu-heading"
                     className="gem-c-layout-super-navigation-header__content"
@@ -56,7 +59,7 @@ function SuperNavigationHeader(props) {
                     <h2 id="super-navigation-menu-heading" className="govuk-visually-hidden">
                         Navigation menu
                     </h2>
-                    <button 
+                    <button
                         aria-controls="super-navigation-menu"
                         aria-expanded="true" aria-label="Hide navigation menu"
                         className="gem-c-layout-super-navigation-header__navigation-top-toggle-button"
@@ -80,7 +83,7 @@ function SuperNavigationHeader(props) {
 
                     </ul>
 
-                    <SuperNavigationSearchMenu 
+                    <SuperNavigationSearchMenu
                         search_text={props.navigation.search_text}
                         navigation_search_subheading={props.navigation.navigation_search_subheading}
                     />

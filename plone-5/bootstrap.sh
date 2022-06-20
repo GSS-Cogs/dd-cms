@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -e
-plone=$(docker create plone:5.2.5)
+plone=$(docker create plone:5.2.7)
 for f in base.cfg buildout-base.cfg buildout.cfg develop.cfg lxml_static.cfg requirements.txt
 do
   docker cp $plone:/plone/instance/$f instance/$f

@@ -71,7 +71,7 @@ class Footer extends Component {
     }
     return (
       <GovukFooter
-          containerClassName='volto-width-container--wide'
+          containerClassName='app-width-container'
         meta={{
           items,
           visuallyHiddenTitle: 'Support links',

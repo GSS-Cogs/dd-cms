@@ -125,7 +125,7 @@
     "node": "^14"
   },
   "dependencies": {
-    "@eeacms/volto-columns-block": "4.0.0",
+    "@eeacms/volto-columns-block": "^4.5.0",
     "@eeacms/volto-datablocks": "^3.0.11",
     "@plone/volto": "^15.0",
     "d3": "6",
