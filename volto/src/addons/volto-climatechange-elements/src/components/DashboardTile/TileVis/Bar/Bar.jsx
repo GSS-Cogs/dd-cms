@@ -32,6 +32,7 @@ const Bar = ({ data, height }) => {
         yEnd={`${Math.floor(data[1].value)}%`}
         xColor={data[0].color}
         yColor={data[0].color}
+        isABar={true}
       />
     </Fragment>
   );
