@@ -5,9 +5,7 @@ export const FigureSourceView = ({ data }) => {
     { text: data.text, url: data.url },
     { text: data.text1, url: data.url1 },
     { text: data.text2, url: data.url2 },
-  ].filter(({ text, url }) => {
-    return text && url;
-  });
+  ].filter((source) => source.text !== '');
 
   const isLastItem = (index) => index == sources.length - 1;
 
@@ -17,9 +15,14 @@ export const FigureSourceView = ({ data }) => {
       {sources.map(({ text, url }, index) => {
         return (
           <span key={text}>
-            <a href={url} className="govuk-link">
-              {text}
-            </a>
+            {url ? (
+              <a href={url} className="govuk-link">
+                {text}
+              </a>
+            ) : (
+              <span>{text}</span>
+            )}
+
             {isLastItem(index) ? '' : ', '}
           </span>
         );
