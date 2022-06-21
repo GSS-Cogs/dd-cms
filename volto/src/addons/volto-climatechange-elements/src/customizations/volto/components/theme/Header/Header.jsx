@@ -57,30 +57,11 @@ const headerConfig = {
         },
         {
             "label": "Articles",
-            "href": "/articles",
-            "description": "Explainer articles to support understanding and provide insight into climate change",
-            "menu_contents": [
-                {
-                    "label": "Climate change insights, UK: May 2022",
-                    "href": "https://www.ons.gov.uk/economy/environmentalaccounts/articles/climatechangeinsightsuk/may2022",
-                    "description": "Quarterly publication bringing together the latest climate change-related statistics and analysis from a range of sources."
-                },
-                {
-                    "label": "The UK’s climate is changing. What is driving this? How is the UK responding?",
-                    "href": "/articles/the-uk-climate-is-changing",
-                    "description": "Recent decades in the UK have been warmer, wetter and sunnier than in the 20th century."
-                },
-                {
-                    "label": "Measuring greenhouse gas emissions",
-                    "href": "/articles/measuring-greenhouse-gas-emissions",
-                    "description": "The three key official measures of UK GHG emissions, territorial, residence and footprint are explored and defined."
-                },
-                {
-                    "label": "Emissions embedded in trade and impacts on climate change",
-                    "href": "/articles/emissions-embedded-in-trade-and-impacts-on-climate-change",
-                    "description": "How different industries are affecting climate change."
-                }
-            ]
+            "href": "/articles"
+        },
+        {
+            "label": "About",
+            "href": "/about"
         }
     ],
     "navigation_menu_heading": "Navigation menu",

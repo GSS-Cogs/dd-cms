@@ -176,8 +176,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     for (var k = 0; k < toggleGroupList.length; k++) {
       var $element = toggleGroupList[k]
       if ($element !== $target) {
-        var $menu = this.$module.querySelector('#' + $element.getAttribute('aria-controls'))
-        hide($element, $menu)
+          var $menu = this.$module.querySelector('#' + $element.getAttribute('aria-controls'))
+        if ($menu) {
+          hide($element, $menu)
+        }
       }
     }
 
