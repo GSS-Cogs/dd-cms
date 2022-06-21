@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 set -e
-plone=$(docker create plone:5.2.7)
+
+PLONE_VERSION=5.2.7
+
+plone=$(docker create plone:${PLONE_VERSION})
 for f in base.cfg buildout-base.cfg buildout.cfg develop.cfg lxml_static.cfg requirements.txt
 do
   docker cp $plone:/plone/instance/$f instance/$f
@@ -27,12 +30,12 @@ mypath=$PATH
 
 # Grab the ENV variables from the Plone 5 docker image
 # N.B. Sets versions used below and also PATH and LANG
-export $(docker inspect --format='{{join .Config.Env " "}}' plone:5.2.5)
+export $(docker inspect --format='{{join .Config.Env " "}}' plone:${PLONE_VERSION})
 
 # restore my path variable
 export PATH=$mypath
 
-pipenv install requests pip==$PIP setuptools==$SETUPTOOLS zc.buildout==$ZC_BUILDOUT wheel==$WHEEL SPARQLWrapper
+pipenv install requests pip==$PIP setuptools==$SETUPTOOLS zc.buildout==$ZC_BUILDOUT wheel==$WHEEL
 cd instance
 pipenv run buildout -c custom.cfg
 cd ..
