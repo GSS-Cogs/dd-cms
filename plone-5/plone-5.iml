@@ -7,6 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/instance/src/ukstats.csv_type/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/instance/src/ukstats.sparql_dataconnector/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/instance/src/ukstats.ccv2.theme/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/instance/src/ukstats.ccv2.content_types/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/AccessControl-4.3-py3.8-linux-x86_64.egg" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/Acquisition-4.7-py3.8-linux-x86_64.egg" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/attrs-21.2.0-py3.8.egg" isTestSource="false" />
@@ -38,6 +39,7 @@
       <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/future-0.18.2-py3.8.egg" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/icalendar-4.0.9-py3.8.egg" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/idna-2.10-py3.8.egg" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/isodate-0.6.1-py3.8.egg" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/jq-1.2.2-py3.8-linux-x86_64.egg" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/jsonschema-3.2.0-py3.8.egg" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/kitconcept.volto-2.5.3-py3.8.egg" isTestSource="false" />
@@ -182,6 +184,7 @@
       <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/python_dotenv-0.15.0-py3.8.egg" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/python_gettext-4.0-py3.8.egg" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/pytz-2021.1-py3.8.egg" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/rdflib-6.1.1-py3.8.egg" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/Record-3.5-py3.8.egg" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/repoze.xmliter-0.6.1-py3.8.egg" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/requests-2.25.1-py3.8.egg" isTestSource="false" />
@@ -189,7 +192,9 @@
       <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/roman-3.3-py3.8.egg" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/sgmllib3k-1.0.0-py3.8.egg" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/simplejson-3.17.0-py3.8-linux-x86_64.egg" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/six-1.16.0-py3.8.egg" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/soupsieve-1.9.6-py3.8.egg" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/SPARQLWrapper-2.0.0-py3.8.egg" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/tempstorage-5.2-py3.8.egg" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/transaction-3.0.1-py3.8.egg" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/buildout-cache/eggs/cp38/Unidecode-0.4.1-py3.8.egg" isTestSource="false" />
