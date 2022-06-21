@@ -1,0 +1,24 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:zcml="http://namespaces.zope.org/zcml"
+  i18n_domain="plone">
+
+  <configure zcml:condition="installed AccessControl.security">
+  <!-- -*- extra stuff goes here -*- -->
+
+    <permission
+        id="ukstats.ccv2.content_types.AddFigure"
+        title="ukstats.ccv2.content_types: Add Figure"
+    />
+
+
+    <permission
+        id="ukstats.ccv2.content_types.AddChart"
+        title="ukstats.ccv2.content_types: Add Chart"
+    />
+
+
+
+  </configure>
+
+</configure>
