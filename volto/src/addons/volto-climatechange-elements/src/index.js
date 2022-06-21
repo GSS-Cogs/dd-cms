@@ -8,6 +8,7 @@ import { CcV2Overview } from './components/CcV2Preview/CcV2Overview';
 import { CcV2ArticleView } from './components/CcV2Preview/CcV2ArticleView';
 import { CcRelatedLinks } from './components/CcRelatedLinks/CcRelatedLinks';
 import { CcArticleList } from './components/CcArticleList/CcArticleList';
+import { CcArticleListExt } from './components/CcArticleList/CcArticleListExt';
 
 import { relatedItemsData, rawData } from './reducers';
 
@@ -68,7 +69,11 @@ const applyConfig = (config) => {
     title: 'Article List',
     template: CcArticleList,
   });
-  config.views.layoutViews.cc_preview = CcV2ArticleView;
+
+  config.views.layoutViews.cc_article_list_ext = CcArticleListExt;
+  // Revert this line
+  config.views.layoutViews.cc_preview = CcArticleListExt;
+
   config.views.layoutViews.cc_preview2 = CcV2Overview;
   config.views.contentTypesViews.sparql_dataconnector =
     config.views.contentTypesViews.discodataconnector;
