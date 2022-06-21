@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { H1, H2, H3, H4 } from 'govuk-react';
 import moment from 'moment';
 
-const CcArticlePreview = ({ data, skipSummary }) => {
+export const CcArticlePreview = ({ data, skipSummary }) => {
   const publishedDate = data.EffectiveDate ?? data.CreationDate;
 
   return (
