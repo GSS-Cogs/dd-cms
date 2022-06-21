@@ -1,7 +1,7 @@
 @import '../../colors.scss';
-@import "./TileVis/Bar/bar";
-@import "./TileVis/SparkLine/sparkLine";
-@import "./TileVis/ValuesBlock/valuesBlock";
+@import './TileVis/Bar/bar';
+@import './TileVis/SparkLine/sparkLine';
+@import './TileVis/ValuesBlock/valuesBlock';
 
 .cc-dashboard-tile {
   min-height: 400px;
@@ -19,6 +19,15 @@
   }
 
   &--values {
+    line-height: 24px;
+    padding-bottom: govuk-spacing(1);
+  }
+
+  &--values-bar {
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     line-height: 24px;
     padding-bottom: govuk-spacing(1);
   }

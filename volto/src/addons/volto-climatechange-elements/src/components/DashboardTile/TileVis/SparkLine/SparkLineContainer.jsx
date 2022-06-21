@@ -22,6 +22,7 @@ const SparkLineContainer = ({ data, lineColor }) => {
         yEnd={Number(yEnd).toFixed(2)}
         xColor={lineColor}
         yColor={lineColor}
+        isABar={false}
       />
     </Fragment>
   );
