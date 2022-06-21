@@ -25,33 +25,8 @@
     <element value="plone.namefromtitle"/>
   </property>
   <property name="schema"></property>
-  <property
-    name="model_source">&lt;model xmlns:i18n=&quot;http://xml.zope.org/namespaces/i18n&quot; xmlns:marshal=&quot;http://namespaces.plone.org/supermodel/marshal&quot; xmlns:form=&quot;http://namespaces.plone.org/supermodel/form&quot; xmlns:security=&quot;http://namespaces.plone.org/supermodel/security&quot; xmlns:users=&quot;http://namespaces.plone.org/supermodel/users&quot; xmlns:lingua=&quot;http://namespaces.plone.org/supermodel/lingua&quot; xmlns=&quot;http://namespaces.plone.org/supermodel/schema&quot;&gt;
-    &lt;schema&gt;
-    &lt;field name=&quot;Background&quot; type=&quot;zope.schema.Choice&quot;&gt;
-    &lt;description/&gt;
-    &lt;required&gt;False&lt;/required&gt;
-    &lt;title&gt;Background&lt;/title&gt;
-    &lt;values&gt;
-    &lt;element&gt;White&lt;/element&gt;
-    &lt;element&gt;White smoke&lt;/element&gt;
-    &lt;/values&gt;
-    &lt;/field&gt;
-    &lt;fieldset name=&quot;layout&quot; label=&quot;Layout&quot;&gt;
-    &lt;field name=&quot;blocks&quot; type=&quot;plone.schema.jsonfield.JSONField&quot;&gt;
-    &lt;default&gt;{&#x27;18f44809-0af6-4e09-9cf3-978b9b30f712&#x27;: {&#x27;@type&#x27;: &#x27;addItemBlock&#x27;, &#x27;fixed&#x27;: True, &#x27;required&#x27;: True}, &#x27;31562b68-c6e8-420a-940f-9dab4c6927e0&#x27;: {&#x27;@type&#x27;: &#x27;figureSource&#x27;, &#x27;fixed&#x27;: True, &#x27;required&#x27;: True}, &#x27;9cb1566f-e0b1-43ff-a535-79bc6b18303e&#x27;: {&#x27;@type&#x27;: &#x27;title&#x27;, &#x27;fixed&#x27;: True, &#x27;required&#x27;: True}, &#x27;c39fa4d8-fbcd-41cf-b282-afaa50cdc90c&#x27;: {&#x27;@type&#x27;: &#x27;figureMetaText&#x27;, &#x27;fixed&#x27;: True, &#x27;required&#x27;: True}, &#x27;ea9f9577-efed-47a3-9a76-e2db31f575cb&#x27;: {&#x27;@type&#x27;: &#x27;figureMetaText&#x27;, &#x27;disableNewBlocks&#x27;: True, &#x27;fixed&#x27;: True, &#x27;required&#x27;: True}}&lt;/default&gt;
-    &lt;required&gt;False&lt;/required&gt;
-    &lt;title&gt;Blocks&lt;/title&gt;
-    &lt;/field&gt;
-    &lt;field name=&quot;blocks_layout&quot; type=&quot;plone.schema.jsonfield.JSONField&quot;&gt;
-    &lt;default&gt;{&#x27;items&#x27;: [&#x27;9cb1566f-e0b1-43ff-a535-79bc6b18303e&#x27;, &#x27;c39fa4d8-fbcd-41cf-b282-afaa50cdc90c&#x27;, &#x27;18f44809-0af6-4e09-9cf3-978b9b30f712&#x27;, &#x27;31562b68-c6e8-420a-940f-9dab4c6927e0&#x27;, &#x27;ea9f9577-efed-47a3-9a76-e2db31f575cb&#x27;]}&lt;/default&gt;
-    &lt;required&gt;False&lt;/required&gt;
-    &lt;title&gt;Blocks Layout&lt;/title&gt;
-    &lt;/field&gt;
-    &lt;/fieldset&gt;
-    &lt;/schema&gt;
-    &lt;/model&gt;</property>
-  <property name="model_file"></property>
+  <property name="model_source"></property>
+  <property name="model_file">ukstats.ccv2.content_types:content/figure.xml</property>
   <property name="schema_policy">dexterity</property>
   <alias from="(Default)" to="(dynamic view)"/>
   <alias from="edit" to="@@edit"/>

@@ -1,9 +1,25 @@
-<model
-    xmlns="http://namespaces.plone.org/supermodel/schema"
-    xmlns:security="http://namespaces.plone.org/supermodel/security"
-    xmlns:form="http://namespaces.plone.org/supermodel/form"
-    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="ukstats.ccv2.content_types">
+<model xmlns:i18n="http://xml.zope.org/namespaces/i18n" xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" xmlns:form="http://namespaces.plone.org/supermodel/form" xmlns:security="http://namespaces.plone.org/supermodel/security" xmlns:users="http://namespaces.plone.org/supermodel/users" xmlns:lingua="http://namespaces.plone.org/supermodel/lingua" xmlns="http://namespaces.plone.org/supermodel/schema">
   <schema>
+    <field name="Background" type="zope.schema.Choice">
+      <description/>
+      <required>False</required>
+      <title>Background</title>
+      <values>
+        <element>White</element>
+        <element>White smoke</element>
+      </values>
+    </field>
+    <fieldset name="layout" label="Layout">
+      <field name="blocks" type="plone.schema.jsonfield.JSONField">
+        <default>{'18f44809-0af6-4e09-9cf3-978b9b30f712': {'@type': 'addItemBlock', 'fixed': True, 'required': True}, '31562b68-c6e8-420a-940f-9dab4c6927e0': {'@type': 'figureSource', 'fixed': True, 'required': True}, '9cb1566f-e0b1-43ff-a535-79bc6b18303e': {'@type': 'title', 'fixed': True, 'required': True}, 'c39fa4d8-fbcd-41cf-b282-afaa50cdc90c': {'@type': 'figureMetaText', 'fixed': True, 'required': True}, 'ea9f9577-efed-47a3-9a76-e2db31f575cb': {'@type': 'figureMetaText', 'disableNewBlocks': True, 'fixed': True, 'required': True}}</default>
+        <required>False</required>
+        <title>Blocks</title>
+      </field>
+      <field name="blocks_layout" type="plone.schema.jsonfield.JSONField">
+        <default>{'items': ['9cb1566f-e0b1-43ff-a535-79bc6b18303e', 'c39fa4d8-fbcd-41cf-b282-afaa50cdc90c', '18f44809-0af6-4e09-9cf3-978b9b30f712', '31562b68-c6e8-420a-940f-9dab4c6927e0', 'ea9f9577-efed-47a3-9a76-e2db31f575cb']}</default>
+        <required>False</required>
+        <title>Blocks Layout</title>
+      </field>
+    </fieldset>
   </schema>
 </model>
