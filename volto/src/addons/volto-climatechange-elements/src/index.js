@@ -63,12 +63,20 @@ const applyConfig = (config) => {
     },
   };
 
-  config.blocks.blocksConfig.listing.variations.push({
-    id: 'articleList',
-    isDefault: true,
-    title: 'Article List',
-    template: CcArticleList,
-  });
+  config.blocks.blocksConfig.listing.variations.push(
+    {
+      id: 'articleList',
+      isDefault: true,
+      title: 'Article List',
+      template: CcArticleList,
+    },
+    {
+      id: 'relatedLinks',
+      isDefault: true,
+      title: 'Related Links',
+      template: CcRelatedLinks,
+    },
+  );
 
   config.views.layoutViews.cc_article_list_ext = CcArticleListExt;
   // Revert this line
