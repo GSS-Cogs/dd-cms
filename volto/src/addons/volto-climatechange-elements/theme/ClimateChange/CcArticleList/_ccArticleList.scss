@@ -1,10 +1,14 @@
 .cc-article-list {
   text-decoration: none;
+  color: govuk-colour('blue');
+}
+
+.cc-article-list-description {
+  color: govuk-colour('dark-grey');
 }
 
 .cc-article-preview {
   margin-bottom: govuk-spacing(8);
-
   &--date {
     color: govuk-colour('mid-grey');
   }
