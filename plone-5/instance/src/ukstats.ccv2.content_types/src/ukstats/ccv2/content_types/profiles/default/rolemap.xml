@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<rolemap>
+  <permissions>
+  <!-- -*- extra stuff goes here -*- -->
+
+    <permission name="ukstats.ccv2.content_types: Add Figure" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+
+    <permission name="ukstats.ccv2.content_types: Add Chart" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+
+  </permissions>
+</rolemap>

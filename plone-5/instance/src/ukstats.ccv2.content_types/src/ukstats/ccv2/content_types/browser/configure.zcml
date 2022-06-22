@@ -1,0 +1,21 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="ukstats.ccv2.content_types">
+
+  <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
+  <include package="z3c.jbot" file="meta.zcml" />
+  <browser:jbot
+      directory="overrides"
+      layer="ukstats.ccv2.content_types.interfaces.IUkstatsCcv2ContentTypesLayer"
+      />
+
+  <!-- Publish static files -->
+  <plone:static
+      name="ukstats.ccv2.content_types"
+      type="plone"
+      directory="static"
+      />
+
+</configure>
