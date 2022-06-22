@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { CcRecentArticles } from '../CcArticleList/CcArticleList';
 import { CcMasthead } from '../CcMasthead/CcMasthead';
+import { CcRelatedLinks } from '../CcRelatedLinks/CcRelatedLinks';
 import { FeedSignUps } from '../CcRelatedLinks/FeedSignUps';
-import { CcArticleHeader } from '../CcArticleHeader/CcArticleHeader';
 import { CcArticlePreview } from './CcArticleList';
 import { getRelatedItemsData } from '../../actions';
-import { H4 } from 'govuk-react';
+import { H4, GridRow, GridCol } from 'govuk-react';
 import { formattedDate } from '../../utils';
 
 export const CcArticleListExt = ({ content }) => {
@@ -54,30 +53,37 @@ export const CcArticleListExt = ({ content }) => {
           </div>
         </div>
       </CcMasthead>
-
-      {content.items.map((data, i, idx) => {
-        if (idx !== 0) {
-          return (
-            <div className="cc-article-preview">
-              <div className="volto-width-container--wide ccv2-article-body">
-                <div className="govuk-grid-row">
-                  <div className="govuk-grid-column-two-thirds govuk-!-padding-right-6">
-                    <CcArticlePreview key={i} data={data} />
-                    <H4>
-                      <a
-                        href={firstItem['@id']?.replace('/api', '')}
-                        className="cc-article-list"
-                      >
-                        Read article
-                      </a>
-                    </H4>
+      <GridRow>
+        <GridCol setWidth="two-thirds">
+          {content.items.map((data, i, idx) => {
+            console.log(idx);
+            if (idx !== 0) {
+              return (
+                <div className="cc-article-preview">
+                  <div className="volto-width-container--wide ccv2-article-body">
+                    <div className="govuk-grid-row">
+                      <div className="govuk-grid-column-two-thirds govuk-!-padding-right-6">
+                        <CcArticlePreview key={i} data={data} />
+                        <H4>
+                          <a
+                            href={firstItem['@id']?.replace('/api', '')}
+                            className="cc-article-list"
+                          >
+                            Read article
+                          </a>
+                        </H4>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          );
-        }
-      })}
+              );
+            }
+          })}
+        </GridCol>
+        <GridCol setWidth="one-thirds">
+          <CcRelatedLinks />
+        </GridCol>
+      </GridRow>
     </div>
   );
 };
