@@ -16,7 +16,9 @@ export const CcArticlePreview = ({ data, skipSummary }) => {
           {data.title}
         </a>
       </H3>
-      {skipSummary ? null : <div>{data.description}</div>}
+      {skipSummary ? null : (
+        <div className="cc-article-list-description">{data.description}</div>
+      )}
     </article>
   );
 };
