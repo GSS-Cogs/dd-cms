@@ -83,7 +83,7 @@
 .gem-c-layout-super-navigation-header__navigation-item-link:link:hover,
 .gem-c-layout-super-navigation-header__navigation-item-link:visited, 
 .gem-c-layout-super-navigation-header__navigation-item-link:visited:hover {
-    @include govuk-media-query($from: "desktop") {
+    @include govuk-media-query(851px) {
         height: 50px;
         padding-left: govuk-spacing(6);
         padding-right: govuk-spacing(5);

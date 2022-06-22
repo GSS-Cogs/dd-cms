@@ -8,7 +8,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 (function (Modules) {
   var SETTINGS = {
     breakpoint: {
-      desktop: 769
+      desktop: 851
     },
     label: {
       hide: 'data-text-for-hide',
