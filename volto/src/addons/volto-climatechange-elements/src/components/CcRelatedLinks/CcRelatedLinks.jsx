@@ -8,11 +8,11 @@ export const CcRelatedLinks = ({ items }) => (
       {(items || []).map((data) => (
         <li key={data['@id']} className="cc-related-links--item">
           <H4>
-            <a href={data['@id']} className="cc-article-list">
+            <a href={data['@id']} className="cc-related-links">
               {data.title}
             </a>
           </H4>
-          <div className="cc-article-list-description">{data.description}</div>
+          <div className="cc-related-links-description">{data.description}</div>
         </li>
       ))}
     </ul>
