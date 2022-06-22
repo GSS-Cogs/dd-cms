@@ -51,10 +51,6 @@ export const CcArticleListExt = ({ content }) => {
                 </a>
               </H4>
             </div>
-            <div className="govuk-grid-column-one-third">
-              <FeedSignUps />
-              <CcRecentArticles articles={firstItem.relatedItems} />
-            </div>
           </div>
         </div>
       </CcMasthead>
