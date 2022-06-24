@@ -25,3 +25,8 @@ Feature: Overview
     When I wait for xpath "//*[contains(text(), 'Annual mean temperature')]" to be visible
     Then I expect the element "svg.cc-spark-line" is visible
     And I take a screenshot
+
+  Scenario: Articles list
+    When I wait for xpath "//h2[contains(text(), 'Articles')]" to be visible
+    Then I wait for xpath "//h3/a[contains(text(), 'Measuring greenhouse')]" to be visible
+    And I take a screenshot
