@@ -95,7 +95,7 @@ export function rawData(state = {}, action = {}) {
   return state;
 }
 
-export function getFolderishContent(state = {}, action = {}) {
+export function folderishContent(state = {}, action = {}) {
   let { result, url } = action;
 
   switch (action.type) {

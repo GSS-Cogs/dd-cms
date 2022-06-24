@@ -4,24 +4,23 @@ import { CcMasthead } from '../CcMasthead/CcMasthead';
 import { CcRelatedLinks } from '../CcRelatedLinks/CcRelatedLinks';
 import { FeedSignUps } from '../CcRelatedLinks/FeedSignUps';
 import { CcArticlePreview } from './CcArticleList';
-import { getRelatedItemsData } from '../../actions';
+import { getFolderishContent } from '../../actions';
 import { H4, GridRow, GridCol } from 'govuk-react';
 import { formattedDate } from '../../utils';
 
-export const CcArticleListExt = ({ content }) => {
+export const CcArticleListExt = (props) => {
+  const { content } = props;
   const firstItem = content.items?.length > 0 ? content.items[0] : null;
   const formattedCreators = (creators) => creators?.join(', ');
 
   const dispatch = useDispatch();
 
-  const { data } = useSelector((state) => state.relatedItemsData);
+  // const { data } = useSelector((state) => state.folderishContent);
 
-  console.log(content);
+  // console.log(data);
 
   useEffect(() => {
-    // content.relatedItems.forEach((item) =>
-    //   dispatch(getRelatedItemsData(item['@id'])),
-    // );
+    // dispatch(getFolderishContent('/api/++api++/articles'));
   }, []);
 
   return (
