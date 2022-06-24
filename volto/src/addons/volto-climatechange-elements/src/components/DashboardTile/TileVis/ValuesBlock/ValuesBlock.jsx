@@ -6,9 +6,21 @@
 // - xColor: string with the color for the x values
 // - yColor: string with the color for the y values
 
-const ValuesBlock = ({ xStart, xEnd, yStart, yEnd, xColor, yColor }) => {
+const ValuesBlock = ({
+  xStart,
+  xEnd,
+  yStart,
+  yEnd,
+  xColor,
+  yColor,
+  isABar,
+}) => {
+  let className = isABar
+    ? 'cc-dashboard-tile--values-bar'
+    : 'cc-dashboard-tile--values';
+
   return (
-    <div data-testid="values-block" className="cc-dashboard-tile--values">
+    <div data-testid="values-block" className={className}>
       <div className="cc-start-end-values" style={{ color: `${xColor}` }}>
         <div className="cc-xValue">{xStart}</div>
         <div className="cc-xValue">{xEnd}</div>
