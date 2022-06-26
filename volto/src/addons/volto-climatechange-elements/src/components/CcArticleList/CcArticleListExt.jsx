@@ -67,17 +67,15 @@ export const CcArticleListExt = (props) => {
                 <div className="cc-article-preview" key={i}>
                   <div className="volto-width-container--wide ccv2-article-body">
                     <div className="govuk-grid-row">
-                      <div className="govuk-grid-column-two-thirds govuk-!-padding-right-6">
-                        <CcArticlePreview key={i} data={data} />
-                        <H4>
-                          <a
-                            href={firstItem['@id']?.replace('/api', '')}
-                            className="cc-article-list"
-                          >
-                            Read article
-                          </a>
-                        </H4>
-                      </div>
+                      <CcArticlePreview key={i} data={data} />
+                      <H4>
+                        <a
+                          href={firstItem['@id']?.replace('/api', '')}
+                          className="cc-article-list"
+                        >
+                          Read article
+                        </a>
+                      </H4>
                     </div>
                   </div>
                 </div>
@@ -85,7 +83,7 @@ export const CcArticleListExt = (props) => {
             }
           })}
         </GridCol>
-        <GridCol setWidth="one-thirds">
+        <GridCol setWidth="one-third">
           <CcRelatedLinks items={relatedLinks} />
         </GridCol>
       </GridRow>
