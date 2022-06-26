@@ -10,7 +10,7 @@ import { CcRelatedLinks } from './components/CcRelatedLinks/CcRelatedLinks';
 import { CcArticleList } from './components/CcArticleList/CcArticleList';
 import { CcArticleListExt } from './components/CcArticleList/CcArticleListExt';
 
-import { relatedItemsData, rawData } from './reducers';
+import { relatedItemsData, rawData, folderishContent } from './reducers';
 
 import '../theme/main.scss';
 
@@ -90,6 +90,8 @@ const applyConfig = (config) => {
 
   config.addonReducers.relatedItemsData = relatedItemsData;
   config.addonReducers.rawData = rawData;
+  config.addonReducers.folderishContent = folderishContent;
+
   return config;
 };
 
