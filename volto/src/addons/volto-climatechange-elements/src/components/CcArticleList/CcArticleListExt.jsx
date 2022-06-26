@@ -62,7 +62,8 @@ export const CcArticleListExt = (props) => {
       <GridRow>
         <GridCol setWidth="two-thirds">
           {items.map((data, i, idx) => {
-            if (idx !== 0) {
+            console.log(i);
+            if (i !== 0) {
               return (
                 <div className="cc-article-preview" key={i}>
                   <div className="volto-width-container--wide ccv2-article-body">
