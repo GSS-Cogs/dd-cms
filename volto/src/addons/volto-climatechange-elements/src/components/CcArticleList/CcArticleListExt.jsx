@@ -35,14 +35,14 @@ export const CcArticleListExt = (props) => {
       <CcMasthead className="app-masthead--article cc-article-featured">
         <div className="cc-article-header volto-width-container--wide">
           <div className="govuk-grid-row">
-            <div className="govuk-grid-column-two-thirds govuk-!-padding-right-6">
+            <div className="govuk-!-padding-right-6">
+              <H4>{firstItemDate} by </H4>
               <h1 className="govuk-heading-xl govuk-!-margin-bottom-6">
                 {firstItem?.title}
               </h1>
               <p className="govuk-caption-m govuk-!-margin-bottom-6">
-                {firstItemDate} by{' '}
                 <span className="cc-article-header__date">
-                  {firstItemCreators}
+                  Written by {firstItemCreators}
                 </span>
               </p>
               <p className="govuk-body-l">{firstItem?.description}</p>
