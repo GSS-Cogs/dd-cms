@@ -86,7 +86,7 @@ export const CcArticleListExt = (props) => {
           })}
         </GridCol>
         <GridCol setWidth="one-thirds">
-          <CcRelatedLinks data={relatedLinks} />
+          <CcRelatedLinks items={relatedLinks} />
         </GridCol>
       </GridRow>
     </div>
