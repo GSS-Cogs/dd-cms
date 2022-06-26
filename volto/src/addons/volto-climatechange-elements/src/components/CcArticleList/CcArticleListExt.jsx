@@ -4,25 +4,32 @@ import { CcMasthead } from '../CcMasthead/CcMasthead';
 import { CcRelatedLinks } from '../CcRelatedLinks/CcRelatedLinks';
 import { FeedSignUps } from '../CcRelatedLinks/FeedSignUps';
 import { CcArticlePreview } from './CcArticleList';
-import { getFolderishContent } from '../../actions';
+import { getFolderishContent, getRelatedItemsData } from '../../actions';
 import { H4, GridRow, GridCol } from 'govuk-react';
 import { formattedDate } from '../../utils';
 
 export const CcArticleListExt = (props) => {
-  const { content } = props;
-  const firstItem = content.items?.length > 0 ? content.items[0] : null;
   const formattedCreators = (creators) => creators?.join(', ');
-
+  const path = '/articles?metadata_fields=_all';
   const dispatch = useDispatch();
 
-  // const { data } = useSelector((state) => state.folderishContent);
-
-  // console.log(data);
-
   useEffect(() => {
-    // dispatch(getFolderishContent('/api/++api++/articles'));
+    dispatch(getFolderishContent(path));
+    dispatch(getRelatedItemsData(path));
   }, []);
 
+  const listRequest = useSelector((state) => state.folderishContent?.[path]);
+  const relatedRequest = useSelector((state) => state.relatedItemsData);
+  const items = listRequest?.data?.items ?? [];
+  const firstItem = items?.length > 0 ? items[0] : null;
+
+  const relatedLinks = relatedRequest?.data ?? [];
+  let firstItemCreators = null;
+  let firstItemDate = null;
+  if (firstItem) {
+    firstItemCreators = formattedCreators(firstItem.listCreators);
+    firstItemDate = formattedDate(firstItem.effectiveDate ?? firstItem.created);
+  }
   return (
     <div>
       <CcMasthead className="app-masthead--article cc-article-featured">
@@ -30,19 +37,19 @@ export const CcArticleListExt = (props) => {
           <div className="govuk-grid-row">
             <div className="govuk-grid-column-two-thirds govuk-!-padding-right-6">
               <h1 className="govuk-heading-xl govuk-!-margin-bottom-6">
-                {firstItem.title}
+                {firstItem?.title}
               </h1>
               <p className="govuk-caption-m govuk-!-margin-bottom-6">
-                {firstItem.created} by{' '}
+                {firstItemDate} by{' '}
                 <span className="cc-article-header__date">
-                  {firstItem.creators}
+                  {firstItemCreators}
                 </span>
               </p>
-              <p className="govuk-body-l">{firstItem.description}</p>
+              <p className="govuk-body-l">{firstItem?.description}</p>
 
               <H4>
                 <a
-                  href={firstItem['@id']?.replace('/api', '')}
+                  href={firstItem?.['@id']?.replace('/api', '')}
                   className="cc-article-list"
                 >
                   Read article
@@ -54,11 +61,10 @@ export const CcArticleListExt = (props) => {
       </CcMasthead>
       <GridRow>
         <GridCol setWidth="two-thirds">
-          {content.items.map((data, i, idx) => {
-            console.log(idx);
+          {items.map((data, i, idx) => {
             if (idx !== 0) {
               return (
-                <div className="cc-article-preview">
+                <div className="cc-article-preview" key={i}>
                   <div className="volto-width-container--wide ccv2-article-body">
                     <div className="govuk-grid-row">
                       <div className="govuk-grid-column-two-thirds govuk-!-padding-right-6">
@@ -80,7 +86,7 @@ export const CcArticleListExt = (props) => {
           })}
         </GridCol>
         <GridCol setWidth="one-thirds">
-          <CcRelatedLinks />
+          <CcRelatedLinks data={relatedLinks} />
         </GridCol>
       </GridRow>
     </div>
