@@ -25,15 +25,7 @@ export function relatedItemsData(state = initialState, action = {}) {
         loaded: false,
       };
     case `${GET_RELATED_ITEMS_DATA}_SUCCESS`:
-      const uniqueRelatedItems = uniq([
-        ...state.data,
-        {
-          publishedDate: formattedDate(action.result.created),
-          '@id': action.result['@id'],
-          title: action.result.title,
-        },
-      ]);
-
+      const uniqueRelatedItems = uniq([...state.data, ...action.result.items]);
       return {
         ...state,
         error: null,
