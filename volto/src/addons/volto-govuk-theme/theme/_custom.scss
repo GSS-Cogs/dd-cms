@@ -36,3 +36,7 @@ h1.documentFirstHeading {
 .volto-width-container--wide {
   @include govuk-width-container(1920px);
 }
+
+.cc-breadcrumbs {
+  background-color: govuk-colour('light-grey');
+}
