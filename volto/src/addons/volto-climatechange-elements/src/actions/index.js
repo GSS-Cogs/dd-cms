@@ -44,7 +44,6 @@ export function getRawContent(url, headers = {}) {
 }
 
 export function getFolderishContent(url, headers = {}) {
-  console.log(url);
   return {
     type: GET_FOLDERISH_CONTENT,
     request: {
