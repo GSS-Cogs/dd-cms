@@ -85,6 +85,7 @@ class Breadcrumbs extends Component {
           )}
 
           <PhaseBanner
+            className="cc-phasebanner"
             tag={{
               children: 'beta',
             }}
