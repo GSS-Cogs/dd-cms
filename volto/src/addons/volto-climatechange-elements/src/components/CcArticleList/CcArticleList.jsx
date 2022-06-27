@@ -3,14 +3,20 @@ import PropTypes from 'prop-types';
 import { H1, H2, H3, H4 } from 'govuk-react';
 import moment from 'moment';
 
-export const CcArticlePreview = ({ data, skipSummary }) => {
+export const CcArticlePreview = ({ data, skipSummary, authors }) => {
   const publishedDate = data.EffectiveDate ?? data.CreationDate;
+  console.log(authors);
 
   return (
     <article className="cc-article-preview">
       <aside className="cc-article-preview--date">
         {moment(publishedDate).format('dddd D MMMM YYYY')}
       </aside>
+      {authors ? (
+        <p className="govuk-caption-m govuk-!-margin-bottom-6">
+          Written by {authors}
+        </p>
+      ) : null}
       <H3>
         <a href={data['@id']?.replace('/api', '')} className="cc-article-list">
           {data.title}
