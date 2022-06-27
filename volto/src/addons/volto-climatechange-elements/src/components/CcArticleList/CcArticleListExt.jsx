@@ -36,7 +36,7 @@ export const CcArticleListExt = (props) => {
         <div className="cc-article-header volto-width-container--wide">
           <div className="govuk-grid-row">
             <div className="govuk-!-padding-right-6">
-              <H4>{firstItemDate} by </H4>
+              <H4>{firstItemDate}</H4>
               <h1 className="govuk-heading-xl govuk-!-margin-bottom-6">
                 {firstItem?.title}
               </h1>
