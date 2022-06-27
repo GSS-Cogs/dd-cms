@@ -65,22 +65,23 @@ export const CcArticleListExt = (props) => {
       <GridRow>
         <GridCol setWidth="two-thirds">
           {items.map((data, i, idx) => {
-            console.log(i);
             if (i !== 0) {
               return (
                 <div className="cc-article-preview" key={i}>
-                  <div className="ccv2-article-body">
-                    <div className="govuk-grid-row">
-                      <CcArticlePreview key={i} data={data} />
-                      <H4>
-                        <a
-                          href={firstItem['@id']?.replace('/api', '')}
-                          className="cc-article-list"
-                        >
-                          Read article
-                        </a>
-                      </H4>
-                    </div>
+                  <div className="govuk-grid-row">
+                    <CcArticlePreview
+                      key={i}
+                      data={data}
+                      authors={formattedCreators(data.listCreators)}
+                    />
+                    <H4>
+                      <a
+                        href={firstItem['@id']?.replace('/api', '')}
+                        className="cc-article-list"
+                      >
+                        Read article
+                      </a>
+                    </H4>
                   </div>
                 </div>
               );
