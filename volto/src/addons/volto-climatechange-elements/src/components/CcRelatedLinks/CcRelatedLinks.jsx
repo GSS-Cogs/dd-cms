@@ -7,7 +7,7 @@ export const CcRelatedLinks = ({ items }) => (
     <ul className="cc-related-links--list">
       {(items || []).map((data) => (
         <li key={data['@id']} className="cc-related-links--item">
-          <H4>
+          <H4 className="cc-related-links-item-title">
             <a href={data['@id']} className="cc-related-links-item-title">
               {data.title}
             </a>
