@@ -10,7 +10,10 @@ import { formattedDate } from '../../utils';
 
 export const CcArticleListExt = (props) => {
   const formattedCreators = (creators) => creators?.join(', ');
-  const path = '/articles?metadata_fields=_all';
+  const path = `${props?.['@id']
+    .split('/')
+    .splice(-1)
+    .join('')}?metadata_fields=_all`;
   const dispatch = useDispatch();
 
   useEffect(() => {
