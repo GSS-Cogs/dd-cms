@@ -10,16 +10,16 @@ import { formattedDate } from '../../utils';
 
 export const CcArticleListExt = (props) => {
   const formattedCreators = (creators) => creators?.join(', ');
-  const path = `${props?.['@id']
-    .split('/')
-    .splice(-1)
-    .join('')}?metadata_fields=_all`;
+  const id = props?.content?.['@id'] ?? null;
+  const path = id
+    ? `${id.split('/').splice(-1).join('')}?metadata_fields=_all`
+    : null;
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getFolderishContent(path));
     dispatch(getRelatedItemsData(path));
-  }, []);
+  }, [path]);
 
   const listRequest = useSelector((state) => state.folderishContent?.[path]);
   const relatedRequest = useSelector((state) => state.relatedItemsData);
