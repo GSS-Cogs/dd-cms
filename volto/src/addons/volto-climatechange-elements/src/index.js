@@ -80,7 +80,7 @@ const applyConfig = (config) => {
 
   config.views.layoutViews.cc_article_list_ext = CcArticleListExt;
   // Revert this line
-  config.views.layoutViews.cc_preview = CcArticleListExt;
+  config.views.layoutViews.cc_preview = CcV2ArticleView;
 
   config.views.layoutViews.cc_preview2 = CcV2Overview;
   config.views.contentTypesViews.sparql_dataconnector =
