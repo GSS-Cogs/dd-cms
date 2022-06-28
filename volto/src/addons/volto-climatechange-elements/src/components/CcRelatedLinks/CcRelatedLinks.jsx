@@ -1,7 +1,7 @@
 import React from 'react';
 import { H3, H4 } from 'govuk-react';
 
-export const CcRelatedLinks = ({ items }) => (
+export const CcRelatedLinks = ({ items, doNotShowAll }) => (
   <div className="cc-related-links">
     <H3>Related Links</H3>
     <ul className="cc-related-links--list">
@@ -16,5 +16,12 @@ export const CcRelatedLinks = ({ items }) => (
         </li>
       ))}
     </ul>
+    {doNotShowAll ? null : (
+      <H4>
+        <a href="/references" className="cc-related-links--item">
+          View All
+        </a>
+      </H4>
+    )}
   </div>
 );

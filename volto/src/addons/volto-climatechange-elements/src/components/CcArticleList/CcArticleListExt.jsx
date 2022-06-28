@@ -89,7 +89,7 @@ export const CcArticleListExt = (props) => {
           })}
         </GridCol>
         <GridCol setWidth="one-third">
-          <CcRelatedLinks items={relatedLinks} />
+          <CcRelatedLinks items={relatedLinks} doNotShowAll={true} />
         </GridCol>
       </GridRow>
     </div>
