@@ -5,7 +5,6 @@ import moment from 'moment';
 
 export const CcArticlePreview = ({ data, skipSummary, authors }) => {
   const publishedDate = data.EffectiveDate ?? data.CreationDate;
-  console.log(authors);
 
   return (
     <article className="cc-article-preview">
