@@ -5,9 +5,9 @@ import {
 } from '../constants/ActionTypes';
 
 export function getRelatedItemsData({
-  b_size = 25,
-  b_start = 0,
-  sort_order = 'descending',
+  b_size = 25, // this is batch size
+  b_start = 0, // this is batch start
+  sort_order = 'descending', // sort order
 }) {
   return {
     type: GET_RELATED_ITEMS_DATA,
