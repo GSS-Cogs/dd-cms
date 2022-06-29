@@ -14,7 +14,6 @@ import { injectIntl } from 'react-intl';
 
 import { getBreadcrumbs } from '@plone/volto/actions';
 import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
-import './Breadcrumbs.css';
 
 /**
  * Breadcrumbs container class.
@@ -68,8 +67,8 @@ class Breadcrumbs extends Component {
     const hasBreadcrumbItems = props.items && props.items.length >= 1;
 
     return (
-      <div>
-        <div className="Breadcrumbs volto-width-container--wide">
+      <div className="cc-breadcrumbs">
+        <div className="app-width-container">
           {hasBreadcrumbItems && (
             <GovukBreadcrumbs
               items={[
@@ -86,12 +85,14 @@ class Breadcrumbs extends Component {
           )}
 
           <PhaseBanner
+            className="cc-phasebanner"
             tag={{
               children: 'beta',
             }}
           >
-            This part of GOV.UK is being rebuilt –{' '}
-            <Link to="https://example.com">find out what that means</Link>
+            This is a new service your{' '}
+            <Link to="https://example.com">feedback</Link> will help us improve
+            it.
           </PhaseBanner>
         </div>
       </div>

@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
-<div>
+<div
+  className="cc-breadcrumbs"
+>
   <div
-    className="Breadcrumbs volto-width-container--wide"
+    className="app-width-container"
   >
     <div
       className="govuk-breadcrumbs  "
@@ -44,7 +46,7 @@ exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
       </ol>
     </div>
     <div
-      className="govuk-phase-banner "
+      className="govuk-phase-banner cc-phasebanner"
     >
       <p
         className="govuk-phase-banner__content"
@@ -57,14 +59,15 @@ exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
         <span
           className="govuk-phase-banner__text"
         >
-          This part of GOV.UK is being rebuilt –
+          This is a new service your
            
           <a
             href="/https://example.com"
             onClick={[Function]}
           >
-            find out what that means
+            feedback
           </a>
+           will help us improve it.
         </span>
       </p>
     </div>

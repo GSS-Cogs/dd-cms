@@ -1,18 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ConditionalLink } from '@plone/volto/components';
-import { flattenToAppURL } from '@plone/volto/helpers';
-
-import { isInternalURL } from '@plone/volto/helpers/Url/Url';
 import { H1, H2, H3, H4 } from 'govuk-react';
 import moment from 'moment';
 
-const CcArticlePreview = ({ data, skipSummary }) => {
+export const CcArticlePreview = ({ data, skipSummary, authors }) => {
   const publishedDate = data.EffectiveDate ?? data.CreationDate;
 
   return (
     <article className="cc-article-preview">
-      <aside className="cc-article-preview--date">
+      <aside className="govuk-caption-m">
         {moment(publishedDate).format('dddd D MMMM YYYY')}
       </aside>
       <H3>
@@ -20,7 +16,14 @@ const CcArticlePreview = ({ data, skipSummary }) => {
           {data.title}
         </a>
       </H3>
-      {skipSummary ? null : <div>{data.description}</div>}
+      {authors ? (
+        <p className="govuk-caption-m govuk-!-margin-bottom-6">
+          Written by {authors}
+        </p>
+      ) : null}
+      {skipSummary ? null : (
+        <div className="cc-article-list-description">{data.description}</div>
+      )}
     </article>
   );
 };
@@ -38,7 +41,7 @@ export const CcArticleList = ({ items, linkTitle, linkHref, isEditMode }) => {
 
       <H4>
         <a href={folder} className="cc-article-list">
-         View All Articles
+          View All Articles
         </a>
       </H4>
     </>
