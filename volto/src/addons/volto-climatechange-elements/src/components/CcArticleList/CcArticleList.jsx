@@ -11,16 +11,16 @@ export const CcArticlePreview = ({ data, skipSummary, authors }) => {
       <aside className="govuk-caption-m">
         {moment(publishedDate).format('dddd D MMMM YYYY')}
       </aside>
-      {authors ? (
-        <p className="govuk-caption-m govuk-!-margin-bottom-6">
-          Written by {authors}
-        </p>
-      ) : null}
       <H3>
         <a href={data['@id']?.replace('/api', '')} className="cc-article-list">
           {data.title}
         </a>
       </H3>
+      {authors ? (
+        <p className="govuk-caption-m govuk-!-margin-bottom-6">
+          Written by {authors}
+        </p>
+      ) : null}
       {skipSummary ? null : (
         <div className="cc-article-list-description">{data.description}</div>
       )}
