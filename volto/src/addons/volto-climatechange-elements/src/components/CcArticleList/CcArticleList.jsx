@@ -9,7 +9,7 @@ export const CcArticlePreview = ({ data, skipSummary, authors }) => {
 
   return (
     <article className="cc-article-preview">
-      <aside className="cc-article-preview--date">
+      <aside className="govuk-caption-m">
         {moment(publishedDate).format('dddd D MMMM YYYY')}
       </aside>
       {authors ? (
