@@ -8,9 +8,9 @@ export const CcArticleHeader = ({ data }) => {
       <div className="cc-article-header app-width-container">
         <div className="govuk-!-padding-right-6">
           {data?.dashboard ? (
-            <p className="govuk-caption-m">Dashboard</p>
+            <p className="govuk-caption-l">Dashboard</p>
           ) : (
-            <p className="govuk-caption-m">Article</p>
+            <p className="govuk-caption-l">Article</p>
           )}
           <h1 className="govuk-heading-xl govuk-!-margin-bottom-6">
             {data.title}
