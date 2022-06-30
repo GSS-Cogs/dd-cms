@@ -32,7 +32,7 @@ const applyConfig = (config) => {
 
   config.blocks.blocksConfig.chartBuilder = {
     id: 'chartBuilder',
-    title: 'Chart Builder',
+    title: 'Chart',
     icon: imageSVG,
     group: 'common',
     view: ChartBuilderView,
