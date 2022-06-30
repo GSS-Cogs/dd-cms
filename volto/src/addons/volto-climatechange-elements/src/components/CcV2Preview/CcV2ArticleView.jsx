@@ -42,7 +42,7 @@ export const CcV2ArticleView = (props) => {
       />
       <div className="volto-width-container--wide ccv2-article-body">
         <div className="govuk-grid-row">
-          <div className="govuk-!-padding-right-6">
+          <div className="govuk-grid-column-full">
             {map(content[blocksLayoutFieldname].items, (block) => {
               const Block =
                 config.blocks.blocksConfig[
