@@ -40,7 +40,7 @@ export function usePloneCsvData(plone_ref) {
     if (response != null && contentRef != null && response.loaded) {
       setError([]);
       if (chartType === 'Map') {
-        setMapData(response.content.data);
+        setMapData(response.content.data.results);
       } else {
         switch (contentRef['@type']) {
           case 'File':
@@ -49,10 +49,13 @@ export function usePloneCsvData(plone_ref) {
           case 'discodataconnector':
           case 'sparql_dataconnector':
           case 'csv_type':
-            importEeaData({
-              id: response.content.id,
-              data: response.content.data.results,
-            }, contentRef['@id']);
+            importEeaData(
+              {
+                id: response.content.id,
+                data: response.content.data.results,
+              },
+              contentRef['@id'],
+            );
             break;
         }
       }
@@ -61,7 +64,6 @@ export function usePloneCsvData(plone_ref) {
     if (response != null && contentRef != null && response.error) {
       setError([response.error.message]);
     }
-
   }, [
     response,
     contentRef,
@@ -71,7 +73,7 @@ export function usePloneCsvData(plone_ref) {
     chartType,
   ]);
 
-  return { error }
+  return { error };
 }
 
 export function usePloneGeoJson(plone_ref) {
@@ -93,13 +95,13 @@ export function usePloneGeoJson(plone_ref) {
 
   useEffect(() => {
     if (response != null && contentRef != null && response.loaded) {
-      if (response.content?.data?.boundary) {
-        // content.content.data: { boundary: string[] } the strings are json fragments
-        setGeoJson(
-          convertSparqlToGeoJson({
-            boundary: response.content.data.boundary.map((x) => JSON.parse(x)),
-          }),
-        );
+      if (response.content?.data?.results?.boundary) {
+        const geoJson = convertSparqlToGeoJson({
+          boundary: response.content.data.results.boundary.map((x) =>
+            JSON.parse(x),
+          ),
+        });
+        setGeoJson(geoJson);
         setError([]);
       } else {
         setError(['GEOJSON data must have a "boundary" property']);
