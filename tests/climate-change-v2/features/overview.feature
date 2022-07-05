@@ -11,7 +11,8 @@ Feature: Overview
     And I take a screenshot
 
   Scenario: Navigation bar menus
-    When I click the "span" element containing "Dashboards"
+    When I wait for xpath "//span[contains(text(), 'Dashboards')]" to be visible
+    And I click the "span" element containing "Dashboards"
     And I wait for xpath "//p[contains(text(), 'Dashboards about the different indicators of climate change')]" to be visible
     And I wait for xpath "//a[contains(text(), 'Emissions')]" to be visible
     Then I take a screenshot
