@@ -69,6 +69,16 @@ class Breadcrumbs extends Component {
     return (
       <div className="cc-breadcrumbs">
         <div className="app-width-container">
+          <PhaseBanner
+            className="cc-phasebanner"
+            tag={{
+              children: 'beta',
+            }}
+          >
+            This is a new service your{' '}
+            <Link to="https://example.com">feedback</Link> will help us improve
+            it.
+          </PhaseBanner>
           {hasBreadcrumbItems && (
             <GovukBreadcrumbs
               items={[
@@ -83,17 +93,6 @@ class Breadcrumbs extends Component {
               ]}
             />
           )}
-
-          <PhaseBanner
-            className="cc-phasebanner"
-            tag={{
-              children: 'beta',
-            }}
-          >
-            This is a new service your{' '}
-            <Link to="https://example.com">feedback</Link> will help us improve
-            it.
-          </PhaseBanner>
         </div>
       </div>
     );
