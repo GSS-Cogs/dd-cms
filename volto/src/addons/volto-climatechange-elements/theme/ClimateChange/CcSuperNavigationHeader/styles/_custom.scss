@@ -76,3 +76,27 @@
         display: none;
     }
 }
+
+.gem-c-layout-super-navigation-header__navigation-item-link,
+.gem-c-layout-super-navigation-header__navigation-item-link:hover,
+.gem-c-layout-super-navigation-header__navigation-item-link:link,
+.gem-c-layout-super-navigation-header__navigation-item-link:link:hover,
+.gem-c-layout-super-navigation-header__navigation-item-link:visited, 
+.gem-c-layout-super-navigation-header__navigation-item-link:visited:hover {
+    @include govuk-media-query(851px) {
+        height: 50px;
+        padding-left: govuk-spacing(6);
+        padding-right: govuk-spacing(5);
+    }
+
+  .js-module-initialised & {
+    margin-left: 0px;
+  }
+}
+
+
+.gem-c-layout-super-navigation-header__navigation-item:first-of-type
+.gem-c-layout-super-navigation-header__navigation-second-toggle-button-inner {
+    border-left: none;
+    border-right: none;
+}
