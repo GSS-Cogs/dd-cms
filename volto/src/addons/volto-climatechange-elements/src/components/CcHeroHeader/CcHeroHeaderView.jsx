@@ -38,7 +38,10 @@ export const CcHeroHeaderView = (props) => {
   }, [content]);
 
   return (
-    <CcMasthead className="app-masthead--bottom-overlap">
+    <CcMasthead
+      className="app-masthead--bottom-overlap"
+      shouldDisplayPhaseBanner={true}
+    >
       <div className="govuk-grid-column-two-thirds-from-desktop">
         <Tag className="govuk-tag--grey app-masthead__tag">NEW ARTICLE</Tag>
         <h1 className="govuk-heading-xl app-masthead__title">{title}</h1>
