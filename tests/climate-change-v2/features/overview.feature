@@ -29,5 +29,5 @@ Feature: Overview
 
   Scenario: Articles list
     When I wait for xpath "//h2[contains(text(), 'Articles')]" to be visible
-    Then I wait for xpath "//h3/a[contains(text(), 'Measuring greenhouse')]" to be visible
+    Then I wait for xpath "//h3/a[contains(text(), 'The UK’s climate is changing')]" to be visible
     And I take a screenshot
