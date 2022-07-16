@@ -103,8 +103,6 @@ const Header = (props) => {
         navItem['menu_contents'] = menu_contents;
       }
     });
-
-    console.log(headerConfig);
   }
 
   /**
