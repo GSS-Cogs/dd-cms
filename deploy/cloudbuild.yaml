@@ -3,7 +3,7 @@ steps:
     args: [ 'build', '-t', 'europe-west2-docker.pkg.dev/optimum-bonbon-257411/ccv2/plone', 'plone-5' ]
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'build', '-t', 'europe-west2-docker.pkg.dev/optimum-bonbon-257411/ccv2/volto', 'volto' ]
-timeout: 1800s
+timeout: 3600s
 images:
   - 'europe-west2-docker.pkg.dev/optimum-bonbon-257411/ccv2/plone'
   - 'europe-west2-docker.pkg.dev/optimum-bonbon-257411/ccv2/volto'
