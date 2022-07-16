@@ -81,10 +81,8 @@ const Header = (props) => {
   let headerConfig = null;
 
   useEffect(() => {
-    if (headerConfig == null) {
-      dispatch(getFolderishContent(path));
-    }
-  }, [dispatch, headerConfig]);
+    dispatch(getFolderishContent(path));
+  }, [headerConfig]);
 
   const listRequest = useSelector((state) => state.folderishContent?.[path]);
   const items = listRequest?.data?.items ?? [];
