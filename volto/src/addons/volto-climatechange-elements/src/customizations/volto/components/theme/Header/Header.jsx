@@ -88,12 +88,11 @@ const Header = (props) => {
   items.map((item) => {
     menu_contents.push({
       label: item.title,
-      href: `/${item.url}`,
+      href: `${item.url}`,
     });
   });
 
   if (items.length > 0) {
-    console.log(items);
     headerConfig = headerConfigDefault;
     headerConfig.navigation_links.map((navItem) => {
       if (navItem.label == 'Dashboards') {
@@ -101,6 +100,8 @@ const Header = (props) => {
       }
     });
   }
+
+  console.log(headerConfig);
 
   /**
    * Render method.
