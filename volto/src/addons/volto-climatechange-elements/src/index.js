@@ -77,7 +77,7 @@ const applyConfig = (config) => {
       template: CcRelatedLinks,
     },
   );
-
+  config.settings.navDepth = 3;
   config.views.layoutViews.cc_article_list_ext = CcArticleListExt;
   // Revert this line
   config.views.layoutViews.cc_preview = CcV2ArticleView;
