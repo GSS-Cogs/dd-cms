@@ -19,32 +19,7 @@ const headerConfigDefault = {
       href: '/dashboards',
       description:
         'Dashboards about the different indicators of climate change',
-      menu_contents: [
-        {
-          label: 'Climate and weather',
-          href: '/dashboards/climate-and-weather',
-        },
-        {
-          label: 'Emissions',
-          href: '/dashboards/emissions',
-        },
-        {
-          label: 'Drivers',
-          href: '/dashboards/drivers',
-        },
-        {
-          label: 'Impacts',
-          href: '/dashboards/impacts',
-        },
-        {
-          label: 'Mitigation',
-          href: '/dashboards/mitigation',
-        },
-        {
-          label: 'Adaptation',
-          href: '/dashboards/adaptation',
-        },
-      ],
+      menu_contents: [],
       footer_links: [
         {
           label: 'About the portal',
