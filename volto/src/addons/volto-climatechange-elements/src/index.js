@@ -77,7 +77,7 @@ const applyConfig = (config) => {
       template: CcRelatedLinks,
     },
   );
-  config.settings.navDepth = 3;
+  config.settings.navDepth = 3; // This property controls the level of depth for the navigation items to request from server
   config.views.layoutViews.cc_article_list_ext = CcArticleListExt;
   // Revert this line
   config.views.layoutViews.cc_preview = CcV2ArticleView;
