@@ -76,25 +76,24 @@ const headerConfigDefault = {
  * @extends Component
  */
 const Header = (props) => {
-  const dispatch = useDispatch();
-  const path = '/dashboards';
   let headerConfig = null;
 
-  useEffect(() => {
-    dispatch(getFolderishContent(path));
-  }, [headerConfig]);
-
-  const listRequest = useSelector((state) => state.folderishContent?.[path]);
-  const items = listRequest?.data?.items ?? [];
+  const listNavigation = useSelector((state) => state.navigation);
+  const navItems = listNavigation?.items ?? [];
   const menu_contents = [];
+  const items = navItems
+    .filter((item) => item.url === '/dashboards')
+    ?.map((item) => item.items)
+    .flat(1);
   items.map((item) => {
     menu_contents.push({
       label: item.title,
-      href: `/${item['@id'].split('/').splice(-2).join('/')}`,
+      href: `/${item.url}`,
     });
   });
 
   if (items.length > 0) {
+    console.log(items);
     headerConfig = headerConfigDefault;
     headerConfig.navigation_links.map((navItem) => {
       if (navItem.label == 'Dashboards') {
