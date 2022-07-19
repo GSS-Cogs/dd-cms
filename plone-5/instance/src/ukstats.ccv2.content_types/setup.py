@@ -14,7 +14,7 @@ long_description = "\n\n".join(
 
 setup(
     name="ukstats.ccv2.content_types",
-    version="1.0a1",
+    version="1.0.1",
     description="Add on for CCv2",
     long_description=long_description,
     # Get more from https://pypi.org/classifiers/
