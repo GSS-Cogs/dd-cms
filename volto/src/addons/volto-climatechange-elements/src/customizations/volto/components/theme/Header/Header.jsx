@@ -76,8 +76,6 @@ const Header = (props) => {
     });
   }
 
-  console.log(headerConfig);
-
   /**
    * Render method.
    * @method render

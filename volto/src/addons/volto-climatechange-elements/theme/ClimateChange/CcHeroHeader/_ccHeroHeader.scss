@@ -15,6 +15,14 @@
   @include govuk-responsive-margin(6, 'bottom');
 }
 
+.app-masthead__grid-row {
+    display: flex;
+}
+
+.app-masthead__grid-column {
+    flex: 1;
+}
+
 .app-masthead__start,
 .app-masthead__start:link,
 .app-masthead__start:visited,
@@ -30,8 +38,10 @@
     @include govuk-media-query($from: desktop) {
       display: block;
       width: 100%;
-      margin-top: govuk-spacing(-6);
-      margin-bottom: govuk-spacing(-6);
+      margin-top: -75px;
+      margin-bottom: govuk-spacing(-7);
+      padding-left: govuk-spacing(8);
+      padding-right: govuk-spacing(8);
     }
   }
 }
