@@ -36,29 +36,27 @@ export const CcArticleListExt = (props) => {
   return (
     <div>
       <CcMasthead className="app-masthead--article cc-article-featured">
-        <div className="cc-article-header volto-width-container--wide">
-          <div className="govuk-grid-row">
-            <div className="govuk-!-padding-right-6">
-              <H4>{firstItemDate}</H4>
-              <h1 className="govuk-heading-xl govuk-!-margin-bottom-6">
-                {firstItem?.title}
-              </h1>
-              <p className="govuk-caption-m govuk-!-margin-bottom-6">
-                <span className="cc-article-header__date">
-                  Written by {firstItemCreators}
-                </span>
-              </p>
-              <p className="govuk-body-l">{firstItem?.description}</p>
+        <div className="cc-article-header">
+          <div className="govuk-!-padding-right-6">
+            <H4>{firstItemDate}</H4>
+            <h1 className="govuk-heading-xl govuk-!-margin-bottom-6">
+              {firstItem?.title}
+            </h1>
+            <p className="govuk-caption-m govuk-!-margin-bottom-6">
+              <span className="cc-article-header__date">
+                Written by {firstItemCreators}
+              </span>
+            </p>
+            <p className="govuk-body-l">{firstItem?.description}</p>
 
-              <H4>
-                <a
-                  href={firstItem?.['@id']?.replace('/api', '')}
-                  className="cc-article-list"
-                >
-                  Read article
-                </a>
-              </H4>
-            </div>
+            <H4>
+              <a
+                href={firstItem?.['@id']?.replace('/api', '')}
+                className="cc-article-list"
+              >
+                Read article
+              </a>
+            </H4>
           </div>
         </div>
       </CcMasthead>
