@@ -23,7 +23,7 @@ export const CcMasthead = ({
           </PhaseBanner>
         </div>
       ) : null}
-      <div className="govuk-grid-row app-masthead__grid-row">{children}</div>
+      <div className="app-masthead__grid-row">{children}</div>
     </div>
   </div>
 );

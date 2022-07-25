@@ -42,26 +42,28 @@ export const CcHeroHeaderView = (props) => {
       className="app-masthead--bottom-overlap"
       shouldDisplayPhaseBanner={true}
     >
-      <div className="govuk-grid-column-one-half app-masthead__grid-column">
-        <Tag className="govuk-tag--grey app-masthead__tag">NEW ARTICLE</Tag>
-        <h1 className="govuk-heading-xl app-masthead__title">{title}</h1>
-        <p className="app-masthead__description">{summary}</p>
-        <Button
-          isStartButton
-          className="govuk-button--secondary app-masthead__start"
-          href={articlePath}
-        >
-          Read article
-        </Button>
-      </div>
+      <div className="govuk-grid-row">
+        <div className="govuk-grid-column-one-half app-masthead__grid-column">
+          <Tag className="govuk-tag--grey app-masthead__tag">NEW ARTICLE</Tag>
+          <h1 className="govuk-heading-xl app-masthead__title">{title}</h1>
+          <p className="app-masthead__description">{summary}</p>
+          <Button
+            isStartButton
+            className="govuk-button--secondary app-masthead__start"
+            href={articlePath}
+          >
+            Read article
+          </Button>
+        </div>
 
-      <div className="govuk-grid-column-one-half app-masthead__grid-column">
-        <img
-          className="app-masthead__image"
-          src={earth}
-          alt=""
-          role="presentation"
-        />
+        <div className="govuk-grid-column-one-half app-masthead__grid-column">
+          <img
+            className="app-masthead__image"
+            src={earth}
+            alt=""
+            role="presentation"
+          />
+        </div>
       </div>
     </CcMasthead>
   );
