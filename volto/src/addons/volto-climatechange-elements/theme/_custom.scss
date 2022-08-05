@@ -3,5 +3,58 @@
 }
 
 main > * > * > :not(.app-masthead) {
-    @include govuk-width-container(1280px);
-  }
+  @include govuk-width-container(1280px);
+}
+
+// The table styling below relates to the data table component
+
+// remove padding from the div that contains the table so it stretches full width
+.simple-data-table {
+  padding: 0;
+}
+
+// remove padding from the table header
+.ui.table > thead > tr > th {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+// remove the border from the top of the table
+.ui.table {
+  border: none !important;
+}
+
+// add a border to the top of each row and padding between
+.ui.table > tbody > tr {
+  border-top: 1px solid #b5b6b1;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+// remove the left padding from left aligned table content
+.ui.table th.left,
+.ui.table td.left.aligned {
+  padding-left: 0 !important;
+}
+
+// remove the right padding from right aligned table content
+.ui.table th.right,
+.ui.table td.right.aligned {
+  padding-right: 0 !important;
+}
+
+// override the width of 66.7% specified in .figure__text
+.ui.table > tbody > tr > td > p {
+  width: auto;
+}
+
+// set the table heading font style
+.ui.table > thead > tr > th {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+// remove the border from under the table headings
+.ui.table > thead > tr > th::after {
+  border-bottom: none;
+}
