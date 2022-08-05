@@ -24,11 +24,15 @@ main > * > * > :not(.app-masthead) {
   border: none !important;
 }
 
-// add a border to the top of each row and padding between
+// add a border to the top of each row
 .ui.table > tbody > tr {
   border-top: 1px solid #b5b6b1;
-  padding-top: 6px;
-  padding-bottom: 6px;
+}
+
+// add padding between rows
+.ui.table > tbody > tr > td {
+  padding-top: 9px;
+  padding-bottom: 9px;
 }
 
 // remove the left padding from left aligned table content
