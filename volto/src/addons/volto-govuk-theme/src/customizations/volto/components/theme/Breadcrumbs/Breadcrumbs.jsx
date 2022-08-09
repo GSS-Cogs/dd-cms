@@ -65,6 +65,7 @@ class Breadcrumbs extends Component {
   render() {
     const { props } = this;
     const hasBreadcrumbItems = props.items && props.items.length >= 1;
+    const breadcrumbItems = props.items.slice(0, props.items.length - 1);
 
     return (
       <div className="cc-breadcrumbs">
@@ -86,7 +87,7 @@ class Breadcrumbs extends Component {
                   children: 'Home',
                   href: '/',
                 },
-                ...props.items.map((item, index, items) => ({
+                ...breadcrumbItems.map((item, index, items) => ({
                   children: item.title,
                   href: item.url,
                 })),
