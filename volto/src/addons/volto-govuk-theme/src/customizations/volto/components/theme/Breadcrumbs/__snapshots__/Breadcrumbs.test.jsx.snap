@@ -59,16 +59,6 @@ exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
             Blog
           </a>
         </li>
-        <li
-          className="govuk-breadcrumbs__list-item"
-        >
-          <a
-            className="govuk-breadcrumbs__link"
-            href="/blog/my-first-blog"
-          >
-            My first blog
-          </a>
-        </li>
       </ol>
     </div>
   </div>
