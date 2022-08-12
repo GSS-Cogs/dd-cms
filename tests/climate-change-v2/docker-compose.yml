@@ -10,10 +10,7 @@ services:
   volto:
     build:
       context: ../../volto
-      args:
-        ADDONS: "@eeacms/volto-datablocks;@eeacms/volto-columns-block;volto-slate:asDefault;volto-govuk-theme;volto-chart-builder;volto-climatechange-elements"
     environment:
-      - RAZZLE_API_PATH=http://climate-change.data.gov.uk/api
       - NODE_ENV=production
     networks:
       - test_net

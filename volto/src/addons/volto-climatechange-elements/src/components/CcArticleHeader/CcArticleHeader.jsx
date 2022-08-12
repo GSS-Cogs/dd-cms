@@ -5,7 +5,7 @@ import { CcMasthead } from '../CcMasthead/CcMasthead';
 export const CcArticleHeader = ({ data }) => {
   return (
     <CcMasthead className="app-masthead--article">
-      <div className="cc-article-header app-width-container">
+      <div className="cc-article-header">
         <div className="govuk-!-padding-right-6">
           {data?.dashboard ? (
             <p className="govuk-caption-l">Dashboard</p>
