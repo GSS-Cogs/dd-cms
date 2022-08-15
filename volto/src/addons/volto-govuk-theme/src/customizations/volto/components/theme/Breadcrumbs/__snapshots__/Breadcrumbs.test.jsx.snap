@@ -24,11 +24,12 @@ exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
           This is a new service your
            
           <a
-            href="/https://example.com"
+            href="/"
             onClick={[Function]}
           >
             feedback
           </a>
+           
            will help us improve it.
         </span>
       </p>
