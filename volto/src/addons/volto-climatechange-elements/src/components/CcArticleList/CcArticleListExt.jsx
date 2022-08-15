@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CcMasthead } from '../CcMasthead/CcMasthead';
 import { CcRelatedLinks } from '../CcRelatedLinks/CcRelatedLinks';
-import { FeedSignUps } from '../CcRelatedLinks/FeedSignUps';
 import { CcArticlePreview } from './CcArticleList';
 import { getFolderishContent, getRelatedItemsData } from '../../actions';
 import { H4, GridRow, GridCol } from 'govuk-react';
