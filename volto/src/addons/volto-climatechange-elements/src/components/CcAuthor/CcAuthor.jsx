@@ -13,7 +13,7 @@ export const CcAuthor = ({ authors }) => {
         dispatch(getUser(author));
       });
     }
-  }, [dispatch, user]);
+  });
 
   user = useSelector((state) => {
     if (state.users.get.error) {
@@ -22,13 +22,13 @@ export const CcAuthor = ({ authors }) => {
         users.push(authors);
       }
     } else {
-      if (state.users.get.loaded) {
-        users.push(state.users.user?.fullname);
-      } else {
-        authors?.split(',').forEach((author) => {
+      authors?.split(',').forEach((author) => {
+        if (state.users.get.loaded && state.users.user.id == author) {
+          users.push(state.users.user?.fullname);
+        } else {
           users.push(author);
-        });
-      }
+        }
+      });
     }
   });
 
