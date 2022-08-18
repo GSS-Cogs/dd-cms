@@ -17,6 +17,25 @@
 import '@plone/volto/config';
 
 export default function applyConfig(config) {
-  // Add here your project's configuration here by modifying `config` accordingly
+  if (__SERVER__) {
+    const express = require('express');
+    const middleware = express.Router();
+    middleware.id = 'basic-auth'
+    middleware.all('*', function (req, res, next) {
+      if (process.env['BASIC_AUTH'] && (
+          !req.headers.authorization || (
+              (req.headers.authorization.search('Basic ') === 0) &&
+              (req.headers.authorization === 'Basic ' + process.env['BASIC_AUTH'])
+          )
+      )) {
+        return res
+            .status(401)
+            .set('WWW-Authenticate', 'Basic realm="COP 27 beta site"')
+            .send('Authentication required.');
+      }
+      return next();
+    });
+    config.settings.expressMiddleware = [...config.settings.expressMiddleware, middleware];
+  }
   return config;
 }
