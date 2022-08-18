@@ -10,7 +10,8 @@ export const CcV2Overview = () => (
     <CcHeroHeaderView
       data={{
         title: 'Measuring greenhouse gas emissions',
-        summary: 'The UK is required to report its estimated greenhouse gas (GHG) emissions on a range of different bases to fulfil a wide range of international agreements as well as for domestic policy making purposes.',
+        summary:
+          'The UK is required to report its estimated greenhouse gas (GHG) emissions on a range of different bases to fulfil a wide range of international agreements as well as for domestic policy making purposes.',
         href: '#',
         linkTitle: 'All climate and weather data',
       }}
@@ -52,7 +53,8 @@ export const CcV2Overview = () => (
         <DashboardTileView
           data={{
             topic: 'Mitigation',
-            title: 'Renewable energy share in total energy consumption, UK, 2020',
+            title:
+              'Renewable energy share in total energy consumption, UK, 2020',
             href: '#',
             linkTitle: 'All mitigation data',
           }}
@@ -66,15 +68,6 @@ export const CcV2Overview = () => (
           }}
         />
       </TileGroup>
-
-      <div className="govuk-grid-row">
-        <div className="govuk-grid-column-two-thirds">
-          <CcArticleList />
-        </div>
-        <div className="govuk-grid-column-one-third">
-          <CcRelatedLinks />
-        </div>
-      </div>
     </div>
   </div>
 );
