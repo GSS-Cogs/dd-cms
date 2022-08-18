@@ -24,11 +24,12 @@ exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
           This is a new service your
            
           <a
-            href="/https://example.com"
+            href="/"
             onClick={[Function]}
           >
             feedback
           </a>
+           
            will help us improve it.
         </span>
       </p>
@@ -57,16 +58,6 @@ exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
             href="/blog"
           >
             Blog
-          </a>
-        </li>
-        <li
-          className="govuk-breadcrumbs__list-item"
-        >
-          <a
-            className="govuk-breadcrumbs__link"
-            href="/blog/my-first-blog"
-          >
-            My first blog
           </a>
         </li>
       </ol>

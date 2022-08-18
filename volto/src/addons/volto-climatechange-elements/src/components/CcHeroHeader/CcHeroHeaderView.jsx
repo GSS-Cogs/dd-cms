@@ -9,8 +9,8 @@ import { getRawContent } from '../../actions';
 import earth from './Earth.svg';
 
 export const CcHeroHeaderView = (props) => {
-  const [summary, setSummary] = useState(props.data.summary);
-  const [title, setTitle] = useState(props.data.title);
+  const [summary, setSummary] = useState('');
+  const [title, setTitle] = useState('');
 
   let articlePath = '#';
 
@@ -21,7 +21,6 @@ export const CcHeroHeaderView = (props) => {
   }
 
   const request = useSelector((state) => state.rawData?.[articlePath]);
-
   const content = request?.data || null;
 
   useEffect(() => {

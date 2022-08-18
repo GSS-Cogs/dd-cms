@@ -65,6 +65,7 @@ class Breadcrumbs extends Component {
   render() {
     const { props } = this;
     const hasBreadcrumbItems = props.items && props.items.length >= 1;
+    const breadcrumbItems = props.items.slice(0, props.items.length - 1);
 
     return (
       <div className="cc-breadcrumbs">
@@ -76,8 +77,15 @@ class Breadcrumbs extends Component {
             }}
           >
             This is a new service your{' '}
-            <Link to="https://example.com">feedback</Link> will help us improve
-            it.
+            <Link
+              to="#"
+              onClick={(e) => {
+                window.location.href = "mailto:climate.change@ons.gov.uk";
+                e.preventDefault();
+              }}
+            >
+              feedback
+            </Link>{' '} will help us improve it.
           </PhaseBanner>
           {hasBreadcrumbItems && (
             <GovukBreadcrumbs
@@ -86,7 +94,7 @@ class Breadcrumbs extends Component {
                   children: 'Home',
                   href: '/',
                 },
-                ...props.items.map((item, index, items) => ({
+                ...breadcrumbItems.map((item, index, items) => ({
                   children: item.title,
                   href: item.url,
                 })),

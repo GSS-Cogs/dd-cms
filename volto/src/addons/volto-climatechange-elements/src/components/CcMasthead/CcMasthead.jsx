@@ -18,8 +18,16 @@ export const CcMasthead = ({
             }}
           >
             This is a new service your{' '}
-            <Link to="https://example.com">feedback</Link> will help us improve
-            it.
+            <Link
+              to="#"
+              onClick={(e) => {
+                window.location.href = "mailto:climate.change@ons.gov.uk";
+                e.preventDefault();
+              }}
+            >
+              feedback
+            </Link>{' '}
+            will help us improve it.
           </PhaseBanner>
         </div>
       ) : null}
