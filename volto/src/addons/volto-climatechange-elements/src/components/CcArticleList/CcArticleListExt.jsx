@@ -74,7 +74,7 @@ export const CcArticleListExt = (props) => {
                     />
                     <H4>
                       <a
-                        href={firstItem['@id']?.replace('/api', '')}
+                        href={data['@id']?.replace('/api', '')}
                         className="cc-article-list"
                       >
                         Read article
