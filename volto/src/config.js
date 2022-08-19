@@ -19,9 +19,13 @@ import '@plone/volto/config';
 export default function applyConfig(config) {
   if (__SERVER__) {
     const express = require('express');
-    const middleware = express.Router();
-    middleware.id = 'basic-auth'
-    middleware.all('*', function (req, res, next) {
+    const health = express.Router();
+    health.all('/_healthcheck', function(req, res, next) {
+      res.status(200).end();
+    });
+    const auth = express.Router();
+    auth.id = 'basic-auth'
+    auth.all('*', function (req, res, next) {
       if (process.env['BASIC_AUTH'] && (
           !req.headers.authorization || (
               (req.headers.authorization.search('Basic ') === 0) &&
@@ -35,7 +39,7 @@ export default function applyConfig(config) {
       }
       return next();
     });
-    config.settings.expressMiddleware = [...config.settings.expressMiddleware, middleware];
+    config.settings.expressMiddleware = [...config.settings.expressMiddleware, health, auth];
   }
   return config;
 }
