@@ -21,7 +21,7 @@ export default function applyConfig(config) {
     const express = require('express');
     const health = express.Router();
     health.all('/_healthcheck', function(req, res, next) {
-      res.status(200).end();
+      return res.status(200).end();
     });
     const auth = express.Router();
     auth.id = 'basic-auth'
