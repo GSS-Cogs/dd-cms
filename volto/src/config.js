@@ -26,24 +26,20 @@ export default function applyConfig(config) {
     const auth = express.Router();
     auth.id = 'basic-auth'
     auth.all('*', function (req, res, next) {
-      if (
-          process.env['BASIC_AUTH'] && // only do basic auth when this env var is set
+      if (process.env['BASIC_AUTH']) { // only do basic auth when this env var is set
+        const req_auth = req.get('authorization');
+        if (!(typeof(req_auth) === 'string') || // no auth header
+          // if there is an authorization header, then
           (
-              !req.headers.cookie || // and if there are cookies
-              !req.headers.cookie.includes('auth_token') // don't bother if we have auth_token in the cookies
-          ) && (
-              !req.headers.authorization || // do basic auth when there's no authorization header
-              // if there is an authorization header, then
-              (
-                  req.headers.authorization.startsWith('Basic ') && // if the header starts with Basic
-                  !(req.headers.authorization === 'Basic ' + process.env['BASIC_AUTH']) // and it's not the right login
-              )
+              req.get('authorization').startsWith('Basic ') && // if the header starts with Basic
+              !(req.get('authorization') === 'Basic ' + process.env['BASIC_AUTH']) // and it's not the right login
           )
-      ) {
-         return res
-            .status(401)
-            .set('WWW-Authenticate', 'Basic realm="COP 27 beta site"')
-            .send('Authentication required.');
+        ) {
+          return res
+              .status(401)
+              .set('WWW-Authenticate', 'Basic realm="Access to beta"')
+              .send('Authentication required.');
+        }
       }
       return next();
     });
