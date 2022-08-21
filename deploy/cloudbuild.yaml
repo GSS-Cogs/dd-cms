@@ -4,7 +4,7 @@ steps:
       - --destination=europe-west2-docker.pkg.dev/optimum-bonbon-257411/ccv2/plone
       - --cache=true
       - --context=dir://plone-5
-  - name: 'gcr.io/kaniko-project/executor:latest'
+  - name: 'gcr.io/kaniko-project/executor:1.3.0'
     args:
       - --destination=europe-west2-docker.pkg.dev/optimum-bonbon-257411/ccv2/volto
       - --cache=true
