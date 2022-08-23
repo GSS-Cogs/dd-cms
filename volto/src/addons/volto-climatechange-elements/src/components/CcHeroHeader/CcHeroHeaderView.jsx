@@ -11,6 +11,8 @@ import earth from './Earth.svg';
 export const CcHeroHeaderView = (props) => {
   const [summary, setSummary] = useState('');
   const [title, setTitle] = useState('');
+  const [caption, setCaption] = useState('');
+  const [image, setImage] = useState('');
 
   let articlePath = '#';
 
@@ -33,8 +35,13 @@ export const CcHeroHeaderView = (props) => {
     if (content) {
       setSummary(content.description);
       setTitle(content.title);
+      setImage(earth);
+    } else if (props.data) {
+      setTitle(props.data.title);
+      setSummary(props.data.summary);
+      setCaption(props.data.caption);
     }
-  }, [content]);
+  }, [content, props.data]);
 
   return (
     <CcMasthead
@@ -43,7 +50,14 @@ export const CcHeroHeaderView = (props) => {
     >
       <div className="govuk-grid-row">
         <div className="govuk-grid-column-one-half app-masthead__grid-column">
-          <Tag className="govuk-tag--grey app-masthead__tag">NEW ARTICLE</Tag>
+          {content ? (
+            <Tag className="govuk-tag--grey app-masthead__tag">NEW ARTICLE</Tag>
+          ) : (
+            caption != '' && (
+              <span className="app-masthead__caption">{caption}</span>
+            )
+          )}
+
           <h1 className="govuk-heading-xl app-masthead__title">{title}</h1>
           <p className="app-masthead__description">{summary}</p>
           <Button
@@ -54,11 +68,10 @@ export const CcHeroHeaderView = (props) => {
             Read article
           </Button>
         </div>
-
         <div className="govuk-grid-column-one-half app-masthead__grid-column">
           <img
             className="app-masthead__image"
-            src={earth}
+            src={image}
             alt=""
             role="presentation"
           />
