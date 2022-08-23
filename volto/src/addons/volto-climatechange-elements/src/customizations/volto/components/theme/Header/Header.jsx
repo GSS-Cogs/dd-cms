@@ -3,10 +3,10 @@
  * @module components/theme/Header/Header
  */
 
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { SuperNavigationHeader } from '../../../../../components/CcSuperNavigationHeader/CcSuperNavigationHeader';
-import { getFolderishContent } from '../../../../../actions';
+import { useGoogleAnalytics } from 'volto-google-analytics';
 
 const headerConfigDefault = {
   logo_link_title: 'Go to the GOV.UK homepage',
@@ -52,7 +52,7 @@ const headerConfigDefault = {
  */
 const Header = (props) => {
   let headerConfig = null;
-
+  useGoogleAnalytics();
   const listNavigation = useSelector((state) => state.navigation);
   const navItems = listNavigation?.items ?? [];
   const menu_contents = [];
