@@ -3,10 +3,11 @@
  * @module components/theme/Header/Header
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { SuperNavigationHeader } from '../../../../../components/CcSuperNavigationHeader/CcSuperNavigationHeader';
 import { useGoogleAnalytics } from 'volto-google-analytics';
+import { hotjar } from 'react-hotjar';
 
 const headerConfigDefault = {
   logo_link_title: 'Go to the GOV.UK homepage',
@@ -53,6 +54,9 @@ const headerConfigDefault = {
 const Header = (props) => {
   let headerConfig = null;
   useGoogleAnalytics();
+  useEffect(() => {
+    hotjar.initialize(3118262, 6);
+  }, []);
   const listNavigation = useSelector((state) => state.navigation);
   const navItems = listNavigation?.items ?? [];
   const menu_contents = [];
