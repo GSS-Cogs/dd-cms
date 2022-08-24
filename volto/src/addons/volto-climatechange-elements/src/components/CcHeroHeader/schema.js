@@ -14,6 +14,11 @@ export const DashboardTileSchema = ({ intl }) => ({
             title: intl.formatMessage(messages.imageFieldset),
             fields: ['image_source'],
         },
+        {
+            id: 'call_to_action',
+            title: intl.formatMessage(messages.call_to_action),
+            fields: ['call_to_action'],
+        },
     ],
 
     properties: {
@@ -37,6 +42,10 @@ export const DashboardTileSchema = ({ intl }) => ({
                     selectableTypes: ['Image'],
                 }
             },
+        },
+        call_to_action: {
+            type: 'string',
+            title: intl.formatMessage(messages.call_to_action),
         },
     },
 
@@ -67,5 +76,9 @@ const messages = defineMessages({
     image_source: {
         id: 'image',
         defaultMessage: 'Image'
+    },
+    call_to_action: {
+        id: 'call_to_action',
+        defaultMessage: 'Call to Action',
     },
 });

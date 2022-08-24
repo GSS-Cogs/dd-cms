@@ -13,6 +13,7 @@ export const CcHeroHeaderView = (props) => {
   const [title, setTitle] = useState('');
   const [caption, setCaption] = useState('');
   const [image, setImage] = useState('');
+  const [callToAction, setCallToAction] = useState('');
 
   let articlePath = '#';
 
@@ -40,6 +41,11 @@ export const CcHeroHeaderView = (props) => {
       setSummary(props.data.summary);
       setCaption(props.data.caption);
     }
+    if (props.data.call_to_action != '') {
+      setCallToAction(props.data.call_to_action);
+    } else {
+      setCallToAction('');
+    }
     if (props.data.image_source.length > 0) {
       setImage(props.data.image_source[0]['getURL']);
     } else {
@@ -63,14 +69,23 @@ export const CcHeroHeaderView = (props) => {
         )}
         <h1 className="govuk-heading-xl app-masthead__title">{title}</h1>
         <p className="app-masthead__description">{summary}</p>
-        <Button
-          isStartButton
-          className="govuk-button--secondary app-masthead__start"
-          href={articlePath}
-        >
-          Read article
-        </Button>
+        <CallToAction />
       </div>
+    );
+  };
+
+  const CallToAction = () => {
+    if (callToAction == '') {
+      return null;
+    }
+    return (
+      <Button
+        isStartButton
+        className="govuk-button--secondary app-masthead__start"
+        href={articlePath}
+      >
+        {callToAction}
+      </Button>
     );
   };
 
