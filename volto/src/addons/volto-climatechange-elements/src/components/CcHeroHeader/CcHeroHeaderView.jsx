@@ -75,8 +75,8 @@ export const CcHeroHeaderView = (props) => {
   };
 
   const CallToAction = () => {
-    if (callToAction == '') {
-      return null;
+    if (callToAction == '' || callToAction == null) {
+      return <div className="app-masthead__start" />;
     }
     return (
       <Button
