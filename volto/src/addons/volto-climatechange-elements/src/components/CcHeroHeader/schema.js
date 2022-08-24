@@ -9,6 +9,11 @@ export const DashboardTileSchema = ({ intl }) => ({
             title: intl.formatMessage(messages.defaultFieldset),
             fields: ['title', 'summary', 'caption'],
         },
+        {
+            id: 'image',
+            title: intl.formatMessage(messages.imageFieldset),
+            fields: ['image_source'],
+        },
     ],
 
     properties: {
@@ -24,6 +29,15 @@ export const DashboardTileSchema = ({ intl }) => ({
             type: 'string',
             title: intl.formatMessage(messages.caption),
         },
+        image_source: {
+            widget: 'object_browser',
+            title: intl.formatMessage(messages.image_source),
+            widgetOptions: {
+                pattern_options: {
+                    selectableTypes: ['Image'],
+                }
+            },
+        },
     },
 
     required: ['summary', 'title', 'caption'],
@@ -33,6 +47,10 @@ const messages = defineMessages({
     defaultFieldset: {
         id: 'Default',
         defaultMessage: 'Default',
+    },
+    imageFieldset: {
+        id: 'imageFieldset',
+        defaultMessage: 'Image',
     },
     summary: {
         id: 'Summary',
@@ -45,5 +63,9 @@ const messages = defineMessages({
     caption: {
         id: 'Caption',
         defaultMessage: 'Caption',
+    },
+    image_source: {
+        id: 'image',
+        defaultMessage: 'Image'
     },
 });

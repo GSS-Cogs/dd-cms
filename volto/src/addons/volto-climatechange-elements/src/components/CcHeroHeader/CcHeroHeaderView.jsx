@@ -35,13 +35,44 @@ export const CcHeroHeaderView = (props) => {
     if (content) {
       setSummary(content.description);
       setTitle(content.title);
-      setImage(earth);
     } else if (props.data) {
       setTitle(props.data.title);
       setSummary(props.data.summary);
       setCaption(props.data.caption);
     }
+    if (props.data.image_source.length > 0) {
+      setImage(props.data.image_source[0]['getURL']);
+    } else {
+      setImage('');
+    }
   }, [content, props.data]);
+
+  const InnerMasthead = () => {
+    let className = 'app-masthead__grid-column govuk-grid';
+    if (image != '') {
+      className += '-column-one-half';
+    }
+    return (
+      <div className={className}>
+        {content ? (
+          <Tag className="govuk-tag--grey app-masthead__tag">NEW ARTICLE</Tag>
+        ) : (
+          caption != '' && (
+            <span className="app-masthead__caption">{caption}</span>
+          )
+        )}
+        <h1 className="govuk-heading-xl app-masthead__title">{title}</h1>
+        <p className="app-masthead__description">{summary}</p>
+        <Button
+          isStartButton
+          className="govuk-button--secondary app-masthead__start"
+          href={articlePath}
+        >
+          Read article
+        </Button>
+      </div>
+    );
+  };
 
   return (
     <CcMasthead
@@ -49,33 +80,17 @@ export const CcHeroHeaderView = (props) => {
       shouldDisplayPhaseBanner={true}
     >
       <div className="govuk-grid-row">
-        <div className="govuk-grid-column-one-half app-masthead__grid-column">
-          {content ? (
-            <Tag className="govuk-tag--grey app-masthead__tag">NEW ARTICLE</Tag>
-          ) : (
-            caption != '' && (
-              <span className="app-masthead__caption">{caption}</span>
-            )
-          )}
-
-          <h1 className="govuk-heading-xl app-masthead__title">{title}</h1>
-          <p className="app-masthead__description">{summary}</p>
-          <Button
-            isStartButton
-            className="govuk-button--secondary app-masthead__start"
-            href={articlePath}
-          >
-            Read article
-          </Button>
-        </div>
-        <div className="govuk-grid-column-one-half app-masthead__grid-column">
-          <img
-            className="app-masthead__image"
-            src={image}
-            alt=""
-            role="presentation"
-          />
-        </div>
+        <InnerMasthead />
+        {image != '' && (
+          <div className="govuk-grid-column-one-half app-masthead__grid-column">
+            <img
+              className="app-masthead__image"
+              src={image}
+              alt=""
+              role="presentation"
+            />
+          </div>
+        )}
       </div>
     </CcMasthead>
   );
