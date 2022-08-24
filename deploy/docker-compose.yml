@@ -26,6 +26,9 @@ services:
                 ADDONS: "@eeacms/volto-datablocks;@eeacms/volto-columns-block;volto-slate:asDefault;volto-authomatic;volto-govuk-theme;volto-chart-builder"
         environment:
             - RAZZLE_API_PATH=https://climate-1.ukstats.dev/api
+            - RAZZLE_GA4_CODE=G-Y84VSLC1LC
+            - RAZZLE_HOTJAR_ID=3118262
+            - RAZZLE_HOTJAR_VERSION=6
             - NODE_ENV=production
             - VIRTUAL_HOST=climate-1.ukstats.dev
             - VIRTUAL_PORT=3000
