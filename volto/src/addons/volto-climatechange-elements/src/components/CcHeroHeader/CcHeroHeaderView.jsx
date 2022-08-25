@@ -59,22 +59,25 @@ export const CcHeroHeaderView = (props) => {
       className += '-column-one-half';
     }
     return (
-      <div className={className}>
-        {content ? (
-          <Tag className="govuk-tag--grey app-masthead__tag">NEW ARTICLE</Tag>
-        ) : (
-          caption != '' && (
-            <span className="app-masthead__caption">{caption}</span>
-          )
-        )}
-        <h1 className="govuk-heading-xl app-masthead__title">{title}</h1>
-        <p className="app-masthead__description">{summary}</p>
-        <CallToAction />
+      <div className="govuk-grid-row">
+        <div className={className}>
+          {content ? (
+            <Tag className="govuk-tag--grey app-masthead__tag">NEW ARTICLE</Tag>
+          ) : (
+            caption != '' && (
+              <span className="app-masthead__caption">{caption}</span>
+            )
+          )}
+          <h1 className="govuk-heading-xl app-masthead__title">{title}</h1>
+          <p className="app-masthead__description">{summary}</p>
+          <CallToActionButton />
+        </div>
+        <HeroHeaderImage />
       </div>
     );
   };
 
-  const CallToAction = () => {
+  const CallToActionButton = () => {
     if (callToAction == '' || callToAction == null) {
       return <div className="app-masthead__start" />;
     }
@@ -89,24 +92,28 @@ export const CcHeroHeaderView = (props) => {
     );
   };
 
+  const HeroHeaderImage = () => {
+    if (image == '' || image == undefined) {
+      return null;
+    }
+    return (
+      <div className="govuk-grid-column-one-half app-masthead__grid-column">
+        <img
+          className="app-masthead__image"
+          src={image}
+          alt=""
+          role="presentation"
+        />
+      </div>
+    );
+  };
+
   return (
     <CcMasthead
       className="app-masthead--bottom-overlap"
       shouldDisplayPhaseBanner={true}
     >
-      <div className="govuk-grid-row">
-        <InnerMasthead />
-        {image != '' && (
-          <div className="govuk-grid-column-one-half app-masthead__grid-column">
-            <img
-              className="app-masthead__image"
-              src={image}
-              alt=""
-              role="presentation"
-            />
-          </div>
-        )}
-      </div>
+      <InnerMasthead />
     </CcMasthead>
   );
 };
