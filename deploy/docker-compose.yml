@@ -46,6 +46,9 @@ services:
                 ADDONS: "@eeacms/volto-datablocks;@eeacms/volto-columns-block;volto-slate:asDefault;volto-authomatic;volto-govuk-theme;volto-chart-builder;volto-climatechange-elements"
         environment:
             - RAZZLE_API_PATH=https://staging.climate-change.data.gov.uk/api
+            - RAZZLE_GA4_CODE=G-Y84VSLC1LC
+            - RAZZLE_HOTJAR_ID=3118262
+            - RAZZLE_HOTJAR_VERSION=6
             - NODE_ENV=production
             - VIRTUAL_HOST=staging.climate-change.data.gov.uk
             - VIRTUAL_PORT=3000
