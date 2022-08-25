@@ -46,7 +46,8 @@ export const CcHeroHeaderView = (props) => {
     } else {
       setCallToAction('');
     }
-    if (props.data.image_source.length > 0) {
+    const image_source = props.data.image_source;
+    if (image_source && image_source.length > 0) {
       setImage(props.data.image_source[0]['getURL']);
     } else {
       setImage('');
