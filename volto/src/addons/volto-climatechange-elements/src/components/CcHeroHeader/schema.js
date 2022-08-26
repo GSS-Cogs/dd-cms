@@ -19,6 +19,11 @@ export const DashboardTileSchema = ({ intl }) => ({
             title: intl.formatMessage(messages.call_to_action),
             fields: ['call_to_action'],
         },
+        {
+            id: 'margin',
+            title: intl.formatMessage(messages.marginFieldset),
+            fields: ['margin'],
+        },
     ],
 
     properties: {
@@ -47,6 +52,10 @@ export const DashboardTileSchema = ({ intl }) => ({
             type: 'string',
             title: intl.formatMessage(messages.call_to_action),
         },
+        margin: {
+            type: 'boolean',
+            title: intl.formatMessage(messages.margin),
+        },
     },
 
     required: ['summary', 'title', 'caption'],
@@ -60,6 +69,10 @@ const messages = defineMessages({
     imageFieldset: {
         id: 'imageFieldset',
         defaultMessage: 'Image',
+    },
+    marginFieldset: {
+        id: 'marginFieldset',
+        defaultMessage: 'Margin',
     },
     summary: {
         id: 'Summary',
@@ -80,5 +93,9 @@ const messages = defineMessages({
     call_to_action: {
         id: 'call_to_action',
         defaultMessage: 'Call to Action',
+    },
+    margin: {
+        id: 'margin',
+        defaultMessage: 'Inset Margin'
     },
 });

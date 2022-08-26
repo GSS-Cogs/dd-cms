@@ -14,6 +14,7 @@ export const CcHeroHeaderView = (props) => {
   const [caption, setCaption] = useState('');
   const [image, setImage] = useState('');
   const [callToAction, setCallToAction] = useState('');
+  const [marginInset, setMarginInset] = useState(false);
 
   let articlePath = '#';
 
@@ -51,6 +52,12 @@ export const CcHeroHeaderView = (props) => {
       setImage(props.data.image_source[0]['getURL']);
     } else {
       setImage('');
+    }
+    console.log(props.data.margin);
+    if (props.data.margin == true) {
+      setMarginInset(true);
+    } else {
+      setMarginInset(false);
     }
   }, [content, props.data]);
 
@@ -104,6 +111,14 @@ export const CcHeroHeaderView = (props) => {
           src={image}
           alt=""
           role="presentation"
+          style={
+            {
+              // width: '110%',
+              // minWidth: '70%',
+              // resize: 'horizontal',
+              //marginTop: 0,
+            }
+          }
         />
       </div>
     );
@@ -111,7 +126,7 @@ export const CcHeroHeaderView = (props) => {
 
   return (
     <CcMasthead
-      className="app-masthead--bottom-overlap"
+      className={marginInset && 'app-masthead--bottom-overlap'}
       shouldDisplayPhaseBanner={true}
     >
       <InnerMasthead />
