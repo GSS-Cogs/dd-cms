@@ -1,29 +1,14 @@
 import { defineMessages } from 'react-intl';
 
 export const DashboardTileSchema = ({ intl }) => ({
-    title: 'Manual Article',
+    title: 'Static Content',
 
     fieldsets: [
         {
             id: 'default',
             title: intl.formatMessage(messages.defaultFieldset),
-            fields: ['title', 'summary', 'caption'],
-        },
-        {
-            id: 'image',
-            title: intl.formatMessage(messages.imageFieldset),
-            fields: ['image_source'],
-        },
-        {
-            id: 'call_to_action',
-            title: intl.formatMessage(messages.call_to_action),
-            fields: ['call_to_action'],
-        },
-        {
-            id: 'margin',
-            title: intl.formatMessage(messages.marginFieldset),
-            fields: ['margin'],
-        },
+            fields: ['title', 'summary', 'caption', 'image_source', 'call_to_action', 'margin'],
+        }
     ],
 
     properties: {
@@ -58,21 +43,13 @@ export const DashboardTileSchema = ({ intl }) => ({
         },
     },
 
-    required: ['summary', 'title', 'caption'],
+    required: [],
 });
 
 const messages = defineMessages({
     defaultFieldset: {
         id: 'Default',
         defaultMessage: 'Default',
-    },
-    imageFieldset: {
-        id: 'imageFieldset',
-        defaultMessage: 'Image',
-    },
-    marginFieldset: {
-        id: 'marginFieldset',
-        defaultMessage: 'Margin',
     },
     summary: {
         id: 'Summary',

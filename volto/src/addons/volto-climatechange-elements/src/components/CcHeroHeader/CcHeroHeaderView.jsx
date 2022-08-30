@@ -66,7 +66,11 @@ export const CcHeroHeaderView = (props) => {
   useEffect(() => {
     // Handler to call on window resize
     const handleResize = () => {
-      setHeight(ref.current.clientHeight + 100);
+      let tempHeight = ref.current.clientHeight + 100;
+      if (tempHeight >= 700) {
+        tempHeight = 700;
+      }
+      setHeight(tempHeight);
     };
     // Add event listener
     window.addEventListener('resize', handleResize);
