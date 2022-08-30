@@ -23,7 +23,7 @@ steps:
       - set
       - image
       - deployment/volto
-      - plone=europe-west2-docker.pkg.dev/optimum-bonbon-257411/ccv2/volto:$SHORT_SHA
+      - volto=europe-west2-docker.pkg.dev/optimum-bonbon-257411/ccv2/volto:$SHORT_SHA
     env:
       - 'CLOUDSDK_COMPUTE_REGION=europe-west2'
       - 'CLOUDSDK_CONTAINER_CLUSTER=climate-change-v2'
