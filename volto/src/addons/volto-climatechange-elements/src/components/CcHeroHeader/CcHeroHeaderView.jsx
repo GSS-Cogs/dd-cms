@@ -1,6 +1,6 @@
 // Adapted from https://github.com/alphagov/govuk-design-system/blob/main/views/partials/_masthead.njk
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Tag } from 'govuk-react-jsx';
 import { CcMasthead } from '../CcMasthead/CcMasthead';
@@ -15,6 +15,8 @@ export const CcHeroHeaderView = (props) => {
   const [image, setImage] = useState('');
   const [callToAction, setCallToAction] = useState('');
   const [marginInset, setMarginInset] = useState(false);
+  const [height, setHeight] = useState(0);
+  const ref = useRef(null);
 
   let articlePath = '#';
 
@@ -53,7 +55,7 @@ export const CcHeroHeaderView = (props) => {
     } else {
       setImage('');
     }
-    console.log(props.data.margin);
+
     if (props.data.margin == true) {
       setMarginInset(true);
     } else {
@@ -61,13 +63,26 @@ export const CcHeroHeaderView = (props) => {
     }
   }, [content, props.data]);
 
+  useEffect(() => {
+    // Handler to call on window resize
+    const handleResize = () => {
+      setHeight(ref.current.clientHeight + 100);
+    };
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+    // Call handler right away so state gets updated with initial window size
+    handleResize();
+    // Remove event listener on cleanup
+    return () => window.removeEventListener('resize', handleResize);
+  });
+
   const InnerMasthead = () => {
     let className = 'app-masthead__grid-column govuk-grid';
     if (image != '') {
       className += '-column-one-half';
     }
     return (
-      <div className="govuk-grid-row">
+      <div className="govuk-grid-row" ref={ref}>
         <div className={className}>
           {content ? (
             <Tag className="govuk-tag--grey app-masthead__tag">NEW ARTICLE</Tag>
@@ -111,14 +126,12 @@ export const CcHeroHeaderView = (props) => {
           src={image}
           alt=""
           role="presentation"
-          style={
-            {
-              // width: '110%',
-              // minWidth: '70%',
-              // resize: 'horizontal',
-              //marginTop: 0,
-            }
-          }
+          style={{
+            //width: Math.floor((height / 470) * 100).toString() + '%',
+            position: 'absolute',
+            height: height,
+            left: 400,
+          }}
         />
       </div>
     );
