@@ -13,6 +13,7 @@ import { CcArticleListExt } from './components/CcArticleList/CcArticleListExt';
 import { relatedItemsData, rawData, folderishContent } from './reducers';
 
 import '../theme/main.scss';
+import customiseSlateConfig from './config/volto-slate/index';
 
 const applyConfig = (config) => {
   config.blocks.blocksConfig.dashboardTile = {
@@ -91,6 +92,8 @@ const applyConfig = (config) => {
   config.addonReducers.relatedItemsData = relatedItemsData;
   config.addonReducers.rawData = rawData;
   config.addonReducers.folderishContent = folderishContent;
+
+  config = customiseSlateConfig(config);
 
   return config;
 };
