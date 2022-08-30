@@ -1,12 +1,30 @@
 steps:
   - name: 'gcr.io/kaniko-project/executor:latest'
     args:
-      - --destination=europe-west2-docker.pkg.dev/optimum-bonbon-257411/ccv2/plone
+      - --destination=europe-west2-docker.pkg.dev/optimum-bonbon-257411/ccv2/plone:$SHORT_SHA
       - --cache=true
       - --context=dir://plone-5
   - name: 'gcr.io/kaniko-project/executor:v1.3.0'
     args:
-      - --destination=europe-west2-docker.pkg.dev/optimum-bonbon-257411/ccv2/volto
+      - --destination=europe-west2-docker.pkg.dev/optimum-bonbon-257411/ccv2/volto:$SHORT_SHA
       - --cache=true
       - --context=dir://volto
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args:
+      - set
+      - image
+      - deployment/plone
+      - plone=europe-west2-docker.pkg.dev/optimum-bonbon-257411/ccv2/plone:$SHORT_SHA
+    env:
+      - 'CLOUDSDK_COMPUTE_REGION=europe-west2'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=climate-change-v2'
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args:
+      - set
+      - image
+      - deployment/volto
+      - plone=europe-west2-docker.pkg.dev/optimum-bonbon-257411/ccv2/volto:$SHORT_SHA
+    env:
+      - 'CLOUDSDK_COMPUTE_REGION=europe-west2'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=climate-change-v2'
 timeout: 3600s
