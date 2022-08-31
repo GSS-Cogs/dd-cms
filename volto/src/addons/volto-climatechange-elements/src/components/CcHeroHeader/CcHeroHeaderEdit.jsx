@@ -1,6 +1,6 @@
 import React from 'react';
 import { Segment, Form } from 'semantic-ui-react';
-import { SidebarPortal, Field } from '@plone/volto/components';
+import { SidebarPortal, Field, InlineForm } from '@plone/volto/components';
 import { DashboardTileSchema } from './schema';
 import { CcHeroHeaderView } from './CcHeroHeaderView';
 
@@ -30,6 +30,23 @@ export const CcHeroHeaderEdit = (props) => {
                   [id]: value,
                 });
               }}
+            />
+            <InlineForm
+              schema={schema}
+              title={schema.title}
+              onChangeField={(id, value) => {
+                onChangeBlock(block, {
+                  ...data,
+                  [id]: value,
+                });
+              }}
+              formData={data}
+              // errors={{
+              //   ...(props.errors || {}),
+              //   ...(dataSourceErrors.length
+              //     ? { data_source: dataSourceErrors }
+              //     : {}),
+              // }}
             />
           </Form>
         </Segment.Group>
