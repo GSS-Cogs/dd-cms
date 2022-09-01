@@ -29,7 +29,7 @@ services:
             - NODE_ENV=production
             - VIRTUAL_HOST=vawg.ukstats.dev
             - VIRTUAL_PORT=3000
-            - LETSENCRYPT_HOST=climate-1.ukstats.dev
+            - LETSENCRYPT_HOST=vawg.ukstats.dev
         command: "yarn start:prod"
         init: true
         networks:
