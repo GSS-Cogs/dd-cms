@@ -1,5 +1,6 @@
 import tableSVG from '@plone/volto/icons/table.svg';
 import globeSVG from '@plone/volto/icons/globe.svg';
+import heroSVG from '@plone/volto/icons/hero.svg'
 import { DashboardTileView } from './components/DashboardTile/DashboardTileView';
 import { DashboardTileEdit } from './components/DashboardTile/DashboardTileEdit';
 import { CcHeroHeaderView } from './components/CcHeroHeader/CcHeroHeaderView';
@@ -34,8 +35,8 @@ const applyConfig = (config) => {
 
   config.blocks.blocksConfig.heroHeader = {
     id: 'heroHeader',
-    title: 'Hero Header',
-    icon: tableSVG,
+    title: 'Promo Banner',
+    icon: heroSVG,
     group: 'common',
     view: CcHeroHeaderView,
     edit: CcHeroHeaderEdit,
