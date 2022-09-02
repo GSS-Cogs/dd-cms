@@ -129,20 +129,6 @@ export function folderishContent(state = {}, action = {}) {
   return state;
 }
 
-const getRawSiteTitle = (state) => {
-  let siteTitle = '';
-  const blocks = state.data?.blocks ?? {};
-
-  for (const [key, value] of Object.entries(blocks)) {
-    const block = value;
-    if (block['@type'] === 'heroHeader') {
-      siteTitle = block.title;
-      break;
-    }
-  }
-  return siteTitle;
-};
-
 export function rawSiteTitle(state = {}, action = {}) {
   let { result, url } = action;
 
@@ -162,7 +148,7 @@ export function rawSiteTitle(state = {}, action = {}) {
       return {
         ...state,
         siteTitle: {
-          data: getRawSiteTitle(result),
+          ...state[url],
           loading: false,
           loaded: true,
           error: undefined,
