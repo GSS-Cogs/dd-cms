@@ -76,12 +76,12 @@ const Header = (props) => {
   headerConfig = headerConfigDefault;
   headerConfig.navigation_links.map((navItem, index) => {
     if (dashBoardItems.length > 0) {
-      if (navItem.label == 'Dashboards') {
+      if (navItem.label.toLowerCase() === 'dashboards') {
         navItem['menu_contents'] = menu_contents;
       }
     }
 
-    if (navItem.label == 'Articles') {
+    if (navItem.label.toLowerCase() === 'articles') {
       indexOfArticle = index;
     }
   });
