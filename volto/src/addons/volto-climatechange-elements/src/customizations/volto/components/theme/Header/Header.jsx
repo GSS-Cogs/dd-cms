@@ -63,7 +63,10 @@ const Header = (props) => {
   const listDashboardItems = useSelector(
     (state) => state.reduxAsyncConnect.navigation?.items ?? [],
   );
-  const blocks = useSelector((state) => state.content?.data?.blocks ?? {});
+  const siteTitle = useSelector((state) => {
+    console.log(state);
+    return state.siteTitle?.data ?? '';
+  });
 
   const navItems = listNavigation?.items ?? [];
   const menu_contents = [];
@@ -83,15 +86,6 @@ const Header = (props) => {
     if (item['@id']?.split('/').splice(-1).join('') === 'dashboards')
       dashboardDescription = item.description;
   });
-
-  let siteTitle = '';
-  for (const [key, value] of Object.entries(blocks)) {
-    const block = value;
-    if (block['@type'] === 'heroHeader') {
-      siteTitle = block.title;
-      break;
-    }
-  }
 
   const checkIfArticlesNotNeeded = !navItems.some(
     (item) => item.url === '/articles' && item.items?.length > 0,
