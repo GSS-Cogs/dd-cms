@@ -3,11 +3,10 @@
  * @module components/theme/Header/Header
  */
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { SuperNavigationHeader } from '../../../../../components/CcSuperNavigationHeader/CcSuperNavigationHeader';
 import { useGoogleAnalytics } from 'volto-google-analytics';
-import { hotjar } from 'react-hotjar';
 
 const headerConfigDefault = {
   logo_link_title: 'Go to the GOV.UK homepage',
@@ -54,30 +53,41 @@ const headerConfigDefault = {
 const Header = (props) => {
   let headerConfig = null;
   useGoogleAnalytics();
-  useEffect(() => {
-    hotjar.initialize(process.env.HOTJAR_ID, process.env.HOTJAR_VERSION);
-  }, []);
   const listNavigation = useSelector((state) => state.navigation);
   const navItems = listNavigation?.items ?? [];
   const menu_contents = [];
-  const items = navItems
+  const dashBoardItems = navItems
     .filter((item) => item.url === '/dashboards')
     ?.map((item) => item.items)
     .flat(1);
-  items.map((item) => {
+  dashBoardItems.map((item) => {
     menu_contents.push({
       label: item.title,
       href: `${item.url}`,
     });
   });
 
-  if (items.length > 0) {
-    headerConfig = headerConfigDefault;
-    headerConfig.navigation_links.map((navItem) => {
+  const checkIfArticlesNotNeeded = !navItems.some(
+    (item) => item.url === '/articles' && item.items?.length > 0,
+  );
+
+  let indexOfArticle = -1;
+
+  headerConfig = headerConfigDefault;
+  headerConfig.navigation_links.map((navItem, index) => {
+    if (dashBoardItems.length > 0) {
       if (navItem.label == 'Dashboards') {
         navItem['menu_contents'] = menu_contents;
       }
-    });
+    }
+
+    if (navItem.label == 'Articles') {
+      indexOfArticle = index;
+    }
+  });
+
+  if (checkIfArticlesNotNeeded && indexOfArticle > -1) {
+    headerConfig.navigation_links.splice(indexOfArticle, 1);
   }
 
   /**
