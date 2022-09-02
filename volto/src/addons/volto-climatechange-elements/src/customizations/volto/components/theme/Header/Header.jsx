@@ -12,7 +12,7 @@ const headerConfigDefault = {
   logo_link_title: 'Go to the GOV.UK homepage',
   logo_text: 'GOV.UK',
   logo_href: '/',
-  service_name: 'Climate Change',
+  service_name: '',
   navigation_links: [
     {
       label: 'Dashboards',
@@ -56,6 +56,8 @@ const Header = (props) => {
   const listDashboardItems = useSelector(
     (state) => state.reduxAsyncConnect.navigation?.items ?? [],
   );
+  const blocks = useSelector((state) => state.content?.data?.blocks ?? {});
+
   const navItems = listNavigation?.items ?? [];
   const menu_contents = [];
   const dashBoardItems = navItems
@@ -75,6 +77,15 @@ const Header = (props) => {
       dashboardDescription = item.description;
   });
 
+  let siteTitle = '';
+  for (const [key, value] of Object.entries(blocks)) {
+    const block = value;
+    if (block['@type'] === 'heroHeader') {
+      siteTitle = block.title;
+      break;
+    }
+  }
+
   const checkIfArticlesNotNeeded = !navItems.some(
     (item) => item.url === '/articles' && item.items?.length > 0,
   );
@@ -82,6 +93,7 @@ const Header = (props) => {
   let indexOfArticle = -1;
 
   headerConfig = headerConfigDefault;
+  headerConfig.service_name = siteTitle;
   headerConfig.navigation_links.map((navItem, index) => {
     if (dashBoardItems.length > 0) {
       if (navItem.label == 'Dashboards') {
