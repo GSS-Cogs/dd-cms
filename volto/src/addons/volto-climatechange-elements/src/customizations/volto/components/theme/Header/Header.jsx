@@ -64,7 +64,6 @@ const Header = (props) => {
     (state) => state.reduxAsyncConnect.navigation?.items ?? [],
   );
   const siteTitle = useSelector((state) => {
-    console.log(state);
     const blocks = state.rawSiteTitle?.siteTitle?.data?.blocks ?? '';
 
     let siteTitle = '';
