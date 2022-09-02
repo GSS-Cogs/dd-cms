@@ -17,8 +17,7 @@ const headerConfigDefault = {
     {
       label: 'Dashboards',
       href: '/dashboards',
-      description:
-        'Dashboards about the different indicators of climate change',
+      description: '',
       menu_contents: [],
       footer_links: [
         {
@@ -54,6 +53,9 @@ const Header = (props) => {
   let headerConfig = null;
   useGoogleAnalytics();
   const listNavigation = useSelector((state) => state.navigation);
+  const listDashboardItems = useSelector(
+    (state) => state.reduxAsyncConnect.navigation?.items ?? [],
+  );
   const navItems = listNavigation?.items ?? [];
   const menu_contents = [];
   const dashBoardItems = navItems
@@ -67,6 +69,12 @@ const Header = (props) => {
     });
   });
 
+  let dashboardDescription = '';
+  listDashboardItems.map((item) => {
+    if (item['@id']?.split('/').splice(-1).join('') === 'dashboards')
+      dashboardDescription = item.description;
+  });
+
   const checkIfArticlesNotNeeded = !navItems.some(
     (item) => item.url === '/articles' && item.items?.length > 0,
   );
@@ -78,6 +86,7 @@ const Header = (props) => {
     if (dashBoardItems.length > 0) {
       if (navItem.label == 'Dashboards') {
         navItem['menu_contents'] = menu_contents;
+        navItem['description'] = dashboardDescription;
       }
     }
 
