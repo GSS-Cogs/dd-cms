@@ -55,10 +55,7 @@ const Header = (props) => {
   let headerConfig = null;
   useGoogleAnalytics();
   useEffect(() => {
-    hotjar.initialize(
-      process.env.RAZZLE_HOTJAR_ID,
-      process.env.RAZZLE_HOTJAR_VERSION,
-    );
+    hotjar.initialize(process.env.HOTJAR_ID, process.env.HOTJAR_VERSION);
   }, []);
   const listNavigation = useSelector((state) => state.navigation);
   const navItems = listNavigation?.items ?? [];
