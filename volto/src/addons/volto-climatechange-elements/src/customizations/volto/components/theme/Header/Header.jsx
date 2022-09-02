@@ -65,7 +65,17 @@ const Header = (props) => {
   );
   const siteTitle = useSelector((state) => {
     console.log(state);
-    return state.siteTitle?.data ?? '';
+    const blocks = state.rawSiteTitle?.siteTitle?.data?.blocks ?? '';
+
+    let siteTitle = '';
+    for (const [key, value] of Object.entries(blocks)) {
+      const block = value;
+      if (block['@type'] === 'heroHeader') {
+        siteTitle = block.title;
+        break;
+      }
+    }
+    return siteTitle;
   });
 
   const navItems = listNavigation?.items ?? [];
