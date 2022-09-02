@@ -144,7 +144,6 @@ export function rawSiteTitle(state = {}, action = {}) {
         },
       };
     case `${GET_SITE_TITLE}_SUCCESS`:
-      getRawSiteTitle(result);
       return {
         ...state,
         siteTitle: {
