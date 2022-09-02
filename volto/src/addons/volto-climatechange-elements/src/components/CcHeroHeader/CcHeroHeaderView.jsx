@@ -15,6 +15,7 @@ export const CcHeroHeaderView = (props) => {
   const [image, setImage] = useState('');
   const [callToAction, setCallToAction] = useState('');
   const [marginInset, setMarginInset] = useState(false);
+  const [phaseBannerLink, setPhaseBannerLink] = useState('');
   const [height, setHeight] = useState(0);
   const ref = useRef(null);
 
@@ -60,6 +61,11 @@ export const CcHeroHeaderView = (props) => {
       setMarginInset(true);
     } else {
       setMarginInset(false);
+    }
+    if (props.data.bannerLinkType == 'mailto') {
+      setPhaseBannerLink('mailto:' + props.data.bannerLink);
+    } else {
+      setPhaseBannerLink(props.data.bannerLink);
     }
   }, [content, props.data]);
 
@@ -131,10 +137,10 @@ export const CcHeroHeaderView = (props) => {
           alt=""
           role="presentation"
           style={{
-            //width: Math.floor((height / 470) * 100).toString() + '%',
             position: 'absolute',
             height: height,
-            left: 400,
+            right: 0,
+            width: '50%',
           }}
         />
       </div>
@@ -144,7 +150,9 @@ export const CcHeroHeaderView = (props) => {
   return (
     <CcMasthead
       className={marginInset && 'app-masthead--bottom-overlap'}
-      shouldDisplayPhaseBanner={true}
+      shouldDisplayPhaseBanner={props.data.bannerDisplay}
+      phaseBannerStage={props.data.bannerStage}
+      phaseBannerLinkAddress={phaseBannerLink}
     >
       <InnerMasthead />
     </CcMasthead>

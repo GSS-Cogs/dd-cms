@@ -6,6 +6,8 @@ export const CcMasthead = ({
   children,
   className,
   shouldDisplayPhaseBanner,
+  phaseBannerStage,
+  phaseBannerLinkAddress,
 }) => (
   <div className={`app-masthead ${className || ''}`}>
     <div className="app-width-container">
@@ -14,16 +16,17 @@ export const CcMasthead = ({
           <PhaseBanner
             className="cc-phasebanner-masthead"
             tag={{
-              children: 'beta',
+              children: phaseBannerStage,
             }}
           >
             This is a new service your{' '}
             <Link
               to="#"
               onClick={(e) => {
-                window.location.href = "mailto:climate.change@ons.gov.uk";
+                window.location.href = phaseBannerLinkAddress; //'mailto:climate.change@ons.gov.uk';
                 e.preventDefault();
               }}
+              style={{ textDecorationLine: 'underline' }}
             >
               feedback
             </Link>{' '}
