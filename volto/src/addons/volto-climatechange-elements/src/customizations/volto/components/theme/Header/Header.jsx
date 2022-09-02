@@ -96,13 +96,13 @@ const Header = (props) => {
   headerConfig.service_name = siteTitle;
   headerConfig.navigation_links.map((navItem, index) => {
     if (dashBoardItems.length > 0) {
-      if (navItem.label == 'Dashboards') {
+      if (navItem.label.toLowerCase() === 'dashboards') {
         navItem['menu_contents'] = menu_contents;
         navItem['description'] = dashboardDescription;
       }
     }
 
-    if (navItem.label == 'Articles') {
+    if (navItem.label.toLowerCase() === 'articles') {
       indexOfArticle = index;
     }
   });
