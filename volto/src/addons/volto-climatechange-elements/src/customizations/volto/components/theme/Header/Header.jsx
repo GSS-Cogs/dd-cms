@@ -3,9 +3,10 @@
  * @module components/theme/Header/Header
  */
 
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { SuperNavigationHeader } from '../../../../../components/CcSuperNavigationHeader/CcSuperNavigationHeader';
+import { getSiteTitle } from '../../../../../actions';
 import { useGoogleAnalytics } from 'volto-google-analytics';
 
 const headerConfigDefault = {
@@ -51,6 +52,12 @@ const headerConfigDefault = {
  */
 const Header = (props) => {
   let headerConfig = null;
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getSiteTitle());
+  }, []);
+
   useGoogleAnalytics();
   const listNavigation = useSelector((state) => state.navigation);
   const listDashboardItems = useSelector(
