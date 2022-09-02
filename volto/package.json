@@ -138,6 +138,10 @@
     "styled-components": "5.3.5",
     "volto-authomatic": "1.0.3",
     "volto-google-analytics": "1.3.0",
+<<<<<<< HEAD
+=======
+    "react-hotjar": "^5.0.0",
+>>>>>>> 1e556b6187c1666444a6af81b0502d4fea280959
     "volto-slate": "5.3.3"
   },
   "devDependencies": {

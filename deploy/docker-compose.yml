@@ -1,11 +1,11 @@
 version: '3.8'
 
 services:
-    plone:
+    plone-vawag:
         build:
             context: ../plone-5
         volumes:
-            - plone-data:/data:z
+            - vawag-data:/data:z
         networks:
             - cogs_proxy
         restart: always
@@ -19,17 +19,17 @@ services:
             - cogs_proxy
         restart: always
 
-    volto-v1:
+    volto-vawag:
         build:
             context: ../volto
             args:
                 ADDONS: "@eeacms/volto-datablocks;@eeacms/volto-columns-block;volto-slate:asDefault;volto-authomatic;volto-govuk-theme;volto-chart-builder"
         environment:
-            - RAZZLE_API_PATH=https://climate-1.ukstats.dev/api
+            - RAZZLE_API_PATH=https://vawg.ukstats.dev/api
             - NODE_ENV=production
-            - VIRTUAL_HOST=climate-1.ukstats.dev
+            - VIRTUAL_HOST=vawg.ukstats.dev
             - VIRTUAL_PORT=3000
-            - LETSENCRYPT_HOST=climate-1.ukstats.dev
+            - LETSENCRYPT_HOST=vawg.ukstats.dev
         command: "yarn start:prod"
         init: true
         networks:
@@ -43,6 +43,9 @@ services:
                 ADDONS: "@eeacms/volto-datablocks;@eeacms/volto-columns-block;volto-slate:asDefault;volto-authomatic;volto-govuk-theme;volto-chart-builder;volto-climatechange-elements"
         environment:
             - RAZZLE_API_PATH=https://staging.climate-change.data.gov.uk/api
+            - RAZZLE_GA4_CODE=G-Y84VSLC1LC
+            - HOTJAR_ID=3118262
+            - HOTJAR_VERSION=6
             - NODE_ENV=production
             - VIRTUAL_HOST=staging.climate-change.data.gov.uk
             - VIRTUAL_PORT=3000
@@ -54,7 +57,7 @@ services:
         restart: always
 
 volumes:
-    plone-data:
+    vawag-data:
     cc2-data:
 
 networks:
