@@ -53,12 +53,9 @@ pipeline {
     post {
         always {
             script {
-                dir('volto') {
-                    junit allowEmptyResults: true, testResults: '*.xml'
-                }
+                junit allowEmptyResults: true, testResults: '**/junit.xml'
                 dir('tests/climate-change-v2') {
                     cucumber 'test-results.json'
-                    junit allowEmptyResults: true, testResults: 'junit.xml'
                     sh "docker-compose -p ${PROJ_NAME} down"
                 }
             }
