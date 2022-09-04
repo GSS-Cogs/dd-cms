@@ -1,6 +1,6 @@
 import tableSVG from '@plone/volto/icons/table.svg';
 import globeSVG from '@plone/volto/icons/globe.svg';
-import heroSVG from '@plone/volto/icons/hero.svg'
+import heroSVG from '@plone/volto/icons/hero.svg';
 import { DashboardTileView } from './components/DashboardTile/DashboardTileView';
 import { DashboardTileEdit } from './components/DashboardTile/DashboardTileEdit';
 import { CcHeroHeaderView } from './components/CcHeroHeader/CcHeroHeaderView';
@@ -11,7 +11,12 @@ import { CcRelatedLinks } from './components/CcRelatedLinks/CcRelatedLinks';
 import { CcArticleList } from './components/CcArticleList/CcArticleList';
 import { CcArticleListExt } from './components/CcArticleList/CcArticleListExt';
 
-import { relatedItemsData, rawData, folderishContent } from './reducers';
+import {
+  relatedItemsData,
+  rawData,
+  folderishContent,
+  rawSiteTitle,
+} from './reducers';
 
 import '../theme/main.scss';
 import customiseSlateConfig from './config/volto-slate/index';
@@ -93,6 +98,7 @@ const applyConfig = (config) => {
   config.addonReducers.relatedItemsData = relatedItemsData;
   config.addonReducers.rawData = rawData;
   config.addonReducers.folderishContent = folderishContent;
+  config.addonReducers.rawSiteTitle = rawSiteTitle;
 
   config = customiseSlateConfig(config);
 

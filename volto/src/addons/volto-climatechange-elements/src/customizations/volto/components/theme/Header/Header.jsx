@@ -3,16 +3,17 @@
  * @module components/theme/Header/Header
  */
 
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { SuperNavigationHeader } from '../../../../../components/CcSuperNavigationHeader/CcSuperNavigationHeader';
+import { getSiteTitle } from '../../../../../actions';
 import { useGoogleAnalytics } from 'volto-google-analytics';
 
 const headerConfigDefault = {
   logo_link_title: 'Go to the GOV.UK homepage',
   logo_text: 'GOV.UK',
   logo_href: '/',
-  service_name: 'Climate Change',
+  service_name: '',
   navigation_links: [
     {
       label: 'Dashboards',
@@ -51,11 +52,31 @@ const headerConfigDefault = {
  */
 const Header = (props) => {
   let headerConfig = null;
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getSiteTitle());
+  }, []);
+
   useGoogleAnalytics();
   const listNavigation = useSelector((state) => state.navigation);
   const listDashboardItems = useSelector(
     (state) => state.reduxAsyncConnect.navigation?.items ?? [],
   );
+  const siteTitle = useSelector((state) => {
+    const blocks = state.rawSiteTitle?.siteTitle?.data?.blocks ?? '';
+
+    let siteTitle = '';
+    for (const [key, value] of Object.entries(blocks)) {
+      const block = value;
+      if (block['@type'] === 'heroHeader') {
+        siteTitle = block.title;
+        break;
+      }
+    }
+    return siteTitle;
+  });
+
   const navItems = listNavigation?.items ?? [];
   const menu_contents = [];
   const dashBoardItems = navItems
@@ -82,6 +103,7 @@ const Header = (props) => {
   let indexOfArticle = -1;
 
   headerConfig = headerConfigDefault;
+  headerConfig.service_name = siteTitle;
   headerConfig.navigation_links.map((navItem, index) => {
     if (dashBoardItems.length > 0) {
       if (navItem.label.toLowerCase() === 'dashboards') {
