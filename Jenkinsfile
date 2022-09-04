@@ -58,6 +58,7 @@ pipeline {
                 }
                 dir('tests/climate-change-v2') {
                     cucumber 'test-results.json'
+                    junit allowEmptyResults: true, testResults: 'junit.xml'
                     sh "docker-compose -p ${PROJ_NAME} down"
                 }
             }

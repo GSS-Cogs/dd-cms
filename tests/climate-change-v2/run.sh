@@ -9,6 +9,9 @@ echo "ready."
 TESTDIR=$PWD
 cd /home/node/app
 export SCREENSHOT_PATH=$TESTDIR/screenshots/
-NODE_PATH=/home/node/app/node_modules ./node_modules/.bin/cucumber-js --require "../**/{cucumber-puppeteer,cucumber-puppeteer-axe}/features/**/*.js" --require "$TESTDIR/features/**/*.js" --world-parameters "{\"executablePath\":\"/usr/bin/chromium-browser\", \"dumpio\": true, \"defaultViewport\": {\"width\": 1512, \"height\": 982}}" $TESTDIR/features --format=json:$TESTDIR/test-results.json --exit
+export NODE_PATH=/home/node/app/node_modules
+export PATH=$NODE_PATH/.bin:$PATH
+cucumber-js --require "../**/{cucumber-puppeteer,cucumber-puppeteer-axe}/features/**/*.js" --require "$TESTDIR/features/**/*.js" --world-parameters "{\"executablePath\":\"/usr/bin/chromium-browser\", \"dumpio\": true, \"defaultViewport\": {\"width\": 1512, \"height\": 982}}" $TESTDIR/features --format=json:$TESTDIR/test-results.json --exit
+cucumber-junit < $TESTDIR/test-results.json > $TESTDIR/junit.xml
 cd $TESTDIR
-NODE_PATH=/home/node/app/node_modules node toHTML.js
+node toHTML.js
