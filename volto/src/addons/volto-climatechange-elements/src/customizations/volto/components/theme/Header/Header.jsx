@@ -3,11 +3,13 @@
  * @module components/theme/Header/Header
  */
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { SuperNavigationHeader } from '../../../../../components/CcSuperNavigationHeader/CcSuperNavigationHeader';
-import { useGoogleAnalytics } from 'volto-google-analytics';
-import { hotjar } from 'react-hotjar';
+
+import CcCookieBanner from '../../../../../components/CcCookieBanner/CcCookieBanner';
+import { useCookieConsent } from '../App/CookieConsentProvider';
+import { Analytics } from './Analytics';
 
 const headerConfigDefault = {
   logo_link_title: 'Go to the GOV.UK homepage',
@@ -53,10 +55,8 @@ const headerConfigDefault = {
  */
 const Header = (props) => {
   let headerConfig = null;
-  useGoogleAnalytics();
-  useEffect(() => {
-    hotjar.initialize(process.env.HOTJAR_ID, process.env.HOTJAR_VERSION);
-  }, []);
+  const cookieConsent = useCookieConsent();
+
   const listNavigation = useSelector((state) => state.navigation);
   const navItems = listNavigation?.items ?? [];
   const menu_contents = [];
@@ -87,6 +87,8 @@ const Header = (props) => {
    */
   return (
     <>
+      {cookieConsent && cookieConsent.usage && <Analytics />}
+      <CcCookieBanner />
       <SuperNavigationHeader
         className={props?.pathname === '' ? 'root-header' : 'non-root-header'}
         navigation={headerConfig}
