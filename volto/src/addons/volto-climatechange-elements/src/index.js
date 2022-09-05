@@ -16,6 +16,7 @@ import {
   rawData,
   folderishContent,
   rawPhaseBanner,
+  rawSiteTitle,
 } from './reducers';
 
 import '../theme/main.scss';
@@ -99,6 +100,8 @@ const applyConfig = (config) => {
   config.addonReducers.rawData = rawData;
   config.addonReducers.folderishContent = folderishContent;
   config.addonReducers.rawPhaseBanner = rawPhaseBanner;
+  config.addonReducers.rawSiteTitle = rawSiteTitle;
+
   config = customiseSlateConfig(config);
 
   return config;

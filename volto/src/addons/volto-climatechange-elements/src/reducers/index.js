@@ -5,6 +5,7 @@ import {
   GET_RAW_CONTENT,
   GET_FOLDERISH_CONTENT,
   GET_PHASE_BANNER_CONTENT,
+  GET_SITE_TITLE,
 } from '../constants/ActionTypes';
 import { formattedDate } from '../utils';
 
@@ -130,26 +131,6 @@ export function folderishContent(state = {}, action = {}) {
   return state;
 }
 
-const getRawPhaseBanner = (state) => {
-  let phaseBanner = {};
-  const blocks = state.data?.blocks ?? {};
-
-  for (const [key, value] of Object.entries(blocks)) {
-    const block = value;
-    if (block['@type'] === 'heroHeader') {
-      phaseBanner.bannerStage = block.bannerStage;
-      phaseBanner.bannerDisplay = block.bannerDisplay;
-      if (block.bannerLinkType == 'mailto') {
-        phaseBanner.bannerLink = 'mailto:' + block.bannerLink;
-      } else {
-        phaseBanner.bannerLink = block.bannerLink;
-      }
-      break;
-    }
-  }
-  return phaseBanner;
-};
-
 export function rawPhaseBanner(state = {}, action = {}) {
   let { result, url } = action;
 
@@ -168,7 +149,6 @@ export function rawPhaseBanner(state = {}, action = {}) {
       return {
         ...state,
         phaseBanner: {
-          //data: getRawPhaseBanner(result),
           ...state[url],
           loading: false,
           loaded: true,
@@ -180,6 +160,48 @@ export function rawPhaseBanner(state = {}, action = {}) {
       return {
         ...state,
         phaseBanner: {
+          data: null,
+          loading: false,
+          loaded: false,
+          error: action.error,
+        },
+      };
+    default:
+      break;
+  }
+  return state;
+}
+
+export function rawSiteTitle(state = {}, action = {}) {
+  let { result, url } = action;
+
+  switch (action.type) {
+    case `${GET_SITE_TITLE}_PENDING`:
+      return {
+        ...state,
+        siteTitle: {
+          data: null,
+          loading: true,
+          loaded: false,
+          error: undefined,
+        },
+      };
+    case `${GET_SITE_TITLE}_SUCCESS`:
+      return {
+        ...state,
+        siteTitle: {
+          ...state[url],
+          loading: false,
+          loaded: true,
+          error: undefined,
+          data: result,
+        },
+      };
+
+    case `${GET_SITE_TITLE}_FAIL`:
+      return {
+        ...state,
+        siteTitle: {
           data: null,
           loading: false,
           loaded: false,
