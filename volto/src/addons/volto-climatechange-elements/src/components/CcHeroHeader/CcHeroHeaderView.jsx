@@ -15,7 +15,7 @@ export const CcHeroHeaderView = (props) => {
   const [image, setImage] = useState('');
   const [callToAction, setCallToAction] = useState('');
   const [marginInset, setMarginInset] = useState(false);
-  const [phaseBannerLink, setPhaseBannerLink] = useState('');
+  const [phaseBannerDisplay, setPhaseBannerDisplay] = useState(false);
   const [height, setHeight] = useState(0);
   const ref = useRef(null);
 
@@ -62,17 +62,18 @@ export const CcHeroHeaderView = (props) => {
     } else {
       setMarginInset(false);
     }
-    if (props.data.bannerLinkType == 'mailto') {
-      setPhaseBannerLink('mailto:' + props.data.bannerLink);
+    if (props.data.bannerDisplay === false) {
+      setPhaseBannerDisplay(false);
     } else {
-      setPhaseBannerLink(props.data.bannerLink);
+      setPhaseBannerDisplay(true);
     }
   }, [content, props.data]);
 
   useEffect(() => {
     // Handler to call on window resize
+    let offset = phaseBannerDisplay ? 100 : 25;
     const handleResize = () => {
-      let tempHeight = ref.current.clientHeight + 100;
+      let tempHeight = ref.current.clientHeight + offset;
       if (tempHeight >= 700) {
         tempHeight = 700;
       }
@@ -129,6 +130,7 @@ export const CcHeroHeaderView = (props) => {
     if (image == '' || image == undefined) {
       return null;
     }
+    let offset = phaseBannerDisplay ? -75 : 0;
     return (
       <div className="govuk-grid-column-one-half app-masthead__grid-column">
         <img
@@ -141,6 +143,7 @@ export const CcHeroHeaderView = (props) => {
             height: height,
             right: 0,
             width: '50%',
+            marginTop: offset,
           }}
         />
       </div>
@@ -150,9 +153,7 @@ export const CcHeroHeaderView = (props) => {
   return (
     <CcMasthead
       className={marginInset && 'app-masthead--bottom-overlap'}
-      shouldDisplayPhaseBanner={props.data.bannerDisplay}
-      phaseBannerStage={props.data.bannerStage}
-      phaseBannerLinkAddress={phaseBannerLink}
+      shouldDisplayPhaseBanner={phaseBannerDisplay}
     >
       <InnerMasthead />
     </CcMasthead>
