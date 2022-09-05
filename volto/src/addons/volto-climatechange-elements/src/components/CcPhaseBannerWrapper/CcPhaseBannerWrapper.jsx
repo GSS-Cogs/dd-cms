@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { PhaseBanner } from 'govuk-react-jsx';
 import { getPhaseBannerContent } from '../../actions';
 
-export const CcPhaseBannerWrapper = ({ css }) => {
+export const CcPhaseBannerWrapper = ({ className }) => {
   const [phaseBannerLink, setPhaseBannerLink] = useState('');
   const [phaseBannerStage, setPhaseBannerStage] = useState('alpha');
   const [phaseBannerDisplay, setPhaseBannerDisplay] = useState(false);
@@ -17,6 +17,7 @@ export const CcPhaseBannerWrapper = ({ css }) => {
   const phaseData = useSelector((state) => {
     const blocks = state.rawPhaseBanner?.phaseBanner?.data?.blocks ?? '';
     //console.log(blocks);
+    console.log(blocks);
     let phaseBanner = {};
     for (const [key, value] of Object.entries(blocks)) {
       const block = value;
@@ -41,7 +42,7 @@ export const CcPhaseBannerWrapper = ({ css }) => {
   useEffect(() => {
     console.log('-------------');
     var obj = phaseData;
-    //console.log(obj);
+
     setPhaseBannerStage(obj.bannerStage);
     setPhaseBannerDisplay(obj.bannerDisplay);
     if (obj.bannerLinkType == 'mailto') {
@@ -54,7 +55,7 @@ export const CcPhaseBannerWrapper = ({ css }) => {
   return phaseBannerDisplay ? (
     <div>
       <PhaseBanner
-        className={css == 'hero' ? 'cc-phasebanner-masthead' : 'cc-phasebanner'}
+        className={className}
         tag={{
           children: phaseBannerStage,
         }}

@@ -10,7 +10,9 @@ export const CcMasthead = ({
 }) => (
   <div className={`app-masthead ${className || ''}`}>
     <div className="app-width-container">
-      {shouldDisplayPhaseBanner ? <CcPhaseBannerWrapper css={'hero'} /> : null}
+      {shouldDisplayPhaseBanner ? (
+        <CcPhaseBannerWrapper className={'cc-phasebanner-masthead'} />
+      ) : null}
       <div className="app-masthead__grid-row">{children}</div>
     </div>
   </div>
