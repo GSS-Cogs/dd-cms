@@ -1,8 +1,10 @@
+import { PhaseBanner } from 'govuk-react-jsx/govuk/components/phase-banner';
 import { uniq } from 'lodash';
 import {
   GET_RELATED_ITEMS_DATA,
   GET_RAW_CONTENT,
   GET_FOLDERISH_CONTENT,
+  GET_PHASE_BANNER_CONTENT,
 } from '../constants/ActionTypes';
 import { formattedDate } from '../utils';
 
@@ -117,6 +119,68 @@ export function folderishContent(state = {}, action = {}) {
         ...state,
         [url]: {
           ...state[url],
+          loading: false,
+          loaded: false,
+          error: action.error,
+        },
+      };
+    default:
+      break;
+  }
+  return state;
+}
+
+const getRawPhaseBanner = (state) => {
+  let phaseBanner = {};
+  const blocks = state.data?.blocks ?? {};
+
+  for (const [key, value] of Object.entries(blocks)) {
+    const block = value;
+    if (block['@type'] === 'heroHeader') {
+      phaseBanner.bannerStage = block.bannerStage;
+      phaseBanner.bannerDisplay = block.bannerDisplay;
+      if (block.bannerLinkType == 'mailto') {
+        phaseBanner.bannerLink = 'mailto:' + block.bannerLink;
+      } else {
+        phaseBanner.bannerLink = block.bannerLink;
+      }
+      break;
+    }
+  }
+  return phaseBanner;
+};
+
+export function rawPhaseBanner(state = {}, action = {}) {
+  let { result, url } = action;
+
+  switch (action.type) {
+    case `${GET_PHASE_BANNER_CONTENT}_PENDING`:
+      return {
+        ...state,
+        phaseBanner: {
+          data: null,
+          loading: true,
+          loaded: false,
+          error: undefined,
+        },
+      };
+    case `${GET_PHASE_BANNER_CONTENT}_SUCCESS`:
+      return {
+        ...state,
+        phaseBanner: {
+          //data: getRawPhaseBanner(result),
+          ...state[url],
+          loading: false,
+          loaded: true,
+          error: undefined,
+          data: result,
+        },
+      };
+    case `${GET_PHASE_BANNER_CONTENT}_FAIL`:
+      return {
+        ...state,
+        phaseBanner: {
+          data: null,
           loading: false,
           loaded: false,
           error: action.error,

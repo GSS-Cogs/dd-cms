@@ -2,6 +2,7 @@ import {
   GET_RELATED_ITEMS_DATA,
   GET_RAW_CONTENT,
   GET_FOLDERISH_CONTENT,
+  GET_PHASE_BANNER_CONTENT,
 } from '../constants/ActionTypes';
 
 export function getRelatedItemsData({
@@ -52,5 +53,17 @@ export function getFolderishContent(url, headers = {}) {
       headers,
     },
     url,
+  };
+}
+
+export function getPhaseBannerContent() {
+  return {
+    type: GET_PHASE_BANNER_CONTENT,
+    request: {
+      op: 'get',
+      path: '',
+      headers: {},
+    },
+    url: '',
   };
 }
