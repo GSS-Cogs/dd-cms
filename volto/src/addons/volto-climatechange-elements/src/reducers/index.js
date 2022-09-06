@@ -146,6 +146,20 @@ export function rawPhaseBanner(state = {}, action = {}) {
         },
       };
     case `${GET_PHASE_BANNER_CONTENT}_SUCCESS`:
+      let phaseBanner = {};
+      for (const [key, value] of Object.entries(result.blocks)) {
+        const block = value;
+        if (block['@type'] === 'heroHeader') {
+          phaseBanner.bannerStage = block.bannerStage;
+          phaseBanner.bannerDisplay = block.bannerDisplay;
+          if (block.bannerLinkType == 'mailto') {
+            phaseBanner.bannerLink = 'mailto:' + block.bannerLink;
+          } else {
+            phaseBanner.bannerLink = block.bannerLink;
+          }
+          break;
+        }
+      }
       return {
         ...state,
         phaseBanner: {
@@ -153,7 +167,7 @@ export function rawPhaseBanner(state = {}, action = {}) {
           loading: false,
           loaded: true,
           error: undefined,
-          data: result,
+          data: phaseBanner,
         },
       };
     case `${GET_PHASE_BANNER_CONTENT}_FAIL`:
