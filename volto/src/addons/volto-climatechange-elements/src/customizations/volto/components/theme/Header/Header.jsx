@@ -32,10 +32,6 @@ const headerConfigDefault = {
       ],
     },
     {
-      label: 'Articles',
-      href: '/articles',
-    },
-    {
       label: 'About',
       href: '/about',
     },
@@ -96,11 +92,9 @@ const Header = (props) => {
       dashboardDescription = item.description;
   });
 
-  const checkIfArticlesNotNeeded = !navItems.some(
+  const checkIfArticlesNeeded = navItems.some(
     (item) => item.url === '/articles' && item.items?.length > 0,
   );
-
-  let indexOfArticle = -1;
 
   headerConfig = headerConfigDefault;
   headerConfig.service_name = siteTitle;
@@ -111,15 +105,16 @@ const Header = (props) => {
         navItem['description'] = dashboardDescription;
       }
     }
-
-    if (navItem.label.toLowerCase() === 'articles') {
-      indexOfArticle = index;
-    }
   });
 
-  if (checkIfArticlesNotNeeded && indexOfArticle > -1) {
-    headerConfig.navigation_links.splice(indexOfArticle, 1);
-  }
+  useEffect(() => {
+    if (checkIfArticlesNeeded) {
+      headerConfig.navigation_links.splice(1, 0, {
+        label: 'Articles',
+        href: '/articles',
+      });
+    }
+  }, [checkIfArticlesNeeded]);
 
   /**
    * Render method.
