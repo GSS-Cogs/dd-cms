@@ -37,10 +37,10 @@
 }
 
 .cc-related-links-item-title {
-  text-decoration: none;
+  @extend %govuk-heading-m;
   color: govuk-colour('blue');
 }
 
 .cc-related-links-description {
-  color: govuk-colour('dark-grey');
+  @extend %govuk-body-m;
 }
