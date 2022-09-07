@@ -44,8 +44,8 @@ services:
         environment:
             - RAZZLE_API_PATH=https://staging.climate-change.data.gov.uk/api
             - RAZZLE_GA4_CODE=G-Y84VSLC1LC
-            - HOTJAR_ID=3118262
-            - HOTJAR_VERSION=6
+            - RAZZLE_RUNTIME_HOTJAR_ID=3118262
+            - RAZZLE_RUNTIME_HOTJAR_VERSION=6
             - NODE_ENV=production
             - VIRTUAL_HOST=staging.climate-change.data.gov.uk
             - VIRTUAL_PORT=3000
