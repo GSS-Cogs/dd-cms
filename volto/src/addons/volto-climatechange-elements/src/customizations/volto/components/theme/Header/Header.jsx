@@ -3,25 +3,26 @@
  * @module components/theme/Header/Header
  */
 
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { SuperNavigationHeader } from '../../../../../components/CcSuperNavigationHeader/CcSuperNavigationHeader';
-
 import CcCookieBanner from '../../../../../components/CcCookieBanner/CcCookieBanner';
 import { useCookieConsent } from '../App/CookieConsentProvider';
 import { Analytics } from './Analytics';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { SuperNavigationHeader } from '../../../../../components/CcSuperNavigationHeader/CcSuperNavigationHeader';
+import { getSiteTitle } from '../../../../../actions';
+import { useGoogleAnalytics } from 'volto-google-analytics';
+import { hotjar } from 'react-hotjar';
 
 const headerConfigDefault = {
   logo_link_title: 'Go to the GOV.UK homepage',
   logo_text: 'GOV.UK',
   logo_href: '/',
-  service_name: 'Climate Change',
+  service_name: '',
   navigation_links: [
     {
       label: 'Dashboards',
       href: '/dashboards',
-      description:
-        'Dashboards about the different indicators of climate change',
+      description: '',
       menu_contents: [],
       footer_links: [
         {
@@ -33,10 +34,6 @@ const headerConfigDefault = {
           href: 'https://beta.gss-data.org.uk/datasets',
         },
       ],
-    },
-    {
-      label: 'Articles',
-      href: '/articles',
     },
     {
       label: 'About',
@@ -57,28 +54,76 @@ const Header = (props) => {
   let headerConfig = null;
   const cookieConsent = useCookieConsent();
 
+  const dispatch = useDispatch();
+  useEffect(() => {
+    hotjar.initialize(
+      process.env.RAZZLE_RUNTIME_HOTJAR_ID,
+      process.env.RAZZLE_RUNTIME_HOTJAR_VERSION,
+    );
+    dispatch(getSiteTitle());
+  }, []);
+
+  useGoogleAnalytics();
   const listNavigation = useSelector((state) => state.navigation);
+  const listDashboardItems = useSelector(
+    (state) => state.reduxAsyncConnect.navigation?.items ?? [],
+  );
+  const siteTitle = useSelector((state) => {
+    const blocks = state.rawSiteTitle?.siteTitle?.data?.blocks ?? '';
+
+    let siteTitle = '';
+    for (const [key, value] of Object.entries(blocks)) {
+      const block = value;
+      if (block['@type'] === 'heroHeader') {
+        siteTitle = block.title;
+        break;
+      }
+    }
+    return siteTitle;
+  });
+
   const navItems = listNavigation?.items ?? [];
   const menu_contents = [];
-  const items = navItems
+  const dashBoardItems = navItems
     .filter((item) => item.url === '/dashboards')
     ?.map((item) => item.items)
     .flat(1);
-  items.map((item) => {
+  dashBoardItems.map((item) => {
     menu_contents.push({
       label: item.title,
       href: `${item.url}`,
     });
   });
 
-  if (items.length > 0) {
-    headerConfig = headerConfigDefault;
-    headerConfig.navigation_links.map((navItem) => {
-      if (navItem.label == 'Dashboards') {
+  let dashboardDescription = '';
+  listDashboardItems.map((item) => {
+    if (item['@id']?.split('/').splice(-1).join('') === 'dashboards')
+      dashboardDescription = item.description;
+  });
+
+  const checkIfArticlesNeeded = navItems.some(
+    (item) => item.url === '/articles' && item.items?.length > 0,
+  );
+
+  headerConfig = headerConfigDefault;
+  headerConfig.service_name = siteTitle;
+  headerConfig.navigation_links.map((navItem, index) => {
+    if (dashBoardItems.length > 0) {
+      if (navItem.label.toLowerCase() === 'dashboards') {
         navItem['menu_contents'] = menu_contents;
+        navItem['description'] = dashboardDescription;
       }
-    });
-  }
+    }
+  });
+
+  useEffect(() => {
+    if (checkIfArticlesNeeded) {
+      headerConfig.navigation_links.splice(1, 0, {
+        label: 'Articles',
+        href: '/articles',
+      });
+    }
+  }, [checkIfArticlesNeeded]);
 
   /**
    * Render method.
