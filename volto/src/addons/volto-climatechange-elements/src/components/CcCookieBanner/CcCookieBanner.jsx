@@ -1,10 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   useCookieConsentPreferenceSet,
   useUpdateCookieConsent,
 } from '../../customizations/volto/components/theme/App/CookieConsentProvider';
-
+import { getSiteTitle } from '../../actions';
+import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+
+const CookiesHeader = () => {
+  const [title, setTitle] = useState('Climate');
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getSiteTitle());
+  }, []);
+
+  useEffect(() => {
+    setTitle(siteTitle);
+    console.log('setting title' + siteTitle);
+  }, []);
+
+  const siteTitle = useSelector((state) => {
+    const blocks = state.rawSiteTitle?.siteTitle?.data?.blocks ?? '';
+
+    let siteTitle = '';
+    for (const [key, value] of Object.entries(blocks)) {
+      const block = value;
+      if (block['@type'] === 'heroHeader') {
+        siteTitle = block.title;
+        break;
+      }
+    }
+    return siteTitle;
+  });
+  if (siteTitle === '') {
+    return null;
+  }
+  return (
+    <h2 className="govuk-cookie-banner__heading govuk-heading-m">
+      Cookies for {siteTitle}
+    </h2>
+  );
+};
 
 const CcCookieBanner = () => {
   const location = useLocation();
@@ -25,9 +62,7 @@ const CcCookieBanner = () => {
       <div className="govuk-cookie-banner__message app-width-container ">
         <div className="govuk-grid-row">
           <div className="govuk-grid-column-two-thirds">
-            <h2 className="govuk-cookie-banner__heading govuk-heading-m">
-              Cookies for this service
-            </h2>
+            <CookiesHeader />
 
             <div className="govuk-cookie-banner__content">
               <p className="govuk-body">
