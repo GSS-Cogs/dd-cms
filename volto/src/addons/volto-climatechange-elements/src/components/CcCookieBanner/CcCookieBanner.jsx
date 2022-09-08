@@ -15,11 +15,6 @@ const CookiesHeader = () => {
     dispatch(getSiteTitle());
   }, []);
 
-  useEffect(() => {
-    setTitle(siteTitle);
-    console.log('setting title' + siteTitle);
-  }, []);
-
   const siteTitle = useSelector((state) => {
     const blocks = state.rawSiteTitle?.siteTitle?.data?.blocks ?? '';
 
