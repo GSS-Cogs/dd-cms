@@ -71,9 +71,9 @@ export const CcHeroHeaderView = (props) => {
 
   useEffect(() => {
     // Handler to call on window resize
-    let offset = phaseBannerDisplay ? 100 : 25;
+    let heightOffset = phaseBannerDisplay ? 100 : 25;
     const handleResize = () => {
-      let tempHeight = ref.current.clientHeight + offset;
+      let tempHeight = ref.current.clientHeight + heightOffset;
       if (tempHeight >= 700) {
         tempHeight = 700;
       }
@@ -130,31 +130,26 @@ export const CcHeroHeaderView = (props) => {
     if (image == '' || image == undefined) {
       return null;
     }
-    let offset = phaseBannerDisplay ? -75 : 0;
+    let marginOffset = phaseBannerDisplay ? -75 : 0;
     return (
-      <div className="govuk-grid-column-one-half app-masthead__grid-column">
-        <img
-          className="app-masthead__image"
-          src={image}
-          alt=""
-          role="presentation"
-          style={{
-            position: 'absolute',
-            height: height,
-            right: 0,
-            width: '50%',
-            marginTop: offset,
-          }}
-        />
-      </div>
+      <img
+        className="app-masthead__image"
+        src={image}
+        alt=""
+        role="presentation"
+        style={{
+          position: 'absolute',
+          height: height,
+          right: 0,
+          width: '50%',
+          marginTop: marginOffset,
+        }}
+      />
     );
   };
 
   return (
-    <CcMasthead
-      className={marginInset && 'app-masthead--bottom-overlap'}
-      shouldDisplayPhaseBanner={phaseBannerDisplay}
-    >
+    <CcMasthead className={marginInset && 'app-masthead--bottom-overlap'}>
       <InnerMasthead />
     </CcMasthead>
   );

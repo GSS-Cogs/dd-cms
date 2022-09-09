@@ -7,7 +7,7 @@ import { getPhaseBannerContent } from '../../actions';
 export const CcPhaseBannerWrapper = ({ className }) => {
   const [phaseBannerLink, setPhaseBannerLink] = useState('');
   const [phaseBannerStage, setPhaseBannerStage] = useState('alpha');
-  const [phaseBannerDisplay, setPhaseBannerDisplay] = useState(false);
+  const [phaseBannerDisplay, setPhaseBannerDisplay] = useState(true);
   const dispatch = useDispatch();
 
   const phaseData = useSelector((state) => {
@@ -30,7 +30,11 @@ export const CcPhaseBannerWrapper = ({ className }) => {
     }
   }, [phaseData]);
 
-  return phaseBannerDisplay ? (
+  if (!phaseBannerDisplay) {
+    return null;
+  }
+
+  return (
     <div>
       <PhaseBanner
         className={className}
@@ -52,5 +56,5 @@ export const CcPhaseBannerWrapper = ({ className }) => {
         will help us improve it.
       </PhaseBanner>
     </div>
-  ) : null;
+  );
 };
