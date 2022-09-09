@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
     plone-vawag:
+        image: plone-vawag:${GIT_COMMIT_SHORT}
         build:
             context: ../plone-5
         volumes:
@@ -11,6 +12,7 @@ services:
         restart: always
 
     plone-cc2:
+        image: plone-cc2:${GIT_COMMIT_SHORT}
         build:
             context: ../plone-5
         volumes:
@@ -20,6 +22,7 @@ services:
         restart: always
 
     volto-vawag:
+        image: volto-vawag:${GIT_COMMIT_SHORT}
         build:
             context: ../volto
             args:
@@ -37,6 +40,7 @@ services:
         restart: always
 
     volto-v2:
+        image: volto-v2:${GIT_COMMIT_SHORT}
         build:
             context: ../volto
             args:
