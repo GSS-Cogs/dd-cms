@@ -49,6 +49,7 @@
   
   .gem-c-emergency-banner__link {
     @include govuk-font(19);
+    text-decoration: underline;
   }
   
   .gem-c-emergency-banner__link:link,
