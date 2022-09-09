@@ -1,0 +1,5 @@
+location ~ /\+\+api\+\+($|/.*) {
+      rewrite ^/\+\+api\+\+($|/.*) /VirtualHostBase/https/vawg.ukstats.dev:443/Plone/++api++/VirtualHostRoot/$1 break;
+      proxy_pass http://plone-vawag:8080;
+}
+client_max_body_size 100m;

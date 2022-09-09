@@ -28,11 +28,10 @@ services:
             args:
                 ADDONS: "@eeacms/volto-datablocks;@eeacms/volto-columns-block;volto-slate:asDefault;volto-authomatic;volto-govuk-theme;volto-chart-builder"
         environment:
-            - RAZZLE_API_PATH=https://vawg.ukstats.dev/api
             - NODE_ENV=production
-            - VIRTUAL_HOST=vawg.ukstats.dev
+            - VIRTUAL_HOST=vawg.ukstats.dev,vawg.gss-data.org.uk
             - VIRTUAL_PORT=3000
-            - LETSENCRYPT_HOST=vawg.ukstats.dev
+            - LETSENCRYPT_HOST=vawg.ukstats.dev,vawg.gss-data.org.uk
         command: "yarn start:prod"
         init: true
         networks:
