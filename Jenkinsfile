@@ -45,6 +45,7 @@ pipeline {
                         puppeteer.inside("--init --rm --entrypoint= --network ${PROJ_NAME}_test_net") {
                             sh './run.sh'
                         }
+                        sh "docker-compose -p ${PROJ_NAME} logs -t --no-color > containers.log"
                     }
                 }
             }
