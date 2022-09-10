@@ -42,7 +42,7 @@ pipeline {
                         sh "docker-compose -p ${PROJ_NAME} up -d volto"
                         sh "docker-compose -p ${PROJ_NAME} up -d proxy"
                         def puppeteer = docker.image("${PROJ_NAME}_test")
-                        puppeteer.inside("--init --rm --entrypoint= --network ${PROJ_NAME}_test_net") {
+                        puppeteer.inside("--init --rm --privileged --entrypoint= --network ${PROJ_NAME}_test_net") {
                             sh './run.sh'
                             sh './lighthouse.sh'
                         }
