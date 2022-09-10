@@ -18,7 +18,7 @@ Feature: Administration
     And I type "admin" in the "#password" element
     And I take a screenshot
     When I press the "Enter" key
-    And I expect the element "#page-document" is visible after "15" seconds
+    And I expect the element "#page-document" is visible after "30" seconds
 
   Scenario: add-ons installed
     Given I expect the element "#toolbar-personal" is visible after "30" seconds
