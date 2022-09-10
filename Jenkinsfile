@@ -63,7 +63,7 @@ pipeline {
                         allowMissing: true,
                         keepAll: true,
                         reportDir: 'reports',
-                        reportFiles: 'climate-change_data_gov_uk_.report.html'
+                        reportFiles: 'climate-change_data_gov_uk_.report.html',
                         reportTitles: 'Lighthouse'
                     ])
                     archiveArtifacts artifacts: 'reports/*.json'
