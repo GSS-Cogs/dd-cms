@@ -44,6 +44,7 @@ pipeline {
                         def puppeteer = docker.image("${PROJ_NAME}_test")
                         puppeteer.inside("--init --rm --entrypoint= --network ${PROJ_NAME}_test_net") {
                             sh './run.sh'
+                            sh './lighthouse.sh'
                         }
                         sh "docker-compose -p ${PROJ_NAME} logs -t --no-color > containers.log"
                     }
@@ -58,6 +59,14 @@ pipeline {
                 dir('tests/climate-change-v2') {
                     cucumber 'test-results.json'
                     sh "docker-compose -p ${PROJ_NAME} down"
+                    publishHTML(target: [
+                        allowMissing: true,
+                        keepAll: true,
+                        reportDir: 'reports',
+                        reportFiles: 'climate-change_data_gov_uk_.report.html'
+                        reportTitles: 'Lighthouse'
+                    ])
+                    archiveArtifacts artifacts: 'reports/*.json'
                 }
             }
         }

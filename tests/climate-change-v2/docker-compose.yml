@@ -39,6 +39,7 @@ services:
     command: ./run.sh
     networks:
       - test_net
+    privileged: true
 
 networks:
   test_net:
