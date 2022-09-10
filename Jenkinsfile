@@ -59,13 +59,7 @@ pipeline {
                 dir('tests/climate-change-v2') {
                     cucumber 'test-results.json'
                     sh "docker-compose -p ${PROJ_NAME} down"
-                    publishHTML(target: [
-                        allowMissing: true,
-                        keepAll: true,
-                        reportDir: 'reports',
-                        reportFiles: 'climate-change_data_gov_uk_.report.html',
-                        reportTitles: 'Lighthouse'
-                    ])
+                    lighthouseReport file: 'reports/climate-change_data_gov_uk_.report.json', name: 'Front page'
                     archiveArtifacts artifacts: 'reports/*.json'
                 }
             }
