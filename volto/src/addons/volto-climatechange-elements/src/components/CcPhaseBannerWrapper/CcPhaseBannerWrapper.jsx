@@ -46,7 +46,8 @@ export const CcPhaseBannerWrapper = ({ className }) => {
         <Link
           to="#"
           onClick={(e) => {
-            window.location.href = phaseBannerLink; //'mailto:climate.change@ons.gov.uk';
+            //'mailto:climate.change@ons.gov.uk';
+            window.open(phaseBannerLink, '_blank', 'noopener,noreferrer');
             e.preventDefault();
           }}
           style={{ textDecorationLine: 'underline' }}
