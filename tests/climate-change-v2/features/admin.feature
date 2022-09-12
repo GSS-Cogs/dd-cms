@@ -7,19 +7,21 @@ Feature: Administration
     And I expect the element "#main" is visible
 
   Scenario: login link/button
-    Given I click the link "a[href='/login?return_url=']" and wait for the element "#page-login"
+    Given I wait for element "a[href='/login?return_url=']" for 100 seconds
+    And I click the link "a[href='/login?return_url=']" and wait for the element "#page-login"
     Then I expect the element "#page-login" contains text "Sign in to start session"
 
   Scenario: admin login
-    Given I click the link "a[href='/login?return_url=']" and wait for the element "#page-login"
+    Given I wait for element "a[href='/login?return_url=']" for 100 seconds
+    And I click the link "a[href='/login?return_url=']" and wait for the element "#page-login"
     And I type "admin" in the "#email" element
     And I type "admin" in the "#password" element
     And I take a screenshot
     When I press the "Enter" key
-    And I expect the element "#page-document" is visible after "5" seconds
+    And I expect the element "#page-document" is visible after "30" seconds
 
   Scenario: add-ons installed
-    Given I expect the element "#toolbar-personal" is visible
+    Given I expect the element "#toolbar-personal" is visible after "30" seconds
     When I click the element "#toolbar-personal" and wait for the element "a[href='/controlpanel']"
     And I wait for xpath "//a[contains(text(), 'Site Setup')]" to be visible
     And I wait for 1 seconds

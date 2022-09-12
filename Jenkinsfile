@@ -42,8 +42,9 @@ pipeline {
                         sh "docker-compose -p ${PROJ_NAME} up -d volto"
                         sh "docker-compose -p ${PROJ_NAME} up -d proxy"
                         def puppeteer = docker.image("${PROJ_NAME}_test")
-                        puppeteer.inside("--init --rm --entrypoint= --network ${PROJ_NAME}_test_net") {
+                        puppeteer.inside("--init --rm --privileged --entrypoint= --network ${PROJ_NAME}_test_net") {
                             sh './run.sh'
+                            sh './lighthouse.sh'
                         }
                         sh "docker-compose -p ${PROJ_NAME} logs -t --no-color > containers.log"
                     }
@@ -58,6 +59,8 @@ pipeline {
                 dir('tests/climate-change-v2') {
                     cucumber 'test-results.json'
                     sh "docker-compose -p ${PROJ_NAME} down"
+                    lighthouseReport file: 'reports/climate-change_data_gov_uk_.report.json', name: 'Front page'
+                    archiveArtifacts artifacts: 'reports/*.json'
                 }
             }
         }
