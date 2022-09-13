@@ -15,6 +15,7 @@ export const CcHeroHeaderView = (props) => {
   const [image, setImage] = useState('');
   const [callToAction, setCallToAction] = useState('');
   const [marginInset, setMarginInset] = useState(false);
+  const [phaseBannerDisplay, setPhaseBannerDisplay] = useState(false);
   const [height, setHeight] = useState(0);
   const ref = useRef(null);
 
@@ -61,12 +62,18 @@ export const CcHeroHeaderView = (props) => {
     } else {
       setMarginInset(false);
     }
+    if (props.data.bannerDisplay === false) {
+      setPhaseBannerDisplay(false);
+    } else {
+      setPhaseBannerDisplay(true);
+    }
   }, [content, props.data]);
 
   useEffect(() => {
     // Handler to call on window resize
+    let heightOffset = phaseBannerDisplay ? 100 : 25;
     const handleResize = () => {
-      let tempHeight = ref.current.clientHeight + 100;
+      let tempHeight = ref.current.clientHeight + heightOffset;
       if (tempHeight >= 700) {
         tempHeight = 700;
       }
@@ -123,29 +130,26 @@ export const CcHeroHeaderView = (props) => {
     if (image == '' || image == undefined) {
       return null;
     }
+    let marginOffset = phaseBannerDisplay ? -75 : 0;
     return (
-      <div className="govuk-grid-column-one-half app-masthead__grid-column">
-        <img
-          className="app-masthead__image"
-          src={image}
-          alt=""
-          role="presentation"
-          style={{
-            //width: Math.floor((height / 470) * 100).toString() + '%',
-            position: 'absolute',
-            height: height,
-            left: 400,
-          }}
-        />
-      </div>
+      <img
+        className="app-masthead__image"
+        src={image}
+        alt=""
+        role="presentation"
+        style={{
+          position: 'absolute',
+          height: height,
+          right: 0,
+          width: '50%',
+          marginTop: marginOffset,
+        }}
+      />
     );
   };
 
   return (
-    <CcMasthead
-      className={marginInset && 'app-masthead--bottom-overlap'}
-      shouldDisplayPhaseBanner={true}
-    >
+    <CcMasthead className={marginInset && 'app-masthead--bottom-overlap'}>
       <InnerMasthead />
     </CcMasthead>
   );

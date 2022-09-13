@@ -15,6 +15,7 @@ import {
   relatedItemsData,
   rawData,
   folderishContent,
+  rawPhaseBanner,
   rawSiteTitle,
 } from './reducers';
 
@@ -98,6 +99,7 @@ const applyConfig = (config) => {
   config.addonReducers.relatedItemsData = relatedItemsData;
   config.addonReducers.rawData = rawData;
   config.addonReducers.folderishContent = folderishContent;
+  config.addonReducers.rawPhaseBanner = rawPhaseBanner;
   config.addonReducers.rawSiteTitle = rawSiteTitle;
 
   config = customiseSlateConfig(config);

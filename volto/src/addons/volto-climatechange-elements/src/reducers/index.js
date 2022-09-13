@@ -1,8 +1,10 @@
+import { PhaseBanner } from 'govuk-react-jsx/govuk/components/phase-banner';
 import { uniq } from 'lodash';
 import {
   GET_RELATED_ITEMS_DATA,
   GET_RAW_CONTENT,
   GET_FOLDERISH_CONTENT,
+  GET_PHASE_BANNER_CONTENT,
   GET_SITE_TITLE,
 } from '../constants/ActionTypes';
 import { formattedDate } from '../utils';
@@ -129,6 +131,61 @@ export function folderishContent(state = {}, action = {}) {
   return state;
 }
 
+export function rawPhaseBanner(state = {}, action = {}) {
+  let { result, url } = action;
+
+  switch (action.type) {
+    case `${GET_PHASE_BANNER_CONTENT}_PENDING`:
+      return {
+        ...state,
+        phaseBanner: {
+          data: null,
+          loading: true,
+          loaded: false,
+          error: undefined,
+        },
+      };
+    case `${GET_PHASE_BANNER_CONTENT}_SUCCESS`:
+      let phaseBanner = {};
+      for (const [key, value] of Object.entries(result.blocks)) {
+        const block = value;
+        if (block['@type'] === 'heroHeader') {
+          phaseBanner.bannerStage = block.bannerStage;
+          phaseBanner.bannerDisplay = block.bannerDisplay;
+          if (block.bannerLinkType == 'mailto') {
+            phaseBanner.bannerLink = 'mailto:' + block.bannerLink;
+          } else {
+            phaseBanner.bannerLink = block.bannerLink;
+          }
+          break;
+        }
+      }
+      return {
+        ...state,
+        phaseBanner: {
+          ...state[url],
+          loading: false,
+          loaded: true,
+          error: undefined,
+          data: phaseBanner,
+        },
+      };
+    case `${GET_PHASE_BANNER_CONTENT}_FAIL`:
+      return {
+        ...state,
+        phaseBanner: {
+          data: null,
+          loading: false,
+          loaded: false,
+          error: action.error,
+        },
+      };
+    default:
+      break;
+  }
+  return state;
+}
+
 export function rawSiteTitle(state = {}, action = {}) {
   let { result, url } = action;
 
@@ -154,6 +211,7 @@ export function rawSiteTitle(state = {}, action = {}) {
           data: result,
         },
       };
+
     case `${GET_SITE_TITLE}_FAIL`:
       return {
         ...state,
