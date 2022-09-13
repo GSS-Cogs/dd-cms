@@ -10,6 +10,8 @@ import { CcV2ArticleView } from './components/CcV2Preview/CcV2ArticleView';
 import { CcRelatedLinks } from './components/CcRelatedLinks/CcRelatedLinks';
 import { CcArticleList } from './components/CcArticleList/CcArticleList';
 import { CcArticleListExt } from './components/CcArticleList/CcArticleListExt';
+import { CcCookieConsentView } from './components/CcCookieConsent/CcCookieConsentView';
+import { CcCookieConsentEdit } from './components/CcCookieConsent/CcCookieConsentEdit';
 
 import {
   relatedItemsData,
@@ -63,6 +65,22 @@ const applyConfig = (config) => {
     edit: CcRelatedLinks,
     restricted: false,
     mostUsed: true,
+    sidebarTab: 1,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+  };
+
+  config.blocks.blocksConfig.cookieConsent = {
+    id: 'cookieConsent',
+    title: 'Cookie Consent',
+    icon: globeSVG,
+    group: 'common',
+    view: CcCookieConsentView,
+    edit: CcCookieConsentEdit,
+    restricted: false,
+    mostUsed: false,
     sidebarTab: 1,
     security: {
       addPermission: [],
