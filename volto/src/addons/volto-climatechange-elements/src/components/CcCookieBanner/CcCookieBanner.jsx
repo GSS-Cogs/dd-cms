@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
 const CookiesHeader = () => {
-  const [title, setTitle] = useState('Climate');
+  const [title, setTitle] = useState('');
 
   const dispatch = useDispatch();
   useEffect(() => {
