@@ -90,7 +90,10 @@ export const CcHeroHeaderView = (props) => {
   const InnerMasthead = () => {
     let className = 'app-masthead__grid-column govuk-grid';
     if (image != '') {
+      // if no image, make article full width
       className += '-column-one-half';
+    } else {
+      className += '-column-full';
     }
     return (
       <div className="govuk-grid-row" ref={ref}>
@@ -128,7 +131,9 @@ export const CcHeroHeaderView = (props) => {
 
   const HeroHeaderImage = () => {
     if (image == '' || image == undefined) {
-      return null;
+      return (
+        <div className="govuk-grid-column-one-half app-masthead__grid-column"></div>
+      );
     }
     let marginOffset = phaseBannerDisplay ? -75 : 0;
     return (
