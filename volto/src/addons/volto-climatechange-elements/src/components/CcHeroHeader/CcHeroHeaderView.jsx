@@ -149,7 +149,10 @@ export const CcHeroHeaderView = (props) => {
   };
 
   return (
-    <CcMasthead className={marginInset && 'app-masthead--bottom-overlap'}>
+    <CcMasthead
+      className={marginInset && 'app-masthead--bottom-overlap'}
+      shouldDisplayPhaseBanner={phaseBannerDisplay}
+    >
       <InnerMasthead />
     </CcMasthead>
   );
