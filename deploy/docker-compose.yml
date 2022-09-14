@@ -1,10 +1,20 @@
 version: '3.8'
 
 services:
-    plone-vawag:
-        image: plone-vawag:${GIT_COMMIT_SHORT}
+    _plone_builder:
+        image: plone:${GIT_COMMIT_SHORT}
         build:
             context: ../plone-5
+        entrypoint: '/bin/sh -c'
+        environment:
+            - IMAGE_ID=plone:${GIT_COMMIT_SHORT}
+        command:
+            -   'echo "plone image $$IMAGE_ID built"'
+
+    plone-vawag:
+        image: plone:${GIT_COMMIT_SHORT}
+        depends_on:
+            - _plone_builder
         volumes:
             - vawag-data:/data:z
         networks:
@@ -12,21 +22,31 @@ services:
         restart: always
 
     plone-cc2:
-        image: plone-cc2:${GIT_COMMIT_SHORT}
-        build:
-            context: ../plone-5
+        image: plone:${GIT_COMMIT_SHORT}
+        depends_on:
+            - _plone_builder
         volumes:
             - cc2-data:/data:z
         networks:
             - cogs_proxy
         restart: always
 
-    volto-vawag:
-        image: volto-vawag:${GIT_COMMIT_SHORT}
+    _volto_builder:
+        image: volto:${GIT_COMMIT_SHORT}
         build:
             context: ../volto
             args:
                 ADDONS: "@eeacms/volto-datablocks;@eeacms/volto-columns-block;volto-slate:asDefault;volto-authomatic;volto-govuk-theme;volto-chart-builder"
+        entrypoint: '/bin/sh -c'
+        environment:
+            - IMAGE_ID=volto:${GIT_COMMIT_SHORT}
+        command:
+            -   'echo "plone image $$IMAGE_ID built"'
+
+    volto-vawag:
+        image: volto:${GIT_COMMIT_SHORT}
+        depends_on:
+            - _volto_builder
         environment:
             - NODE_ENV=production
             - VIRTUAL_HOST=vawg.ukstats.dev,vawg.gss-data.org.uk
@@ -39,11 +59,9 @@ services:
         restart: always
 
     volto-v2:
-        image: volto-v2:${GIT_COMMIT_SHORT}
-        build:
-            context: ../volto
-            args:
-                ADDONS: "@eeacms/volto-datablocks;@eeacms/volto-columns-block;volto-slate:asDefault;volto-authomatic;volto-govuk-theme;volto-chart-builder;volto-climatechange-elements"
+        image: volto:${GIT_COMMIT_SHORT}
+        depends_on:
+            - _volto_builder
         environment:
             - RAZZLE_API_PATH=https://staging.climate-change.data.gov.uk/api
             - RAZZLE_GA4_CODE=G-Y84VSLC1LC
