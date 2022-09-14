@@ -1,16 +1,16 @@
 pipeline {
     agent any
+    environment {
+        GIT_COMMIT_SHORT = sh(
+                script: "printf \$(git rev-parse --short ${GIT_COMMIT})",
+                returnStdout: true
+        )
+    }
     stages {
         stage('build') {
-            environment {
-                GIT_COMMIT_SHORT = sh(
-                        script: "printf \$(git rev-parse --short ${GIT_COMMIT})",
-                        returnStdout: true
-                )
-            }
             steps {
                 dir('deploy') {
-                    sh "docker-compose build plone-cc2 volto-v2 plone-vawag volto-vawag"
+                    sh "docker-compose build _plone_builder _volto_builder"
                 }
             }
         }
