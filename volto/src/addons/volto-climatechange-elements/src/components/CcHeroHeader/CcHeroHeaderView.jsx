@@ -132,19 +132,20 @@ export const CcHeroHeaderView = (props) => {
     }
     let marginOffset = phaseBannerDisplay ? -75 : 0;
     return (
-      <img
-        className="app-masthead__image"
-        src={image}
-        alt=""
-        role="presentation"
-        style={{
-          position: 'absolute',
-          height: height,
-          right: 0,
-          width: '50%',
-          marginTop: marginOffset,
-        }}
-      />
+      <div className="govuk-grid-column-one-half app-masthead__grid-column">
+        <img
+          className="app-masthead__image"
+          src={image}
+          alt=""
+          role="presentation"
+          style={{
+            position: 'absolute',
+            height: height,
+            width: height + 100,
+            marginTop: marginOffset,
+          }}
+        />
+      </div>
     );
   };
 
