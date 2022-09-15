@@ -4,7 +4,29 @@ import {
   useUpdateCookieConsent,
 } from '../../customizations/volto/components/theme/App/CookieConsentProvider';
 
+const noJsCookieConsent = () => {
+  return (
+    <div className="govuk-body">
+      <p>
+        We use Javascript to set most of our cookies. Unfortunately Javascript
+        is not running on your browser, so you cannot change your settings. You
+        can try:
+      </p>
+      <ul>
+        <li>reloading the page</li>
+        <li>turning on Javascript in your browser</li>
+      </ul>
+    </div>
+  );
+};
+
 export const CcCookieConsentView = ({ data }) => {
+  // Don't server side render the cookie consent block because we don't want it to show
+  // for Non-JS users. Instead render a message advising the user to enable JavaScript.
+  if (typeof window === 'undefined') {
+    return noJsCookieConsent();
+  }
+
   const updateCookieConsent = useUpdateCookieConsent();
   const cookieConsent = useCookieConsent();
 
