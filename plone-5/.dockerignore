@@ -1,4 +1,6 @@
 *
 !instance/custom.cfg
 !instance/src
+!add_relstorage.py
+!docker-entrypoint.sh
 instance/src/ukstats.ccv2.theme

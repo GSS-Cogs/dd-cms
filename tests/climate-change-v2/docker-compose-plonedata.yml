@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  plone:
+    volumes:
+      - plonedata:/data:z
+
+volumes:
+  plonedata:
