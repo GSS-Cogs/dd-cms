@@ -7,14 +7,7 @@ export const DashboardTileSchema = ({ intl }) => ({
     {
       id: 'default',
       title: intl.formatMessage(messages.defaultFieldset),
-      fields: [
-        'title',
-        'summary',
-        'caption',
-        'image_source',
-        'call_to_action',
-        'margin',
-      ],
+      fields: ['title', 'summary', 'caption', 'image_source', 'margin'],
     },
     {
       id: 'phaseBannerFieldset',
@@ -44,10 +37,6 @@ export const DashboardTileSchema = ({ intl }) => ({
           selectableTypes: ['Image'],
         },
       },
-    },
-    call_to_action: {
-      type: 'string',
-      title: intl.formatMessage(messages.call_to_action),
     },
     margin: {
       type: 'boolean',
@@ -105,10 +94,6 @@ const messages = defineMessages({
     id: 'image',
     defaultMessage: 'Image',
   },
-  call_to_action: {
-    id: 'call_to_action',
-    defaultMessage: 'Call to Action',
-  },
   margin: {
     id: 'margin',
     defaultMessage: 'Inset Margin',
@@ -128,5 +113,51 @@ const messages = defineMessages({
   bannerLink: {
     id: 'bannerLink',
     defaultMessage: 'Link Address',
+  },
+});
+
+export const FeaturedContentSchema = ({ intl }) => ({
+  title: 'Featured Content',
+
+  fieldsets: [
+    {
+      id: 'default',
+      title: intl.formatMessage(messagesFeaturedContent.defaultFieldset),
+      fields: ['file_path', 'call_to_action'],
+    },
+  ],
+
+  properties: {
+    file_path: {
+      widget: 'object_browser',
+      title: intl.formatMessage(messagesFeaturedContent.file_path),
+      mode: 'link',
+      widgetOptions: {
+        pattern_options: {
+          selectableTypes: [],
+        },
+      },
+    },
+    call_to_action: {
+      type: 'string',
+      title: intl.formatMessage(messagesFeaturedContent.call_to_action),
+    },
+  },
+
+  required: [],
+});
+
+const messagesFeaturedContent = defineMessages({
+  defaultFieldset: {
+    id: 'Default',
+    defaultMessage: 'Default',
+  },
+  file_path: {
+    id: 'file_path',
+    defaultMessage: 'Article',
+  },
+  call_to_action: {
+    id: 'call_to_action',
+    defaultMessage: 'Call to Action',
   },
 });
