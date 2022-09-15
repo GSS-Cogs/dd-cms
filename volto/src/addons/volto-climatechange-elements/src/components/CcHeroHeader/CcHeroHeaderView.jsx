@@ -40,14 +40,13 @@ export const CcHeroHeaderView = (props) => {
     if (content) {
       setSummary(content.description);
       setTitle(content.title);
+      if (props.data.call_to_action != '') {
+        setCallToAction(props.data.call_to_action);
+      }
     } else if (props.data) {
       setTitle(props.data.title);
       setSummary(props.data.summary);
       setCaption(props.data.caption);
-    }
-    if (props.data.call_to_action != '') {
-      setCallToAction(props.data.call_to_action);
-    } else {
       setCallToAction('');
     }
     const image_source = props.data.image_source;
