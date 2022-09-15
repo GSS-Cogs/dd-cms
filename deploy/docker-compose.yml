@@ -51,6 +51,8 @@ services:
             - NODE_ENV=production
             - VIRTUAL_HOST=vawg.ukstats.dev,vawg.gss-data.org.uk
             - VIRTUAL_PORT=3000
+            - RAZZLE_RUNTIME_HOTJAR_ID=3150545
+            - RAZZLE_RUNTIME_HOTJAR_VERSION=6
             - LETSENCRYPT_HOST=vawg.ukstats.dev,vawg.gss-data.org.uk
         command: "yarn start:prod"
         init: true
