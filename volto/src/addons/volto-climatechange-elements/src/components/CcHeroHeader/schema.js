@@ -9,6 +9,7 @@ export const DashboardTileSchema = ({ intl }) => ({
       title: intl.formatMessage(messages.defaultFieldset),
       fields: [
         'title',
+        'articleTitle',
         'summary',
         'caption',
         'image_source',
@@ -31,6 +32,10 @@ export const DashboardTileSchema = ({ intl }) => ({
     title: {
       type: 'string',
       title: intl.formatMessage(messages.title),
+    },
+    articleTitle: {
+      type: 'string',
+      title: intl.formatMessage(messages.articleTitle),
     },
     caption: {
       type: 'string',
@@ -94,8 +99,12 @@ const messages = defineMessages({
     defaultMessage: 'Summary',
   },
   title: {
-    id: 'Title',
-    defaultMessage: 'Title',
+    id: 'siteTitle',
+    defaultMessage: 'Site Title',
+  },
+  articleTitle: {
+    id: 'articleTitlessss',
+    defaultMessage: 'Article Title',
   },
   caption: {
     id: 'Caption',

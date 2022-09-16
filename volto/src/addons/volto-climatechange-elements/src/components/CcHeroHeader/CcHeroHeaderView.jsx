@@ -41,7 +41,7 @@ export const CcHeroHeaderView = (props) => {
       setSummary(content.description);
       setTitle(content.title);
     } else if (props.data) {
-      setTitle(props.data.title);
+      setTitle(props.data.articleTitle);
       setSummary(props.data.summary);
       setCaption(props.data.caption);
     }
