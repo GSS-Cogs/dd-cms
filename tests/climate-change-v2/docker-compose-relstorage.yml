@@ -31,6 +31,8 @@ services:
       - test_net
     entrypoint: ''
     command: bash -c "make-site && test ! -f /data/filestorage/Data.fs"
+    volumes:
+      - ./site.cfg-with-relstorage:/plone/instance/site.cfg:z
 
   plone:
     depends_on:

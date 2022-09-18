@@ -7,6 +7,5 @@ RUN \
     buildout -c custom.cfg && \
     find /data -not -user plone -exec chown plone:plone {} \+ && \
     find /plone -not -user plone -exec chown plone:plone {} \+
-COPY instance/site.cfg /plone/instance/
 COPY make-site.sh /usr/local/bin/make-site
 CMD gosu plone bin/instance console

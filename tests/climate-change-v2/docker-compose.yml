@@ -8,6 +8,8 @@ services:
       - test_net
     entrypoint: ''
     command: bash -c "make-site; gosu plone bin/instance console"
+    volumes:
+      - ./site.cfg-no-relstorage:/plone/instance/site.cfg:z
 
   volto:
     build:
