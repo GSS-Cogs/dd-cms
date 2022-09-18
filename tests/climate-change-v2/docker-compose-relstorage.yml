@@ -16,11 +16,28 @@ services:
       timeout: 5s
       retries: 5
 
-  plone:
+  plone-init:
     depends_on:
       db:
         condition: service_healthy
+    build:
+      context: ../../plone-5
+    environment:
+      - DBNAME=climate-change
+      - DBUSER=plone
+      - DBPASS=testdb
+      - DBHOST=db
+    networks:
+      - test_net
+    entrypoint: ''
+    command: bash -c "make-site && test ! -f /data/filestorage/Data.fs"
+
+  plone:
+    depends_on:
+      plone-init:
+        condition: service_completed_successfully
     ports:
       - 8080:8080
     volumes:
-      - ./zope.conf:/plone/instance/parts/instance/etc/zope.conf
+      - ./zope.conf:/plone/instance/parts/instance/etc/zope.conf:ro
+    command: bash -c "gosu plone bin/instance console"

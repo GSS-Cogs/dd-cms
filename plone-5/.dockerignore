@@ -2,4 +2,5 @@
 !instance/custom.cfg
 !instance/src
 !make-site.sh
+!instance/site.cfg
 instance/src/ukstats.ccv2.theme
