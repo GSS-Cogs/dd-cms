@@ -25,6 +25,10 @@ services:
         image: plone:${GIT_COMMIT_SHORT}
         depends_on:
             - _plone_builder
+        environment:
+            - VIRTUAL_HOST=cms-admin.ukstats.dev
+            - VIRTUAL_PORT=8080
+            - LETSENCRYPT_HOST=cms-admin.ukstats.dev
         volumes:
             - cc2-data:/data:z
         networks:
