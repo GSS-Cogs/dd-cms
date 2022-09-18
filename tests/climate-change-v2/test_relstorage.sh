@@ -1,20 +1,12 @@
 #!/usr/bin/env bash
 
-WITH_PERSISTENCE="-f docker-compose.yml -f docker-compose-plonedata.yml"
-WITH_RELSTORAGE="${WITH_PERSISTENCE} -f docker-compose-relstorage.yml"
+WITH_RELSTORAGE="-f docker-compose.yml  -f docker-compose-relstorage.yml"
 
 # Clear any previous volumes
 
-docker-compose $WITH_PERSISTENCE down --volumes --remove-orphans
+docker compose $WITH_RELSTORAGE down --volumes --remove-orphans
 
-# Build the initial Plone site as filestorage
+# Running the test container brings up Plone, creating the initial site in Relstorage
+# Run the tests with RelStorage backend
 
-docker-compose $WITH_PERSISTENCE run --rm plone test -f /data/initialized
-
-# Run with relstorage options, data should be migrated
-
-docker-compose $WITH_RELSTORAGE run --rm plone test -f /data/migrated
-
-# Finally run the tests
-
-docker-compose $WITH_RELSTORAGE run --rm test
+docker compose $WITH_RELSTORAGE run --rm test

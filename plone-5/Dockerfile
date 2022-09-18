@@ -4,5 +4,8 @@ COPY instance/custom.cfg /plone/instance/
 COPY instance/src /plone/instance/src/
 RUN \
     sed -i '/mysqlclient\|cx-Oracle\|ldap/d' buildout.cfg && \
-    buildout -c custom.cfg
-COPY docker-entrypoint.sh add_relstorage.py /
+    buildout -c custom.cfg && \
+    find /data -not -user plone -exec chown plone:plone {} \+ && \
+    find /plone -not -user plone -exec chown plone:plone {} \+
+COPY make-site.sh /usr/local/bin/make-site
+CMD gosu plone bin/instance console

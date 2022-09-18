@@ -11,17 +11,16 @@ services:
     networks:
       - test_net
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready" ]
+      test: [ "CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
       interval: 10s
       timeout: 5s
       retries: 5
 
   plone:
-    environment:
-      - RELSTORAGE_ADAPTER_OPTIONS=type postgresql,dbname climate-change,user plone,password testdb,host db
-      - RELSTORAGE_BLOB_DIR=/data/blob-cache
     depends_on:
       db:
         condition: service_healthy
     ports:
       - 8080:8080
+    volumes:
+      - ./zope.conf:/plone/instance/parts/instance/etc/zope.conf
