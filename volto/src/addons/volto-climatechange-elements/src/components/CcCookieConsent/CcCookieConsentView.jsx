@@ -1,31 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   useCookieConsent,
   useUpdateCookieConsent,
 } from '../../customizations/volto/components/theme/App/CookieConsentProvider';
 
-const noJsCookieConsent = () => {
-  return (
-    <div className="govuk-body">
-      <p>
-        We use Javascript to set most of our cookies. Unfortunately Javascript
-        is not running on your browser, so you cannot change your settings. You
-        can try:
-      </p>
-      <ul>
-        <li>reloading the page</li>
-        <li>turning on Javascript in your browser</li>
-      </ul>
-    </div>
-  );
-};
-
 export const CcCookieConsentView = ({ data }) => {
-  // Don't server side render the cookie consent block because we don't want it to show
-  // for Non-JS users. Instead render a message advising the user to enable JavaScript.
-  if (typeof window === 'undefined') {
-    return noJsCookieConsent();
-  }
+  const [isServerSide, setIsServerSide] = useState(true);
+
+  // We don't render the cookie consent block on the server because we don't want it to show for non javascript users
+  useEffect(() => {
+    setIsServerSide(false);
+  }, []);
 
   const updateCookieConsent = useUpdateCookieConsent();
   const cookieConsent = useCookieConsent();
@@ -45,7 +30,19 @@ export const CcCookieConsentView = ({ data }) => {
 
   return (
     <div className="cc-cookie-consent">
-      <form onSubmit={onSubmit}>
+      <div className="govuk-body" hidden={!isServerSide}>
+        <p>
+          We use Javascript to set most of our cookies. Unfortunately Javascript
+          is not running on your browser, so you cannot change your settings.
+          You can try:
+        </p>
+        <ul>
+          <li>reloading the page</li>
+          <li>turning on Javascript in your browser</li>
+        </ul>
+      </div>
+
+      <form onSubmit={onSubmit} hidden={isServerSide}>
         <div className="govuk-form-group">
           <fieldset className="govuk-fieldset">
             <legend className="govuk-fieldset__legend govuk-fieldset__legend--s">
@@ -65,7 +62,7 @@ export const CcCookieConsentView = ({ data }) => {
                   name="analytics_cookies_consent"
                   type="radio"
                   value="true"
-                  checked={value}
+                  defaultChecked={value}
                 />
                 <label
                   className="govuk-label govuk-radios__label"
@@ -81,7 +78,7 @@ export const CcCookieConsentView = ({ data }) => {
                   name="analytics_cookies_consent"
                   type="radio"
                   value="false"
-                  checked={!value}
+                  defaultChecked={!value}
                 />
                 <label
                   className="govuk-label govuk-radios__label"
@@ -93,7 +90,11 @@ export const CcCookieConsentView = ({ data }) => {
             </div>
           </fieldset>
         </div>
-        <button type="submit" class="govuk-button" data-module="govuk-button">
+        <button
+          type="submit"
+          className="govuk-button"
+          data-module="govuk-button"
+        >
           Save cookie settings
         </button>
       </form>

@@ -125,8 +125,8 @@ const Header = (props) => {
    */
   return (
     <>
-      {cookieConsent && cookieConsent.usage && <Analytics />}
       <CcCookieBanner />
+      {cookieConsent && cookieConsent.usage && <Analytics />}
       <SuperNavigationHeader
         className={props?.pathname === '' ? 'root-header' : 'non-root-header'}
         navigation={headerConfig}
