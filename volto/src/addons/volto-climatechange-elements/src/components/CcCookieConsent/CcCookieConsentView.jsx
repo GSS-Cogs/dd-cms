@@ -4,6 +4,36 @@ import {
   useUpdateCookieConsent,
 } from '../../customizations/volto/components/theme/App/CookieConsentProvider';
 
+const ConfirmationMessage = ({ hidden }) => {
+  return (
+    <div
+      class="govuk-notification-banner govuk-notification-banner--success"
+      role="alert"
+      aria-labelledby="govuk-notification-banner-title"
+      data-module="govuk-notification-banner"
+      hidden={hidden}
+    >
+      <div class="govuk-notification-banner__header">
+        <h2
+          class="govuk-notification-banner__title"
+          id="govuk-notification-banner-title"
+        >
+          Success
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <p class="govuk-notification-banner__heading">
+          You’ve set your cookie preferences.{' '}
+          <a class="govuk-notification-banner__link" href="#">
+            Go back to the page you were looking at
+          </a>
+          .
+        </p>
+      </div>
+    </div>
+  );
+};
+
 export const CcCookieConsentView = ({ data }) => {
   const [isServerSide, setIsServerSide] = useState(true);
 
@@ -18,18 +48,23 @@ export const CcCookieConsentView = ({ data }) => {
   const initialValue = cookieConsent.usage ? true : false;
 
   const [value, setValue] = useState(initialValue);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   const onChangeValue = (e) => {
     setValue(e.target.value === 'true');
+    setShowConfirmation(false);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
     updateCookieConsent(value);
+    setShowConfirmation(true);
   };
 
   return (
     <div className="cc-cookie-consent">
+      <ConfirmationMessage hidden={!showConfirmation} />
+
       <div className="govuk-body" hidden={!isServerSide}>
         <p>
           We use Javascript to set most of our cookies. Unfortunately Javascript
