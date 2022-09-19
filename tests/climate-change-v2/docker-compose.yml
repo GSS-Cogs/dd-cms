@@ -8,8 +8,6 @@ services:
       - test_net
     entrypoint: ''
     command: bash -c "build-and-start -c site.cfg"
-    volumes:
-      - ./site.cfg-no-relstorage:/plone/instance/site.cfg:z
 
   volto:
     build:
