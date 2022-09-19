@@ -46,26 +46,6 @@ services:
         volumes:
           - zope_conf:/plone/instance/parts/instance/etc/
 
-    plone-vawag:
-        image: plone:${GIT_COMMIT_SHORT}
-        depends_on:
-            - _plone_builder
-        volumes:
-            - vawag-data:/data:z
-        networks:
-            - cogs_proxy
-        restart: always
-
-    plone-cc2:
-        image: plone:${GIT_COMMIT_SHORT}
-        depends_on:
-            - _plone_builder
-        volumes:
-            - cc2-data:/data:z
-        networks:
-            - cogs_proxy
-        restart: always
-
     _volto_builder:
         image: volto:${GIT_COMMIT_SHORT}
         build:
@@ -84,45 +64,9 @@ services:
             - _volto_builder
         environment:
             - NODE_ENV=production
-            - VIRTUAL_HOST=climate-change.ukstats.dev
+            - VIRTUAL_HOST=climate-change.ukstats.dev,vawg.ukstats.dev,vawg.gss-data.org.uk
             - VIRTUAL_PORT=3000
-            - LETSENCRYPT_HOST=climate-change.ukstats.dev
-        command: "yarn start:prod"
-        init: true
-        networks:
-            - cogs_proxy
-        restart: always
-
-    volto-vawag:
-        image: volto:${GIT_COMMIT_SHORT}
-        depends_on:
-            - _volto_builder
-        environment:
-            - NODE_ENV=production
-            - VIRTUAL_HOST=vawg.ukstats.dev,vawg.gss-data.org.uk
-            - VIRTUAL_PORT=3000
-            - RAZZLE_RUNTIME_HOTJAR_ID=3150545
-            - RAZZLE_RUNTIME_HOTJAR_VERSION=6
-            - LETSENCRYPT_HOST=vawg.ukstats.dev,vawg.gss-data.org.uk
-        command: "yarn start:prod"
-        init: true
-        networks:
-            - cogs_proxy
-        restart: always
-
-    volto-v2:
-        image: volto:${GIT_COMMIT_SHORT}
-        depends_on:
-            - _volto_builder
-        environment:
-            - RAZZLE_API_PATH=https://staging.climate-change.data.gov.uk/api
-            - RAZZLE_GA4_CODE=G-Y84VSLC1LC
-            - RAZZLE_RUNTIME_HOTJAR_ID=3118262
-            - RAZZLE_RUNTIME_HOTJAR_VERSION=6
-            - NODE_ENV=production
-            - VIRTUAL_HOST=staging.climate-change.data.gov.uk
-            - VIRTUAL_PORT=3000
-            - LETSENCRYPT_HOST=staging.climate-change.data.gov.uk
+            - LETSENCRYPT_HOST=climate-change.ukstats.dev,vawg.ukstats.dev,vawg.gss-data.org.uk
         command: "yarn start:prod"
         init: true
         networks:

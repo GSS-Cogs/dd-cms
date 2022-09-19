@@ -32,6 +32,7 @@ plone-5/plone/tmp/
 
 plone-5/instance/**/*
 !plone-5/instance/custom.cfg
+!plone-5/instance/site.cfg
 !plone-5/instance/src/
 !plone-5/instance/src/**/*
 plone-5/instance/**/__pycache__/
