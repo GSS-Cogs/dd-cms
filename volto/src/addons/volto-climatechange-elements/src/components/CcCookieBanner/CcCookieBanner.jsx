@@ -42,7 +42,12 @@ const ConfirmationMessage = ({ acceptedOrRejected, setConfirmationState }) => {
     setConfirmationState('hidden');
   };
   return (
-    <div className="govuk-cookie-banner" data-nosnippet>
+    <div
+      className="govuk-cookie-banner"
+      data-nosnippet
+      tabIndex={-1}
+      role={'alert'}
+    >
       <div className="govuk-cookie-banner__message app-width-container ">
         <div className="govuk-grid-row">
           <div className="govuk-grid-column-two-thirds">
