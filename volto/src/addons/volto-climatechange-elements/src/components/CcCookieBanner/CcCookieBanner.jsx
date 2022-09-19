@@ -36,7 +36,11 @@ const CookiesHeader = () => {
   );
 };
 
-const ConfirmationMessage = ({ acceptedOrRejected, onHideClick }) => {
+const ConfirmationMessage = ({ acceptedOrRejected, setConfirmationState }) => {
+  const onHideClick = (e) => {
+    e.preventDefault();
+    setConfirmationState('hidden');
+  };
   return (
     <div className="govuk-cookie-banner" data-nosnippet>
       <div className="govuk-cookie-banner__message app-width-container ">
@@ -125,7 +129,6 @@ const CcCookieBanner = () => {
   const cookiePreferenceSet = useCookieConsentPreferenceSet();
   const [confirmationState, setConfirmationState] = useState('hidden');
   const updateCookieConsent = useUpdateCookieConsent();
-
   const [isServerSide, setIsServerSide] = useState(true);
 
   // We don't render the cookie banner on the server because we don't want it to show for non javascript users
@@ -143,11 +146,6 @@ const CcCookieBanner = () => {
     updateCookieConsent(hasConsent);
   };
 
-  const onHideClick = (e) => {
-    e.preventDefault();
-    setConfirmationState('hidden');
-  };
-
   if (
     (cookiePreferenceSet === true && confirmationState === 'hidden') ||
     location.pathname === '/cookies'
@@ -159,7 +157,7 @@ const CcCookieBanner = () => {
     return (
       <ConfirmationMessage
         acceptedOrRejected={confirmationState}
-        onHideClick={onHideClick}
+        setConfirmationState={setConfirmationState}
       />
     );
   }
