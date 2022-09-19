@@ -10,3 +10,10 @@ docker compose $WITH_RELSTORAGE down --volumes --remove-orphans
 # Run the tests with RelStorage backend
 
 docker compose $WITH_RELSTORAGE run --rm test
+
+# Make sure we didn't create /data/filestorage/Data.fs
+
+docker compose $WITH_RELSTORAGE exec plone test ! -f /data/filestorage/Data.fs
+
+# Shutdown
+docker compose $WITH_RELSTORAGE down --volumes --remove-orphans

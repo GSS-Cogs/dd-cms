@@ -11,6 +11,41 @@ services:
         command:
             -   'echo "plone image $$IMAGE_ID built"'
 
+    db:
+      image: postgres:alpine
+      environment:
+        - POSTGRES_PASSWORD=${DB_PSW?non-empty}
+        - POSTGRES_USER=${DB_USR}
+        - POSTGRES_DB=plone
+      networks:
+        - cogs_proxy
+
+      healthcheck:
+        test: [ "CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
+        interval: 10s
+        timeout: 5s
+        retries: 5
+      volumes:
+        - pgdata:/var/lib/postgresql/data
+
+    plone:
+        image: plone:${GIT_COMMIT_SHORT}
+        depends_on:
+          _plone_builder:
+            condition: service_completed_successfully
+          db:
+            condition: service_healthy
+        environment:
+            - VIRTUAL_HOST=cms-admin.ukstats.dev
+            - VIRTUAL_PORT=8080
+            - LETSENCRYPT_HOST=cms-admin.ukstats.dev
+        networks:
+          - cogs_proxy
+        restart: always
+        entrypoint: ''
+        volumes:
+          - zope_conf:/plone/instance/parts/instance/etc/
+
     plone-vawag:
         image: plone:${GIT_COMMIT_SHORT}
         depends_on:
@@ -25,10 +60,6 @@ services:
         image: plone:${GIT_COMMIT_SHORT}
         depends_on:
             - _plone_builder
-        environment:
-            - VIRTUAL_HOST=cms-admin.ukstats.dev
-            - VIRTUAL_PORT=8080
-            - LETSENCRYPT_HOST=cms-admin.ukstats.dev
         volumes:
             - cc2-data:/data:z
         networks:
@@ -46,6 +77,21 @@ services:
             - IMAGE_ID=volto:${GIT_COMMIT_SHORT}
         command:
             -   'echo "plone image $$IMAGE_ID built"'
+
+    volto:
+        image: volto:${GIT_COMMIT_SHORT}
+        depends_on:
+            - _volto_builder
+        environment:
+            - NODE_ENV=production
+            - VIRTUAL_HOST=climate-change.ukstats.dev
+            - VIRTUAL_PORT=3000
+            - LETSENCRYPT_HOST=climate-change.ukstats.dev
+        command: "yarn start:prod"
+        init: true
+        networks:
+            - cogs_proxy
+        restart: always
 
     volto-vawag:
         image: volto:${GIT_COMMIT_SHORT}
@@ -86,6 +132,8 @@ services:
 volumes:
     vawag-data:
     cc2-data:
+    pgdata:
+    zope_conf:
 
 networks:
     cogs_proxy:

@@ -7,7 +7,7 @@ services:
     networks:
       - test_net
     entrypoint: ''
-    command: bash -c "make-site; gosu plone bin/instance console"
+    command: bash -c "build-and-start -c site.cfg"
     volumes:
       - ./site.cfg-no-relstorage:/plone/instance/site.cfg:z
 
