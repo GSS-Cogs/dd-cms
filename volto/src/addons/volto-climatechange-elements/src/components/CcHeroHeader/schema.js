@@ -166,6 +166,6 @@ const messagesFeaturedContent = defineMessages({
   },
   tag: {
     id: 'tag',
-    defaultMessage: 'tag',
+    defaultMessage: 'Tag',
   },
 });
