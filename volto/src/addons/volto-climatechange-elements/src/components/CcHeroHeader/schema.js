@@ -123,7 +123,7 @@ export const FeaturedContentSchema = ({ intl }) => ({
     {
       id: 'default',
       title: intl.formatMessage(messagesFeaturedContent.defaultFieldset),
-      fields: ['file_path', 'call_to_action'],
+      fields: ['file_path', 'call_to_action', 'tag'],
     },
   ],
 
@@ -142,6 +142,10 @@ export const FeaturedContentSchema = ({ intl }) => ({
       type: 'string',
       title: intl.formatMessage(messagesFeaturedContent.call_to_action),
     },
+    tag: {
+      type: 'string',
+      title: intl.formatMessage(messagesFeaturedContent.tag),
+    },
   },
 
   required: [],
@@ -159,5 +163,9 @@ const messagesFeaturedContent = defineMessages({
   call_to_action: {
     id: 'call_to_action',
     defaultMessage: 'Call to Action',
+  },
+  tag: {
+    id: 'tag',
+    defaultMessage: 'tag',
   },
 });
