@@ -2,6 +2,43 @@
 
 exports[`App renders a CCv2 style app component 1`] = `
 Array [
+  <div
+    aria-label="emergency banner"
+    className="gem-c-emergency-banner gem-c-emergency-banner--notable-death gem-c-emergency-banner--homepage"
+    data-nosnippet="true"
+    role="region"
+  >
+    <div
+      className="app-width-container"
+    >
+      <div
+        className="govuk-grid-row"
+      >
+        <div
+          className="govuk-grid-column-two-thirds"
+        >
+          <h2
+            className="gem-c-emergency-banner__heading gem-c-emergency-banner__heading--homepage"
+          >
+            Her Majesty Queen Elizabeth II
+          </h2>
+                    
+          <p
+            className="gem-c-emergency-banner__description gem-c-emergency-banner__description--homepage"
+          >
+            21 April 1926 to 8 September 2022
+          </p>
+                    
+          <a
+            className="gem-c-emergency-banner__link"
+            href="https://www.gov.uk/government/topical-events/her-majesty-queen-elizabeth-ii"
+          >
+            Read about the arrangements following The Queen’s death
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>,
   <main />,
   <footer
     className="govuk-footer "

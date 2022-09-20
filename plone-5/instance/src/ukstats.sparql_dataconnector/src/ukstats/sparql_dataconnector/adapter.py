@@ -69,4 +69,7 @@ class SPARQLDataProviderForConnectors(object):
     @property
     def provided_data(self):
         """ provided data """
+        self.request.response.setHeader(
+            'Cache-Control', 'public, max-age=3600'
+        )
         return self._provided_data()
