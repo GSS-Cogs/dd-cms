@@ -16,7 +16,6 @@ import trim from 'lodash/trim';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
-import { EmergencyBanner } from '../../../../../components/EmergencyBanner/EmergencyBanner';
 
 import Error from '@plone/volto/error';
 import './App.css';
@@ -129,12 +128,6 @@ class App extends Component {
           })}
         />
         <SkipLinks />
-        <EmergencyBanner
-          heading="Her Majesty Queen Elizabeth II"
-          short_description="21 April 1926 to 8 September 2022"
-          link="https://www.gov.uk/government/topical-events/her-majesty-queen-elizabeth-ii"
-          link_text="Read about the arrangements following The Queen’s death"
-        />
         <Header pathname={path} />
         {this.props.pathname !== '/' && <Breadcrumbs pathname={path} />}
         <MultilingualRedirector pathname={this.props.pathname}>
