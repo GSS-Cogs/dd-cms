@@ -21,6 +21,16 @@ services:
             - cogs_proxy
         restart: always
 
+    plone-dcms:
+        image: plone:${GIT_COMMIT_SHORT}
+        depends_on:
+            - _plone_builder
+        volumes:
+            - dcms-data:/data:z
+        networks:
+            - cogs_proxy
+        restart: always
+
     plone-cc2:
         image: plone:${GIT_COMMIT_SHORT}
         depends_on:
@@ -64,6 +74,24 @@ services:
             - cogs_proxy
         restart: always
 
+
+    volto-dcms:
+        image: volto:${GIT_COMMIT_SHORT}
+        depends_on:
+            - _volto_builder
+        environment:
+            - NODE_ENV=production
+            - VIRTUAL_HOST=dcms.ukstats.dev
+            - VIRTUAL_PORT=3000
+            - RAZZLE_RUNTIME_HOTJAR_ID=3150545
+            - RAZZLE_RUNTIME_HOTJAR_VERSION=6
+            - LETSENCRYPT_HOST=dcms.ukstats.dev
+        command: "yarn start:prod"
+        init: true
+        networks:
+            - cogs_proxy
+        restart: always
+
     volto-v2:
         image: volto:${GIT_COMMIT_SHORT}
         depends_on:
@@ -86,6 +114,7 @@ services:
 volumes:
     vawag-data:
     cc2-data:
+    dcms-data:
 
 networks:
     cogs_proxy:

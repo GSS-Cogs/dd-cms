@@ -1,0 +1,20 @@
+## Start of configuration add by letsencrypt container
+location ^~ /.well-known/acme-challenge/ {
+    auth_basic off;
+    auth_request off;
+    allow all;
+    root /usr/share/nginx/html;
+    try_files $uri =404;
+    break;
+}
+## End of configuration add by letsencrypt container
+location ~ /\+\+api\+\+($|/.*) {
+      rewrite ^/\+\+api\+\+($|/.*) /VirtualHostBase/https/dcms.ukstats.dev:443/Plone/++api++/VirtualHostRoot/$1 break;
+      proxy_pass http://plone-dcms:8080;
+}
+location ~ /_plone($|/.*) {
+      rewrite ^/_plone($|/.*) /VirtualHostBase/https/dcms.ukstats.dev:443/Plone/VirtualHostRoot/_vh__plone/$1 break;
+      proxy_pass http://plone-dcms:8080;
+}
+rewrite ^(/\+\+plone\+\+static/.*)$ /_plone/$1 last;
+client_max_body_size 100m;
