@@ -31,3 +31,8 @@ Feature: Overview
     When I wait for xpath "//h2[contains(text(), 'Articles')]" to be visible
     Then I wait for xpath "//h3/a[contains(text(), 'The UK’s climate is changing')]" to be visible
     And I take a screenshot
+
+  Scenario: Header image
+    When I wait for element "img.app-masthead__image"
+    And I take a screenshot
+    Then the image "img.app-masthead__image" should decode ok
