@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Tag } from 'govuk-react-jsx';
 import { CcMasthead } from '../CcMasthead/CcMasthead';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
 
 import { getRawContent } from '../../actions';
 import earth from './Earth.svg';
@@ -140,11 +141,13 @@ export const CcHeroHeaderView = (props) => {
       );
     }
     let marginOffset = phaseBannerDisplay ? -75 : 0;
+    var tempImg = flattenToAppURL(image) + '/@@images/image';
     return (
       <div className="govuk-grid-column-one-half app-masthead__grid-column">
         <img
           className="app-masthead__image"
-          src={image}
+          //src={image}
+          src={tempImg}
           alt=""
           role="presentation"
           style={{
