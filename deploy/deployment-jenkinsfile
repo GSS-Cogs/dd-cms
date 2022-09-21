@@ -5,19 +5,20 @@ pipeline {
                 script: "printf \$(git rev-parse --short ${GIT_COMMIT})",
                 returnStdout: true
         )
+        DB = credentials('staging-postgres')
     }
     stages {
         stage('build') {
             steps {
                 dir('deploy') {
-                    sh "docker-compose build _plone_builder _volto_builder"
+                    sh "docker-compose build db _plone_builder _volto_builder"
                 }
             }
         }
         stage('run') {
             steps {
                 dir('deploy') {
-                      sh "docker-compose up -d plone-cc2 volto-v2 plone-vawag volto-vawag"
+                      sh "docker-compose up -d db plone volto"
                 }
             }
         }

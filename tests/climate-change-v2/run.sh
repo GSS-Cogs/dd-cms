@@ -1,9 +1,13 @@
 #!/bin/sh
 
+set -e -o pipefail
+
+WAIT_TIMEOUT=180
+
 echo -n "Waiting for plone..."
-while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' plone:8080)" != "200" ]]; do sleep 5; echo -n '.'; done
+timeout $WAIT_TIMEOUT sh -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' plone:8080)" != "200" ]]; do sleep 5; echo -n "."; done'
 echo -ne "ready.\nWaiting for volto..."
-while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' volto:3000)" != "200" ]]; do sleep 5; echo -n '.'; done
+timeout $WAIT_TIMEOUT sh -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' volto:3000)" != "200" ]]; do sleep 5; echo -n "."; done'
 echo "ready."
 
 TESTDIR=$PWD

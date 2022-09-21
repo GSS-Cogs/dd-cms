@@ -6,6 +6,8 @@ services:
       context: ../../plone-5
     networks:
       - test_net
+    entrypoint: ''
+    command: bash -c "build-and-start -c site.cfg"
 
   volto:
     build:
