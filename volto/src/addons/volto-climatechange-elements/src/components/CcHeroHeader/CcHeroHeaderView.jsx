@@ -14,6 +14,7 @@ export const CcHeroHeaderView = (props) => {
   const [caption, setCaption] = useState('');
   const [image, setImage] = useState('');
   const [callToAction, setCallToAction] = useState('');
+  const [tag, setTag] = useState('');
   const [marginInset, setMarginInset] = useState(false);
   const [phaseBannerDisplay, setPhaseBannerDisplay] = useState(false);
   const [height, setHeight] = useState(0);
@@ -42,6 +43,9 @@ export const CcHeroHeaderView = (props) => {
       setTitle(content.title);
       if (props.data.call_to_action != '') {
         setCallToAction(props.data.call_to_action);
+      }
+      if (props.data.tag != '') {
+        setTag(props.data.tag);
       }
     } else if (props.data) {
       setTitle(props.data.title);
@@ -97,13 +101,14 @@ export const CcHeroHeaderView = (props) => {
     return (
       <div className="govuk-grid-row" ref={ref}>
         <div className={className}>
-          {content ? (
-            <Tag className="govuk-tag--grey app-masthead__tag">NEW ARTICLE</Tag>
-          ) : (
-            caption != '' && (
-              <span className="app-masthead__caption">{caption}</span>
-            )
-          )}
+          {content
+            ? tag !== '' &&
+              tag !== undefined && (
+                <Tag className="govuk-tag--grey app-masthead__tag">{tag}</Tag>
+              )
+            : caption != '' && (
+                <span className="app-masthead__caption">{caption}</span>
+              )}
           <h1 className="govuk-heading-xl app-masthead__title">{title}</h1>
           <p className="app-masthead__description">{summary}</p>
           <CallToActionButton />

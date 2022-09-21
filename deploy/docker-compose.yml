@@ -12,39 +12,59 @@ services:
             -   'echo "plone image $$IMAGE_ID built"'
 
     db:
-      image: postgres:alpine
-      environment:
-        - POSTGRES_PASSWORD=${DB_PSW?non-empty}
-        - POSTGRES_USER=${DB_USR}
-        - POSTGRES_DB=plone
-      networks:
-        - cogs_proxy
-
-      healthcheck:
-        test: [ "CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
-        interval: 10s
-        timeout: 5s
-        retries: 5
-      volumes:
-        - pgdata:/var/lib/postgresql/data
+        image: postgres:alpine
+        environment:
+            - POSTGRES_PASSWORD=${DB_PSW?non-empty}
+            - POSTGRES_USER=${DB_USR}
+            - POSTGRES_DB=plone
+        networks:
+            - cogs_proxy
+        healthcheck:
+            test: [ "CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+        restart: always
 
     plone:
         image: plone:${GIT_COMMIT_SHORT}
         depends_on:
-          _plone_builder:
-            condition: service_completed_successfully
-          db:
-            condition: service_healthy
+            _plone_builder:
+                condition: service_completed_successfully
+            db:
+                condition: service_healthy
         environment:
             - VIRTUAL_HOST=cms-admin.ukstats.dev
             - VIRTUAL_PORT=8080
             - LETSENCRYPT_HOST=cms-admin.ukstats.dev
         networks:
-          - cogs_proxy
+            - cogs_proxy
         restart: always
         entrypoint: ''
         volumes:
-          - zope_conf:/plone/instance/parts/instance/etc/
+            - zope_conf:/plone/instance/parts/instance/etc/
+
+    plone-vawag:
+        image: plone:${GIT_COMMIT_SHORT}
+        depends_on:
+            - _plone_builder
+        volumes:
+            - vawag-data:/data:z
+        networks:
+            - cogs_proxy
+        restart: always
+
+    plone-cc2:
+        image: plone:${GIT_COMMIT_SHORT}
+        depends_on:
+            - _plone_builder
+        volumes:
+            - cc2-data:/data:z
+        networks:
+            - cogs_proxy
+        restart: always
 
     _volto_builder:
         image: volto:${GIT_COMMIT_SHORT}
@@ -58,15 +78,36 @@ services:
         command:
             -   'echo "plone image $$IMAGE_ID built"'
 
-    volto:
+    volto-vawag:
         image: volto:${GIT_COMMIT_SHORT}
         depends_on:
             - _volto_builder
         environment:
             - NODE_ENV=production
-            - VIRTUAL_HOST=climate-change.ukstats.dev,vawg.ukstats.dev,vawg.gss-data.org.uk
+            - VIRTUAL_HOST=vawg.ukstats.dev,vawg.gss-data.org.uk
             - VIRTUAL_PORT=3000
-            - LETSENCRYPT_HOST=climate-change.ukstats.dev,vawg.ukstats.dev,vawg.gss-data.org.uk
+            - RAZZLE_RUNTIME_HOTJAR_ID=3150545
+            - RAZZLE_RUNTIME_HOTJAR_VERSION=6
+            - LETSENCRYPT_HOST=vawg.ukstats.dev,vawg.gss-data.org.uk
+        command: "yarn start:prod"
+        init: true
+        networks:
+            - cogs_proxy
+        restart: always
+
+    volto-v2:
+        image: volto:${GIT_COMMIT_SHORT}
+        depends_on:
+            - _volto_builder
+        environment:
+            - RAZZLE_API_PATH=https://staging.climate-change.data.gov.uk/api
+            - RAZZLE_GA4_CODE=G-Y84VSLC1LC
+            - RAZZLE_RUNTIME_HOTJAR_ID=3118262
+            - RAZZLE_RUNTIME_HOTJAR_VERSION=6
+            - NODE_ENV=production
+            - VIRTUAL_HOST=staging.climate-change.data.gov.uk
+            - VIRTUAL_PORT=3000
+            - LETSENCRYPT_HOST=staging.climate-change.data.gov.uk
         command: "yarn start:prod"
         init: true
         networks:
