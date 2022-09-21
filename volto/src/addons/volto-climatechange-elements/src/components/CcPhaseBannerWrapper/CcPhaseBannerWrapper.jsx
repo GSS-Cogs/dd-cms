@@ -43,17 +43,14 @@ export const CcPhaseBannerWrapper = ({ className }) => {
         }}
       >
         This is a new service your{' '}
-        <Link
-          to="#"
-          onClick={(e) => {
-            //'mailto:climate.change@ons.gov.uk';
-            window.open(phaseBannerLink, '_blank', 'noopener,noreferrer');
-            e.preventDefault();
-          }}
+        <a
+          href={phaseBannerLink}
           style={{ textDecorationLine: 'underline' }}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           feedback
-        </Link>{' '}
+        </a>{' '}
         will help us improve it.
       </PhaseBanner>
     </div>
