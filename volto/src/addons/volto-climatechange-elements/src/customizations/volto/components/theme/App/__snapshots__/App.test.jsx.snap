@@ -34,6 +34,16 @@ Array [
                 Log Out
               </a>
             </li>
+            <li
+              className="govuk-footer__inline-list-item"
+            >
+              <a
+                className="govuk-footer__link "
+                href="/cookies"
+              >
+                Cookies
+              </a>
+            </li>
           </ul>
           <svg
             aria-hidden="true"
