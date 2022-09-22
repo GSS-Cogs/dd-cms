@@ -38,6 +38,7 @@ pipeline {
                 script {
                     dir('tests/climate-change-v2') {
                         sh "docker-compose -p ${PROJ_NAME} build --no-rm"
+                        sh "docker-compose -p ${PROJ_NAME} up -d fixtures-init"
                         sh "docker-compose -p ${PROJ_NAME} up -d plone"
                         sh "docker-compose -p ${PROJ_NAME} up -d volto"
                         sh "docker-compose -p ${PROJ_NAME} up -d proxy"
@@ -58,7 +59,7 @@ pipeline {
                 junit allowEmptyResults: true, testResults: '**/junit.xml'
                 dir('tests/climate-change-v2') {
                     cucumber 'test-results.json'
-                    sh "docker-compose -p ${PROJ_NAME} down"
+                    sh "docker-compose -p ${PROJ_NAME} down --volumes"
                     lighthouseReport file: 'reports/climate-change_data_gov_uk_.report.json', name: 'Front page'
                     archiveArtifacts artifacts: 'reports/*.json'
                 }

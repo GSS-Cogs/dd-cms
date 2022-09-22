@@ -1,12 +1,24 @@
 version: '3.8'
 
 services:
+  fixtures-init:
+    build:
+      context: fixtures
+    command: "echo 'set up fixtures'"
+    volumes:
+      - fixtures:/data/instance/import:z
+
   plone:
     build:
       context: ../../plone-5
+    depends_on:
+      fixtures-init:
+        condition: service_completed_successfully
     networks:
       - test_net
     entrypoint: ''
+    volumes:
+      - fixtures:/data/instance/import:z
     command: bash -c "build-and-start -c site.cfg"
 
   volto:
@@ -45,3 +57,6 @@ services:
 
 networks:
   test_net:
+
+volumes:
+  fixtures:
