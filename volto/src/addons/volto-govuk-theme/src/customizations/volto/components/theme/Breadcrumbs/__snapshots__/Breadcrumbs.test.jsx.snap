@@ -25,13 +25,14 @@ exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
             This is a new service your
              
             <a
-              href="/"
-              onClick={[Function]}
+              href=""
+              rel="noopener noreferrer"
               style={
                 Object {
                   "textDecorationLine": "underline",
                 }
               }
+              target="_blank"
             >
               feedback
             </a>
