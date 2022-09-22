@@ -1,4 +1,5 @@
 const { When } = require('cucumber');
+const {strict: assert} = require("assert");
 
 When(
     'I click the xpath link {string}', async function(xpath) {
@@ -50,5 +51,11 @@ When(
 When(
     'I click the {string} element containing {string}', async function(element, text) {
         await this.page.$x(`//${element}[contains(text(), '${text}')]`).then(nodes => nodes[0].click())
+    }
+)
+
+When(
+    'the image {string} should decode ok', async function(selector) {
+        await this.page.$eval(selector, (img => img.decode()));
     }
 )
