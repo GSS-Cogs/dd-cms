@@ -10,8 +10,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { SuperNavigationHeader } from '../../../../../components/CcSuperNavigationHeader/CcSuperNavigationHeader';
 import { getSiteTitle } from '../../../../../actions';
-import { useGoogleAnalytics } from 'volto-google-analytics';
-import { hotjar } from 'react-hotjar';
 
 const headerConfigDefault = {
   logo_link_title: 'Go to the GOV.UK homepage',
@@ -56,14 +54,9 @@ const Header = (props) => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    hotjar.initialize(
-      process.env.RAZZLE_RUNTIME_HOTJAR_ID,
-      process.env.RAZZLE_RUNTIME_HOTJAR_VERSION,
-    );
     dispatch(getSiteTitle());
   }, []);
 
-  useGoogleAnalytics();
   const listNavigation = useSelector((state) => state.navigation);
   const listDashboardItems = useSelector(
     (state) => state.reduxAsyncConnect.navigation?.items ?? [],
@@ -132,8 +125,8 @@ const Header = (props) => {
    */
   return (
     <>
-      {cookieConsent && cookieConsent.usage && <Analytics />}
       <CcCookieBanner />
+      {cookieConsent && cookieConsent.usage && <Analytics />}
       <SuperNavigationHeader
         className={props?.pathname === '' ? 'root-header' : 'non-root-header'}
         navigation={headerConfig}

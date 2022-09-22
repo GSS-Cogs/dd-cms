@@ -69,9 +69,14 @@ class Footer extends Component {
         },
       ];
     }
+    items.push({
+      children: 'Cookies',
+      href: `/cookies`,
+    });
+
     return (
       <GovukFooter
-          containerClassName='app-width-container'
+        containerClassName="app-width-container"
         meta={{
           items,
           visuallyHiddenTitle: 'Support links',

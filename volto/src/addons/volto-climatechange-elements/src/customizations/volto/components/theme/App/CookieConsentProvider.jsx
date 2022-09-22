@@ -19,8 +19,6 @@ const getCookieConsentState = () => {
   } catch (e) {
     const defaultConsent = {
       usage: false,
-      campaigns: false,
-      settings: false,
     };
     Cookies.set('cookies_policy', JSON.stringify(defaultConsent), {
       expires: 365,
@@ -39,7 +37,7 @@ export const CookieConsentProvider = ({ children }) => {
   const [cookieConsent, setCookieConsent] = useState(getCookieConsentState);
 
   const updateConsent = (value) => {
-    const consentObject = { usage: value, campaigns: value, settings: value };
+    const consentObject = { usage: value };
     Cookies.set('cookies_preferences_set', 'true', {
       expires: 365,
       secure: true,

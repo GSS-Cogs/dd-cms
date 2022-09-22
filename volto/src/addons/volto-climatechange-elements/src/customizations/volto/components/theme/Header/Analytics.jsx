@@ -5,7 +5,10 @@ import { hotjar } from 'react-hotjar';
 export const Analytics = () => {
   useGoogleAnalytics();
   useEffect(() => {
-    hotjar.initialize(process.env.HOTJAR_ID, process.env.HOTJAR_VERSION);
+    hotjar.initialize(
+      process.env.RAZZLE_RUNTIME_HOTJAR_ID,
+      process.env.RAZZLE_RUNTIME_HOTJAR_VERSION,
+    );
   }, []);
 
   return null;

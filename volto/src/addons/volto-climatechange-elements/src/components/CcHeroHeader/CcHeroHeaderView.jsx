@@ -14,7 +14,9 @@ export const CcHeroHeaderView = (props) => {
   const [caption, setCaption] = useState('');
   const [image, setImage] = useState('');
   const [callToAction, setCallToAction] = useState('');
+  const [tag, setTag] = useState('');
   const [marginInset, setMarginInset] = useState(false);
+  const [phaseBannerDisplay, setPhaseBannerDisplay] = useState(false);
   const [height, setHeight] = useState(0);
   const ref = useRef(null);
 
@@ -39,14 +41,16 @@ export const CcHeroHeaderView = (props) => {
     if (content) {
       setSummary(content.description);
       setTitle(content.title);
+      if (props.data.call_to_action != '') {
+        setCallToAction(props.data.call_to_action);
+      }
+      if (props.data.tag != '') {
+        setTag(props.data.tag);
+      }
     } else if (props.data) {
       setTitle(props.data.title);
       setSummary(props.data.summary);
       setCaption(props.data.caption);
-    }
-    if (props.data.call_to_action != '') {
-      setCallToAction(props.data.call_to_action);
-    } else {
       setCallToAction('');
     }
     const image_source = props.data.image_source;
@@ -61,12 +65,18 @@ export const CcHeroHeaderView = (props) => {
     } else {
       setMarginInset(false);
     }
+    if (props.data.bannerDisplay === false) {
+      setPhaseBannerDisplay(false);
+    } else {
+      setPhaseBannerDisplay(true);
+    }
   }, [content, props.data]);
 
   useEffect(() => {
     // Handler to call on window resize
+    let heightOffset = phaseBannerDisplay ? 100 : 25;
     const handleResize = () => {
-      let tempHeight = ref.current.clientHeight + 100;
+      let tempHeight = ref.current.clientHeight + heightOffset;
       if (tempHeight >= 700) {
         tempHeight = 700;
       }
@@ -83,18 +93,22 @@ export const CcHeroHeaderView = (props) => {
   const InnerMasthead = () => {
     let className = 'app-masthead__grid-column govuk-grid';
     if (image != '') {
+      // if no image, make article full width
       className += '-column-one-half';
+    } else {
+      className += '-column-full';
     }
     return (
       <div className="govuk-grid-row" ref={ref}>
         <div className={className}>
-          {content ? (
-            <Tag className="govuk-tag--grey app-masthead__tag">NEW ARTICLE</Tag>
-          ) : (
-            caption != '' && (
-              <span className="app-masthead__caption">{caption}</span>
-            )
-          )}
+          {content
+            ? tag !== '' &&
+              tag !== undefined && (
+                <Tag className="govuk-tag--grey app-masthead__tag">{tag}</Tag>
+              )
+            : caption != '' && (
+                <span className="app-masthead__caption">{caption}</span>
+              )}
           <h1 className="govuk-heading-xl app-masthead__title">{title}</h1>
           <p className="app-masthead__description">{summary}</p>
           <CallToActionButton />
@@ -121,8 +135,11 @@ export const CcHeroHeaderView = (props) => {
 
   const HeroHeaderImage = () => {
     if (image == '' || image == undefined) {
-      return null;
+      return (
+        <div className="govuk-grid-column-one-half app-masthead__grid-column"></div>
+      );
     }
+    let marginOffset = phaseBannerDisplay ? -75 : 0;
     return (
       <div className="govuk-grid-column-one-half app-masthead__grid-column">
         <img
@@ -131,10 +148,10 @@ export const CcHeroHeaderView = (props) => {
           alt=""
           role="presentation"
           style={{
-            //width: Math.floor((height / 470) * 100).toString() + '%',
             position: 'absolute',
             height: height,
-            left: 400,
+            width: height + 100,
+            marginTop: marginOffset,
           }}
         />
       </div>
@@ -144,7 +161,7 @@ export const CcHeroHeaderView = (props) => {
   return (
     <CcMasthead
       className={marginInset && 'app-masthead--bottom-overlap'}
-      shouldDisplayPhaseBanner={true}
+      shouldDisplayPhaseBanner={phaseBannerDisplay}
     >
       <InnerMasthead />
     </CcMasthead>

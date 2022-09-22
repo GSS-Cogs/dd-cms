@@ -7,7 +7,7 @@ Feature: Overview
     And I expect the element "#main" is visible
 
   Scenario: Front page is visible
-    Then I expect the element "#page-document" is visible
+    Then I expect the element "#page-document" is visible after "30" seconds
     And I take a screenshot
 
    Scenario: Navigation bar menus
