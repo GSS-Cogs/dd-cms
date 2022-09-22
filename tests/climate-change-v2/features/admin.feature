@@ -17,7 +17,7 @@ Feature: Administration
     And I type "admin" in the "#email" element
     And I type "admin" in the "#password" element
     And I take a screenshot
-    When I click the button "#login-form-submit"
+    When I click the button "#login-form-submit" and wait for the element "#page-document"
     And I expect the element "#page-document" is visible after "60" seconds
 
   Scenario: add-ons installed
