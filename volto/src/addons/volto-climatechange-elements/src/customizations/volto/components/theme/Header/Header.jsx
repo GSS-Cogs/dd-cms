@@ -3,12 +3,13 @@
  * @module components/theme/Header/Header
  */
 
+import CcCookieBanner from '../../../../../components/CcCookieBanner/CcCookieBanner';
+import { useCookieConsent } from '../App/CookieConsentProvider';
+import { Analytics } from './Analytics';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { SuperNavigationHeader } from '../../../../../components/CcSuperNavigationHeader/CcSuperNavigationHeader';
 import { getSiteTitle } from '../../../../../actions';
-import { useGoogleAnalytics } from 'volto-google-analytics';
-import { hotjar } from 'react-hotjar';
 
 const headerConfigDefault = {
   logo_link_title: 'Go to the GOV.UK homepage',
@@ -49,17 +50,13 @@ const headerConfigDefault = {
  */
 const Header = (props) => {
   let headerConfig = null;
+  const cookieConsent = useCookieConsent();
 
   const dispatch = useDispatch();
   useEffect(() => {
-    hotjar.initialize(
-      process.env.RAZZLE_RUNTIME_HOTJAR_ID,
-      process.env.RAZZLE_RUNTIME_HOTJAR_VERSION,
-    );
     dispatch(getSiteTitle());
   }, []);
 
-  useGoogleAnalytics();
   const listNavigation = useSelector((state) => state.navigation);
   const listDashboardItems = useSelector(
     (state) => state.reduxAsyncConnect.navigation?.items ?? [],
@@ -128,6 +125,8 @@ const Header = (props) => {
    */
   return (
     <>
+      <CcCookieBanner />
+      {cookieConsent && cookieConsent.usage && <Analytics />}
       <SuperNavigationHeader
         className={props?.pathname === '' ? 'root-header' : 'non-root-header'}
         navigation={headerConfig}
