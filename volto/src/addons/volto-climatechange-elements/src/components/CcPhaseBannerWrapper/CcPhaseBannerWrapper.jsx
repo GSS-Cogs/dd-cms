@@ -7,7 +7,7 @@ import { getPhaseBannerContent } from '../../actions';
 export const CcPhaseBannerWrapper = ({ className }) => {
   const [phaseBannerLink, setPhaseBannerLink] = useState('');
   const [phaseBannerStage, setPhaseBannerStage] = useState('alpha');
-  const [phaseBannerDisplay, setPhaseBannerDisplay] = useState(true);
+  const [phaseBannerDisplay, setPhaseBannerDisplay] = useState(false);
   const dispatch = useDispatch();
 
   const phaseData = useSelector((state) => {
@@ -17,6 +17,7 @@ export const CcPhaseBannerWrapper = ({ className }) => {
 
   useEffect(() => {
     dispatch(getPhaseBannerContent());
+    console.log('loading phase banner: ' + phaseBannerDisplay);
   }, []);
 
   useEffect(() => {
@@ -30,8 +31,8 @@ export const CcPhaseBannerWrapper = ({ className }) => {
     }
   }, [phaseData]);
 
-  if (!phaseBannerDisplay) {
-    return null;
+  if (phaseBannerDisplay === false || phaseBannerDisplay === undefined) {
+    return <div style={{ height: 75 }}></div>;
   }
 
   return (

@@ -18,6 +18,7 @@ export const CcHeroHeaderView = (props) => {
   const [marginInset, setMarginInset] = useState(false);
   const [phaseBannerDisplay, setPhaseBannerDisplay] = useState(false);
   const [height, setHeight] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
   const ref = useRef(null);
 
   let articlePath = '#';
@@ -76,7 +77,8 @@ export const CcHeroHeaderView = (props) => {
     // Handler to call on window resize
     let heightOffset = phaseBannerDisplay ? 100 : 25;
     const handleResize = () => {
-      let tempHeight = ref.current.clientHeight + heightOffset;
+      let tempHeight =
+        ref.current === null ? 100 : ref.current.clientHeight + heightOffset;
       if (tempHeight >= 700) {
         tempHeight = 700;
       }
@@ -98,6 +100,14 @@ export const CcHeroHeaderView = (props) => {
     } else {
       className += '-column-full';
     }
+
+    if (summary === '' || summary === undefined) {
+      return (
+        <div className="govuk-grid-row" style={{ height: 400 }}>
+          <h1 className="govuk-heading-xl app-masthead__title"></h1>
+        </div>
+      );
+    }
     return (
       <div className="govuk-grid-row" ref={ref}>
         <div className={className}>
@@ -109,7 +119,12 @@ export const CcHeroHeaderView = (props) => {
             : caption != '' && (
                 <span className="app-masthead__caption">{caption}</span>
               )}
-          <h1 className="govuk-heading-xl app-masthead__title">{title}</h1>
+          <h1
+            onLoad={setIsLoading(false)}
+            className="govuk-heading-xl app-masthead__title"
+          >
+            {title}
+          </h1>
           <p className="app-masthead__description">{summary}</p>
           <CallToActionButton />
         </div>
@@ -134,7 +149,7 @@ export const CcHeroHeaderView = (props) => {
   };
 
   const HeroHeaderImage = () => {
-    if (image == '' || image == undefined) {
+    if (image == '' || image == undefined || isLoading) {
       return (
         <div className="govuk-grid-column-one-half app-masthead__grid-column"></div>
       );
