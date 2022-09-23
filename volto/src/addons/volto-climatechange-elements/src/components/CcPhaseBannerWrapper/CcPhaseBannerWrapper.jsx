@@ -11,14 +11,17 @@ export const CcPhaseBannerWrapper = ({ className }) => {
   const dispatch = useDispatch();
 
   const phaseData = useSelector((state) => {
-    const blocks = state.rawPhaseBanner?.phaseBanner?.data ?? '';
+    const blocks = state.rawPhaseBanner?.phaseBanner?.data ?? null;
     return blocks;
   });
 
   useEffect(() => {
-    dispatch(getPhaseBannerContent());
+    if (phaseData === null) {
+      dispatch(getPhaseBannerContent());
+    }
+
     console.log('loading phase banner: ' + phaseBannerDisplay);
-  }, []);
+  }, [phaseData]);
 
   useEffect(() => {
     var obj = phaseData;
@@ -32,7 +35,27 @@ export const CcPhaseBannerWrapper = ({ className }) => {
   }, [phaseData]);
 
   if (phaseBannerDisplay === false || phaseBannerDisplay === undefined) {
-    return <div style={{ height: 75 }}></div>;
+    return (
+      <div>
+        <PhaseBanner
+          className={className}
+          tag={{
+            children: '........',
+          }}
+        >
+          This is a new service your{' '}
+          <a
+            // href={phaseBannerLink}
+            style={{ textDecorationLine: 'underline' }}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            feedback
+          </a>{' '}
+          will help us improve it.
+        </PhaseBanner>
+      </div>
+    );
   }
 
   return (

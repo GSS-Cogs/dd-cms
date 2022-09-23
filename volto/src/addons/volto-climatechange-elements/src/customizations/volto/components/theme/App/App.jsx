@@ -39,6 +39,8 @@ import {
   getTypes,
   getWorkflow,
 } from '@plone/volto/actions';
+import { getPhaseBannerContent } from '../../../../../actions';
+//'../../../../../../../volto-climatechange-elements/src/actions';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 import * as Sentry from '@sentry/browser';
@@ -190,6 +192,11 @@ export default compose(
         __SERVER__ && dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
     },
     {
+      key: 'phaseBanner',
+      promise: ({ location, store: { dispatch } }) =>
+        __SERVER__ && dispatch(getPhaseBannerContent()),
+    },
+    {
       key: 'content',
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ && dispatch(getContent(getBaseUrl(location.pathname))),
@@ -223,6 +230,7 @@ export default compose(
       content: state.content.data,
       apiError: state.apierror.error,
       connectionRefused: state.apierror.connectionRefused,
+      phaseBanner: state.rawPhaseBanner?.phaseBanner?.data,
     };
   }, null),
 )(App);
