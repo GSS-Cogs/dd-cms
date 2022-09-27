@@ -22,7 +22,7 @@ export const CcV2ArticleView = (props) => {
         data={{
           title: content.title,
           summary: content.description,
-          created: formattedDate(content.created),
+          created: formattedDate(content.effective ?? content.created),
           creators: formattedCreators(content.creators),
           dashboard: content?.['@id'].includes('dashboard'),
         }}

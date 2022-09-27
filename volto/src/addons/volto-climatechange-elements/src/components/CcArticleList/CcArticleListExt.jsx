@@ -31,7 +31,7 @@ export const CcArticleListExt = (props) => {
   let firstItemDate = null;
   if (firstItem) {
     firstItemCreators = formattedCreators(firstItem.listCreators);
-    firstItemDate = formattedDate(firstItem.effectiveDate ?? firstItem.created);
+    firstItemDate = formattedDate(firstItem.EffectiveDate ?? firstItem.created);
   }
   return (
     <div>
