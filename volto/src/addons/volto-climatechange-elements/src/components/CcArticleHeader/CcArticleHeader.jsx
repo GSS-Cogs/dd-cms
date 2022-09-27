@@ -17,12 +17,12 @@ export const CcArticleHeader = ({ data }) => {
           </h1>
           {data?.displayAuthors ? (
             <p className="govuk-caption-m govuk-!-margin-bottom-6">
-              {data.created}
+              {data.EffectiveDate ?? data.created}
               <span className="cc-article-header__date">{data.creators}</span>
             </p>
           ) : (
             <p className="govuk-caption-m govuk-!-margin-bottom-6">
-              {data.created}
+              {data.EffectiveDate ?? data.created}
             </p>
           )}
           <p className="govuk-body-l">{data.summary}</p>
