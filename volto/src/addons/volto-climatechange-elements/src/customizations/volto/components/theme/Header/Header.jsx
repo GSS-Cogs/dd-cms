@@ -27,10 +27,6 @@ const headerConfigDefault = {
           label: 'About the portal',
           href: '/about',
         },
-        {
-          label: 'Datasets',
-          href: 'https://beta.gss-data.org.uk/datasets',
-        },
       ],
     },
     {
