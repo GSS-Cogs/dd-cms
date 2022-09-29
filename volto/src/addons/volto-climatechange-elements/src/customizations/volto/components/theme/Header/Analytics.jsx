@@ -6,8 +6,10 @@ export const Analytics = () => {
   useGoogleAnalytics();
   useEffect(() => {
     hotjar.initialize(
-      process.env.RAZZLE_RUNTIME_HOTJAR_ID,
-      process.env.RAZZLE_RUNTIME_HOTJAR_VERSION,
+      window?.env?.RAZZLE_RUNTIME_HOTJAR_ID ||
+        process.env.RAZZLE_RUNTIME_HOTJAR_ID,
+      window?.env?.RAZZLE_RUNTIME_HOTJAR_VERSION ||
+        process.env.RAZZLE_RUNTIME_HOTJAR_VERSION,
     );
   }, []);
 
