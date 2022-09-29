@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { H1, H2, H3, H4 } from 'govuk-react';
 import moment from 'moment';
+import { CcAuthor } from '../CcAuthor/CcAuthor';
 
 export const CcArticlePreview = ({ data, skipSummary, authors }) => {
   const publishedDate = data.EffectiveDate ?? data.CreationDate;
@@ -16,11 +17,7 @@ export const CcArticlePreview = ({ data, skipSummary, authors }) => {
           {data.title}
         </a>
       </H3>
-      {authors ? (
-        <p className="govuk-caption-m govuk-!-margin-bottom-6">
-          Written by {authors}
-        </p>
-      ) : null}
+      {authors ? <CcAuthor authors={authors} /> : null}
       {skipSummary ? null : (
         <div className="cc-article-list-description">{data.description}</div>
       )}

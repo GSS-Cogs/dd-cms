@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CcMasthead } from '../CcMasthead/CcMasthead';
 import { CcRelatedLinks } from '../CcRelatedLinks/CcRelatedLinks';
-import { FeedSignUps } from '../CcRelatedLinks/FeedSignUps';
+import { CcAuthor } from '../CcAuthor/CcAuthor';
 import { CcArticlePreview } from './CcArticleList';
 import { getFolderishContent, getRelatedItemsData } from '../../actions';
 import { H4, GridRow, GridCol } from 'govuk-react';
@@ -42,11 +42,7 @@ export const CcArticleListExt = (props) => {
             <h1 className="govuk-heading-xl govuk-!-margin-bottom-6">
               {firstItem?.title}
             </h1>
-            <p className="govuk-caption-m govuk-!-margin-bottom-6">
-              <span className="cc-article-header__date">
-                Written by {firstItemCreators}
-              </span>
-            </p>
+            <CcAuthor authors={firstItemCreators} />
             <p className="govuk-body-l">{firstItem?.description}</p>
 
             <H4>
