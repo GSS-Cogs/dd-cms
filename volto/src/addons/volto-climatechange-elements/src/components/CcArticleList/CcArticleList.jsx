@@ -8,7 +8,7 @@ export const CcArticlePreview = ({ data, skipSummary, authors }) => {
 
   return (
     <article className="cc-article-preview">
-      <aside className="govuk-caption-m govuk-!-font-weight-bold">
+      <aside className="govuk-caption-m govuk-!-font-weight-bold govuk-!-margin-bottom-2">
         {moment(publishedDate).format('dddd D MMMM YYYY')}
       </aside>
       <H3>
