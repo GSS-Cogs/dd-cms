@@ -80,7 +80,9 @@ export const CcArticleListExt = (props) => {
                         Read article
                       </a>
                     </H4>
-                    <hr className="govuk-section-break govuk-section-break--visible govuk-section-break--xl" />
+                    {i < items.length - 1 && (
+                      <hr className="govuk-section-break govuk-section-break--visible govuk-section-break--xl" />
+                    )}
                   </div>
                 </div>
               );
