@@ -5,7 +5,7 @@ import { CcRelatedLinks } from '../CcRelatedLinks/CcRelatedLinks';
 import { FeedSignUps } from '../CcRelatedLinks/FeedSignUps';
 import { CcArticlePreview } from './CcArticleList';
 import { getFolderishContent, getRelatedItemsData } from '../../actions';
-import { H4, GridRow, GridCol } from 'govuk-react';
+import { H4, H5, GridRow, GridCol } from 'govuk-react';
 import { formattedDate } from '../../utils';
 
 export const CcArticleListExt = (props) => {
@@ -72,14 +72,11 @@ export const CcArticleListExt = (props) => {
                       data={data}
                       authors={formattedCreators(data.listCreators)}
                     />
-                    <H4>
-                      <a
-                        href={data['@id']?.replace('/api', '')}
-                        className="cc-article-list"
-                      >
+                    <h3 className="govuk-heading-m">
+                      <a href={data['@id']?.replace('/api', '')}>
                         Read article
                       </a>
-                    </H4>
+                    </h3>
                     {i < items.length - 1 && (
                       <hr className="govuk-section-break govuk-section-break--visible govuk-section-break--xl" />
                     )}

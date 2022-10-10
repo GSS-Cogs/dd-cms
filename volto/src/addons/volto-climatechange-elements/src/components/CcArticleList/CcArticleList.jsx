@@ -22,7 +22,7 @@ export const CcArticlePreview = ({ data, skipSummary, authors }) => {
         </a>
       </h3>
       {authors ? (
-        <p className="govuk-caption-m govuk-!-margin-bottom-5">
+        <p className="govuk-caption-s govuk-!-margin-bottom-5">
           Written by {authors}
         </p>
       ) : null}
