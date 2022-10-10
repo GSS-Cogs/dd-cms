@@ -61,7 +61,7 @@ export const CcArticleListExt = (props) => {
         </div>
       </CcMasthead>
       <GridRow>
-        <GridCol setWidth="two-thirds">
+        <GridCol setWidth="two-thirds" className="govuk-!-padding-right-8">
           {items.map((data, i, idx) => {
             if (i !== 0) {
               return (
