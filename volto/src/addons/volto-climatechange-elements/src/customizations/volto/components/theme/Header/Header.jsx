@@ -71,16 +71,17 @@ const Header = (props) => {
     return siteTitle;
   });
 
-  const navItems = listNavigation?.items ?? [];
   const menu_contents = [];
-  const dashBoardItems = navItems
-    .filter((item) => item.url === '/dashboards')
+  const dashBoardItems = listDashboardItems
+    .filter((item) => item.title.toLowerCase() === 'dashboards')
     ?.map((item) => item.items)
     .flat(1);
+
   dashBoardItems.map((item) => {
     menu_contents.push({
       label: item.title,
       href: `${item.url}`,
+      description: item.description,
     });
   });
 
@@ -90,6 +91,7 @@ const Header = (props) => {
       dashboardDescription = item.description;
   });
 
+  const navItems = listNavigation?.items ?? [];
   const checkIfArticlesNeeded = navItems.some(
     (item) => item.url === '/articles' && item.items?.length > 0,
   );
