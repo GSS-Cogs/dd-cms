@@ -72,7 +72,7 @@ export const CcArticleListExt = (props) => {
                       data={data}
                       authors={formattedCreators(data.listCreators)}
                     />
-                    <h3 className="govuk-heading-m">
+                    <h3 className="govuk-heading-s">
                       <a href={data['@id']?.replace('/api', '')}>
                         Read article
                       </a>
