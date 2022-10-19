@@ -75,7 +75,7 @@ const Header = (props) => {
   dashBoardItems.map((item) => {
     menu_contents.push({
       label: item.title,
-      href: `${item.url}`,
+      href: `${item['@id']}`,
       description: item.description,
     });
   });
