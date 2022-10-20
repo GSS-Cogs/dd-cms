@@ -43,9 +43,7 @@ export const CcArticleListExt = (props) => {
               {firstItem?.title}
             </h1>
             <p className="govuk-caption-m govuk-!-margin-bottom-6">
-              <span className="cc-article-header__date">
-                Written by {firstItemCreators}
-              </span>
+              <span>Written by {firstItemCreators}</span>
             </p>
             <p className="govuk-body-l">{firstItem?.description}</p>
 
