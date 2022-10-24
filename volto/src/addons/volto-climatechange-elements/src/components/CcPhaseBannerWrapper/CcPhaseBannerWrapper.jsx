@@ -17,7 +17,6 @@ export const CcPhaseBannerWrapper = ({ className }) => {
 
   useEffect(() => {
     dispatch(getPhaseBannerContent());
-    console.log('loading phase banner: ' + phaseBannerDisplay);
   }, []);
 
   useEffect(() => {
