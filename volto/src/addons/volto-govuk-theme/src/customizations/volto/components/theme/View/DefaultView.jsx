@@ -65,7 +65,7 @@ const DefaultView = ({ content, intl, location }) => {
       {location.pathname === '/' ? (
         <BlockContent />
       ) : (
-        <div className="govuk-cookie-banner__message app-width-container govuk-!-margin-bottom-9 govuk-!-margin-top-6">
+        <div className="app-width-container govuk-!-margin-bottom-9 govuk-!-margin-top-6">
           <div className="govuk-grid-row">
             <div className="govuk-grid-column-two-thirds">
               <BlockContent />
