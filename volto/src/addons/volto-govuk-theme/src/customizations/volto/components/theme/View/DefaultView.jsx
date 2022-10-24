@@ -41,17 +41,20 @@ const DefaultView = ({ content, intl, location }) => {
         config.blocks.blocksConfig[
           content[blocksFieldname]?.[block]?.['@type']
         ]?.['view'] || null;
-      return Block !== null ? (
-        <>
-          <Block
-            key={block}
-            id={block}
-            properties={content}
-            data={content[blocksFieldname][block]}
-            path={getBaseUrl(location?.pathname || '')}
-          />
-        </>
-      ) : (
+      if (Block !== null) {
+        return (
+          <>
+            <Block
+              key={block}
+              id={block}
+              properties={content}
+              data={content[blocksFieldname][block]}
+              path={getBaseUrl(location?.pathname || '')}
+            />
+          </>
+        );
+      }
+      return (
         <div key={block}>
           {intl.formatMessage(messages.unknownBlock, {
             block: content[blocksFieldname]?.[block]?.['@type'],
@@ -60,11 +63,16 @@ const DefaultView = ({ content, intl, location }) => {
       );
     });
 
-  return hasBlocksData(content) ? (
-    <div id="page-document">
-      {location.pathname === '/' ? (
-        <BlockContent />
-      ) : (
+  if (hasBlocksData(content)) {
+    if (location.pathname === '/') {
+      return (
+        <div id="page-document">
+          <BlockContent />
+        </div>
+      );
+    }
+    return (
+      <div id="page-document">
         <div className="app-width-container govuk-!-margin-bottom-9 govuk-!-margin-top-6">
           <div className="govuk-grid-row">
             <div className="govuk-grid-column-two-thirds">
@@ -72,9 +80,11 @@ const DefaultView = ({ content, intl, location }) => {
             </div>
           </div>
         </div>
-      )}
-    </div>
-  ) : (
+      </div>
+    );
+  }
+
+  return (
     <Container id="page-document">
       <h1 className="documentFirstHeading">{content.title}</h1>
       {content.description && (
