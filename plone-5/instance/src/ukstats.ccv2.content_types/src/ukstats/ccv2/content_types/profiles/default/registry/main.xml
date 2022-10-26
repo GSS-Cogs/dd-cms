@@ -4,5 +4,7 @@
     i18n:domain="ukstats.ccv2.content_types">
 
 <!-- -*- extra stuff goes here -*- -->
-
+  <records
+      interface="ukstats.ccv2.content_types.browser.controlpanel.ICMSSiteSettings"
+      prefix="cmsconf" />
 </registry>

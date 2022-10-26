@@ -18,4 +18,15 @@
       directory="static"
       />
 
+    <browser:page
+        name="cmsconf-controlpanel"
+        for="ukstats.ccv2.IPloneSiteRoot"
+        class=".controlpanel.CMSControlPanelFormWrapper"
+        permission="cmf.ManagePortal"
+        layer="ploneconf.site.interfaces.IPloneconfSiteLayer"
+        />
+
+    <adapter
+        factory="ploneconf.site.browser.controlpanel.PloneConfRegistryConfigletPanel"
+        name="cmsconf-controlpanel" />
 </configure>
