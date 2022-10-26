@@ -8,21 +8,21 @@ from zope.interface import Interface
 
 
 class ICMSSiteSettings(Interface):
-    site_title = schema.Textline(
+    site_title = schema.TextLine(
         title="Site Title",
         description="Set site title",
         default="Fantastic CMS Site",
         required=False,
     )
 
-    hotjar_analytics_id = schema.Textline(
+    hotjar_analytics_id = schema.TextLine(
         title="Hotjar Analytics ID",
         description="Set hotjar analytics ID",
         default="",
         required=False,
     )
 
-    google_analytics_id = schema.Textline(
+    google_analytics_id = schema.TextLine(
         title="Google Analytics ID",
         description="Set google analytics ID",
         default="",
