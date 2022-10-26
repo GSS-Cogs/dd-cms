@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<object name="cmsconf-controlpanel">
+  <configlet
+      title="CMS Settings"
+      action_id="cmsconf-controlpanel"
+      appId="cmsconf-controlpanel"
+      category="CMS"
+      condition_expr=""
+      icon_expr=""
+      url_expr="string:${portal_url}/@@cmsconf-controlpanel"
+      visible="True">
+    <permission>Manage portal</permission>
+  </configlet>
+</object>
