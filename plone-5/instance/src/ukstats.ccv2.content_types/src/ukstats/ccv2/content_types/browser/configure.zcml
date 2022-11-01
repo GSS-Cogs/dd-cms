@@ -26,4 +26,8 @@
         layer="ukstats.ccv2.content_types.interfaces.IUkstatsCcv2ContentTypesLayer"
         />
 
+    <adapter
+        factory="ukstats.ccv2.content_types.browser.controlpanel.CMSRegistryConfigletPanel"
+        name="cmsconf-controlpanel" />
+
 </configure>
