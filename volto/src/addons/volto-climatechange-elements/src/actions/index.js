@@ -2,6 +2,7 @@ import {
   GET_RELATED_ITEMS_DATA,
   GET_RAW_CONTENT,
   GET_FOLDERISH_CONTENT,
+  GET_PHASE_BANNER_CONTENT,
   GET_SITE_TITLE,
 } from '../constants/ActionTypes';
 
@@ -56,6 +57,17 @@ export function getFolderishContent(url, headers = {}) {
   };
 }
 
+export function getPhaseBannerContent() {
+  return {
+    type: GET_PHASE_BANNER_CONTENT,
+      request: {
+      op: 'get',
+      path: '',
+      headers: {},
+    },
+    url: '',
+  };
+}
 export function getSiteTitle() {
   return {
     type: GET_SITE_TITLE,

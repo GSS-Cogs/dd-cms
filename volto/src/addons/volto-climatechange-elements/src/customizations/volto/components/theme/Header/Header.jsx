@@ -3,12 +3,13 @@
  * @module components/theme/Header/Header
  */
 
+import CcCookieBanner from '../../../../../components/CcCookieBanner/CcCookieBanner';
+import { useCookieConsent } from '../App/CookieConsentProvider';
+import { Analytics } from './Analytics';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { SuperNavigationHeader } from '../../../../../components/CcSuperNavigationHeader/CcSuperNavigationHeader';
 import { getSiteTitle } from '../../../../../actions';
-import { useGoogleAnalytics } from 'volto-google-analytics';
-import { hotjar } from 'react-hotjar';
 
 const headerConfigDefault = {
   logo_link_title: 'Go to the GOV.UK homepage',
@@ -25,10 +26,6 @@ const headerConfigDefault = {
         {
           label: 'About the portal',
           href: '/about',
-        },
-        {
-          label: 'Datasets',
-          href: 'https://beta.gss-data.org.uk/datasets',
         },
       ],
     },
@@ -49,17 +46,13 @@ const headerConfigDefault = {
  */
 const Header = (props) => {
   let headerConfig = null;
+  const cookieConsent = useCookieConsent();
 
   const dispatch = useDispatch();
   useEffect(() => {
-    hotjar.initialize(
-      process.env.RAZZLE_RUNTIME_HOTJAR_ID,
-      process.env.RAZZLE_RUNTIME_HOTJAR_VERSION,
-    );
     dispatch(getSiteTitle());
   }, []);
 
-  useGoogleAnalytics();
   const listNavigation = useSelector((state) => state.navigation);
   const listDashboardItems = useSelector(
     (state) => state.reduxAsyncConnect.navigation?.items ?? [],
@@ -78,16 +71,17 @@ const Header = (props) => {
     return siteTitle;
   });
 
-  const navItems = listNavigation?.items ?? [];
   const menu_contents = [];
-  const dashBoardItems = navItems
-    .filter((item) => item.url === '/dashboards')
+  const dashBoardItems = listDashboardItems
+    .filter((item) => item.title.toLowerCase() === 'dashboards')
     ?.map((item) => item.items)
     .flat(1);
+
   dashBoardItems.map((item) => {
     menu_contents.push({
       label: item.title,
-      href: `${item.url}`,
+      href: `${item['@id']}`,
+      description: item.description,
     });
   });
 
@@ -97,6 +91,7 @@ const Header = (props) => {
       dashboardDescription = item.description;
   });
 
+  const navItems = listNavigation?.items ?? [];
   const checkIfArticlesNeeded = navItems.some(
     (item) => item.url === '/articles' && item.items?.length > 0,
   );
@@ -128,6 +123,8 @@ const Header = (props) => {
    */
   return (
     <>
+      <CcCookieBanner />
+      {cookieConsent && cookieConsent.usage && <Analytics />}
       <SuperNavigationHeader
         className={props?.pathname === '' ? 'root-header' : 'non-root-header'}
         navigation={headerConfig}

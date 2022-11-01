@@ -14,6 +14,7 @@ import { injectIntl } from 'react-intl';
 
 import { getBreadcrumbs } from '@plone/volto/actions';
 import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
+import { CcPhaseBannerWrapper } from '../../../../../../../volto-climatechange-elements/src/components/CcPhaseBannerWrapper/CcPhaseBannerWrapper';
 
 /**
  * Breadcrumbs container class.
@@ -70,23 +71,7 @@ class Breadcrumbs extends Component {
     return (
       <div className="cc-breadcrumbs">
         <div className="app-width-container">
-          <PhaseBanner
-            className="cc-phasebanner"
-            tag={{
-              children: 'beta',
-            }}
-          >
-            This is a new service your{' '}
-            <Link
-              to="#"
-              onClick={(e) => {
-                window.location.href = "mailto:climate.change@ons.gov.uk";
-                e.preventDefault();
-              }}
-            >
-              feedback
-            </Link>{' '} will help us improve it.
-          </PhaseBanner>
+          <CcPhaseBannerWrapper className={'cc-phasebanner'} />
           {hasBreadcrumbItems && (
             <GovukBreadcrumbs
               items={[
