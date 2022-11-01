@@ -20,7 +20,7 @@
 
     <browser:page
         name="cmsconf-controlpanel"
-        for="ukstats.ccv2.content_types.interfaces.IUkstatsCcv2ContentTypesLayer"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         class=".controlpanel.CMSControlPanelFormWrapper"
         permission="cmf.ManagePortal"
         layer="ukstats.ccv2.content_types.interfaces.IUkstatsCcv2ContentTypesLayer"
