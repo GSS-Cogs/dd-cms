@@ -26,7 +26,4 @@
         layer="ukstats.ccv2.content_types.interfaces.IUkstatsCcv2ContentTypesLayer"
         />
 
-    <adapter
-        factory="ukstats.ccv2.content_types.browser.controlpanel.PloneConfRegistryConfigletPanel"
-        name="cmsconf-controlpanel" />
 </configure>
