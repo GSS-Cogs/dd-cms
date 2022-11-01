@@ -49,7 +49,4 @@
         layer="ukstats.ccv2.content_types.interfaces.IUkstatsCcv2ContentTypesLayer"
         />
 
-    <adapter
-        factory="ploneconf.site.browser.controlpanel.PloneConfRegistryConfigletPanel"
-        name="ploneconf-controlpanel" />
 </configure>
