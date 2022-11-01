@@ -41,12 +41,5 @@
       />
 
   <!-- -*- extra stuff goes here -*- -->
-    <browser:page
-        name="cmsconf-controlpanel"
-        for="ukstats.ccv2.content_types.interfaces.IUkstatsCcv2ContentTypesLayer"
-        class=".controlpanel.CMSControlPanelFormWrapper"
-        permission="cmf.ManagePortal"
-        layer="ukstats.ccv2.content_types.interfaces.IUkstatsCcv2ContentTypesLayer"
-        />
 
 </configure>
