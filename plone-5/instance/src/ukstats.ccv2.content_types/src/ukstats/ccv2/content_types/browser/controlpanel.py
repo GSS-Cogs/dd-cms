@@ -57,6 +57,6 @@ class CMSRegistryConfigletPanel(RegistryConfigletPanel):
     schema = ICMSSiteSettings
     schema_prefix = "cmsconf"
     configlet_id = "cmsconf-controlpanel"
-    configlet_category_id = "CMS"
+    configlet_category_id = "Products"
     title = "CMS Settings"
-    group = "CMS"
+    group = "Products"

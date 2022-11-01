@@ -4,7 +4,7 @@
       title="CMS Settings"
       action_id="cmsconf-controlpanel"
       appId="cmsconf-controlpanel"
-      category="CMS"
+      category="Products"
       condition_expr=""
       icon_expr=""
       url_expr="string:${portal_url}/@@cmsconf-controlpanel"
