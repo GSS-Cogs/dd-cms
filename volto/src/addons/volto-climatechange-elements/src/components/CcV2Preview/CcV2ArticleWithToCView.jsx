@@ -24,7 +24,7 @@ export const CcV2ArticleWithToCView = (props) => {
 
   const formattedCreators = (creators) => creators.join(', ');
 
-  const [contentHeaders, setContentHeaders] = useState([]);
+  const [contentHeaders, setContentHeaders] = useState(null);
   const [screenWidth, setScreenWidth] = useState(802);
 
   useEffect(() => {
@@ -42,6 +42,11 @@ export const CcV2ArticleWithToCView = (props) => {
   }, [screenWidth]);
 
   useEffect(() => {
+    getToCTitles();
+  }, []);
+
+  const getToCTitles = () => {
+    // go through content[blocksLayoutFieldname].items and retrieve potential ToC titles
     let tempHeaders = [];
     let currentIndex = -1;
     content[blocksLayoutFieldname].items.forEach((block) => {
@@ -67,9 +72,57 @@ export const CcV2ArticleWithToCView = (props) => {
     });
     console.log(tempHeaders);
     setContentHeaders(tempHeaders);
-  }, []);
+  };
+
+  const getMainContentHeight = () => {
+    // possible to use useMemo here?
+    let tempHeight = 1000;
+    if (screenWidth <= 801) {
+      tempHeight = '100%';
+    } else if (mainContentRef.current !== null) {
+      tempHeight = mainContentRef.current.clientHeight;
+    }
+    return tempHeight;
+  };
 
   let previousBlock = [];
+
+  const TableOfContent = () => {
+    function arrangeContentHeaders(items) {
+      if (items === undefined) {
+        return null;
+      }
+
+      if (items.length > 0) {
+        return (
+          <ul className="govuk-list">
+            {items.map((item, index) => {
+              return (
+                <li>
+                  <a className="govuk-link" href={'#' + item.id}>
+                    {item.text}
+                  </a>
+                  {arrangeContentHeaders(items[index]?.sub)}
+                </li>
+              );
+            })}
+          </ul>
+        );
+      } else {
+        return null;
+      }
+    }
+
+    const contentList =
+      contentHeaders !== null ? arrangeContentHeaders(contentHeaders) : null;
+
+    return (
+      <nav className="ccv2-article-nav">
+        <h3 className="ccv2-article-nav--title">Contents</h3>
+        {contentList}
+      </nav>
+    );
+  };
 
   return (
     <div>
@@ -89,45 +142,11 @@ export const CcV2ArticleWithToCView = (props) => {
         <div
           className="govuk-grid-row ccv2-article-body--main"
           style={{
-            height:
-              screenWidth <= 801
-                ? '100%'
-                : mainContentRef.current === null
-                ? 1000
-                : mainContentRef.current.clientHeight,
+            height: getMainContentHeight(),
           }}
         >
           <div className="govuk-grid-column-one-third ccv2-article-nav-container">
-            <nav className="ccv2-article-nav">
-              <h3 className="ccv2-article-nav--title">Contents</h3>
-              <ul className="govuk-list">
-                {contentHeaders.length > 0 &&
-                  contentHeaders.map((item, index) => {
-                    return (
-                      <li>
-                        <a className="govuk-link" href={'#' + item.id}>
-                          {item.text}
-                        </a>
-                        <ul className="govuk-list">
-                          {contentHeaders[index].sub.length > 0 &&
-                            contentHeaders[index].sub.map((subitem) => {
-                              return (
-                                <li>
-                                  <a
-                                    className="govuk-link"
-                                    href={'#' + subitem.id}
-                                  >
-                                    {subitem.text}
-                                  </a>
-                                </li>
-                              );
-                            })}
-                        </ul>
-                      </li>
-                    );
-                  })}
-              </ul>
-            </nav>
+            <TableOfContent />
           </div>
           <div className="govuk-grid-column-two-thirds" ref={mainContentRef}>
             {map(content[blocksLayoutFieldname].items, (block, index) => {
@@ -150,25 +169,20 @@ export const CcV2ArticleWithToCView = (props) => {
               previousBlock = contentBlock;
 
               return Block !== null && notTitleBlock ? (
-                <>
-                  <div id={block} style={{ marginTop: previousBack ? 40 : 0 }}>
-                    <Block
-                      key={block}
-                      id={block}
-                      properties={content}
-                      data={content[blocksFieldname][block]}
-                      path={getBaseUrl(location?.pathname || '')}
-                    />
-                    {displayBack && screenWidth <= 801 && (
-                      <a
-                        className="govuk-body-m govuk-link"
-                        href={'#navigation'}
-                      >
-                        Back to contents
-                      </a>
-                    )}
-                  </div>
-                </>
+                <div id={block} style={{ marginTop: previousBack ? 40 : 0 }}>
+                  <Block
+                    key={block}
+                    id={block}
+                    properties={content}
+                    data={content[blocksFieldname][block]}
+                    path={getBaseUrl(location?.pathname || '')}
+                  />
+                  {displayBack && screenWidth <= 801 && (
+                    <a className="govuk-body-m govuk-link" href={'#navigation'}>
+                      Back to contents
+                    </a>
+                  )}
+                </div>
               ) : null;
             })}
           </div>
