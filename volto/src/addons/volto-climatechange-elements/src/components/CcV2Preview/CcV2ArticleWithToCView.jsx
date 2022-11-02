@@ -56,20 +56,6 @@ export const CcV2ArticleWithToCView = (props) => {
             text: text.trim(),
           });
         } else if (
-          contentBlock?.value['0']?.type !== 'h2' &&
-          contentBlock?.plaintext.length > 2 &&
-          contentBlock?.plaintext.length < 40 &&
-          contentBlock?.plaintext.charAt(0) === ' '
-        ) {
-          // console.log(contentBlock?.plaintext);
-          // console.log(contentBlock);
-          const text = contentBlock?.plaintext;
-
-          tempHeaders[currentIndex]['sub'].push({
-            id: block,
-            text: text.trim(),
-          });
-        } else if (
           contentBlock?.value['0']?.type === 'h2' ||
           contentBlock?.value['0']?.type === 'h3'
         ) {
@@ -85,7 +71,7 @@ export const CcV2ArticleWithToCView = (props) => {
     setContentHeaders(tempHeaders);
   }, []);
 
-  let previousType = '';
+  let previousBlock = [];
 
   return (
     <div>
@@ -147,7 +133,7 @@ export const CcV2ArticleWithToCView = (props) => {
             </nav>
           </div>
           <div className="govuk-grid-column-two-thirds" ref={mainContentRef}>
-            {map(content[blocksLayoutFieldname].items, (block) => {
+            {map(content[blocksLayoutFieldname].items, (block, index) => {
               const Block =
                 config.blocks.blocksConfig[
                   content[blocksFieldname]?.[block]?.['@type']
@@ -156,10 +142,15 @@ export const CcV2ArticleWithToCView = (props) => {
               const notTitleBlock =
                 content[blocksFieldname]?.[block]?.['@type'] !== 'title';
               let displayBack = false;
+              let previousBack = false;
               const contentBlock = content[blocksFieldname][block];
               if (contentBlock?.value === undefined) {
                 displayBack = true;
               }
+              if (previousBlock?.value === undefined) {
+                previousBack = true;
+              }
+              previousBlock = contentBlock;
               // if (
               //   Block !== null &&
               //   notTitleBlock &&
@@ -177,15 +168,7 @@ export const CcV2ArticleWithToCView = (props) => {
 
               return Block !== null && notTitleBlock ? (
                 <>
-                  <div id={block}>
-                    {displayBack && screenWidth <= 801 && (
-                      <a
-                        className="govuk-body-m govuk-link"
-                        href={'#navigation'}
-                      >
-                        back to contents
-                      </a>
-                    )}
+                  <div id={block} style={{ marginTop: previousBack ? 40 : 0 }}>
                     <Block
                       key={block}
                       id={block}
@@ -193,6 +176,14 @@ export const CcV2ArticleWithToCView = (props) => {
                       data={content[blocksFieldname][block]}
                       path={getBaseUrl(location?.pathname || '')}
                     />
+                    {displayBack && screenWidth <= 801 && (
+                      <a
+                        className="govuk-body-m govuk-link"
+                        href={'#navigation'}
+                      >
+                        Back to contents
+                      </a>
+                    )}
                   </div>
                 </>
               ) : null;
