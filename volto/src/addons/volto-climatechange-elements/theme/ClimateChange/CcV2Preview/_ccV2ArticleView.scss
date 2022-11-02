@@ -24,28 +24,16 @@
     @extend %govuk-list;
     @extend %govuk-list--bullet;
   }
-  // .ccv2-article-body--main {
-  //   flex: 1 1 auto; 
-  //   //display: flex; 
-  //   // margin-bottom: 1em;
-  //   @media only screen and (max-width: 768px) {
-  //     //height: 100%;
-  //   }
-  // }
 }
 
 .ccv2-article-nav-container {
   height: 100%;
-  // @media only screen and (max-width: 768px) {
-  //   height: 100vh;
-  // }
 }
 
 .ccv2-article-nav {
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 2rem;
-	//align-self: start;
   margin-bottom: govuk-spacing(8);
   padding-top: govuk-spacing(2);
   border-top: 3px solid govuk-colour('blue');

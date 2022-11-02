@@ -48,7 +48,6 @@ export const CcV2ArticleWithToCView = (props) => {
       const contentBlock = content[blocksFieldname][block];
       if (blocksFieldname && contentBlock?.value !== undefined) {
         if (contentBlock?.value['0']?.type === 'h4') {
-          //console.log(contentBlock.plaintext);
           const text = contentBlock?.plaintext;
 
           tempHeaders[currentIndex]['sub'].push({
@@ -59,7 +58,6 @@ export const CcV2ArticleWithToCView = (props) => {
           contentBlock?.value['0']?.type === 'h2' ||
           contentBlock?.value['0']?.type === 'h3'
         ) {
-          //console.log(contentBlock.plaintext);
           const text = contentBlock?.plaintext;
 
           tempHeaders.push({ id: block, text: text.trim(), sub: [] });
@@ -91,7 +89,6 @@ export const CcV2ArticleWithToCView = (props) => {
         <div
           className="govuk-grid-row ccv2-article-body--main"
           style={{
-            //backgroundColor: 'lightgreen',
             height:
               screenWidth <= 801
                 ? '100%'
@@ -151,20 +148,6 @@ export const CcV2ArticleWithToCView = (props) => {
                 previousBack = true;
               }
               previousBlock = contentBlock;
-              // if (
-              //   Block !== null &&
-              //   notTitleBlock &&
-              //   contentBlock?.value !== undefined
-              // ) {
-              //   if (
-              //     previousType === 'p' &&
-              //     contentBlock?.value['0']?.type !== previousType
-              //   ) {
-              //     displayBack = true;
-              //   }
-              //   console.log(contentBlock?.value);
-              //   previousType = contentBlock?.value['0']?.type;
-              // }
 
               return Block !== null && notTitleBlock ? (
                 <>
