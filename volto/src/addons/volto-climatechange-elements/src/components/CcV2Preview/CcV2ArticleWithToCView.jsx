@@ -3,7 +3,7 @@
  * @module components/theme/View/CcV2ArticleWithToCView
  */
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { map } from 'lodash';
 import config from '@plone/volto/registry';
 import {
@@ -74,20 +74,19 @@ export const CcV2ArticleWithToCView = (props) => {
     setContentHeaders(tempHeaders);
   };
 
-  const getMainContentHeight = () => {
+  const getMainContentHeight = useCallback(() => {
     // possible to use useMemo here?
-    let tempHeight = 1000;
+    var tempHeight = 1000;
+
     if (screenWidth <= 801) {
       tempHeight = '100%';
     } else if (mainContentRef.current !== null) {
       tempHeight = mainContentRef.current.clientHeight;
     }
     return tempHeight;
-  };
+  });
 
-  let previousBlock = [];
-
-  const TableOfContent = () => {
+  const TableOfContent = useCallback(() => {
     function arrangeContentHeaders(items) {
       if (items === undefined) {
         return null;
@@ -98,8 +97,8 @@ export const CcV2ArticleWithToCView = (props) => {
           <ul className="govuk-list">
             {items.map((item, index) => {
               return (
-                <li>
-                  <a className="govuk-link" href={'#' + item.id}>
+                <li className="ccv2-article-nav--link" key={index}>
+                  <a className="govuk-link" onClick={() => scrollTo(item.id)}>
                     {item.text}
                   </a>
                   {arrangeContentHeaders(items[index]?.sub)}
@@ -122,7 +121,19 @@ export const CcV2ArticleWithToCView = (props) => {
         {contentList}
       </nav>
     );
-  };
+  });
+
+  function scrollTo(hash) {
+    //location.hash = '#' + hash;
+    var element_to_scroll_to = document.getElementById(hash);
+    //element_to_scroll_to.scrollIntoView();
+    element_to_scroll_to.scrollIntoView({
+      block: 'start',
+      behavior: 'auto',
+    });
+  }
+
+  let previousBlock = [];
 
   return (
     <div>
@@ -169,7 +180,11 @@ export const CcV2ArticleWithToCView = (props) => {
               previousBlock = contentBlock;
 
               return Block !== null && notTitleBlock ? (
-                <div id={block} style={{ marginTop: previousBack ? 40 : 0 }}>
+                <div
+                  id={block}
+                  style={{ marginTop: previousBack ? 40 : 0 }}
+                  key={index}
+                >
                   <Block
                     key={block}
                     id={block}
@@ -178,7 +193,10 @@ export const CcV2ArticleWithToCView = (props) => {
                     path={getBaseUrl(location?.pathname || '')}
                   />
                   {displayBack && screenWidth <= 801 && (
-                    <a className="govuk-body-m govuk-link" href={'#navigation'}>
+                    <a
+                      className="govuk-body-m govuk-link ccv2-article-nav--link"
+                      onClick={() => scrollTo('navigation')}
+                    >
                       Back to contents
                     </a>
                   )}
