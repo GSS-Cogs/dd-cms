@@ -1,5 +1,6 @@
 .ccv2-article-body {
   margin-top: govuk-spacing(8);
+
   h2 {
     @extend %govuk-heading-l;
   }
@@ -41,4 +42,5 @@
   .ccv2-article-nav--title {
     @extend %govuk-heading-m;
   }
+  .ccv2-article-nav--link { cursor: pointer; }
 }
