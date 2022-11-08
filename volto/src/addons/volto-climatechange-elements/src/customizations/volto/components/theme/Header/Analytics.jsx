@@ -6,23 +6,32 @@ import { hotjar } from 'react-hotjar';
 export const Analytics = () => {
   useGoogleAnalytics();
 
-  const hotjarId = useSelector(
+  const hotjarIdStr = useSelector(
     (state) =>
       state.rawSiteTitle?.siteTitle?.data?.data?.hotjar_analytics_id ?? '',
   );
 
   useEffect(() => {
-    if (hotjarId == null) {
+    if (hotjarIdStr == null) {
       dispatch(getSiteTitle());
     }
-    if (hotjarId) {
-      hotjar.initialize(
-        hotjarId,
+    if (hotjarIdStr) {
+      let hotjarVersion =
         window?.env?.RAZZLE_RUNTIME_HOTJAR_VERSION ||
-          process.env.RAZZLE_RUNTIME_HOTJAR_VERSION,
-      );
+        process.env.RAZZLE_RUNTIME_HOTJAR_VERSION ||
+        null;
+
+      const hotjarIds = hotjarIdStr.split(';');
+
+      if (hotjarIds.length > 1) {
+        hotjarVersion = hotjarIds[1];
+      }
+
+      const hotjarId = hotjarIds[0];
+
+      hotjar.initialize(hotjarId, hotjarVersion);
     }
-  }, [hotjarId]);
+  }, [hotjarIdStr]);
 
   return null;
 };
