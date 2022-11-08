@@ -180,11 +180,7 @@ export const CcV2ArticleWithToCView = (props) => {
               previousBlock = contentBlock;
 
               return Block !== null && notTitleBlock ? (
-                <div
-                  id={block}
-                  style={{ marginTop: previousBack ? 40 : 0 }}
-                  key={index}
-                >
+                <>
                   <Block
                     key={block}
                     id={block}
@@ -200,7 +196,7 @@ export const CcV2ArticleWithToCView = (props) => {
                       Back to contents
                     </a>
                   )}
-                </div>
+                </>
               ) : null;
             })}
           </div>
