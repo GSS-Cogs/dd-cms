@@ -25,6 +25,7 @@ export const CcV2ArticleWithToCView = (props) => {
   const formattedCreators = (creators) => creators.join(', ');
 
   const [contentHeaders, setContentHeaders] = useState(null);
+  const [flatContentHeaders, setFlatContentHeaders] = useState([]);
   const [screenWidth, setScreenWidth] = useState(802);
 
   useEffect(() => {
@@ -48,6 +49,7 @@ export const CcV2ArticleWithToCView = (props) => {
   const getToCTitles = () => {
     // go through content[blocksLayoutFieldname].items and retrieve potential ToC titles
     let tempHeaders = [];
+    let tempFlatHeaders = [];
     let currentIndex = -1;
     content[blocksLayoutFieldname].items.forEach((block) => {
       const contentBlock = content[blocksFieldname][block];
@@ -59,6 +61,9 @@ export const CcV2ArticleWithToCView = (props) => {
             id: block,
             text: text.trim(),
           });
+          if (tempHeaders[currentIndex]['sub'].length > 1) {
+            tempFlatHeaders.push(text);
+          }
         } else if (
           contentBlock?.value['0']?.type === 'h2' ||
           contentBlock?.value['0']?.type === 'h3'
@@ -66,11 +71,13 @@ export const CcV2ArticleWithToCView = (props) => {
           const text = contentBlock?.plaintext;
 
           tempHeaders.push({ id: block, text: text.trim(), sub: [] });
+          tempFlatHeaders.push(text);
           currentIndex += 1;
         }
       }
     });
     setContentHeaders(tempHeaders);
+    setFlatContentHeaders(tempFlatHeaders);
   };
 
   const getMainContentHeight = useCallback(() => {
@@ -134,29 +141,9 @@ export const CcV2ArticleWithToCView = (props) => {
 
   const shouldDisplayBackToContentsButton = (currBlock) => {
     let displayBack = false;
-
-    if (currBlock?.value !== undefined && contentHeaders !== null) {
-      const currType = currBlock.value[0].type;
-      if (currType === 'h2' || currType === 'h3' || currType === 'h4') {
-        for (let i = 0; i < contentHeaders.length; i++) {
-          if (contentHeaders[i].text === currBlock.plaintext.trim()) {
-            displayBack = true;
-            break;
-          }
-          if (contentHeaders[i].sub.length > 1) {
-            for (let j = 1; j < contentHeaders[i].sub.length; j++) {
-              if (
-                contentHeaders[i].sub[j].text === currBlock.plaintext.trim()
-              ) {
-                displayBack = true;
-                break;
-              }
-            }
-          }
-          if (displayBack) {
-            break;
-          }
-        }
+    if (currBlock?.value !== undefined && flatContentHeaders !== null) {
+      if (flatContentHeaders.includes(currBlock.plaintext)) {
+        displayBack = true;
       }
     }
     return displayBack;
