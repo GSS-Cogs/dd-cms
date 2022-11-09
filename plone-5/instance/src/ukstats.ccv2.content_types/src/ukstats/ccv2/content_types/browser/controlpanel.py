@@ -29,6 +29,20 @@ class ICMSSiteSettings(Interface):
         required=False,
     )
 
+    feedback_email = schema.TextLine(
+        title="Phase Banner Feedback Email",
+        description="Set email address for feedback in phase banner",
+        default="",
+        required=False,
+    )
+
+    phasebanner_state = schema.Bool(
+        title="Enable phase banner",
+        description="Enable or disable phase banner",
+        default=True,
+        required=False,
+    )
+
     directives.widget("site_title", frontendOptions={"widget": "TextLinesFieldWidget"})
 
     directives.widget(
@@ -36,7 +50,11 @@ class ICMSSiteSettings(Interface):
     )
 
     directives.widget(
-        "google_analytics_id", frontendOptions={"widget": "TextLinesFieldWidget"}
+        "feedback_email", frontendOptions={"widget": "TextLinesFieldWidget"}
+    )
+
+    directives.widget(
+        "phasebanner_state", frontendOptions={"widget": "SingleCheckBoxFieldWidget"}
     )
 
 
