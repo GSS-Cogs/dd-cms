@@ -132,9 +132,7 @@ export const CcV2ArticleWithToCView = (props) => {
     });
   }
 
-  let previousBlock = [];
-
-  const shouldDisplayBackToContentsButton = (currBlock, prevBlock) => {
+  const shouldDisplayBackToContentsButton = (currBlock) => {
     let displayBack = false;
 
     if (currBlock?.value !== undefined && contentHeaders !== null) {
@@ -201,9 +199,7 @@ export const CcV2ArticleWithToCView = (props) => {
               const contentBlock = content[blocksFieldname][block];
               const displayBack = shouldDisplayBackToContentsButton(
                 contentBlock,
-                previousBlock,
               );
-              previousBlock = contentBlock;
 
               return Block !== null && notTitleBlock ? (
                 <>
