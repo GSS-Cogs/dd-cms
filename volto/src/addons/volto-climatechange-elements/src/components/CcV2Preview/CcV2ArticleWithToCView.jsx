@@ -70,7 +70,6 @@ export const CcV2ArticleWithToCView = (props) => {
         }
       }
     });
-    console.log(tempHeaders);
     setContentHeaders(tempHeaders);
   };
 
@@ -135,6 +134,36 @@ export const CcV2ArticleWithToCView = (props) => {
 
   let previousBlock = [];
 
+  const shouldDisplayBackToContentsButton = (currBlock, prevBlock) => {
+    let displayBack = false;
+
+    if (currBlock?.value !== undefined && contentHeaders !== null) {
+      const currType = currBlock.value[0].type;
+      if (currType === 'h2' || currType === 'h3' || currType === 'h4') {
+        for (let i = 0; i < contentHeaders.length; i++) {
+          if (contentHeaders[i].text === currBlock.plaintext.trim()) {
+            displayBack = true;
+            break;
+          }
+          if (contentHeaders[i].sub.length > 1) {
+            for (let j = 1; j < contentHeaders[i].sub.length; j++) {
+              if (
+                contentHeaders[i].sub[j].text === currBlock.plaintext.trim()
+              ) {
+                displayBack = true;
+                break;
+              }
+            }
+          }
+          if (displayBack) {
+            break;
+          }
+        }
+      }
+    }
+    return displayBack;
+  };
+
   return (
     <div>
       <CcArticleHeader
@@ -168,34 +197,36 @@ export const CcV2ArticleWithToCView = (props) => {
 
               const notTitleBlock =
                 content[blocksFieldname]?.[block]?.['@type'] !== 'title';
-              let displayBack = false;
-              let previousBack = false;
+
               const contentBlock = content[blocksFieldname][block];
-              if (contentBlock?.value === undefined) {
-                displayBack = true;
-              }
-              if (previousBlock?.value === undefined) {
-                previousBack = true;
-              }
+              const displayBack = shouldDisplayBackToContentsButton(
+                contentBlock,
+                previousBlock,
+              );
               previousBlock = contentBlock;
 
               return Block !== null && notTitleBlock ? (
                 <>
+                  {displayBack && screenWidth <= 801 && (
+                    <div
+                      className="govuk-body-m govuk-link ccv2-article-nav--link"
+                      onClick={() => scrollTo('navigation')}
+                      style={{
+                        paddingBottom: 20,
+                      }}
+                    >
+                      Back to contents
+                    </div>
+                  )}
+
                   <Block
                     key={block}
                     id={block}
                     properties={content}
                     data={content[blocksFieldname][block]}
                     path={getBaseUrl(location?.pathname || '')}
+                    styling=""
                   />
-                  {displayBack && screenWidth <= 801 && (
-                    <a
-                      className="govuk-body-m govuk-link ccv2-article-nav--link"
-                      onClick={() => scrollTo('navigation')}
-                    >
-                      Back to contents
-                    </a>
-                  )}
                 </>
               ) : null;
             })}
