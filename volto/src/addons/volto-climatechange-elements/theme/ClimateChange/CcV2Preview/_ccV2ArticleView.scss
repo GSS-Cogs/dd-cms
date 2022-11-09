@@ -27,8 +27,17 @@
   }
 }
 
+.ccv2-article-content-container{
+  @media only screen and (max-width: 801px) {
+    width: 100%;
+  }
+}
+
 .ccv2-article-nav-container {
   height: 100%;
+  @media only screen and (max-width: 801px) {
+    width: 100%;
+  }
 }
 
 .ccv2-article-nav {
