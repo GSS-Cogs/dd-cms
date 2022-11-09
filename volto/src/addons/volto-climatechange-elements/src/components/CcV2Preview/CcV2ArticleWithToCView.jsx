@@ -189,7 +189,7 @@ export const CcV2ArticleWithToCView = (props) => {
               );
 
               return Block !== null && notTitleBlock ? (
-                <>
+                <React.Fragment key={block + '#'}>
                   {displayBack && screenWidth <= 801 && (
                     <div
                       className="govuk-body-m govuk-link ccv2-article-nav--link"
@@ -210,7 +210,7 @@ export const CcV2ArticleWithToCView = (props) => {
                     path={getBaseUrl(location?.pathname || '')}
                     styling=""
                   />
-                </>
+                </React.Fragment>
               ) : null;
             })}
           </div>
