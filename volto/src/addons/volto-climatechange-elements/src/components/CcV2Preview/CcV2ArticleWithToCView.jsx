@@ -173,7 +173,10 @@ export const CcV2ArticleWithToCView = (props) => {
           <div className="govuk-grid-column-one-third ccv2-article-nav-container">
             <TableOfContent />
           </div>
-          <div className="govuk-grid-column-two-thirds" ref={mainContentRef}>
+          <div
+            className="govuk-grid-column-two-thirds ccv2-article-content-container"
+            ref={mainContentRef}
+          >
             {map(content[blocksLayoutFieldname].items, (block, index) => {
               const Block =
                 config.blocks.blocksConfig[
