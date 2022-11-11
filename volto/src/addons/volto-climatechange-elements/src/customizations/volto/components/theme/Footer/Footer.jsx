@@ -61,13 +61,6 @@ class Footer extends Component {
           href: `/logout${returnUrl}`,
         },
       ];
-    } else {
-      items = [
-        {
-          children: 'Log In',
-          href: `/login${returnUrl}`,
-        },
-      ];
     }
     items.push({
       children: 'Cookies',
