@@ -1,5 +1,6 @@
 .ccv2-article-body {
   margin-top: govuk-spacing(8);
+
   h2 {
     @extend %govuk-heading-l;
   }
@@ -24,4 +25,32 @@
     @extend %govuk-list;
     @extend %govuk-list--bullet;
   }
+}
+
+.ccv2-article-content-container{
+  @media only screen and (max-width: 801px) {
+    width: 100%;
+  }
+}
+
+.ccv2-article-nav-container {
+  height: 100%;
+  @media only screen and (max-width: 801px) {
+    width: 100%;
+  }
+}
+
+.ccv2-article-nav {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 2rem;
+  margin-bottom: govuk-spacing(8);
+  padding-top: govuk-spacing(2);
+  margin-top: govuk-spacing(1);
+  border-top: 3px solid govuk-colour('blue');
+
+  .ccv2-article-nav--title {
+    @extend %govuk-heading-m;
+  }
+  .ccv2-article-nav--link { cursor: pointer; }
 }
