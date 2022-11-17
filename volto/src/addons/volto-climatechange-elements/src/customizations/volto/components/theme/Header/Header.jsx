@@ -57,19 +57,9 @@ const Header = (props) => {
   const listDashboardItems = useSelector(
     (state) => state.reduxAsyncConnect.navigation?.items ?? [],
   );
-  const siteTitle = useSelector((state) => {
-    const blocks = state.rawSiteTitle?.siteTitle?.data?.blocks ?? '';
-
-    let siteTitle = '';
-    for (const [key, value] of Object.entries(blocks)) {
-      const block = value;
-      if (block['@type'] === 'heroHeader') {
-        siteTitle = block.title;
-        break;
-      }
-    }
-    return siteTitle;
-  });
+  const siteTitle = useSelector(
+    (state) => state.rawSiteTitle?.siteTitle?.data?.data?.site_title ?? '',
+  );
 
   const menu_contents = [];
   const dashBoardItems = listDashboardItems
