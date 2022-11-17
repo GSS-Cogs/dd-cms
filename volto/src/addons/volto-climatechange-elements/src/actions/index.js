@@ -60,7 +60,7 @@ export function getFolderishContent(url, headers = {}) {
 export function getPhaseBannerContent() {
   return {
     type: GET_PHASE_BANNER_CONTENT,
-      request: {
+    request: {
       op: 'get',
       path: '',
       headers: {},
@@ -73,7 +73,7 @@ export function getSiteTitle() {
     type: GET_SITE_TITLE,
     request: {
       op: 'get',
-      path: '',
+      path: '@controlpanels/cmsconf-controlpanel',
       headers: {},
     },
     url: '',
