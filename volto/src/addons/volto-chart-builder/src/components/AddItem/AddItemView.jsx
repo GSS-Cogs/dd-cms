@@ -29,7 +29,7 @@ export const AddItemView = (props) => {
     if (item) {
       dispatch(getAddItemBlockData(props.data.item[0]['@id']));
     }
-  }, [props.data.item]);
+  }, []);
 
   const ViewBlockMap = {
     chart: ChartView,

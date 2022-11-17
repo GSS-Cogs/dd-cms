@@ -7,6 +7,7 @@ import { CcHeroHeaderView } from './components/CcHeroHeader/CcHeroHeaderView';
 import { CcHeroHeaderEdit } from './components/CcHeroHeader/CcHeroHeaderEdit';
 import { CcV2Overview } from './components/CcV2Preview/CcV2Overview';
 import { CcV2ArticleView } from './components/CcV2Preview/CcV2ArticleView';
+import { CcV2ArticleWithToCView } from './components/CcV2Preview/CcV2ArticleWithToCView';
 import { CcRelatedLinks } from './components/CcRelatedLinks/CcRelatedLinks';
 import { CcArticleList } from './components/CcArticleList/CcArticleList';
 import { CcArticleListExt } from './components/CcArticleList/CcArticleListExt';
@@ -105,7 +106,9 @@ const applyConfig = (config) => {
   );
   config.settings.navDepth = 3; // This property controls the level of depth for the navigation items to request from server
   config.views.layoutViews.cc_article_list_ext = CcArticleListExt;
+
   // Revert this line
+  config.views.layoutViews.cc_article_with_toc = CcV2ArticleWithToCView;
   config.views.layoutViews.cc_preview = CcV2ArticleView;
 
   config.views.layoutViews.cc_preview2 = CcV2Overview;
