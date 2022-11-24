@@ -1,8 +1,14 @@
+.pad-for-download {
+  padding-left: 32px;
+  padding-right: 32px;
+  width: calc(100% + 64px);
+}
+
 .figure {
-  max-width: 1280px;
-  margin-bottom: 32px;
-  margin-top: 32px;
+  padding-bottom: 32px;
+  padding-top: 32px;
   margin-left: 0;
+  background-color: #fff;
 
   &__text,
   p {
