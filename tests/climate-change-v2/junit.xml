@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Overview" time="51.345" tests="6" failures="0" errors="0" skipped="0">
+    <testcase name="Front page is visible" classname="Overview" time="10.237"/>
+    <testcase name="Navigation bar menus" classname="Overview" time="10.795"/>
+    <testcase name="Related links" classname="Overview" time="7.649"/>
+    <testcase name="Dashboard tiles" classname="Overview" time="7.646"/>
+    <testcase name="Articles list" classname="Overview" time="7.64"/>
+    <testcase name="Header image" classname="Overview" time="7.378"/>
+  </testsuite>
+</testsuites>
