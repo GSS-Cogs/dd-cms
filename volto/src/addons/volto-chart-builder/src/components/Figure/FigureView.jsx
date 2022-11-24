@@ -97,7 +97,7 @@ const FigureViewComponent = ({ content, location }) => {
           data-module="govuk-button"
           onClick={(event) => onPublishClick(event, id)}
         >
-          Download
+          Download Figure
         </button>
       </div>
     </>
