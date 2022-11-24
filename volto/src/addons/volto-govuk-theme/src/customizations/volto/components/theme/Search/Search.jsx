@@ -100,7 +100,9 @@ class Search extends Component {
 
   doSearch = () => {
     const options = qs.parse(this.props.history.location.search);
-    this.setState({ currentPage: 1 });
+    const activeSortOption =
+      options['sort_on'] === undefined ? 'relevance' : options['sort_on'];
+    this.setState({ currentPage: 1, active: activeSortOption });
     options['use_site_search_settings'] = 1;
     this.props.searchContent('', options);
   };
