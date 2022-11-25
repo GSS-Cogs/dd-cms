@@ -11,11 +11,16 @@ const mockStore = configureStore();
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));
-jest.mock('./SearchTags', () => jest.fn(() => <div id="search-tags" />));
+// jest.mock('./SearchTags', () => jest.fn(() => <div id="search-tags" />));
 
 describe('Search', () => {
   it('renders an empty search component', () => {
     const store = mockStore({
+      vocabularies: {
+        'plone.app.vocabularies.Keywords': {
+          terms: [{ title: 'Tag 1' }, { title: 'Tag 2' }],
+        },
+      },
       search: {
         loaded: false,
       },
@@ -40,6 +45,11 @@ describe('Search', () => {
 
   it('renders a search component', () => {
     const store = mockStore({
+      vocabularies: {
+        'plone.app.vocabularies.Keywords': {
+          terms: [{ title: 'Tag 1' }, { title: 'Tag 2' }],
+        },
+      },
       search: {
         loaded: true,
         items: [
@@ -57,7 +67,11 @@ describe('Search', () => {
       },
     });
     const history = {
-      location: { pathname: '/blog', search: '?SearchableText=blog' },
+      location: {
+        pathname: '/blog',
+        search: '?SearchableText=blog',
+        items: 1,
+      },
     };
     const component = renderer.create(
       <Provider store={store}>
