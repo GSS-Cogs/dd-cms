@@ -8,10 +8,15 @@ import { __test__ as Search } from './Search';
 
 const mockStore = configureStore();
 
+jest.mock('@plone/volto/components', () => ({
+  UniversalLink: () => null,
+  SearchTags: () => null,
+}));
+
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));
-// jest.mock('./SearchTags', () => jest.fn(() => <div id="search-tags" />));
+jest.mock('./SearchTags', () => jest.fn(() => <div id="search-tags" />));
 
 describe('Search', () => {
   it('renders an empty search component', () => {
