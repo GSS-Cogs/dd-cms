@@ -21,22 +21,6 @@ exports[`Search renders a search component 1`] = `
           </q>
         </h1>
         <div>
-          <a
-            className="ui label"
-            href="/search?Subject=Tag 1"
-            onClick={[Function]}
-          >
-            Tag 1
-          </a>
-          <a
-            className="ui label"
-            href="/search?Subject=Tag 2"
-            onClick={[Function]}
-          >
-            Tag 2
-          </a>
-        </div>
-        <div>
           No results found
         </div>
       </header>
@@ -48,17 +32,7 @@ exports[`Search renders a search component 1`] = `
         >
           <h2
             className="tileHeadline"
-          >
-            <a
-              className="summary url"
-              href="/blog"
-              onClick={[Function]}
-              target={null}
-              title="Folder"
-            >
-              Blog
-            </a>
-          </h2>
+          />
           <div
             className="tileBody"
           >
@@ -70,17 +44,7 @@ exports[`Search renders a search component 1`] = `
           </div>
           <div
             className="tileFooter"
-          >
-            <a
-              className={null}
-              href="/blog"
-              onClick={[Function]}
-              target={null}
-              title={null}
-            >
-              Read More…
-            </a>
-          </div>
+          />
           <div
             className="visualClear"
           />
@@ -114,22 +78,6 @@ exports[`Search renders an empty search component 1`] = `
             blog
           </q>
         </h1>
-        <div>
-          <a
-            className="ui label"
-            href="/search?Subject=Tag 1"
-            onClick={[Function]}
-          >
-            Tag 1
-          </a>
-          <a
-            className="ui label"
-            href="/search?Subject=Tag 2"
-            onClick={[Function]}
-          >
-            Tag 2
-          </a>
-        </div>
         <div>
           No results found
         </div>
