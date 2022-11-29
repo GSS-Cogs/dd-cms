@@ -88,6 +88,8 @@ const Header = (props) => {
 
   headerConfig = headerConfigDefault;
   headerConfig.service_name = siteTitle;
+  headerConfig.search_text =
+    'Search ' + (siteTitle !== '' ? siteTitle : 'GOV.UK');
   headerConfig.navigation_links.map((navItem, index) => {
     if (dashBoardItems.length > 0) {
       if (navItem.label.toLowerCase() === 'dashboards') {
