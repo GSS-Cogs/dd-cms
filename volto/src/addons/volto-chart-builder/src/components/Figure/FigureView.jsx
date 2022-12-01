@@ -3,7 +3,7 @@
  * @module components/theme/View/FigureView
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import { map } from 'lodash';
@@ -39,38 +39,18 @@ function toggleDisplay(className, displayState) {
 }
 
 const FigureViewComponent = ({ content, location }) => {
-  const blocksFieldname = getBlocksFieldname(content);
-  const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
-  const customClasses = classes([
-    {
-      val: content.Background ? content.Background.title : null,
-      prefix: 'figure--bg-',
-    },
-  ]);
+  const [loadSecondFigure, setLoadSecondFigure] = useState(false);
 
-  const onPublishClick = (event, id) => {
-    const node = document.getElementById(id);
-    // temporarily add 32px padding either side of the figure to give the downloaded image space around it
-    node.classList.add('pad-for-download');
-    // hide any elements that should not be included in the image (e.g. the Download button)
-    toggleDisplay('non-content', 'none');
+  useEffect(() => {
+    if (loadSecondFigure) {
+      onPublishClick(id);
+    }
+  }, [loadSecondFigure]);
 
-    domtoimage.toBlob(node).then(function (blob) {
-      // now we have the blob, show the hidden elements again
-      toggleDisplay('non-content', 'block');
-      // and remove the extra padding
-      node.classList.remove('pad-for-download');
-      saveAs(blob, `${filename}.png`);
-    });
-  };
-
-  const id = uuidv4();
-
-  const filename = convertToAlphaNumericSnakeCase(content.title);
-
-  return hasBlocksData(content) ? (
-    <>
-      <div id={id} className={`figure ${customClasses}`}>
+  const FigureBlock = (compId) => {
+    const style = compId.id === '' ? '' : `figure ${customClasses}`;
+    return (
+      <div id={compId.id} className={style}>
         {map(content[blocksLayoutFieldname].items, (block) => {
           const isTitleBlock =
             content[blocksFieldname]?.[block]?.['@type'] === 'title';
@@ -91,14 +71,57 @@ const FigureViewComponent = ({ content, location }) => {
             />
           ) : null;
         })}
+      </div>
+    );
+  };
 
+  const blocksFieldname = getBlocksFieldname(content);
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
+  const customClasses = classes([
+    {
+      val: content.Background ? content.Background.title : null,
+      prefix: 'figure--bg-',
+    },
+  ]);
+
+  const onPublishClick = (id) => {
+    const node = document.getElementById(id);
+    // temporarily add 32px padding either side of the figure to give the downloaded image space around it
+    node.classList.add('pad-for-download');
+    // hide any elements that should not be included in the image (e.g. the Download button)
+    toggleDisplay('non-content', 'none');
+    domtoimage.toBlob(node).then(function (blob) {
+      // now we have the blob, show the hidden elements again
+      toggleDisplay('non-content', 'block');
+      // and remove the extra padding
+      node.classList.remove('pad-for-download');
+      saveAs(blob, `${filename}.png`);
+      setLoadSecondFigure(false);
+    });
+  };
+
+  const id = uuidv4();
+
+  const filename = convertToAlphaNumericSnakeCase(content.title);
+
+  return hasBlocksData(content) ? (
+    <>
+      <div className={`figure ${customClasses}`}>
+        <FigureBlock id="" />
         <button
           className="govuk-button govuk-button--secondary non-content"
           data-module="govuk-button"
-          onClick={(event) => onPublishClick(event, id)}
+          onClick={() => setLoadSecondFigure(true)}
         >
           Download Figure
         </button>
+        {loadSecondFigure && (
+          <div
+            style={{ position: 'absolute', opacity: 0, pointerEvents: 'none' }}
+          >
+            <FigureBlock id={id} />
+          </div>
+        )}
       </div>
     </>
   ) : (
