@@ -7,6 +7,10 @@ import CheckboxWidget from './CheckboxWidget';
 
 const mockStore = configureStore();
 
+jest.mock('@plone/volto/components', () => ({
+  FormFieldWrapper: () => null,
+}));
+
 describe('CheckboxWidget', () => {
   test('renders a checkbox widget component', () => {
     const store = mockStore({
