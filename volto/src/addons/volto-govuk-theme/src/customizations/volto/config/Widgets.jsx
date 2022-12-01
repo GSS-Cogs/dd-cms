@@ -5,7 +5,7 @@ import loadable from '@loadable/component';
 
 import AlignWidget from '@plone/volto/components/manage/Widgets/AlignWidget';
 import ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
-import CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
+import CheckboxWidget from '../components/manage/Widgets/CheckboxWidget';
 import FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
 import IdWidget from '@plone/volto/components/manage/Widgets/IdWidget';
 import PasswordWidget from '@plone/volto/components/manage/Widgets/PasswordWidget';
