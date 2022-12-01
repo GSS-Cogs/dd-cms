@@ -7,6 +7,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Checkbox } from 'semantic-ui-react';
 
+import styles from './CheckboxWidget.module.css';
+
 import { injectIntl } from 'react-intl';
 import { FormFieldWrapper } from '@plone/volto/components';
 
@@ -26,10 +28,12 @@ import { FormFieldWrapper } from '@plone/volto/components';
  */
 const CheckboxWidget = (props) => {
   const { id, title, value, onChange, isDisabled } = props;
+
   return (
     <FormFieldWrapper {...props} columns={1}>
       <div className="wrapper">
         <Checkbox
+          className={styles.checkboxWidget}
           name={`field-${id}`}
           checked={value || false}
           disabled={isDisabled}
