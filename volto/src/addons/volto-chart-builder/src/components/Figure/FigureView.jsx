@@ -117,7 +117,12 @@ const FigureViewComponent = ({ content, location }) => {
         </button>
         {loadSecondFigure && (
           <div
-            style={{ position: 'absolute', opacity: 0, pointerEvents: 'none' }}
+            style={{
+              position: 'absolute',
+              opacity: 0,
+              pointerEvents: 'none',
+              width: '1280px',
+            }}
           >
             <FigureBlock id={id} />
           </div>
