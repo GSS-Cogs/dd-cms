@@ -43,7 +43,7 @@ const FigureViewComponent = ({ content, location }) => {
 
   useEffect(() => {
     if (loadSecondFigure) {
-      onPublishClick(id);
+      onDownloadFigureClick(id);
     }
   }, [loadSecondFigure]);
 
@@ -84,7 +84,7 @@ const FigureViewComponent = ({ content, location }) => {
     },
   ]);
 
-  const onPublishClick = (id) => {
+  const onDownloadFigureClick = (id) => {
     const node = document.getElementById(id);
     // temporarily add 32px padding either side of the figure to give the downloaded image space around it
     node.classList.add('pad-for-download');
