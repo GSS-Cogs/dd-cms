@@ -111,6 +111,7 @@ const FigureViewComponent = ({ content, location }) => {
         <button
           className="govuk-button govuk-button--secondary non-content"
           data-module="govuk-button"
+          style={{ marginTop: '32px', marginBottom: '32px' }}
           onClick={() => setLoadSecondFigure(true)}
         >
           Download Figure
