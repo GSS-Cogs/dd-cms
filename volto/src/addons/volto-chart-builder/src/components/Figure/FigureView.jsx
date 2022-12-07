@@ -3,11 +3,13 @@
  * @module components/theme/View/FigureView
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
-
 import { map } from 'lodash';
+import domtoimage from 'dom-to-image';
+import { saveAs } from 'file-saver';
+import { v4 as uuidv4 } from 'uuid';
 import config from '@plone/volto/registry';
 
 import {
@@ -18,15 +20,79 @@ import {
 } from '@plone/volto/helpers';
 
 import { classes } from '../../utils';
-
 import { FigureTitleView } from './FigureTitleView';
-
 import './figure.scss';
 
+const convertToAlphaNumericSnakeCase = (str) => {
+  return str
+    .replace(/\s+/g, '-')
+    .toLowerCase()
+    .replace(/[^a-zA-Z0-9-]/g, '');
+};
+
+function toggleDisplay(className, displayState, node) {
+  let elements = node.querySelectorAll('.' + className);
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].style.display = displayState;
+  }
+}
+
 const FigureViewComponent = ({ content, location }) => {
+  const [renderFigureBlockDownload, setRenderFigureBlockDownload] = useState(
+    false,
+  );
+
+  useEffect(() => {
+    if (renderFigureBlockDownload) {
+      onDownloadFigureClick(id);
+    }
+  }, [renderFigureBlockDownload]);
+
+  const FigureBlock = ({ id }) => {
+    const style = id === undefined ? '' : `figure ${customClasses}`;
+    return (
+      <div id={id} className={style}>
+        {map(content[blocksLayoutFieldname].items, (block) => {
+          const isTitleBlock =
+            content[blocksFieldname]?.[block]?.['@type'] === 'title';
+
+          let Block = isTitleBlock
+            ? (props) => <FigureTitleView {...props} />
+            : config.blocks.blocksConfig[
+                content[blocksFieldname]?.[block]?.['@type']
+              ]?.['view'] || null;
+
+          return Block !== null ? (
+            <Block
+              key={block}
+              id={block}
+              properties={content}
+              data={content[blocksFieldname][block]}
+              path={getBaseUrl(location?.pathname || '')}
+            />
+          ) : null;
+        })}
+      </div>
+    );
+  };
+
+  const FigureBlockDownload = ({ id }) => {
+    return (
+      <div
+        style={{
+          position: 'absolute',
+          opacity: 0,
+          pointerEvents: 'none',
+          width: '1280px',
+        }}
+      >
+        <FigureBlock id={id} />
+      </div>
+    );
+  };
+
   const blocksFieldname = getBlocksFieldname(content);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
-
   const customClasses = classes([
     {
       val: content.Background ? content.Background.title : null,
@@ -34,29 +100,37 @@ const FigureViewComponent = ({ content, location }) => {
     },
   ]);
 
+  const onDownloadFigureClick = (id) => {
+    const node = document.getElementById(id);
+    // temporarily add 32px padding either side of the figure to give the downloaded image space around it
+    node.classList.add('pad-for-download');
+    // hide any elements that should not be included in the image (e.g. the Download button)
+    toggleDisplay('non-content', 'none', node);
+    domtoimage.toBlob(node).then(function (blob) {
+      saveAs(blob, `${filename}.png`);
+      setRenderFigureBlockDownload(false);
+    });
+  };
+
+  const id = uuidv4();
+
+  const filename = convertToAlphaNumericSnakeCase(content.title);
+
   return hasBlocksData(content) ? (
-    <div className={`figure ${customClasses}`}>
-      {map(content[blocksLayoutFieldname].items, (block) => {
-        const isTitleBlock =
-          content[blocksFieldname]?.[block]?.['@type'] === 'title';
-
-        let Block = isTitleBlock
-          ? (props) => <FigureTitleView {...props} />
-          : config.blocks.blocksConfig[
-              content[blocksFieldname]?.[block]?.['@type']
-            ]?.['view'] || null;
-
-        return Block !== null ? (
-          <Block
-            key={block}
-            id={block}
-            properties={content}
-            data={content[blocksFieldname][block]}
-            path={getBaseUrl(location?.pathname || '')}
-          />
-        ) : null;
-      })}
-    </div>
+    <>
+      <div className={`figure ${customClasses}`}>
+        <FigureBlock />
+        <button
+          className="govuk-button govuk-button--secondary non-content"
+          data-module="govuk-button"
+          style={{ marginTop: '32px', marginBottom: '32px' }}
+          onClick={() => setRenderFigureBlockDownload(true)}
+        >
+          Download Figure
+        </button>
+        {renderFigureBlockDownload && <FigureBlockDownload id={id} />}
+      </div>
+    </>
   ) : (
     <div>Add Figure Block</div>
   );
