@@ -231,7 +231,7 @@ class Search extends Component {
                       defaultMessage="results"
                     />
                   </div>
-                  <Header
+                  {/* <Header
                     style={{
                       marginTop: 0,
                     }}
@@ -290,7 +290,7 @@ class Search extends Component {
                         />
                       </Button>
                     </Header.Content>
-                  </Header>
+                  </Header> */}
                 </div>
               ) : (
                 <div>
