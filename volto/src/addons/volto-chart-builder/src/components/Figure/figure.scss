@@ -1,8 +1,14 @@
+.pad-for-download {
+  padding: 32px;
+  width: calc(100% + 64px);
+  margin: 0px !important;
+}
+
 .figure {
-  max-width: 1280px;
   margin-bottom: 32px;
   margin-top: 32px;
   margin-left: 0;
+  background-color: #fff;
 
   &__text,
   p {
@@ -35,7 +41,6 @@
   }
 
   &--bg-white-smoke {
-    padding-bottom: 32px;
     border-bottom: 1px solid #505a5f;
   }
 }
