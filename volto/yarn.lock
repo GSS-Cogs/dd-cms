@@ -19898,6 +19898,16 @@ please-upgrade-node@^3.2.0:
   dependencies:
     semver-compare "^1.0.0"
 
+plotly.js-basic-dist-min@2.16.4:
+  version "2.16.4"
+  resolved "https://registry.yarnpkg.com/plotly.js-basic-dist-min/-/plotly.js-basic-dist-min-2.16.4.tgz#a2cf1059fdf0b537eb4eda56a8759956557d5642"
+  integrity sha512-nCKMXNhmuvqQwZjvWbHLe/K249YlG26QlCY/C+3FkKKAvSqrh1mtUT0f9Id08fmn0bPXWdqEyTrEOLj2IR5ngw==
+
+plotly.js-geo-dist-min@2.16.4:
+  version "2.16.4"
+  resolved "https://registry.yarnpkg.com/plotly.js-geo-dist-min/-/plotly.js-geo-dist-min-2.16.4.tgz#59c623cee6f3fe7221196ed0ad2f8beb6a19e529"
+  integrity sha512-CRx7xtxBJ253sTRe2BaC2m3q7kLt7MNBtLQKB1KuszKllOMBVLzJaxvgDfCTrmCUS0zKl/P1JD1T8XYpBmnMiw==
+
 plotly.js@^2.8.3:
   version "2.12.1"
   resolved "https://registry.yarnpkg.com/plotly.js/-/plotly.js-2.12.1.tgz#08d00ea7bb0cbcfa2c6ba4a13841c22738c25c14"
