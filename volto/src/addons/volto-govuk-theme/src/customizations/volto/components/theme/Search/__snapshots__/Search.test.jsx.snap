@@ -12,43 +12,136 @@ exports[`Search renders a search component 1`] = `
       id="content"
     >
       <header>
-        <h1
-          className="documentFirstHeading"
+        <div
+          className="govuk-grid-row"
         >
-          Search results for 
-          <q>
-            blog
-          </q>
-        </h1>
+          <div
+            className="govuk-grid-column-two-thirds"
+          >
+            <form
+              action="/search"
+              aria-label="Site-wide"
+              className="gem-c-layout-super-navigation-header__search-form govuk-!-padding-bottom-3"
+              id="search"
+              method="get"
+              role="search"
+            >
+              <div
+                className="gem-c-search govuk-!-display-none-print gem-c-search--large gem-c-search--on-white gem-c-search--separate-label"
+                data-gem-toggle-input-class-on-focus-module-started="true"
+                data-module="gem-toggle-input-class-on-focus"
+              >
+                <h1
+                  className="documentFirstHeading govuk-label--xl govuk-!-margin-bottom-4 govuk-!-margin-top-8"
+                >
+                  Search
+                </h1>
+                <div
+                  className="gem-c-search__item-wrapper"
+                >
+                  <input
+                    className="gem-c-search__item gem-c-search__input js-class-toggle"
+                    defaultValue="blog"
+                    enterKeyHint="search"
+                    id="search-main-1d4ac258"
+                    name="SearchableText"
+                    title="Search"
+                    type="search"
+                  />
+                  <div
+                    className="gem-c-search__item gem-c-search__submit-wrapper"
+                  >
+                    <button
+                      className="gem-c-search__submit"
+                      enterKeyHint="search"
+                      type="submit"
+                    >
+                      Search
+                      <svg
+                        aria-hidden="true"
+                        className="gem-c-search__icon"
+                        fill="none"
+                        focusable="false"
+                        height="27"
+                        viewBox="0 0 27 27"
+                        width="27"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <circle
+                          cx="12.0161"
+                          cy="11.0161"
+                          r="8.51613"
+                          stroke="currentColor"
+                          strokeWidth="3"
+                        />
+                        <line
+                          stroke="currentColor"
+                          strokeWidth="3"
+                          x1="17.8668"
+                          x2="26.4475"
+                          y1="17.3587"
+                          y2="25.9393"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
         <div>
           No results found
         </div>
       </header>
+      <hr
+        className="govuk-section-break govuk-section-break--visible govuk-section-break--s"
+      />
       <section
         id="content-core"
       >
-        <article
-          className="tileItem"
+        <div
+          className="govuk-!-margin-bottom-9 govuk-!-margin-top-6"
         >
-          <h2
-            className="tileHeadline"
-          />
           <div
-            className="tileBody"
+            className="govuk-grid-row"
           >
-            <span
-              className="description"
+            <div
+              className="govuk-grid-column-two-thirds"
             >
-              My blog
-            </span>
+              <article
+                className="tileItem"
+              >
+                <h2
+                  className="tileHeadline govuk-heading-m"
+                />
+                <div
+                  className="tileBody govuk-body-s"
+                >
+                  <span
+                    className="description"
+                  >
+                    My blog
+                  </span>
+                </div>
+                <div
+                  className="govuk-body-s"
+                >
+                  <span
+                    className="description"
+                  >
+                    Updated:
+                     
+                    Invalid Date
+                  </span>
+                </div>
+                <div
+                  className="visualClear"
+                />
+              </article>
+            </div>
           </div>
-          <div
-            className="tileFooter"
-          />
-          <div
-            className="visualClear"
-          />
-        </article>
+        </div>
       </section>
     </article>
   </div>
@@ -70,21 +163,106 @@ exports[`Search renders an empty search component 1`] = `
       id="content"
     >
       <header>
-        <h1
-          className="documentFirstHeading"
+        <div
+          className="govuk-grid-row"
         >
-          Search results for 
-          <q>
-            blog
-          </q>
-        </h1>
+          <div
+            className="govuk-grid-column-two-thirds"
+          >
+            <form
+              action="/search"
+              aria-label="Site-wide"
+              className="gem-c-layout-super-navigation-header__search-form govuk-!-padding-bottom-3"
+              id="search"
+              method="get"
+              role="search"
+            >
+              <div
+                className="gem-c-search govuk-!-display-none-print gem-c-search--large gem-c-search--on-white gem-c-search--separate-label"
+                data-gem-toggle-input-class-on-focus-module-started="true"
+                data-module="gem-toggle-input-class-on-focus"
+              >
+                <h1
+                  className="documentFirstHeading govuk-label--xl govuk-!-margin-bottom-4 govuk-!-margin-top-8"
+                >
+                  Search
+                </h1>
+                <div
+                  className="gem-c-search__item-wrapper"
+                >
+                  <input
+                    className="gem-c-search__item gem-c-search__input js-class-toggle"
+                    defaultValue="blog"
+                    enterKeyHint="search"
+                    id="search-main-1d4ac258"
+                    name="SearchableText"
+                    title="Search"
+                    type="search"
+                  />
+                  <div
+                    className="gem-c-search__item gem-c-search__submit-wrapper"
+                  >
+                    <button
+                      className="gem-c-search__submit"
+                      enterKeyHint="search"
+                      type="submit"
+                    >
+                      Search
+                      <svg
+                        aria-hidden="true"
+                        className="gem-c-search__icon"
+                        fill="none"
+                        focusable="false"
+                        height="27"
+                        viewBox="0 0 27 27"
+                        width="27"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <circle
+                          cx="12.0161"
+                          cy="11.0161"
+                          r="8.51613"
+                          stroke="currentColor"
+                          strokeWidth="3"
+                        />
+                        <line
+                          stroke="currentColor"
+                          strokeWidth="3"
+                          x1="17.8668"
+                          x2="26.4475"
+                          y1="17.3587"
+                          y2="25.9393"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
         <div>
           No results found
         </div>
       </header>
+      <hr
+        className="govuk-section-break govuk-section-break--visible govuk-section-break--s"
+      />
       <section
         id="content-core"
-      />
+      >
+        <div
+          className="govuk-!-margin-bottom-9 govuk-!-margin-top-6"
+        >
+          <div
+            className="govuk-grid-row"
+          >
+            <div
+              className="govuk-grid-column-two-thirds"
+            />
+          </div>
+        </div>
+      </section>
     </article>
   </div>
   <div
