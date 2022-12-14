@@ -130,13 +130,13 @@ export const CcV2ArticleWithToCView = (props) => {
   });
 
   function scrollTo(hash) {
-    //location.hash = '#' + hash;
     var element_to_scroll_to = document.getElementById(hash);
-    //element_to_scroll_to.scrollIntoView();
-    element_to_scroll_to.scrollIntoView({
-      block: 'start',
-      behavior: 'auto',
-    });
+    if (element_to_scroll_to !== null) {
+      element_to_scroll_to.scrollIntoView({
+        block: 'start',
+        behavior: 'auto',
+      });
+    }
   }
 
   const shouldDisplayBackToContentsButton = (currBlock) => {
@@ -211,7 +211,6 @@ export const CcV2ArticleWithToCView = (props) => {
                     properties={content}
                     data={content[blocksFieldname][block]}
                     path={getBaseUrl(location?.pathname || '')}
-                    styling=""
                   />
                 </React.Fragment>
               ) : null;
