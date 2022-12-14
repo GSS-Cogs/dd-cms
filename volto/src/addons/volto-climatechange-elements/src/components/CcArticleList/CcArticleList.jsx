@@ -11,7 +11,7 @@ export const CcArticlePreview = ({ data, skipSummary, authors }) => {
       <aside className="govuk-caption-m govuk-!-font-weight-bold govuk-!-margin-bottom-2">
         {moment(publishedDate).format('dddd D MMMM YYYY')}
       </aside>
-      <h3 class="govuk-heading-s govuk-!-margin-bottom-5">
+      <h3 className="govuk-heading-s govuk-!-margin-bottom-5">
         <a href={data['@id']?.replace('/api', '')} className="cc-article-list">
           {data.title}
         </a>
