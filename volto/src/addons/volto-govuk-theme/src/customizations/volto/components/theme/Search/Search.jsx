@@ -319,7 +319,10 @@ class Search extends Component {
                           </UniversalLink>
                         </h2>
                         {item.description && (
-                          <div className="tileBody govuk-body-s">
+                          <div
+                            className="tileBody govuk-body-s govuk-!-margin-bottom-2
+                          "
+                          >
                             <span className="description">
                               {item.description}
                             </span>
