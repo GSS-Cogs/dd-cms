@@ -120,14 +120,14 @@ const FigureViewComponent = ({ content, location }) => {
     <>
       <div className={`figure ${customClasses}`}>
         <FigureBlock />
-        <button
+        {/* <button
           className="govuk-button govuk-button--secondary non-content"
           data-module="govuk-button"
           style={{ marginTop: '32px', marginBottom: '32px' }}
           onClick={() => setRenderFigureBlockDownload(true)}
         >
           Download Figure
-        </button>
+        </button> */}
         {renderFigureBlockDownload && <FigureBlockDownload id={id} />}
       </div>
     </>
