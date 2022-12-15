@@ -11,6 +11,7 @@ import {
 } from 'gss-cogs-chart-builder';
 import { usePloneCsvData, usePloneGeoJson } from '../hooks';
 import debounce from 'lodash.debounce';
+import migrateChartProperties from '../utils/chartPropertiesMigrator';
 
 const View = () => {
   return <ChartPreview />;
@@ -91,23 +92,6 @@ const Edit = (props) => {
   );
 };
 
-function migrateFromPropertiesSchemaAndValue(storedSchema) {
-  return ChartPropertiesSchema.reduce((acc, section) => {
-    const storedSection = storedSchema.find(
-      (x) => x.name.toLowerCase() === section.name.toLowerCase(),
-    );
-    acc[section.name] = section.properties.reduce((acc, prop) => {
-      const storedValue = storedSection?.properties?.find(
-        (x) => x.name.toLowerCase() === prop.name.toLowerCase(),
-      );
-      // if (!storedValue) console.warn('Did not find', section.name, prop.name);
-      acc[prop.name] = storedValue ? storedValue.value : prop.defaultValue;
-      return acc;
-    }, {});
-    return acc;
-  }, {});
-}
-
 // try to extract the initialValue for the react state hook
 // from the block config.
 // we store the values in the block config down in the effect
@@ -118,8 +102,17 @@ function useVoltoBlockDataState(data, id, initialValue) {
       ? JSON.parse(data[id])
       : initialValue;
 
-    if (id === 'chartProperties' && Array.isArray(result)) {
-      return migrateFromPropertiesSchemaAndValue(result);
+    if (id === 'chartProperties') {
+      // For newly created charts we use getInitialChartProperties(ChartPropertiesSchema) to generate
+      // a new set of properties with default values based on the ChartPropertiesSchema which is the our
+      // source of truth for chart properties. Note newly created charts are identified by the fact that
+      // their shape is a function or an array.
+
+      const isANewChart = typeof result === 'function' || Array.isArray(result);
+      if (isANewChart) return getInitialChartProperties(ChartPropertiesSchema);
+
+      // For existing charts we need to migrate the properties and sections to match the ChartPropertiesSchema
+      return migrateChartProperties(result, ChartPropertiesSchema);
     }
 
     if (result === initialValue && typeof initialValue === 'function') {
