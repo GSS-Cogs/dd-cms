@@ -313,6 +313,7 @@ class Search extends Component {
                             item={item}
                             className="summary url"
                             title={item['@type']}
+                            style={{ color: '#1D70B8' }}
                           >
                             {item.title}
                           </UniversalLink>
@@ -325,7 +326,10 @@ class Search extends Component {
                           </div>
                         )}
                         <div className="govuk-body-s">
-                          <span className="description">
+                          <span
+                            className="description"
+                            style={{ color: '#505A5F' }}
+                          >
                             Updated:{' '}
                             {new Date(item.modified).toLocaleString(undefined, {
                               year: 'numeric',
