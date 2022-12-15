@@ -27,6 +27,10 @@ const headerConfigDefault = {
           label: 'About the portal',
           href: '/about',
         },
+        {
+          label: 'Datasets',
+          href: 'https://beta.gss-data.org.uk/datasets',
+        },
       ],
     },
     {
@@ -88,6 +92,8 @@ const Header = (props) => {
 
   headerConfig = headerConfigDefault;
   headerConfig.service_name = siteTitle;
+  headerConfig.search_text =
+    'Search ' + (siteTitle !== '' ? siteTitle : 'GOV.UK');
   headerConfig.navigation_links.map((navItem, index) => {
     if (dashBoardItems.length > 0) {
       if (navItem.label.toLowerCase() === 'dashboards') {
