@@ -1,4 +1,12 @@
 function SuperNavigationSearchMenu(props) {
+  function focusElement(parent) {
+    // force focus on input when search is clicked
+    if (parent.target.ariaExpanded !== 'false') {
+      let node = document.getElementById('search-main-1d4ac258');
+      node.focus();
+    }
+  }
+
   return [
     <button
       aria-controls="super-search-menu"
@@ -12,6 +20,7 @@ function SuperNavigationSearchMenu(props) {
       id="super-search-menu-toggle"
       type="button"
       key="button"
+      onClick={focusElement}
     >
       <span className="govuk-visually-hidden">{props.search_text}</span>
 
