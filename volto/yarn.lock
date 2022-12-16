@@ -8517,9 +8517,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000844, caniuse-lite@^1.0.30000864, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001023, caniuse-lite@^1.0.30001039, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001125, caniuse-lite@^1.0.30001349:
-  version "1.0.30001355"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001355.tgz#e240b7177443ed0198c737a7f609536976701c77"
-  integrity sha512-Sd6pjJHF27LzCB7pT7qs+kuX2ndurzCzkpJl6Qct7LPSZ9jn0bkOA8mdgMgmqnQAWLVOOGjLpc+66V57eLtb1g==
+  version "1.0.30001436"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001436.tgz"
+  integrity sha512-ZmWkKsnC2ifEPoWUvSAIGyOYwT+keAaaWPHiQ9DfMqS1t6tfuyFYoWR78TeZtznkEQ64+vGXH9cZrElwR2Mrxg==
 
 canvas-fit@^1.5.0:
   version "1.5.0"
@@ -19897,6 +19897,16 @@ please-upgrade-node@^3.2.0:
   integrity sha512-gQR3WpIgNIKwBMVLkpMUeR3e1/E1y42bqDQZfql+kDeXd8COYfM8PQA4X6y7a8u9Ua9FHmsrrmirW2vHs45hWg==
   dependencies:
     semver-compare "^1.0.0"
+
+plotly.js-basic-dist-min@2.16.5:
+  version "2.16.5"
+  resolved "https://registry.yarnpkg.com/plotly.js-basic-dist-min/-/plotly.js-basic-dist-min-2.16.5.tgz#bd0fdbbee2d6072f0058a5de242098d7d623243b"
+  integrity sha512-SnDT7ylIRaV+O0G4Zf/DOUcEhwocITBdmPIDpvVb8QnK4GivJFDTYXFGSjKLX9Hd7vOZLxv8HNz22raecQPeUA==
+
+plotly.js-geo-dist-min@2.16.5:
+  version "2.16.5"
+  resolved "https://registry.yarnpkg.com/plotly.js-geo-dist-min/-/plotly.js-geo-dist-min-2.16.5.tgz#14f4f29fa30ad37514ff3227d3a35d85c56d7ce8"
+  integrity sha512-AEVZXPOIZvoSvV2U//rQF1Ar2fKVDjAIbacxOEMMNBMz4RXiWtW8JOGn6zSNIOrG519BACGBbmN32DsCiij0MQ==
 
 plotly.js@^2.8.3:
   version "2.12.1"
