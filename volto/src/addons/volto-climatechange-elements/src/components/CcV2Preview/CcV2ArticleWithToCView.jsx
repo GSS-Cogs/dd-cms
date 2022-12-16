@@ -80,18 +80,6 @@ export const CcV2ArticleWithToCView = (props) => {
     setFlatContentHeaders(tempFlatHeaders);
   };
 
-  const getMainContentHeight = useCallback(() => {
-    // possible to use useMemo here?
-    var tempHeight = 1000;
-
-    if (screenWidth <= 801) {
-      tempHeight = '100%';
-    } else if (mainContentRef.current !== null) {
-      tempHeight = mainContentRef.current.clientHeight;
-    }
-    return tempHeight;
-  });
-
   const TableOfContent = useCallback(() => {
     function arrangeContentHeaders(items) {
       if (items === undefined) {
@@ -122,7 +110,7 @@ export const CcV2ArticleWithToCView = (props) => {
       contentHeaders !== null ? arrangeContentHeaders(contentHeaders) : null;
 
     return (
-      <nav className="ccv2-article-nav">
+      <nav className="govuk-grid-column-one-third ccv2-article-nav">
         <h3 className="ccv2-article-nav--title">Contents</h3>
         {contentList}
       </nav>
@@ -164,15 +152,8 @@ export const CcV2ArticleWithToCView = (props) => {
         className="volto-width-container--wide ccv2-article-body"
         id="navigation"
       >
-        <div
-          className="govuk-grid-row ccv2-article-body--main"
-          style={{
-            height: getMainContentHeight(),
-          }}
-        >
-          <div className="govuk-grid-column-one-third ccv2-article-nav-container">
-            <TableOfContent />
-          </div>
+        <div className="govuk-grid-row ccv2-article-body--main">
+          <TableOfContent />
           <div
             className="govuk-grid-column-two-thirds ccv2-article-content-container"
             ref={mainContentRef}
