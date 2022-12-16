@@ -143,6 +143,7 @@ class Search extends Component {
    * @method render
    * @returns {string} Markup for the component.
    */
+
   render() {
     const { settings } = config;
     return (
@@ -151,35 +152,92 @@ class Search extends Component {
         <div className="container">
           <article id="content">
             <header>
-              <h1 className="documentFirstHeading">
-                {this.props.searchableText ? (
-                  <FormattedMessage
-                    id="Search results for {term}"
-                    defaultMessage="Search results for {term}"
-                    values={{
-                      term: <q>{this.props.searchableText}</q>,
-                    }}
-                  />
-                ) : (
-                  <FormattedMessage
-                    id="Search results"
-                    defaultMessage="Search results"
-                  />
-                )}
-              </h1>
-
+              <div className="govuk-grid-row">
+                <div className="govuk-grid-column-two-thirds">
+                  <form
+                    className="gem-c-layout-super-navigation-header__search-form govuk-!-padding-bottom-3"
+                    id="search"
+                    action="/search"
+                    method="get"
+                    role="search"
+                    aria-label="Site-wide"
+                  >
+                    <div
+                      className="gem-c-search govuk-!-display-none-print gem-c-search--large gem-c-search--on-white gem-c-search--separate-label"
+                      data-module="gem-toggle-input-class-on-focus"
+                      data-gem-toggle-input-class-on-focus-module-started="true"
+                    >
+                      <h1 className="documentFirstHeading govuk-label--xl govuk-!-margin-bottom-4 govuk-!-margin-top-8">
+                        <FormattedMessage id="Search" defaultMessage="Search" />
+                      </h1>
+                      <div className="gem-c-search__item-wrapper">
+                        <input
+                          enterKeyHint="search"
+                          className="gem-c-search__item gem-c-search__input js-class-toggle"
+                          id="search-main-1d4ac258"
+                          name="SearchableText"
+                          title="Search"
+                          type="search"
+                          defaultValue={this.props.searchableText}
+                        />
+                        <div className="gem-c-search__item gem-c-search__submit-wrapper">
+                          <button
+                            className="gem-c-search__submit"
+                            type="submit"
+                            enterKeyHint="search"
+                          >
+                            Search
+                            <svg
+                              className="gem-c-search__icon"
+                              width="27"
+                              height="27"
+                              viewBox="0 0 27 27"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              aria-hidden="true"
+                              focusable="false"
+                            >
+                              <circle
+                                cx="12.0161"
+                                cy="11.0161"
+                                r="8.51613"
+                                stroke="currentColor"
+                                strokeWidth="3"
+                              />
+                              <line
+                                x1="17.8668"
+                                y1="17.3587"
+                                x2="26.4475"
+                                y2="25.9393"
+                                stroke="currentColor"
+                                strokeWidth="3"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
               <SearchTags />
 
               {this.props.search?.items_total > 0 ? (
                 <div className="items_total">
-                  {this.props.search.items_total}{' '}
-                  <FormattedMessage
-                    id="results found"
-                    defaultMessage="results"
-                  />
-                  <Header>
+                  <div className="govuk-body govuk-!-font-weight-bold">
+                    {this.props.search.items_total}{' '}
+                    <FormattedMessage
+                      id="results found"
+                      defaultMessage="results"
+                    />
+                  </div>
+                  {/* <Header
+                    style={{
+                      marginTop: 0,
+                    }}
+                  >
                     <Header.Content className="header-content">
-                      <div className="sort-by">
+                      <div className="govuk-body-xl sort-by">
                         <FormattedMessage
                           id="Sort By:"
                           defaultMessage="Sort by:"
@@ -232,7 +290,7 @@ class Search extends Component {
                         />
                       </Button>
                     </Header.Content>
-                  </Header>
+                  </Header> */}
                 </div>
               ) : (
                 <div>
@@ -243,35 +301,60 @@ class Search extends Component {
                 </div>
               )}
             </header>
+            <hr className="govuk-section-break govuk-section-break--visible govuk-section-break--s" />
             <section id="content-core">
-              {this.props.items.map((item) => (
-                <article className="tileItem" key={item['@id']}>
-                  <h2 className="tileHeadline">
-                    <UniversalLink
-                      item={item}
-                      className="summary url"
-                      title={item['@type']}
-                    >
-                      {item.title}
-                    </UniversalLink>
-                  </h2>
-                  {item.description && (
-                    <div className="tileBody">
-                      <span className="description">{item.description}</span>
-                    </div>
-                  )}
-                  <div className="tileFooter">
-                    <UniversalLink item={item}>
-                      <FormattedMessage
-                        id="Read More…"
-                        defaultMessage="Read More…"
-                      />
-                    </UniversalLink>
+              <div className="govuk-!-margin-bottom-9 govuk-!-margin-top-6">
+                <div className="govuk-grid-row">
+                  <div className="govuk-grid-column-two-thirds">
+                    {this.props.items.map((item, index) => (
+                      <article className="tileItem" key={item['@id']}>
+                        <h2 className="tileHeadline govuk-heading-m">
+                          <UniversalLink
+                            item={item}
+                            className="summary url"
+                            title={item['@type']}
+                            style={{ color: '#1D70B8' }}
+                          >
+                            {item.title}
+                          </UniversalLink>
+                        </h2>
+                        {item.description && (
+                          <div className="tileBody govuk-body-s govuk-!-margin-bottom-2">
+                            <span className="description">
+                              {item.description}
+                            </span>
+                          </div>
+                        )}
+                        <div className="govuk-body-s">
+                          <span
+                            className="description"
+                            style={{ color: '#505A5F' }}
+                          >
+                            Updated:{' '}
+                            {new Date(item.modified).toLocaleString(undefined, {
+                              year: 'numeric',
+                              month: 'long',
+                              day: '2-digit',
+                            })}
+                          </span>
+                        </div>
+                        {/* <div className="tileFooter">
+                          <UniversalLink item={item}>
+                            <FormattedMessage
+                              id="Read More…"
+                              defaultMessage="Read More…"
+                            />
+                          </UniversalLink>
+                        </div> */}
+                        <div className="visualClear" />
+                        {index < this.props.items.length - 1 && (
+                          <hr className="govuk-section-break govuk-section-break--visible govuk-section-break--l" />
+                        )}
+                      </article>
+                    ))}
                   </div>
-                  <div className="visualClear" />
-                </article>
-              ))}
-
+                </div>
+              </div>
               {this.props.search?.batching && (
                 <div className="search-footer">
                   <Pagination
