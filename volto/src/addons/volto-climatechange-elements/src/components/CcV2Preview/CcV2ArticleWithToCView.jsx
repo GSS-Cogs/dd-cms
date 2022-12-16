@@ -176,10 +176,11 @@ export const CcV2ArticleWithToCView = (props) => {
                 <React.Fragment key={block + '#'}>
                   {displayBack && screenWidth <= 801 && (
                     <div
-                      className="govuk-body-m govuk-link ccv2-article-nav--link"
+                      className="govuk-body-m govuk-link"
                       onClick={() => scrollTo('navigation')}
                       style={{
                         paddingBottom: 20,
+                        cursor: 'pointer',
                       }}
                     >
                       Back to contents
