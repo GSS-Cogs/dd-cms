@@ -33,16 +33,12 @@
   }
 }
 
-.ccv2-article-nav-container {
-  height: 100%;
-  @media only screen and (max-width: 801px) {
-    width: 100%;
-  }
-}
-
 .ccv2-article-nav {
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
+  @media only screen and (min-width: 802px) {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+  }
+
   top: 2rem;
   margin-bottom: govuk-spacing(8);
   padding-top: govuk-spacing(2);
