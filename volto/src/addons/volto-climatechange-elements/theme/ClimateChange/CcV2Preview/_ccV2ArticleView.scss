@@ -48,5 +48,5 @@
   .ccv2-article-nav--title {
     @extend %govuk-heading-m;
   }
-  .ccv2-article-nav--link { cursor: pointer; }
+  .ccv2-article-nav--link { cursor: pointer; color: govuk-colour('blue')}
 }
