@@ -52,11 +52,6 @@ const Header = (props) => {
   let headerConfig = null;
   const cookieConsent = useCookieConsent();
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getSiteTitle());
-  }, []);
-
   const listNavigation = useSelector((state) => state.navigation);
   const listDashboardItems = useSelector(
     (state) => state.reduxAsyncConnect.navigation?.items ?? [],
