@@ -39,7 +39,7 @@ import {
   getTypes,
   getWorkflow,
 } from '@plone/volto/actions';
-import { getPhaseBannerContent } from '../../../../../actions';
+import { getPhaseBannerContent, getSiteTitle } from '../../../../../actions';
 //'../../../../../../../volto-climatechange-elements/src/actions';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -195,6 +195,11 @@ export default compose(
       key: 'phaseBanner',
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ && dispatch(getPhaseBannerContent()),
+    },
+    {
+      key: 'siteTitle',
+      promise: ({ location, store: { dispatch } }) =>
+        __SERVER__ && dispatch(getSiteTitle()),
     },
     {
       key: 'content',
