@@ -77,7 +77,8 @@
     ],
     "roots": [
       "<rootDir>/src/addons/volto-climatechange-elements/",
-      "<rootDir>/src/addons/volto-govuk-theme/"
+      "<rootDir>/src/addons/volto-govuk-theme/",
+      "<rootDir>/src/addons/volto-chart-builder/"
     ]
   },
   "prettier": {
