@@ -79,6 +79,10 @@ const InnerMasthead = ({ content, props, articlePath }) => {
     }
   }, [props.data.image_source]);
 
+  if (content?.loading || (content === null && articlePath !== '#')) {
+    return <div style={{ height: 400 }}></div>;
+  }
+
   return (
     <div className="govuk-grid-row" ref={imgRef}>
       <div className={className}>
@@ -162,10 +166,15 @@ export const CcHeroHeaderView = (props) => {
   }
 
   const request = useSelector((state) => state.rawData?.[articlePath]);
-  const content = request || null;
+  const content =
+    props.data.file_path.length > 0
+      ? { data: props.data.file_path[0] }
+      : request || null;
 
   useEffect(() => {
-    doDispatch();
+    if (content === null) {
+      doDispatch();
+    }
   }, [dispatch, articlePath]);
 
   const doDispatch = async () => {
@@ -175,9 +184,6 @@ export const CcHeroHeaderView = (props) => {
   };
 
   useEffect(() => {
-    const img = new Image();
-    img.src =
-      flattenToAppURL(props.data.image_source[0]['@id']) + '/@@images/image';
     if (props.data.margin == true) {
       setMarginInset(true);
     } else {
@@ -191,10 +197,6 @@ export const CcHeroHeaderView = (props) => {
     }
   }, [props.data.margin, props.data.bannerDisplay]);
 
-  if (content?.loading || (content === null && articlePath !== '#')) {
-    return <div></div>;
-  }
-
   return (
     <CcMasthead
       className={marginInset && 'app-masthead--bottom-overlap'}
@@ -202,6 +204,7 @@ export const CcHeroHeaderView = (props) => {
     >
       <InnerMasthead
         content={content}
+        //content={{ data: props.data.file_path[0] }}
         props={props}
         articlePath={articlePath}
       />
