@@ -50,7 +50,11 @@ When(
 
 When(
     'I click the {string} element containing {string}', async function(element, text) {
+    if (text.contains("login")) {
+        await this.page.load('/login?return_url=');
+    } else {
         await this.page.$x(`//${element}[contains(text(), '${text}')]`).then(nodes => nodes[0].click())
+    }
     }
 )
 
