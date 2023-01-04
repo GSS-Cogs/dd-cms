@@ -77,7 +77,8 @@
     ],
     "roots": [
       "<rootDir>/src/addons/volto-climatechange-elements/",
-      "<rootDir>/src/addons/volto-govuk-theme/"
+      "<rootDir>/src/addons/volto-govuk-theme/",
+      "<rootDir>/src/addons/volto-chart-builder/"
     ]
   },
   "prettier": {
@@ -135,8 +136,8 @@
     "govuk-react-jsx": "6.2.1",
     "js-cookie": "3.0.1",
     "mrs-developer": "1.6.1",
-    "plotly.js-basic-dist-min": "2.16.3",
-    "plotly.js-geo-dist-min": "2.16.3",
+    "plotly.js-basic-dist-min": "2.16.5",
+    "plotly.js-geo-dist-min": "2.16.5",
     "react-helmet": "6.1.0",
     "react-hotjar": "^5.0.0",
     "styled-components": "5.3.5",
