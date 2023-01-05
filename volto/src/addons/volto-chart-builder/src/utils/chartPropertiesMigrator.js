@@ -1,6 +1,6 @@
 // migrateChartProperties is a function that takes the stored properties of existing chart content (i.e. Volto blocks JSON)
 // and updates the properties to conform to the ChartPropertiesSchema (which is the up to date source of truth on chart
-// the properties and sections). Specifically it will add any sections and properties that are missing in the stored properties
+// properties and sections). Specifically it will add any sections and properties that are missing in the stored properties
 // applying default values to any properties that are added. It will also remove any sections and properties from the
 // storedProperties that are not in the ChartPropertiesSchema.
 
