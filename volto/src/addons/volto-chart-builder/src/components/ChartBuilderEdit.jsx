@@ -104,7 +104,7 @@ function useVoltoBlockDataState(data, id, initialValue) {
 
     if (id === 'chartProperties') {
       // For newly created charts we use getInitialChartProperties(ChartPropertiesSchema) to generate
-      // a new set of properties with default values based on the ChartPropertiesSchema which is the our
+      // a new set of properties with default values based on ChartPropertiesSchema which is the our
       // source of truth for chart properties. Note newly created charts are identified by the fact that
       // their shape is a function or an array.
 
