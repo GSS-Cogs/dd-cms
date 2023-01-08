@@ -3,7 +3,7 @@ Feature: Administration
   As a site administrator, I can log in and administer the site.
 
   Background:
-    Given I open the url "http://localhost:3000"
+    Given I open the url "http://climate-change.data.gov.uk"
     And I expect the element "#main" is visible
 
   Scenario: login link/button
