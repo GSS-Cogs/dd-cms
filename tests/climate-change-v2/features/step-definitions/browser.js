@@ -2,7 +2,7 @@ const { When, Given } = require('cucumber');
 const { strict: assert } = require("assert");
 
 When('I login using {string} and wait for the element {string}', async function(selector, waitForSelector) {
-  const url = 'http://localhost:3000/login?return_url=';
+  const url = 'http://climate-change.data.gov.uk/login?return_url=';
 
   await Promise.all([
     this.page.waitForSelector(waitForSelector),
@@ -53,13 +53,13 @@ When(
 
 When(
   'I wait for xpath {string} to be visible', async function(xpath) {
-  await this.page.waitForXPath(xpath, { visible: true });
+    await this.page.waitForXPath(xpath, { visible: true });
   }
 )
 
 When(
   'I click the {string} element containing {string}', async function(element, text) {
-    if (text.contains("login")) {
+    if (text.includes("login")) {
       await this.page.load('/login?return_url=');
     } else {
       await this.page.$x(`//${element}[contains(text(), '${text}')]`).then(nodes => nodes[0].click())
