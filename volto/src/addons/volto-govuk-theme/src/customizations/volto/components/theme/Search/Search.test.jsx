@@ -11,6 +11,7 @@ const mockStore = configureStore();
 jest.mock('@plone/volto/components', () => ({
   UniversalLink: () => null,
   SearchTags: () => null,
+  Toolbar: () => null,
 }));
 
 jest.mock('react-portal', () => ({
