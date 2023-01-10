@@ -118,13 +118,18 @@ export const CcV2ArticleWithToCView = (props) => {
   });
 
   function scrollTo(hash) {
-    //location.hash = '#' + hash;
     var element_to_scroll_to = document.getElementById(hash);
-    //element_to_scroll_to.scrollIntoView();
-    element_to_scroll_to.scrollIntoView({
-      block: 'start',
-      behavior: 'auto',
-    });
+    // conditional statement is to stop an error accuring when a block is wrongly assigned an id
+    // this id will correspond to an above block
+    // the fix will make it seeem the ToC is being unrsponsive
+    // if this happens, go into edit mode on the page the issue is happening
+    // and add an empty paragraph block above the header block the issue is happening with
+    if (element_to_scroll_to !== null) {
+      element_to_scroll_to.scrollIntoView({
+        block: 'start',
+        behavior: 'auto',
+      });
+    }
   }
 
   const shouldDisplayBackToContentsButton = (currBlock) => {
@@ -193,7 +198,6 @@ export const CcV2ArticleWithToCView = (props) => {
                     properties={content}
                     data={content[blocksFieldname][block]}
                     path={getBaseUrl(location?.pathname || '')}
-                    styling=""
                   />
                 </React.Fragment>
               ) : null;
