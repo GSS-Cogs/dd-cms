@@ -1,3 +1,5 @@
+[safe]
+  directory = *
 .vscode/
 logs
 *.log
