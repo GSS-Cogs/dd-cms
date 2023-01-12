@@ -3,16 +3,10 @@ import {
   useCookieConsentPreferenceSet,
   useUpdateCookieConsent,
 } from '../../customizations/volto/components/theme/App/CookieConsentProvider';
-import { getSiteTitle } from '../../actions';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
 const CookiesHeader = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getSiteTitle());
-  }, []);
-
   const siteTitle = useSelector((state) => {
     const blocks = state.rawSiteTitle?.siteTitle?.data?.blocks ?? '';
 
