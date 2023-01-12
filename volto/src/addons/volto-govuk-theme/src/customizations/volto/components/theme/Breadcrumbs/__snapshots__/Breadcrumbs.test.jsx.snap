@@ -7,13 +7,40 @@ exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
   <div
     className="app-width-container"
   >
-    <div
-      style={
-        Object {
-          "height": 75,
-        }
-      }
-    />
+    <div>
+      <div
+        className="govuk-phase-banner cc-phasebanner"
+      >
+        <p
+          className="govuk-phase-banner__content"
+        >
+          <strong
+            className="govuk-tag govuk-phase-banner__content__tag "
+          >
+            ........
+          </strong>
+          <span
+            className="govuk-phase-banner__text"
+          >
+            This is a new service your
+             
+            <a
+              rel="noopener noreferrer"
+              style={
+                Object {
+                  "textDecorationLine": "underline",
+                }
+              }
+              target="_blank"
+            >
+              feedback
+            </a>
+             
+            will help us improve it.
+          </span>
+        </p>
+      </div>
+    </div>
     <div
       className="govuk-breadcrumbs  "
     >
