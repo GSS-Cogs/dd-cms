@@ -1,6 +1,7 @@
 const http = require('http');
 
 module.exports = (req, res, next) => {
+  console.log(req.headers); // Log all headers and their values
   const hostname = req.headers.host;
   if (hostname === 'sandbox.climate-change.ukstats.dev') {
     process.env.RAZZLE_RUNTIME_HOTJAR_ID = process.env.HOTJAR_ID_CLIMATE_CHANGE;
