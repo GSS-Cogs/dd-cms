@@ -6,9 +6,7 @@
 import start from '@plone/volto/start-server';
 
 const middleware = require('./hotjar-middleware');
-
-app.use(middleware);
-const reloadServer = start();
+const reloadServer = start({ middleware });
 
 if (module.hot) {
   reloadServer();
