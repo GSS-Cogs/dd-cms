@@ -11,5 +11,6 @@ module.exports = (req, res, next) => {
   } else {
     process.env.RAZZLE_RUNTIME_HOTJAR_ID = '';
   }
+  console.log(`Hotjar ID: ${process.env.RAZZLE_RUNTIME_HOTJAR_ID}`);
   next();
 };
