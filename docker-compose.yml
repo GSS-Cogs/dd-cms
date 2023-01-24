@@ -1,41 +1,44 @@
 version: '3.8'
 
 services:
-    plone:
-        image: plone:5.2.5
-        container_name: dd-cms-backend
-        ports:
-            - "127.0.0.1:8080:8080"
-        volumes:
-            - plone-data:/data
-            - type: bind
-              source: ./plone-5/instance/custom.cfg
-              target: /plone/instance/custom.cfg
-            - type: bind
-              source: ./plone-5/instance/src/ukstats.article_type
-              target: /plone/instance/src/ukstats.article_type
-            - type: bind
-              source: ./plone-5/instance/src/ukstats.csv_type
-              target: /plone/instance/src/ukstats.csv_type
-            - type: bind
-              source: ./plone-5/instance/src/ukstats.sparql_dataconnector
-              target: /plone/instance/src/ukstats.sparql_dataconnector
-    volto:
-        image: node:14
-        container_name: dd-cms-frontend
-        user: 'node'
-        working_dir: /home/node/app
-        volumes:
-            - type: bind
-              source: ./volto/
-              target: /home/node/app
-        environment:
-            - RAZZLE_DEV_PROXY_API_PATH=http://plone:8080/Plone
-            - "ADDONS=${ADDONS-}"
-        ports:
-            - "127.0.0.1:3000:3000"
-            - "127.0.0.1:3001:3001"
-        command: 'bash -c "yarn global add mrs-developer && yarn develop && yarn install && yarn start"'
+  plone:
+    image: plone:5.2.5
+    container_name: dd-cms-backend
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - plone-data:/data
+      - type: bind
+        source: ./plone-5/instance/custom.cfg
+        target: /plone/instance/custom.cfg
+      - type: bind
+        source: ./plone-5/instance/src/ukstats.article_type
+        target: /plone/instance/src/ukstats.article_type
+      - type: bind
+        source: ./plone-5/instance/src/ukstats.csv_type
+        target: /plone/instance/src/ukstats.csv_type
+      - type: bind
+        source: ./plone-5/instance/src/ukstats.sparql_dataconnector
+        target: /plone/instance/src/ukstats.sparql_dataconnector
+      - type: bind
+        source: ./plone-5/instance/src/ukstats.ccv2.content_types
+        target: /plone/instance/src/ukstats.ccv2.content_types
+  volto:
+    image: node:14
+    container_name: dd-cms-frontend
+    user: 'node'
+    working_dir: /home/node/app
+    volumes:
+      - type: bind
+        source: ./volto/
+        target: /home/node/app
+    environment:
+      - RAZZLE_DEV_PROXY_API_PATH=http://plone:8080/Plone
+      - "ADDONS=${ADDONS-}"
+    ports:
+      - "127.0.0.1:3000:3000"
+      - "127.0.0.1:3001:3001"
+    command: 'bash -c "yarn global add mrs-developer && yarn develop && yarn install && yarn start"'
 
 volumes:
-    plone-data: ~
+  plone-data: ~

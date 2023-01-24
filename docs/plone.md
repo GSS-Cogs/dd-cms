@@ -74,7 +74,7 @@ In Order:
 - Go to Site Setup.
 - Go to Add-Ons.
 - Install/Enable the `EEA.API.DATACONNECTOR` and `EEA.RESTAPI` add-ons.
-- Go back to Dexterity Types.
+- Go back to Dexterity Content Types.
 - Select File.
 - Go to Behaviours.
 - Enable the "Data provider for files" behaviour.
