@@ -24,7 +24,7 @@ const headerConfigDefault = {
       menu_contents: [],
       footer_links: [
         {
-          label: 'About the portal',
+          label: 'About',
           href: '/about',
         },
         {
