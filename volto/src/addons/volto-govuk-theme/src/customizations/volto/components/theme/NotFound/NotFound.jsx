@@ -15,39 +15,32 @@ import { withServerErrorCode } from '@plone/volto/helpers/Utils/Utils';
  * @returns {string} Markup of the not found page.
  */
 const NotFound = () => (
-  <Container className="view-wrapper">
-    <h1>
-      <FormattedMessage
-        id="This page does not seem to exist…"
-        defaultMessage="This page does not seem to exist…"
-      />
-    </h1>
-    <p className="description">
-      <FormattedMessage
-        id="We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
-        defaultMessage="We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
-      />
-    </p>
-    <p>
-      <FormattedMessage
-        id="If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
-        defaultMessage="If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
-        values={{
-          site_admin: (
-            <Link to="/contact-form">
-              <FormattedMessage
-                id="Site Administration"
-                defaultMessage="Site Administration"
-              />
-            </Link>
-          ),
-        }}
-      />
-    </p>
-    <p>
-      <FormattedMessage id="Thank you." defaultMessage="Thank you." />
-    </p>
-  </Container>
+  <div class="app-width-container">
+    <main
+      class="govuk-main-wrapper govuk-main-wrapper--l"
+      id="main-content"
+      role="main"
+    >
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-xl govuk-!-margin-bottom-9">
+            Page not found
+          </h1>
+          <p class="govuk-body">
+            If you typed the web address, check it is correct.
+          </p>
+          <p class="govuk-body">
+            You can{' '}
+            <a href="/" class="govuk-link">
+              browse from homepage
+            </a>{' '}
+            or use the search box above to find the information you need.
+          </p>
+          <p class="govuk-body">Status code: 404</p>
+        </div>
+      </div>
+    </main>
+  </div>
 );
 
 export default withServerErrorCode(404)(NotFound);
