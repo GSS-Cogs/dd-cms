@@ -23,8 +23,9 @@ Export the following environment variables, the others have a viable default.
 
 | Env var | Description |
 | --- | ---- |
+| POSTGRES_USER | Should be `plone`|
+| POSTGRES_DB | Should be `local` |
 | POSTGRES_PASSWORD | Up to you, pick something sensible for local devlopment. |
-| POSTGRES_DB | Up to you, pick something sensible for local devlopment. |
 
 Then run postgres with docker.
 
