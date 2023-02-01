@@ -60,7 +60,7 @@ docker -t plone build .
 run it
 
 ```
-docker run --build-arg POSTGRES_PASSWORD=$POSTGRES_PASSWORD --build-arg -p 8080:8080 plone
+docker run --build-arg POSTGRES_PASSWORD=$POSTGRES_PASSWORD -p 8080:8080 plone
 ```
 
 **Important** - there's no oauth handler set up for localhost, you'll need to log into your zope user (for whatever env you copied the database from) to bypass this broken handshake.
