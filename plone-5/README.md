@@ -24,11 +24,12 @@ Export the following environment variables, the others have a viable default.
 | Env var | Description |
 | --- | ---- |
 | POSTGRES_PASSWORD | Up to you, pick something sensible for local devlopment. |
+| POSTGRES_DB | Up to you, pick something sensible for local devlopment. |
 
 Then run postgres with docker.
 
 ```
-docker run --name plone-postgres -e POSTGRES_DB=$POSTGRES_DB -e POSTGRES_PASSWORD=$POSTGRES_PASSWORD -e POSTGRES_USER=$POSTGRES_USER -d -p 5432:5432 postgres:14
+docker run --name plone-postgres -e POSTGRES_PASSWORD=$POSTGRES_PASSWORD -d -p 5432:5432 postgres:14
 ```
 
 notes:
