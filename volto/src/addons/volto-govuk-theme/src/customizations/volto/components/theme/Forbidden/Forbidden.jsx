@@ -13,17 +13,24 @@ import { withServerErrorCode } from '@plone/volto/helpers/Utils/Utils';
  * @returns {string} Markup of the forbidden page.
  */
 const Forbidden = () => (
-  <Container className="view-wrapper">
-    <h1>
-      <FormattedMessage id="Forbidden" defaultMessage="Forbidden" />
-    </h1>
-    <p className="description">
-      <FormattedMessage
-        id="We apologize for the inconvenience, but you don't have permissions on this resource."
-        defaultMessage="We apologize for the inconvenience, but you don't have permissions on this resource."
-      />
-    </p>
-  </Container>
+  <div class="app-width-container">
+    <main
+      class="govuk-main-wrapper govuk-main-wrapper--l"
+      id="main-content"
+      role="main"
+    >
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l">Forbidden</h1>
+          <p className="govuk-body">
+            We apologize for the inconvenience, but you don't have permissions
+            on this resource.
+          </p>
+          <p className="govuk-body">Thank you.</p>
+        </div>
+      </div>
+    </main>
+  </div>
 );
 
 export default withServerErrorCode(403)(Forbidden);
