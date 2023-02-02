@@ -20,7 +20,7 @@ const ServiceProblem = () => (
     >
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-          <h1 class="govuk-heading-l">
+          <h1 class="govuk-heading-xl govuk-!-margin-bottom-9">
             Sorry, there is a problem with the service
           </h1>
           <p class="govuk-body">

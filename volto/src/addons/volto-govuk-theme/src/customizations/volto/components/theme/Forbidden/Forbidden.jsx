@@ -21,7 +21,7 @@ const Forbidden = () => (
     >
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-          <h1 class="govuk-heading-l">Forbidden</h1>
+          <h1 class="govuk-heading-xl govuk-!-margin-bottom-9">Forbidden</h1>
           <p className="govuk-body">
             We apologize for the inconvenience, but you don't have permissions
             on this resource.

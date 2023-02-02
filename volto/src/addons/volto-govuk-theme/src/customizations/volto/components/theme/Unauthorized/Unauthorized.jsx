@@ -29,7 +29,9 @@ const Unauthorized = () => {
       >
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
-            <h1 class="govuk-heading-l">Unauthorized</h1>
+            <h1 class="govuk-heading-xl govuk-!-margin-bottom-9">
+              Unauthorized
+            </h1>
             <h3 className="govuk-body">{error_message}</h3>
             <p className="govuk-body">
               You are trying to access a protected resource, please login first.
