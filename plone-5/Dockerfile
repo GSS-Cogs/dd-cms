@@ -20,8 +20,8 @@ COPY build-and-start.sh /usr/local/bin/build-and-start
 # Copy in the zope conf template
 COPY ./zope.conf /plone/instance/parts/instance/etc/zope.conf
 
-# Horrid sed hack to inject build args into zope.conf as plone doesn't
-# sem to evalute new/unexpected environment variables at run time
+# Horrid sed hack to inject build args into zope.conf as env vars
+# are not recognised by zope.conf
 RUN sed -i "s/POSTGRES_DB/$POSTGRES_DB/g" /plone/instance/parts/instance/etc/zope.conf
 RUN sed -i "s/POSTGRES_USER/$POSTGRES_USER/g" /plone/instance/parts/instance/etc/zope.conf
 RUN sed -i "s/POSTGRES_HOST/$POSTGRES_HOST/g" /plone/instance/parts/instance/etc/zope.conf
