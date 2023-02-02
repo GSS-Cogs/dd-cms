@@ -27,6 +27,7 @@
   "addons": [
     "@eeacms/volto-datablocks",
     "@eeacms/volto-columns-block",
+    "@eeacms/volto-workflow-progress",
     "volto-slate:asDefault",
     "volto-govuk-theme",
     "volto-chart-builder",
@@ -129,6 +130,7 @@
   "dependencies": {
     "@eeacms/volto-columns-block": "^4.5.0",
     "@eeacms/volto-datablocks": "^3.0.11",
+    "@eeacms/volto-workflow-progress": "*",
     "@plone/volto": "^15.0",
     "d3": "6",
     "govuk-frontend": "4.0.0",

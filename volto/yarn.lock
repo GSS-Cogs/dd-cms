@@ -1440,6 +1440,11 @@
   resolved "https://registry.yarnpkg.com/@eeacms/volto-object-widget/-/volto-object-widget-3.0.3.tgz#1d12a769c3f0d9a1448f857e60be4dd6771a647b"
   integrity sha512-AZiWLwS4kXRN696BzJfSncfvbnHsnF11m7iCF+W38ROGIUau3fmiLV9KnXxgDJZg/AV/wI3AcdSXr2fnH3uOAA==
 
+"@eeacms/volto-workflow-progress@*":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-workflow-progress/-/volto-workflow-progress-3.0.1.tgz#92e9125635d04081e2acf864465ba46e17ecf5bd"
+  integrity sha512-NXgFB1A9nT50mcdk2MrREJpSv5ZMsN5TIp357Kseyz6Zrghl01hz/gEtAmZyNBt4QoB84q+oTVuHzB6GI83KXQ==
+
 "@emotion/babel-plugin@^11.7.1":
   version "11.9.2"
   resolved "https://registry.yarnpkg.com/@emotion/babel-plugin/-/babel-plugin-11.9.2.tgz#723b6d394c89fb2ef782229d92ba95a740576e95"
