@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Unauthorized renders a not found component 1`] = `
+<div
+  class="app-width-container"
+>
+  <main
+    class="govuk-main-wrapper govuk-main-wrapper--l"
+    id="main-content"
+    role="main"
+  >
+    <div
+      class="govuk-grid-row"
+    >
+      <div
+        class="govuk-grid-column-two-thirds"
+      >
+        <h1
+          class="govuk-heading-xl govuk-!-margin-bottom-9"
+        >
+          Unauthorized
+        </h1>
+        <h3
+          className="govuk-body"
+        >
+          You are not authorized to access this resource
+        </h3>
+        <p
+          className="govuk-body"
+        >
+          You are trying to access a protected resource, please login first.
+        </p>
+        <p
+          className="govuk-body"
+        >
+          Thank you.
+        </p>
+      </div>
+    </div>
+  </main>
+</div>
+`;
