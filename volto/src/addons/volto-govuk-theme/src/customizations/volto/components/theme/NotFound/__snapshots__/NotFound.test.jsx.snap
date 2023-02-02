@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotFound renders a not found component 1`] = `
+<div
+  class="app-width-container"
+>
+  <main
+    class="govuk-main-wrapper govuk-main-wrapper--l"
+    id="main-content"
+    role="main"
+  >
+    <div
+      class="govuk-grid-row"
+    >
+      <div
+        class="govuk-grid-column-two-thirds"
+      >
+        <h1
+          class="govuk-heading-xl govuk-!-margin-bottom-9"
+        >
+          Page not found
+        </h1>
+        <p
+          class="govuk-body"
+        >
+          If you typed the web address, check it is correct.
+        </p>
+        <p
+          class="govuk-body"
+        >
+          You can
+           
+          <a
+            class="govuk-link"
+            href="/"
+          >
+            browse from homepage
+          </a>
+           
+          or use the search box above to find the information you need.
+        </p>
+        <p
+          class="govuk-body"
+        >
+          Status code: 404
+        </p>
+      </div>
+    </div>
+  </main>
+</div>
+`;
