@@ -34,7 +34,7 @@ exports[`NotFound renders a not found component 1`] = `
             class="govuk-link"
             href="/"
           >
-            browse from homepage
+            browse from the homepage
           </a>
            
           or use the search box above to find the information you need.
