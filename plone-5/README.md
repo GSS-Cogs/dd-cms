@@ -30,7 +30,7 @@ Export the following environment variables, the others have a viable default.
 Then run postgres with docker.
 
 ```
-docker run --name plone-postgres -e POSTGRES_PASSWORD=$POSTGRES_PASSWORD -d -p 5432:5432 postgres:14
+docker run --name plone-postgres -d -p 5432:5432 postgres:14
 ```
 
 notes:
@@ -55,13 +55,13 @@ _Note - you will get warnings for missing "cloudql-*" roles but it still works._
 build the image (from this directory).
 
 ```
-docker -t plone build . 
+docker -t plone --build-arg POSTGRES_PASSWORD=$POSTGRES_PASSWORD build . 
 ```
 
 run it
 
 ```
-docker run --build-arg POSTGRES_PASSWORD=$POSTGRES_PASSWORD -p 8080:8080 plone
+docker run -p 8080:8080 plone
 ```
 
 **Important** - there's no oauth handler set up for localhost, you'll need to log into your zope user (for whatever env you copied the database from) to bypass this broken handshake.
@@ -69,7 +69,7 @@ docker run --build-arg POSTGRES_PASSWORD=$POSTGRES_PASSWORD -p 8080:8080 plone
 Any issues, you can sanity check what's been set in the `zope.conf` (by the dockerfile) via:
 
 ```
-docker run -it -e POSTGRES_PASSWORD=$POSTGRES_PASSWORD -p 8080:8080 plone /bin/sh
+docker run -it -p 8080:8080 plone /bin/sh
 
 # then
 cat /plone/instance/parts/instance/etc/zope.conf
