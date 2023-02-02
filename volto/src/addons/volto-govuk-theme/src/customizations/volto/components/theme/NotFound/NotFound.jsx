@@ -32,7 +32,7 @@ const NotFound = () => (
           <p class="govuk-body">
             You can{' '}
             <a href="/" class="govuk-link">
-              browse from homepage
+              browse from the homepage
             </a>{' '}
             or use the search box above to find the information you need.
           </p>
