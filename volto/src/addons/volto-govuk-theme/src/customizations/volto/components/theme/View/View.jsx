@@ -200,7 +200,6 @@ class View extends Component {
       return <Redirect to={flattenToAppURL(this.props.error.url)} />;
     } else if (this.props.error && !this.props.connectionRefused) {
       let FoundView;
-      console.log(this.props.error.status);
       if (this.props.error.status === undefined) {
         // For some reason, while development and if CORS is in place and the
         // requested resource is 404, it returns undefined as status, then the
