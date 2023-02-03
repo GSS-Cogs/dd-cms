@@ -8,7 +8,7 @@ import NewsItemView from '@plone/volto/components/theme/View/NewsItemView';
 import SummaryView from '@plone/volto/components/theme/View/SummaryView';
 import TabularView from '@plone/volto/components/theme/View/TabularView';
 import LinkView from '@plone/volto/components/theme/View/LinkView';
-import NotFoundView from '@plone/volto/components/theme/NotFound/NotFound';
+import NotFoundView from '../components/theme/NotFound/NotFound';
 import ConnectionRefused from '@plone/volto/components/theme/ConnectionRefused/ConnectionRefused';
 import CorsError from '@plone/volto/components/theme/CorsError/CorsError';
 import AlbumView from '@plone/volto/components/theme/View/AlbumView';
