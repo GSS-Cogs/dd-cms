@@ -12,8 +12,6 @@ import NotFoundView from '../components/theme/NotFound/NotFound';
 import ConnectionRefused from '@plone/volto/components/theme/ConnectionRefused/ConnectionRefused';
 import CorsError from '@plone/volto/components/theme/CorsError/CorsError';
 import AlbumView from '@plone/volto/components/theme/View/AlbumView';
-import Unauthorized from '../components/theme/Unauthorized/Unauthorized';
-import Forbidden from '../components/theme/Forbidden/Forbidden';
 import ServiceProblem from '../components/theme/ServiceProblem/ServiceProblem';
 
 const EventView = loadable(() =>
