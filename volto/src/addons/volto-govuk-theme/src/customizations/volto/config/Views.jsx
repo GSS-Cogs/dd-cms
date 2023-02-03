@@ -43,8 +43,6 @@ export const defaultView = DefaultView;
 
 export const errorViews = {
   '404': NotFoundView,
-  '401': Unauthorized,
-  '403': Forbidden,
   '500': ServiceProblem,
   ECONNREFUSED: ConnectionRefused,
   corsError: CorsError,
