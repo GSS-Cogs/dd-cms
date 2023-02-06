@@ -19,7 +19,7 @@ To create this locally, you need to...
 
 ### 1. Run postgres locally
 
-Run postgres with docker (pick a suitanle `<password>` for your own local development work).
+Run postgres with docker (pick a suitable `<password>` for your own local development work).
 
 ```
 docker run -e POSTGRES_USER=plone -e POSTGRES_DB=local -e POSTGRES_PASSWORD=<password> --name plone-postgres -d -p 5432:5432 postgres:14
@@ -74,7 +74,7 @@ cat /plone/instance/parts/instance/etc/zope.conf
 
 ## Additional Info
 
-To connect to a local plone instance (dockerised or otherwise) with volto, from `../volto` run:
+To connect to a local plone instance (docker or otherwise) with volto, from `../volto` run:
 
 ```
 RAZZLE_DEV_PROXY_API_PATH=http://localhost:8080/<site> yarn start:dev
