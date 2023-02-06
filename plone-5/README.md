@@ -49,7 +49,7 @@ Build the image (from within the /plone-5 directory).
 ```
 # Note the "." means "current context, i.e ./*", so instructs docker to use
 # the Dockerfile in the current working directory - plone-5.
-docker build -t plone --build-arg POSTGRES_PASSWORD=<password> . 
+docker build --build-arg POSTGRES_PASSWORD=<password> --tag plone .  
 ```
 
 run it
