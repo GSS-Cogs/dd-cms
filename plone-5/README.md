@@ -60,7 +60,7 @@ docker run -p 8080:8080 plone
 
 **Important** - there's no oauth handler set up for localhost, you'll need to log into your zope user (for whatever env you copied the database from) to bypass this broken handshake.
 
-Any issues, you can sanity check what's been set in the `zope,conf` (by the dockerfile) via:
+Any issues, you can sanity check what's been set in the `zope.conf` (by the dockerfile) via:
 
 ```
 docker run -it -p 8080:8080 plone /bin/sh
