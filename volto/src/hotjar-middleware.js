@@ -8,7 +8,7 @@ Notes:
   i.e found an instance of string ".<SITE>." in host.
   Note: Index of -1 is js for "did not find" so 0+ is found.
 - Any vanity CNAME records we use to direct here MUST also match the
-  expected domain pattern: *.<SITE>.* otherwise RAZZLE_RUNTIME_HOTJAR_ID
+  expected host pattern: *.<SITE>.* otherwise RAZZLE_RUNTIME_HOTJAR_ID
   will fall through to the default "" else clause. If we stray from this
   pattern we'll need to add an appropriate conditional to catch the new host.
 */
