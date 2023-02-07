@@ -24,6 +24,7 @@ module.exports = (req, _, next) => {
   } else {
     process.env.RAZZLE_RUNTIME_HOTJAR_ID = "";
   }
+  // TODO - following log line to be removed after PR but before merge.
   console.log(`Request to ${hostname}${req.url}, has Hotjar ID: "${process.env.RAZZLE_RUNTIME_HOTJAR_ID}"`);
   next();
 };
