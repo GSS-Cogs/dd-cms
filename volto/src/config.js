@@ -15,6 +15,7 @@
 
 // All your imports required for the config here BEFORE this line
 import '@plone/volto/config';
+const hotjarMiddleware = require('./hotjar-middleware');
 
 export default function applyConfig(config) {
   if (__SERVER__) {
@@ -43,7 +44,7 @@ export default function applyConfig(config) {
       }
       return next();
     });
-    config.settings.expressMiddleware = [...config.settings.expressMiddleware, health, auth];
+    config.settings.expressMiddleware = [...config.settings.expressMiddleware, hotjarMiddleware, health, auth];
   }
   return config;
 }
