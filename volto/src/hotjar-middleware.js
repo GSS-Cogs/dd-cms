@@ -1,7 +1,7 @@
 /*
 Whenever we get a request, select the RAZZLE_RUNTIME_HOTJAR_ID based
 on the host the request was received on.
-The actual hotjar IDs are set via IAC created environment variables.
+The actual hotjar IDs are provided via IAC created environment variables.
 
 Notes:
 - Using indexOf as its clearer than regex and gets us to the same place.
