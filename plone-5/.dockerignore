@@ -1,5 +1,4 @@
 *
-!zope.conf
 !instance/custom.cfg
 !instance/src
 !build-and-start.sh
