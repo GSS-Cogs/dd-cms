@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   plone:
-    image: plone:5.2.5
+    image: plone:5.2.7
     container_name: dd-cms-backend
     ports:
       - "127.0.0.1:8080:8080"
