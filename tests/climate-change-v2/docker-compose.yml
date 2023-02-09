@@ -11,6 +11,11 @@ services:
   plone:
     build:
       context: ../../plone-5
+      args:
+          POSTGRES_PASSWORD: testdb
+          POSTGRES_USER: plone
+          POSTGRES_DB: climate-change
+          POSTGRES_HOST: localhost
     depends_on:
       fixtures-init:
         condition: service_completed_successfully
