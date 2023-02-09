@@ -9,6 +9,10 @@ ARG POSTGRES_PASSWORD
 # location of the zope config, shouldn't change but lets not repeat ourselves
 ARG ZOPE_CONF_LOCATION=/plone/instance/parts/instance/etc/zope.conf
 
+# Check for mandatory build argument POSTGRES_PASSWORD
+RUN \
+    : "${POSTGRES_PASSWORD:?Build argument POSTGRES_PASSWORD needs to be set and non-empty.}"
+
 COPY instance/custom.cfg /plone/instance/
 COPY instance/src /plone/instance/src/
 RUN \
