@@ -54,11 +54,11 @@ This will start containers running plone and volto. Access volto at http://local
 
 The cloned volto dir is bind mounted inside the container. Hot reloading works with this setup.
 
-### <a name='manualsteps'></a> Manual steps
+### Manual steps
 
 You have to start a `plone` instance. See the docs in that directory for the steps on that.
 
-You'll need to have `mrs-developer` installed globally. See the [mrs-developer](#mrsdeveloper) section below.  It's 
+You'll need to have `mrs-developer` installed globally. See the [mrs-developer](#mrs-developer) section below.  It's 
 a tool that clones 3rd party modules from their git repos.
 
 From this `volto` dir,
@@ -151,7 +151,7 @@ If you are switching between git branches, please run following
 
 `yarn run clean`
 
-### <a name='mrsdeveloper'></a> mrs-developer
+### mrs-developer
 
 [mrs-developer](https://github.com/collective/mrs-developer) is a great tool
 for developing multiple packages at the same time.
@@ -159,7 +159,7 @@ for developing multiple packages at the same time.
 mrs-developer should work with this project by running the configured shortcut script:
 
 ```bash
-yarn develop
+yarn global add mrs-developer
 ```
 
 Volto's latest razzle config will pay attention to your jsconfig.json file for any customizations.
