@@ -20,7 +20,7 @@ export default function applyConfig(config) {
   if (__SERVER__) {
     const express = require('express');
     const health = express.Router();
-    health.all('/_healthcheck', function(req, res, next) {
+    health.all('/_healthcheck', function (req, res, next) {
       return res.status(200).end();
     });
     const auth = express.Router();
@@ -28,22 +28,23 @@ export default function applyConfig(config) {
     auth.all('*', function (req, res, next) {
       if (process.env['BASIC_AUTH']) { // only do basic auth when this env var is set
         const req_auth = req.get('authorization');
-        if (!(typeof(req_auth) === 'string') || // no auth header
+        if (!(typeof (req_auth) === 'string') || // no auth header
           // if there is an authorization header, then
           (
-              req.get('authorization').startsWith('Basic ') && // if the header starts with Basic
-              !(req.get('authorization') === 'Basic ' + process.env['BASIC_AUTH']) // and it's not the right login
+            req.get('authorization').startsWith('Basic ') && // if the header starts with Basic
+            !(req.get('authorization') === 'Basic ' + process.env['BASIC_AUTH']) // and it's not the right login
           )
         ) {
           return res
-              .status(401)
-              .set('WWW-Authenticate', 'Basic realm="Access to beta"')
-              .send('Authentication required.');
+            .status(401)
+            .set('WWW-Authenticate', 'Basic realm="Access to beta"')
+            .send('Authentication required.');
         }
       }
       return next();
     });
     config.settings.expressMiddleware = [...config.settings.expressMiddleware, health, auth];
   }
+  config.settings.hasWorkingCopySupport = true;
   return config;
 }
