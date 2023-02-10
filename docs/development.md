@@ -7,7 +7,7 @@ There are [plone](plone.md) and [volto](volto.md) specific docs.
 
 ## Quickest start
 
-The quickest way to start is to run the `docker-compose` app defined in the root of the
+The quickest way to start is to run the [`docker-compose`](../docker-compose.yml) app defined in the root of the
 project, and then open http://localhost:3000 in your browser once they're running.
 
 ## M1 Mac users
@@ -30,7 +30,7 @@ Use the instructions in [plone](plone.md) to create a local `pipenv` dev environ
 If you need to use Volto, start only the `plone` part of the `docker-compose` app:
 
 ```bash
-docker-compose up -d plone
+docker compose up -d plone
 ```
 #### Frontend developer wants to run Volto with hot-reload.
 

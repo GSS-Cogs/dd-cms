@@ -42,13 +42,13 @@ ADDONS is only supported in volto 14+; we run a patch to make it possible in vol
 During dev for an addon that won't necessarily be used in every instance, you can use a local `.env` file to override 
 the addons. There's an example already for the CCv2 components. 
 
-To use it, run `docker-compose --env-file=.env.ccv2 up`
+To use it, run `docker compose --env-file=.env.ccv2 up`
 
 ## Working on volto
 
 ### With `docker-compose`
 
-The simplest way is to run `docker-compose up` in the root of the project. 
+The simplest way is to run `docker compose up` in the root of the project. 
 
 This will start containers running plone and volto. Access volto at http://localhost:3000
 
