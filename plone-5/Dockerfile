@@ -6,9 +6,8 @@ ARG POSTGRES_USER=plone
 ARG POSTGRES_HOST=172.17.0.1
 # don't default this, in case of mix ups with builds
 ARG POSTGRES_PASSWORD
-# location of the zope config and temp config, shouldn't change but lets not repeat ourselves
+# location of the zope config, shouldn't change but lets not repeat ourselves
 ARG ZOPE_CONF_LOCATION=/plone/instance/parts/instance/etc/zope.conf
-ARG ZOPE_TEMP_CONFIG=/plone/instance/parts/instance/etc/zope-temporary.conf
 
 # Check for mandatory build argument POSTGRES_PASSWORD
 RUN \
@@ -29,9 +28,9 @@ COPY ./zope.conf $ZOPE_CONF_LOCATION
 
 # Horrid sed hack to inject build args into zope.conf as plone doesn't
 # seem to evalute new/unexpected environment variables at run time.
-RUN sed -i "s/POSTGRES_DB/$POSTGRES_DB/g" $ZOPE_CONF_LOCATION
-RUN sed -i "s/POSTGRES_USER/$POSTGRES_USER/g" $ZOPE_CONF_LOCATION
-RUN sed -i "s/POSTGRES_HOST/$POSTGRES_HOST/g" $ZOPE_CONF_LOCATION
+RUN sed -i "s/POSTGRES_DB/"$POSTGRES_DB"/g" $ZOPE_CONF_LOCATION
+RUN sed -i "s/POSTGRES_USER/"$POSTGRES_USER"/g" $ZOPE_CONF_LOCATION
+RUN sed -i "s/POSTGRES_HOST/"$POSTGRES_HOST"/g" $ZOPE_CONF_LOCATION
 RUN sed -i "s/POSTGRES_PASSWORD/"$POSTGRES_PASSWORD"/g" $ZOPE_CONF_LOCATION
 
 CMD gosu plone bin/instance console
