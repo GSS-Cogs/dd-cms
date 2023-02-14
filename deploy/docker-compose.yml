@@ -5,6 +5,10 @@ services:
         image: plone:${GIT_COMMIT_SHORT}
         build:
             context: ../plone-5
+            args:
+                POSTGRES_PASSWORD: ${DB_PSW?non-empty}
+                POSTGRES_USER: ${DB_USR}
+                POSTGRES_HOST: localhost
         entrypoint: '/bin/sh -c'
         environment:
             - IMAGE_ID=plone:${GIT_COMMIT_SHORT}
