@@ -1,4 +1,5 @@
 *
+!prestart
 !zope.conf
 !instance/custom.cfg
 !instance/src
