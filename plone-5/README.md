@@ -49,13 +49,13 @@ Build the image (from within the /plone-5 directory).
 ```
 # Note the "." means "current context, i.e ./*", so instructs docker to use
 # the Dockerfile in the current working directory - plone-5.
-docker build --build-arg POSTGRES_PASSWORD=<password> --tag plone .  
+docker build --tag plone .  
 ```
 
 run it
 
 ```
-docker run -p 8080:8080 plone
+docker run -e POSTGRES_PASSWORD=<password> -p 8080:8080 plone
 ```
 
 **Important** - there's no oauth handler set up for localhost, you'll need to log into your zope user (for whatever env you copied the database from) to bypass this broken handshake.
@@ -63,12 +63,16 @@ docker run -p 8080:8080 plone
 Any issues, you can sanity check what's been set in the `zope.conf` (by the dockerfile) via:
 
 ```
-docker run -it -p 8080:8080 plone /bin/sh
+docker run -e POSTGRES_PASSWORD=<password> -p 8080:8080 plone
 
-# then
-cat /plone/instance/parts/instance/etc/zope.conf
+# use docker ps to get the container ID
+docker ps
 
-# then exit to leave container.
+# then check the content of zope.conf
+docker exec <CONTAINER ID> cat /plone/instance/parts/instance/etc/zope.conf
+
+# NOTE - do NOT try and combine the commands with the -it flag, you'll get the
+# zope.conf without the env var injection.
 ```
 
 
