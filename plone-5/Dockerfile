@@ -20,6 +20,8 @@ COPY build-and-start.sh /usr/local/bin/build-and-start
 COPY ./zope.conf /plone/instance/parts/instance/etc/zope.conf
 ADD ./prestart /plone/instance/prestart
 
-CMD chmod +x /plone/instance/prestart/prestart.sh && \
-    /plone/instance/prestart/prestart.sh && \
+# Make prestart script executable
+RUN chmod +x /plone/instance/prestart/prestart.sh
+
+CMD /plone/instance/prestart/prestart.sh && \
     gosu plone bin/instance console
