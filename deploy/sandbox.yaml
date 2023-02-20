@@ -1,0 +1,72 @@
+# cloud build definition for SANDBOX
+# this does NOT run automatically, a developer triggers builds they want in sandbox
+# via the console (trigger is dd-cms-sandbox), it's one button - see platform
+# documentation (not public).
+
+# Notes:
+# - Variables prefixed $_ are custom substitutions, see the GCP trigger itself 
+#   for the values being sustituted in.
+# - Variables just prefixed $ are GCP standard substitutions, see:
+#   https://cloud.google.com/build/docs/configuring-builds/substitute-variable-values
+
+steps:
+
+  # Build plone - push to artifact registry
+  # builds args are:
+  # POSTGRES_HOST     - terraform managed GCP internal (to VPC) static ip address
+  # POSTGRES_PASSWORD - large random terraform managed/rotated GCP secret
+  # POSTGRES_DB       - name of db, documented elsewhere (not public).
+  - name: 'gcr.io/kaniko-project/executor:latest'
+    args:
+      - >-
+        --destination=europe-west2-docker.pkg.dev/$PROJECT_ID/dd-cms-all-branches/plone-$BRANCH_NAME:$SHORT_SHA
+      - '--cache=true'
+      - '--context=dir://plone-5'
+      - '--build-arg=POSTGRES_HOST=$_POSTGRES_HOST'
+      - '--build-arg=POSTGRES_PASSWORD=$_POSTGRES_PASSWORD'
+      - '--build-arg=POSTGRES_DB=$_POSTGRES_DB'
+
+  # Build volto image - push to artifact registry
+  - name: 'gcr.io/kaniko-project/executor:v1.3.0'
+    args:
+      - >-
+        --destination=europe-west2-docker.pkg.dev/$PROJECT_ID/dd-cms-all-branches/volto-$BRANCH_NAME:$SHORT_SHA
+      - '--cache=true'
+      - '--context=dir://volto'
+      - '--build-arg=ADDONS=$_VOLTO_ADDONS'
+
+  # Update the k8s deployment for plone in the sandbox cluster to use this new image
+  # this triggers a green/blue deployment of new image for the running plone pod(s).
+  - name: gcr.io/cloud-builders/kubectl
+    env:
+      - CLOUDSDK_COMPUTE_REGION=europe-west2
+      - CLOUDSDK_CONTAINER_CLUSTER=sandbox
+    args:
+      - set
+      - image
+      - deployment/plone
+      - '--namespace=cms'
+      - >-
+        plone=europe-west2-docker.pkg.dev/$PROJECT_ID/dd-cms-all-branches/plone-$BRANCH_NAME:$SHORT_SHA
+
+  # Update the k8s deployment for volto in the sandbox cluster to use this new image
+  # this triggers a green/blue deployment of new image for the running plone pod(s).
+  - name: gcr.io/cloud-builders/kubectl
+    env:
+      - CLOUDSDK_COMPUTE_REGION=europe-west2
+      - CLOUDSDK_CONTAINER_CLUSTER=sandbox
+    args:
+      - set
+      - image
+      - deployment/volto
+      - '--namespace=cms'
+      - >-
+        volto=europe-west2-docker.pkg.dev/$PROJECT_ID/dd-cms-all-branches/volto-$BRANCH_NAME:$SHORT_SHA
+
+# Very high timeout (2 hours), but precautionary while we address some build time issues.
+timeout: 7200s
+options:
+  # defines the "under the hood" VM the build runs on.
+  # this is tier 2 of 3, i.e medium resource
+  # tier 3 of 3 ramps up cost significantly so alter with care.
+  machineType: E2_HIGHCPU_8
