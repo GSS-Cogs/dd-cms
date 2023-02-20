@@ -6,7 +6,6 @@ import {
   Add,
   AddonsControlpanel,
   ChangePassword,
-  ContactForm,
   Contents,
   ContentType,
   ContentTypeLayout,
@@ -57,10 +56,6 @@ export const multilingualRoutes = [
     component: Search,
   },
   {
-    path: `/(${config.settings?.supportedLanguages.join('|')})/contact-form`,
-    component: ContactForm,
-  },
-  {
     path: `/(${config.settings?.supportedLanguages.join('|')})/change-password`,
     component: ChangePassword,
   },
@@ -103,10 +98,6 @@ export const defaultRoutes = [
   {
     path: '/search',
     component: Search,
-  },
-  {
-    path: '/contact-form',
-    component: ContactForm,
   },
   {
     path: '/controlpanel',
