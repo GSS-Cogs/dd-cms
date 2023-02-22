@@ -15,7 +15,7 @@ build:
 
 .PHONY: test
 test:
-	yarn test
+	yarn test --watchAll=false
 
 .PHONY: debug
 debug: 
