@@ -33,13 +33,15 @@ brew install pipenv zlib libjpeg
 # zlib
 ZLIB_BASE=$(brew --prefix zlib)
 export LDFLAGS="-L${ZLIB_BASE}/lib"
-export CPPFLAGS="-I${ZLIB_BASE}/include"
+export CPPFLAGS="-I${ZLIB_BASE}/include -Wno-error=implicit-function-declaration"
 ```
 
 ## 2. Bootstrap
 Docker is used to extract a baseline `buildout` config. Plone can be run in a Pipenv locally.
 
 Finally, run `./bootstrap.sh` to create a local, virtualenv (Pipenv) separate environment with all the right dependencies fetched by `buildout` and placed into the `buildout-cache` directory.
+
+Optionally, running `./bootstrap.sh <filename>` with the name of another .cfg file will force the buildout stage to use that configuration. It uses `custom.cfg` by default, but `./bootstrap.sh develop.cfg` may be necessary to generate test scripts.
 
 ## 3. Launch
 
