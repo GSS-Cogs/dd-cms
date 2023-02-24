@@ -10,11 +10,11 @@ build:
 	yarn build
 
 .PHONY: install
-build:
+install:
 	yarn develop && yarn install
 
 .PHONY: test
-test:
+test: install
 	yarn test --watchAll=false
 
 .PHONY: debug
