@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ChartContext, convertSparqlToGeoJson } from 'gss-cogs-chart-builder';
 import { getChartBuilderData } from '../actions';
 
+import { replaceUrl } from '../../../../helpers';
+
 export function usePloneCsvData(parent_ref, plone_ref) {
   const [error, setError] = useState([]);
   const {
@@ -17,8 +19,9 @@ export function usePloneCsvData(parent_ref, plone_ref) {
 
   const contentRef = plone_ref.length ? plone_ref[0] : null;
 
+  const updatedUrl = replaceUrl(contentRef['@id'], parent_ref['@id']);
   const response = useSelector((state) =>
-    contentRef ? state.chartBuilderRawData.get(contentRef['@id']) : null,
+    contentRef ? state.chartBuilderRawData.get(updatedUrl) : null,
   );
 
   /*
@@ -60,18 +63,16 @@ export function usePloneCsvData(parent_ref, plone_ref) {
   const possible_url = contentRef['@id'].replace(/(?<=\/dashboards\/).+?(?=\/)/, dashboard_name) 
   */
 
-  console.log("contentRef", contentRef);
-
   useEffect(() => {
     if (contentRef != null) {
       switch (contentRef['@type']) {
         case 'File':
-          dispatch(getChartBuilderData(contentRef['@id'], '@@download'));
+          dispatch(getChartBuilderData(updatedUrl, '@@download'));
           break;
         case 'discodataconnector':
         case 'sparql_dataconnector':
         case 'csv_type':
-          dispatch(getChartBuilderData(contentRef['@id'], '@connector-data'));
+          dispatch(getChartBuilderData(updatedUrl, '@connector-data'));
           break;
       }
     }
@@ -80,13 +81,13 @@ export function usePloneCsvData(parent_ref, plone_ref) {
   useEffect(() => {
     if (response != null && contentRef != null && response.loaded) {
       setError([]);
-      console.log("response - how are we here!?", response);
+      console.log('response - how are we here!?', response);
       if (chartType === 'Map') {
         setMapData(response.content.data.results);
       } else {
         switch (contentRef['@type']) {
           case 'File':
-            importCsvData(response.content, contentRef['@id']);
+            importCsvData(response.content, updatedUrl);
             break;
           case 'discodataconnector':
           case 'sparql_dataconnector':
@@ -97,7 +98,7 @@ export function usePloneCsvData(parent_ref, plone_ref) {
                 id: response.content.id,
                 data: response.content.data.results,
               },
-              contentRef['@id'],
+              updatedUrl,
             );
             break;
         }
