@@ -120,22 +120,23 @@ export function usePloneCsvData(parent_ref, plone_ref) {
   return { error };
 }
 
-export function usePloneGeoJson(plone_ref) {
+export function usePloneGeoJson(parent_ref, plone_ref) {
   const [error, setError] = useState([]);
   const { setGeoJson } = useContext(ChartContext);
   const contentRef = plone_ref.length ? plone_ref[0] : null;
   const dispatch = useDispatch();
 
+  const updatedUrl = replaceUrl(contentRef['@id'], parent_ref['@id']);
+  const response = useSelector((state) =>
+    contentRef ? state.chartBuilderRawData.get(updatedUrl) : null,
+  );
+
   useEffect(() => {
     setError([]);
     if (contentRef != null) {
-      dispatch(getChartBuilderData(contentRef['@id'], '@connector-data'));
+      dispatch(getChartBuilderData(updatedUrl, '@connector-data'));
     }
   }, [contentRef, dispatch]);
-
-  const response = useSelector((state) =>
-    contentRef ? state.chartBuilderRawData.get(contentRef['@id']) : null,
-  );
 
   useEffect(() => {
     if (response != null && contentRef != null && response.loaded) {
