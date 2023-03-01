@@ -1,7 +1,7 @@
 # Plone Development Environment
 
 Setting up a development environment for Plone can be a bit tricky. Plone currently uses `buildout` to fetch
-dependencies and also to create scripts and configuration files based on those dependencies, and `buildout` support has recently been dropped from IntelliJ/PyCharm.
+dependencies and also to create scripts and configuration files based on those dependencies, but `buildout` support has recently been dropped from IntelliJ/PyCharm.
 
 Since building Plone is already scripted as a Dockerfile and built as a Docker Image, it makes sense to re-use the configuration and scripts to re-create a local environment that can be used in IntelliJ/PyCharm to run and debug our Plone backend.
 
@@ -37,7 +37,7 @@ export CPPFLAGS="-I${ZLIB_BASE}/include"
 ```
 
 ## 2. Bootstrap
-Docker is used to extract a baseline `buildout` config. plone will be run in a Pipenv locally.
+Docker is used to extract a baseline `buildout` config. Plone can be run in a Pipenv locally.
 
 Finally, run `./bootstrap.sh` to create a local, virtualenv (Pipenv) separate environment with all the right dependencies fetched by `buildout` and placed into the `buildout-cache` directory.
 
