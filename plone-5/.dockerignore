@@ -1,7 +1,9 @@
 *
 !zope.conf
 !instance/custom.cfg
+!instance/develop.cfg
 !instance/src
+!instance/bin
 !build-and-start.sh
 !instance/site.cfg
 instance/src/ukstats.ccv2.theme

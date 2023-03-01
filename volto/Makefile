@@ -3,7 +3,7 @@ SHELL=bash
 RAZZLE_PATH=http://localhost:8080/climate-change
 
 .PHONY: all
-all: test build
+all: audit test build
 
 .PHONY: build
 build:
@@ -12,6 +12,12 @@ build:
 .PHONY: install
 install:
 	yarn develop && yarn install
+
+# yarn audit will always return a non-zero exit code if
+# any vulnerabilities are found regardless of severity
+.PHONY: audit
+audit: install
+	yarn audit --summary
 
 .PHONY: test
 test: install

@@ -1,0 +1,12 @@
+FROM plone:5.2.7-python38
+
+COPY instance/develop.cfg /plone/instance/
+COPY instance/src /plone/instance/src/
+RUN \
+    sed -i '/mysqlclient\|cx-Oracle\|ldap/d' buildout.cfg && \
+    buildout -c develop.cfg && \
+    find /data -not -user plone -exec chown plone:plone {} \+ && \
+    find /plone -not -user plone -exec chown plone:plone {} \+
+
+WORKDIR /plone/instance
+CMD ["./bin/test"]

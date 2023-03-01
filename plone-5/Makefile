@@ -9,8 +9,8 @@ build:
 
 .PHONY: test
 test:
-	./bootstrap.sh develop.cfg
-	sudo ./instance/bin/test
+	docker build -t test-plone -f Dockerfile.tests .
+	docker run -it test-plone
 
 .PHONY: debug
 debug: build
