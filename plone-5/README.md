@@ -1,5 +1,9 @@
 # Plone
 
+Before running Plone, you may need to install some [Prerequisites](./plone.md#1-pre-requisites). 
+The following guidance assumes working versions of docker and access to GCP for fetching SQL backups.
+You may also need to run some manual steps to [configure plone](./plone.md#configure-plone) once your containers are running.
+
 Plone requires the following env vars to run and connect to the postgres backend.
 
 | Env var | Description | Deployed Value |

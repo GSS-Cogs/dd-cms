@@ -23,12 +23,14 @@ export const CcPhaseBannerWrapper = ({ className }) => {
 
   useEffect(() => {
     var obj = phaseData;
-    setPhaseBannerStage(obj.bannerStage);
-    setPhaseBannerDisplay(obj.bannerDisplay);
-    if (obj.bannerLinkType == 'mailto') {
-      setPhaseBannerLink('mailto:' + obj.bannerLink);
-    } else {
-      setPhaseBannerLink(obj.bannerLink);
+    if (obj){
+      setPhaseBannerStage(obj.bannerStage);
+      setPhaseBannerDisplay(obj.bannerDisplay);
+      if (obj.bannerLinkType == 'mailto') {
+        setPhaseBannerLink('mailto:' + obj.bannerLink);
+      } else {
+        setPhaseBannerLink(obj.bannerLink);
+      }
     }
   }, [phaseData]);
 
