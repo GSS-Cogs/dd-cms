@@ -6,6 +6,9 @@
  */
 
 const replaceUrl = (originalPath, parentPath) => {
+  if (!originalPath) {
+    return originalPath;
+  }
   const dashboard_name = parentPath.match(/(?<=\/dashboards\/).*./);
   const possible_url = originalPath.replace(
     /(?<=\/dashboards\/).+?(?=\/)/,

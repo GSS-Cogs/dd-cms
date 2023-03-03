@@ -19,7 +19,7 @@ export function usePloneCsvData(parent_ref, plone_ref) {
 
   const contentRef = plone_ref.length ? plone_ref[0] : null;
 
-  const updatedUrl = replaceUrl(contentRef['@id'], parent_ref['@id']);
+  const updatedUrl = replaceUrl(contentRef?.['@id'], parent_ref?.['@id']);
   const response = useSelector((state) =>
     contentRef ? state.chartBuilderRawData.get(updatedUrl) : null,
   );
@@ -126,7 +126,7 @@ export function usePloneGeoJson(parent_ref, plone_ref) {
   const contentRef = plone_ref.length ? plone_ref[0] : null;
   const dispatch = useDispatch();
 
-  const updatedUrl = replaceUrl(contentRef['@id'], parent_ref['@id']);
+  const updatedUrl = replaceUrl(contentRef?.['@id'], parent_ref?.['@id']);
   const response = useSelector((state) =>
     contentRef ? state.chartBuilderRawData.get(updatedUrl) : null,
   );
