@@ -20,9 +20,6 @@ const View = () => {
 const Edit = (props) => {
   const { selected, onChangeBlock, block, data, properties } = props;
 
-  console.log(properties.parent);
-  console.log(data?.file_path?.[0]?.['@id']);
-
   const { error: dataError } = usePloneCsvData(
     properties.parent,
     data.file_path || [],

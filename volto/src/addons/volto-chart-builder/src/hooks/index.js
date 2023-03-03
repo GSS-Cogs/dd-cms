@@ -24,45 +24,6 @@ export function usePloneCsvData(parent_ref, plone_ref) {
     contentRef ? state.chartBuilderRawData.get(updatedUrl) : null,
   );
 
-  /*
-  This is all to avoid errors being thrown by importEeaData when content is an HTML error page instead of data
-  primarily happening after a dashboard has been renamed but the chart maintains refrences to old SPARQL dataconnect paths
-
-  contentRef = {
-    @id: "/dashboards/climate-and-weather/sparql-annual-mean-temperature-degc-for-the-uk-1884-to-2020-with-long-term-averages"
-    @type: "sparql_dataconnector"
-    ...
-  }
-  parent_ref = {
-    @id: "/dashboards/name-has-changed"
-  }
-  response = {
-    content: "<!doctype html>\n              <html lang=\"en\" (very long strong, huge page)
-    error: null
-    loaded: true
-    loading: false
-  }
-
-  Pseudocode:
-  if importEeaData throws an error || contentRef['@id'] = 404 {
-      URL format properties.parent['@id'] from Edit function
-      get path segment(s) (i.e /dashboard/emissions or /atricles/name)
-              
-      if parent_segment.startsWith("/dashboard") && contentRef['@id].startsWith("/dashboard")
-          then regex the dashboard name over the one in contentRef.id and try fetching response from there    
-      }
-  }
-
-  This would likely need to be done on reads and writes, as loading the charts within a dashboard is currently failing
-  too. But it's not throwing the same errors so could be a different issue.
-
-  // get the parent dashboard name
-  const dashboard_name = parent_ref['@id'].match(/(?<=\/dashboards\/).*./) 
-
-  //insert the parent dashboard name into the contentRef for the query
-  const possible_url = contentRef['@id'].replace(/(?<=\/dashboards\/).+?(?=\/)/, dashboard_name) 
-  */
-
   useEffect(() => {
     if (contentRef != null) {
       switch (contentRef['@type']) {
@@ -81,7 +42,6 @@ export function usePloneCsvData(parent_ref, plone_ref) {
   useEffect(() => {
     if (response != null && contentRef != null && response.loaded) {
       setError([]);
-      console.log('response - how are we here!?', response);
       if (chartType === 'Map') {
         setMapData(response.content.data.results);
       } else {
