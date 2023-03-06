@@ -27,10 +27,10 @@ COPY build-and-start.sh /usr/local/bin/build-and-start
 COPY ./zope.conf $ZOPE_CONF_LOCATION
 
 # Horrid sed hack to inject build args into zope.conf as plone doesn't
-# sem to evalute new/unexpected environment variables at run time
-RUN sed -i "s/POSTGRES_DB/$POSTGRES_DB/g" $ZOPE_CONF_LOCATION
-RUN sed -i "s/POSTGRES_USER/$POSTGRES_USER/g" $ZOPE_CONF_LOCATION
-RUN sed -i "s/POSTGRES_HOST/$POSTGRES_HOST/g" $ZOPE_CONF_LOCATION
-RUN sed -i "s/POSTGRES_PASSWORD/$POSTGRES_PASSWORD/g" $ZOPE_CONF_LOCATION
+# seem to evalute new/unexpected environment variables at run time.
+RUN sed -i "s/POSTGRES_DB/"$POSTGRES_DB"/g" $ZOPE_CONF_LOCATION
+RUN sed -i "s/POSTGRES_USER/"$POSTGRES_USER"/g" $ZOPE_CONF_LOCATION
+RUN sed -i "s/POSTGRES_HOST/"$POSTGRES_HOST"/g" $ZOPE_CONF_LOCATION
+RUN sed -i "s/POSTGRES_PASSWORD/"$POSTGRES_PASSWORD"/g" $ZOPE_CONF_LOCATION
 
 CMD gosu plone bin/instance console

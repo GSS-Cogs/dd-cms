@@ -20,9 +20,9 @@ steps:
   - name: 'gcr.io/kaniko-project/executor:latest'
     args:
       - >-
-        --destination=europe-west2-docker.pkg.dev/optimum-bonbon-257411/dd-cms/plone:${_IMAGE_TAG}
+        --destination=europe-west2-docker.pkg.dev/$PROJECT_ID/dd-cms/plone:${_IMAGE_TAG}
       - >-
-        --destination=europe-west2-docker.pkg.dev/optimum-bonbon-257411/dd-cms/plone:latest
+        --destination=europe-west2-docker.pkg.dev/$PROJECT_ID/dd-cms/plone:latest
       - '--context=dir://plone-5'
       - '--build-arg=POSTGRES_HOST=$_POSTGRES_HOST'
       - '--build-arg=POSTGRES_PASSWORD=$_POSTGRES_PASSWORD'
@@ -34,9 +34,9 @@ steps:
   - name: 'gcr.io/kaniko-project/executor:v1.3.0'
     args:
       - >-
-        --destination=europe-west2-docker.pkg.dev/optimum-bonbon-257411/dd-cms/volto:${_IMAGE_TAG}
+        --destination=europe-west2-docker.pkg.dev/$PROJECT_ID/dd-cms/volto:${_IMAGE_TAG}
       - >-
-        --destination=europe-west2-docker.pkg.dev/optimum-bonbon-257411/dd-cms/volto:latest
+        --destination=europe-west2-docker.pkg.dev/$PROJECT_ID/dd-cms/volto:latest
       - '--cache=true'
       - '--context=dir://volto'
       - '--build-arg=ADDONS=$_VOLTO_ADDONS'
@@ -54,7 +54,7 @@ steps:
       - deployment/plone
       - '--namespace=cms'
       - >-
-        plone=europe-west2-docker.pkg.dev/optimum-bonbon-257411/dd-cms/plone:${_IMAGE_TAG}
+        plone=europe-west2-docker.pkg.dev/$PROJECT_ID/dd-cms/plone:${_IMAGE_TAG}
 
   # Update the k8s deployment for volto in the production cluster to use this new image
   # this triggers a green/blue deployment of new image for the running plone pod(s).
@@ -69,7 +69,7 @@ steps:
       - deployment/volto
       - '--namespace=cms'
       - >-
-        volto=europe-west2-docker.pkg.dev/optimum-bonbon-257411/dd-cms/volto:${_IMAGE_TAG}
+        volto=europe-west2-docker.pkg.dev/$PROJECT_ID/dd-cms/volto:${_IMAGE_TAG}
 
 # Very high timeout (2 hours), but precautionary while we address some build time issues.
 timeout: 7200s
