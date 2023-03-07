@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ChartContext, convertSparqlToGeoJson } from 'gss-cogs-chart-builder';
 import { getChartBuilderData } from '../actions';
 
-export function usePloneCsvData(plone_ref) {
+import { replaceUrl } from '../../../../helpers';
+
+export function usePloneCsvData(parent_ref, plone_ref) {
   const [error, setError] = useState([]);
   const {
     importCsvData,
@@ -17,20 +19,21 @@ export function usePloneCsvData(plone_ref) {
 
   const contentRef = plone_ref.length ? plone_ref[0] : null;
 
+  const updatedUrl = replaceUrl(contentRef?.['@id'], parent_ref?.['@id']);
   const response = useSelector((state) =>
-    contentRef ? state.chartBuilderRawData.get(contentRef['@id']) : null,
+    contentRef ? state.chartBuilderRawData.get(updatedUrl) : null,
   );
 
   useEffect(() => {
     if (contentRef != null) {
       switch (contentRef['@type']) {
         case 'File':
-          dispatch(getChartBuilderData(contentRef['@id'], '@@download'));
+          dispatch(getChartBuilderData(updatedUrl, '@@download'));
           break;
         case 'discodataconnector':
         case 'sparql_dataconnector':
         case 'csv_type':
-          dispatch(getChartBuilderData(contentRef['@id'], '@connector-data'));
+          dispatch(getChartBuilderData(updatedUrl, '@connector-data'));
           break;
       }
     }
@@ -44,17 +47,18 @@ export function usePloneCsvData(plone_ref) {
       } else {
         switch (contentRef['@type']) {
           case 'File':
-            importCsvData(response.content, contentRef['@id']);
+            importCsvData(response.content, updatedUrl);
             break;
           case 'discodataconnector':
           case 'sparql_dataconnector':
           case 'csv_type':
+            // can we capture errors from this call more elegantly?
             importEeaData(
               {
                 id: response.content.id,
                 data: response.content.data.results,
               },
-              contentRef['@id'],
+              updatedUrl,
             );
             break;
         }
@@ -76,22 +80,23 @@ export function usePloneCsvData(plone_ref) {
   return { error };
 }
 
-export function usePloneGeoJson(plone_ref) {
+export function usePloneGeoJson(parent_ref, plone_ref) {
   const [error, setError] = useState([]);
   const { setGeoJson } = useContext(ChartContext);
   const contentRef = plone_ref.length ? plone_ref[0] : null;
   const dispatch = useDispatch();
 
+  const updatedUrl = replaceUrl(contentRef?.['@id'], parent_ref?.['@id']);
+  const response = useSelector((state) =>
+    contentRef ? state.chartBuilderRawData.get(updatedUrl) : null,
+  );
+
   useEffect(() => {
     setError([]);
     if (contentRef != null) {
-      dispatch(getChartBuilderData(contentRef['@id'], '@connector-data'));
+      dispatch(getChartBuilderData(updatedUrl, '@connector-data'));
     }
   }, [contentRef, dispatch]);
-
-  const response = useSelector((state) =>
-    contentRef ? state.chartBuilderRawData.get(contentRef['@id']) : null,
-  );
 
   useEffect(() => {
     if (response != null && contentRef != null && response.loaded) {
