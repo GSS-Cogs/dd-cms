@@ -1,0 +1,14 @@
+.standout_figure {
+    @include govuk-font($size: 80);
+    font-family: 'GDS Transport';
+    font-weight: 700;
+    color: govuk-colour('blue');
+    width: 35%;
+  }
+  
+  .blue-line-text-link {
+    @include govuk-font($size: 19);
+    font-family: 'GDS Transport';
+    font-weight: 700;
+    color: govuk-colour('blue');
+  }
