@@ -1,8 +1,17 @@
 /**
- * Add your helpers here.
+ * This module contains helper functions for the application.
  * @module helpers
+ *
  * @example
- * export { Api } from './Api/Api';
+ * // Import the replaceUrl function
+ * import { replaceUrl } from './helpers';
+ *
+ * @function replaceUrl
+ * @desc Replaces part of a URL path with a new dashboard name obtained from the parent path.
+ * @param {string} originalPath - The original URL path to be modified.
+ * @param {string} parentPath - The parent path containing the new dashboard name.
+ * @returns {string} The modified URL path with the new dashboard name.
+ *
  */
 
 const replaceUrl = (originalPath, parentPath) => {
