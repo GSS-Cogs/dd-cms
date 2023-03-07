@@ -24,7 +24,7 @@ export const BlueLineViewTextBlock = ({}) => {
             will receive a text message which tells you what to do next
           </p>
           <a
-            href="https://vawg.gss-data.org.uk/"
+            href="https://vawg.gss-data.org.uk/dashboards/dashboard-six"
             className="blue-line-text-link"
           >
             View all helplines
@@ -49,11 +49,10 @@ export const BlueLineViewTextBlock = ({}) => {
             </li>
             <li className="govuk-!-padding-bottom-1">
               writing to ONS Centre for Crime and Justice, Office for National
-              Statistics, Room 2200, Segensworth Road, Titchfield, PO15 5RR, or
+              Statistics, Room 4200E, Segensworth Road, Titchfield, PO15 5RR, or
             </li>
             <li className="govuk-!-padding-bottom-1">
-              phoning the statistical contact Meghan Elkin on +44(0)20 7592
-              8695.
+              phoning the statistical contact on +44(0)20 7592 8695.
             </li>
           </ul>
         </div>
