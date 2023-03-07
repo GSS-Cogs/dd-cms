@@ -2,36 +2,36 @@
 
 exports[`NotFound renders a not found component 1`] = `
 <div
-  class="app-width-container"
+  className="app-width-container"
 >
   <main
-    class="govuk-main-wrapper govuk-main-wrapper--l"
+    className="govuk-main-wrapper govuk-main-wrapper--l"
     id="main-content"
     role="main"
   >
     <div
-      class="govuk-grid-row"
+      className="govuk-grid-row"
     >
       <div
-        class="govuk-grid-column-two-thirds"
+        className="govuk-grid-column-two-thirds"
       >
         <h1
-          class="govuk-heading-xl govuk-!-margin-bottom-9"
+          className="govuk-heading-xl govuk-!-margin-bottom-9"
         >
           Page not found
         </h1>
         <p
-          class="govuk-body"
+          className="govuk-body"
         >
           If you typed the web address, check it is correct.
         </p>
         <p
-          class="govuk-body"
+          className="govuk-body"
         >
           You can
            
           <a
-            class="govuk-link"
+            className="govuk-link"
             href="/"
           >
             browse from the homepage
@@ -40,7 +40,7 @@ exports[`NotFound renders a not found component 1`] = `
           or use the search box above to find the information you need.
         </p>
         <p
-          class="govuk-body"
+          className="govuk-body"
         >
           Status code: 404
         </p>
