@@ -114,7 +114,7 @@ Now, in a fresh terminal, restore your backup taken from the `cms-sql-backup` GC
 docker exec -i plone-postgres psql -U plone -d local < ~/Downloads/staging_staging_2023-01-24.sql
 ```
 
-Now sent postgres the kill signal so it knows to politely write all necessary files to disk:
+Now send postgres the kill signal so it knows to politely write all necessary files to disk:
 
 ```bash
 docker exec -i plone-postgres bash -c "kill -INT \$(head -1 /var/lib/postgresql/data/postmaster.pid)"
