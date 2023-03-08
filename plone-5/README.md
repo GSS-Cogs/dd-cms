@@ -89,3 +89,41 @@ for example
 ```
 RAZZLE_DEV_PROXY_API_PATH=http://localhost:8080/climate-change yarn start:dev
 ```
+
+## Using postgres with docker-compose
+
+**N.B. Run these command in the same directory as the `docker-compose-postgres.yml` file.**
+
+Create the `plone-postgres-data` directory to store the postgres data between runs:
+
+```bash
+mkdir plone-postgres-data
+```
+
+Start just postgres initially:
+
+```bash
+docker-compose -f docker-compose-postgres.yml up postgres
+```
+
+Now, in a fresh terminal, restore your backup taken from the `cms-sql-backup` GCP bucket:
+
+(make sure to replace the file name with the filename of your backup)
+
+```bash
+docker exec -i plone-postgres psql -U plone -d local < ~/Downloads/staging_staging_2023-01-24.sql
+```
+
+Now sent postgres the kill signal so it knows to politely write all necessary files to disk:
+
+```bash
+docker exec -i plone-postgres bash -c "kill -INT \$(head -1 /var/lib/postgresql/data/postmaster.pid)"
+```
+
+This should result in the initial docker-compose command terminating once postgres has safely shutdown.
+
+Now you can start the whole docker-compose operation up and wait for your services to be ready to accept connections:
+
+```bash
+docker-compose -f docker-compose-postgres.yml up
+```

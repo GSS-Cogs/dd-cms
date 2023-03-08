@@ -1,0 +1,66 @@
+services:
+  postgres:
+    image: postgres:14
+    container_name: plone-postgres
+    ports:
+      - "127.0.0.1:5432:5432"
+    environment:
+      POSTGRES_USER: plone
+      POSTGRES_DB: local
+      POSTGRES_PASSWORD: qweqwe1!
+    volumes:
+      - type: bind
+        source: ./plone-postgres-data/
+        target: /var/lib/postgresql/data
+  plone:
+    image: plone-postgres-local:latest
+    depends_on:
+      - postgres
+    command: ["./wait-for-it.sh", "postgres:5432", "--", "gosu", "plone", "bin/instance", "console", "--no-cache"]
+    build: 
+      context: plone-5
+      dockerfile: Dockerfile
+      args:
+        POSTGRES_USER: plone
+        POSTGRES_PASSWORD: qweqwe1!
+        POSTGRES_HOST: postgres
+        POSTGRES_DB: local
+    container_name: dd-cms-backend     
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - plone-data:/data
+      - type: bind
+        source: ./plone-5/instance/custom.cfg
+        target: /plone/instance/custom.cfg
+      - type: bind
+        source: ./plone-5/instance/src/ukstats.article_type
+        target: /plone/instance/src/ukstats.article_type
+      - type: bind
+        source: ./plone-5/instance/src/ukstats.csv_type
+        target: /plone/instance/src/ukstats.csv_type
+      - type: bind
+        source: ./plone-5/instance/src/ukstats.sparql_dataconnector
+        target: /plone/instance/src/ukstats.sparql_dataconnector
+      - type: bind
+        source: ./plone-5/instance/src/ukstats.ccv2.content_types
+        target: /plone/instance/src/ukstats.ccv2.content_types
+  volto:
+    image: node:14
+    container_name: dd-cms-frontend
+    user: 'node'
+    working_dir: /home/node/app
+    volumes:
+      - type: bind
+        source: ./volto/
+        target: /home/node/app
+    environment:
+      - RAZZLE_DEV_PROXY_API_PATH=http://plone:8080/climate-change
+      - "ADDONS=${ADDONS-}"
+    ports:
+      - "127.0.0.1:3000:3000"
+      - "127.0.0.1:3001:3001"
+    command: 'bash -c "yarn global add mrs-developer && yarn develop && yarn install && yarn start"'
+
+volumes:
+  plone-data: ~

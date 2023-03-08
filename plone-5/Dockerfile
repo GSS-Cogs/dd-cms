@@ -33,4 +33,8 @@ RUN sed -i "s/POSTGRES_USER/"$POSTGRES_USER"/g" $ZOPE_CONF_LOCATION
 RUN sed -i "s/POSTGRES_HOST/"$POSTGRES_HOST"/g" $ZOPE_CONF_LOCATION
 RUN sed -i "s/POSTGRES_PASSWORD/"$POSTGRES_PASSWORD"/g" $ZOPE_CONF_LOCATION
 
+
+ADD https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh wait-for-it.sh
+RUN chmod +x wait-for-it.sh
+
 CMD gosu plone bin/instance console
