@@ -100,7 +100,15 @@ Create the `plone-postgres-data` directory to store the postgres data between ru
 mkdir plone-postgres-data
 ```
 
-Start just postgres initially:
+We need to build the local plone docker image before we do anything:
+
+```bash
+docker-compose -f docker-compose-postgres.yml build
+```
+
+You should also run this any time you need to update the plone docker image.
+
+Next, start postgres by itself:
 
 ```bash
 docker-compose -f docker-compose-postgres.yml up postgres
