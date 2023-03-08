@@ -135,3 +135,13 @@ Now you can start the whole docker-compose operation up and wait for your servic
 ```bash
 docker-compose -f docker-compose-postgres.yml up
 ```
+
+Once everything's up and running, give yourself a new Zope user:
+
+```bash
+docker exec -i dd-cms-backend /plone/instance/bin/instance adduser <username> <password>
+```
+
+(Make sure to stick your proposed username and password in there).
+
+Once you're able to log in to Zope, you'll be able to apply any database upgrades that are necessary due to the difference in versions between the database copy that you applied and the version of plone which is currently running.
