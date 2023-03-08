@@ -18,9 +18,17 @@ const View = () => {
 };
 
 const Edit = (props) => {
-  const { selected, onChangeBlock, block, data } = props;
-  const { error: dataError } = usePloneCsvData(data.file_path || []);
-  const { error: geoJsonError } = usePloneGeoJson(data.geojson_path || []);
+  const { selected, onChangeBlock, block, data, properties } = props;
+
+  const { error: dataError } = usePloneCsvData(
+    properties.parent,
+    data.file_path || [],
+  );
+  // this error does not seem to be being set, despite there being a problem in usePloneCsvData
+  const { error: geoJsonError } = usePloneGeoJson(
+    properties.parent,
+    data.geojson_path || [],
+  );
 
   return (
     <SidebarPortal selected={selected}>

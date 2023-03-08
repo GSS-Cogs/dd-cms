@@ -15,6 +15,8 @@ import {
 import { CcArticleHeader } from '../CcArticleHeader/CcArticleHeader';
 import { formattedDate } from '../../utils';
 
+import { replaceUrl } from '../../../../../helpers';
+
 export const CcV2ArticleWithToCView = (props) => {
   const { content, location } = props;
 
@@ -172,10 +174,18 @@ export const CcV2ArticleWithToCView = (props) => {
               const notTitleBlock =
                 content[blocksFieldname]?.[block]?.['@type'] !== 'title';
 
-              const contentBlock = content[blocksFieldname][block];
+              let contentBlock = content[blocksFieldname][block];
               const displayBack = shouldDisplayBackToContentsButton(
                 contentBlock,
               );
+
+              if (contentBlock.item !== undefined) {
+                const updatedUrl = replaceUrl(
+                  contentBlock.item[0]['@id'],
+                  location?.pathname,
+                );
+                contentBlock.item[0]['@id'] = updatedUrl;
+              }
 
               return Block !== null && notTitleBlock ? (
                 <React.Fragment key={block + '#'}>
@@ -196,7 +206,7 @@ export const CcV2ArticleWithToCView = (props) => {
                     key={block}
                     id={block}
                     properties={content}
-                    data={content[blocksFieldname][block]}
+                    data={contentBlock}
                     path={getBaseUrl(location?.pathname || '')}
                   />
                 </React.Fragment>
