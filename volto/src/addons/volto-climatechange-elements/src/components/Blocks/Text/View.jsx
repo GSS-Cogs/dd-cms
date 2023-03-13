@@ -35,7 +35,7 @@ export const BlueLineViewTextBlock = ({}) => {
         <h3 className="govuk-heading-m  govuk-!-padding-top-2">Contact us</h3>
         <div className="govuk-body-m">
           <p className="govuk-!-padding-bottom-0">
-            You can content the ONS Centre for Crime and Justice by:
+            You can contact the ONS Centre for Crime and Justice by:
           </p>
           <ul
             style={{ listStyleType: 'disc' }}
