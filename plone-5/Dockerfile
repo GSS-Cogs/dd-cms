@@ -23,5 +23,11 @@ ADD ./prestart /plone/instance/prestart
 # Make prestart script executable
 RUN chmod +x /plone/instance/prestart/prestart.sh
 
+RUN apt update
+RUN apt install nano
+RUN apt install patch
+
+COPY ./objectmanager.patch /plone/instance/objectmanager.patch
+
 CMD /plone/instance/prestart/prestart.sh && \
     gosu plone bin/instance console

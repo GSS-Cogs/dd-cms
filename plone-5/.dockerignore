@@ -1,4 +1,5 @@
 *
+!objectmanager.patch
 !prestart
 !zope.conf
 !instance/custom.cfg
