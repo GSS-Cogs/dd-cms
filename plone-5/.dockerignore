@@ -1,6 +1,5 @@
 *
-!objectmanager.patch
-!prestart
+!scripts
 !zope.conf
 !instance/custom.cfg
 !instance/src
