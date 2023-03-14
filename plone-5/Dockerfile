@@ -18,7 +18,11 @@ COPY build-and-start.sh /usr/local/bin/build-and-start
 
 # Copy in the zope conf template and the prestart script dir
 COPY ./zope.conf /plone/instance/parts/instance/etc/zope.conf
-ADD ./prestart /plone/instance/scripts
+ADD ./scripts /plone/instance/scripts
+
+RUN apt get update
+RUN apt install patch
+RUN apt install nano
 
 # Make prestart script executable
 RUN chmod +x /plone/instance/scripts/prestart.sh
