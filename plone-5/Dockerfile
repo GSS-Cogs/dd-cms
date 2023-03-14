@@ -20,7 +20,7 @@ COPY build-and-start.sh /usr/local/bin/build-and-start
 COPY ./zope.conf /plone/instance/parts/instance/etc/zope.conf
 ADD ./scripts /plone/instance/scripts
 
-RUN apt get update
+RUN apt update
 RUN apt install patch
 RUN apt install nano
 
