@@ -10,6 +10,8 @@ import {
 import { CcArticleHeader } from '../CcArticleHeader/CcArticleHeader';
 import { formattedDate } from '../../utils';
 
+import { replaceUrl } from '../../../../../helpers';
+
 export const CcV2ArticleView = (props) => {
   const { content, location } = props;
   const blocksFieldname = getBlocksFieldname(content);
@@ -39,12 +41,21 @@ export const CcV2ArticleView = (props) => {
               const notTitleBlock =
                 content[blocksFieldname]?.[block]?.['@type'] !== 'title';
 
+              let contentBlock = content[blocksFieldname]?.[block];
+              if (contentBlock.item !== undefined) {
+                const updatedUrl = replaceUrl(
+                  contentBlock.item[0]['@id'],
+                  location?.pathname,
+                );
+                contentBlock.item[0]['@id'] = updatedUrl;
+              }
+
               return Block !== null && notTitleBlock ? (
                 <Block
                   key={block}
                   id={block}
                   properties={content}
-                  data={content[blocksFieldname][block]}
+                  data={contentBlock}
                   path={getBaseUrl(location?.pathname || '')}
                 />
               ) : null;

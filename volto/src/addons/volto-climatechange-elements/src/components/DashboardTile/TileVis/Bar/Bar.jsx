@@ -18,6 +18,7 @@ const Bar = ({ data, height }) => {
       />
     );
   });
+
   return (
     <Fragment>
       <div className="cc-bar-container" data-testid="bar">
@@ -28,8 +29,8 @@ const Bar = ({ data, height }) => {
       <ValuesBlock
         xStart={data[0].category}
         xEnd={data[1].category}
-        yStart={`${Math.floor(data[0].value)}%`}
-        yEnd={`${Math.floor(data[1].value)}%`}
+        yStart={`${Math.round(data[0].value)}%`}
+        yEnd={`${Math.round(data[1].value)}%`}
         xColor={data[0].color}
         yColor={data[0].color}
         isABar={true}
