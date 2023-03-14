@@ -8,5 +8,5 @@
 /plone/instance/bin/instance run /plone/instance/scripts/configure_db_from_env.py
 
 # Apply any patches
-chmod ./patch.sh
+chmod +x ./patch.sh
 ./patch.sh
