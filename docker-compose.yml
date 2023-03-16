@@ -12,6 +12,7 @@ services:
         interval: 1s
         timeout: 10s
         retries: 100
+    restart: on-failure
     environment:
       POSTGRES_USER: plone
       POSTGRES_DB: local
@@ -30,6 +31,7 @@ services:
         interval: 1s
         timeout: 10s
         retries: 100
+    restart: on-failure
     # The grep on the end of the command it to avoid bring through all of the health-check HTTP GET request logs to the console.
     command: ["gosu", "plone", "bash", "-c", "bin/instance foreground | grep -v '^.*GET\ /%40%40ok.*$' "]
     build: 
@@ -71,6 +73,7 @@ services:
       timeout: 10s
       # It can take a while to build and set up all of the front-end javascript on start-up
       retries: 1000 
+    restart: on-failure
     user: 'node'
     working_dir: /home/node/app
     volumes:
