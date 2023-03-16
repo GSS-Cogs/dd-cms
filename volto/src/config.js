@@ -24,9 +24,9 @@ export default function applyConfig(config) {
       return res.status(200).end();
     });
     const auth = express.Router();
-    auth.id = 'basic-auth'
     auth.all('*', function (req, res, next) {
       if (process.env['BASIC_AUTH']) { // only do basic auth when this env var is set
+        auth.id = 'basic-auth'
         const req_auth = req.get('authorization');
         if (!(typeof (req_auth) === 'string') || // no auth header
           // if there is an authorization header, then
@@ -47,4 +47,6 @@ export default function applyConfig(config) {
   }
   config.settings.hasWorkingCopySupport = true;
   return config;
+
+  https://plone.sandbox.ukstats.dev/climate-change/authomatic-handler/google
 }
