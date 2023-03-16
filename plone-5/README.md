@@ -100,10 +100,10 @@ Create the `plone-postgres-data` directory to store the postgres data between ru
 mkdir plone-postgres-data
 ```
 
-We need to build the local plone docker image before we do anything:
+We need to build the local postgres & plone docker images before we do anything:
 
 ```bash
-docker-compose -f docker-compose-postgres.yml build
+docker-compose build
 ```
 
 You should also run this any time you need to update the plone docker image.
@@ -111,7 +111,7 @@ You should also run this any time you need to update the plone docker image.
 Next, start postgres by itself:
 
 ```bash
-docker-compose -f docker-compose-postgres.yml up postgres
+docker-compose up postgres
 ```
 
 Now, in a fresh terminal, restore your backup taken from the `cms-sql-backup` GCP bucket:
@@ -133,7 +133,7 @@ This should result in the initial docker-compose command terminating once postgr
 Now you can start the whole docker-compose operation up and wait for your services to be ready to accept connections:
 
 ```bash
-docker-compose -f docker-compose-postgres.yml up
+docker-compose up
 ```
 
 Once everything's up and running, give yourself a new Zope user:
