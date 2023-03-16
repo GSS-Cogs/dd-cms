@@ -47,6 +47,4 @@ export default function applyConfig(config) {
   }
   config.settings.hasWorkingCopySupport = true;
   return config;
-
-  https://plone.sandbox.ukstats.dev/climate-change/authomatic-handler/google
 }
