@@ -92,7 +92,7 @@ RAZZLE_DEV_PROXY_API_PATH=http://localhost:8080/climate-change yarn start:dev
 
 ## Using postgres with docker-compose
 
-**N.B. Run these command in the same directory as the `docker-compose-postgres.yml` file.**
+**N.B. Run these command in the same directory as the `docker-compose.yml` file.**
 
 Create the `plone-postgres-data` directory to store the postgres data between runs:
 
