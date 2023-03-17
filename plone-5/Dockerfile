@@ -1,5 +1,8 @@
 FROM plone:5.2.7-python38
 
+# Necessary for docker-compose health-checks
+RUN apt-get update && apt-get install -y curl
+
 ARG POSTGRES_DB=local
 ARG POSTGRES_USER=plone
 # 172.17.0.1 is dockers internal representation of localhost
@@ -32,5 +35,6 @@ RUN sed -i "s/POSTGRES_DB/"$POSTGRES_DB"/g" $ZOPE_CONF_LOCATION
 RUN sed -i "s/POSTGRES_USER/"$POSTGRES_USER"/g" $ZOPE_CONF_LOCATION
 RUN sed -i "s/POSTGRES_HOST/"$POSTGRES_HOST"/g" $ZOPE_CONF_LOCATION
 RUN sed -i "s/POSTGRES_PASSWORD/"$POSTGRES_PASSWORD"/g" $ZOPE_CONF_LOCATION
+
 
 CMD gosu plone bin/instance console

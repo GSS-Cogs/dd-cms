@@ -1,13 +1,51 @@
-version: '3.8'
-
 services:
+  postgres:
+    image: plone-postgres-local
+    build:
+      context: .
+      dockerfile: postgres.dockerfile
+    container_name: plone-postgres
+    ports:
+      - "127.0.0.1:5432:5432"
+    healthcheck:
+        test: ["CMD", "nc", "-z", "localhost", "5432"]
+        interval: 1s
+        timeout: 10s
+        retries: 100
+    restart: on-failure
+    environment:
+      POSTGRES_USER: plone
+      POSTGRES_DB: local
+      POSTGRES_PASSWORD: qweqwe1!
+    volumes:
+      - type: bind
+        source: ./plone-postgres-data/
+        target: /var/lib/postgresql/data
   plone:
-    image: plone:5.2.7
-    container_name: dd-cms-backend
+    image: plone-5-local
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:8080/@@ok"]
+        interval: 1s
+        timeout: 10s
+        retries: 100
+    restart: on-failure
+    # The grep on the end of the command it to avoid bring through all of the health-check HTTP GET request logs to the console.
+    command: ["gosu", "plone", "bash", "-c", "bin/instance foreground | grep -v '^.*GET\ /%40%40ok.*$' "]
+    build: 
+      context: plone-5
+      dockerfile: Dockerfile
+      args:
+        POSTGRES_USER: plone
+        POSTGRES_PASSWORD: qweqwe1!
+        POSTGRES_HOST: postgres
+        POSTGRES_DB: local
+    container_name: dd-cms-backend     
     ports:
       - "127.0.0.1:8080:8080"
     volumes:
-      - plone-data:/data
       - type: bind
         source: ./plone-5/instance/custom.cfg
         target: /plone/instance/custom.cfg
@@ -26,6 +64,16 @@ services:
   volto:
     image: node:14
     container_name: dd-cms-frontend
+    depends_on:
+      plone:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/"]
+      interval: 1s
+      timeout: 10s
+      # It can take a while to build and set up all of the front-end javascript on start-up
+      retries: 1000 
+    restart: on-failure
     user: 'node'
     working_dir: /home/node/app
     volumes:
@@ -33,12 +81,10 @@ services:
         source: ./volto/
         target: /home/node/app
     environment:
-      - RAZZLE_DEV_PROXY_API_PATH=http://plone:8080/Plone
+      - RAZZLE_DEV_PROXY_API_PATH=http://plone:8080/climate-change
       - "ADDONS=${ADDONS-}"
     ports:
       - "127.0.0.1:3000:3000"
       - "127.0.0.1:3001:3001"
     command: 'bash -c "yarn global add mrs-developer && yarn develop && yarn install && yarn start"'
 
-volumes:
-  plone-data: ~
