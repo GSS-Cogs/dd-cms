@@ -6,9 +6,14 @@ A training on how to create your own website using Volto is available as part of
 ### Quick Start
 
 To run the project with default behaviour, run:
+
 ```bash
-docker compose up
+mkdir plone-postgres-data
+docker-compose build
+docker-compose up
 ```
+
+To set up your local environment with data from staging, see the instructions [here](./plone-5/README.md#running-plone-locally-with-postgresdb).
 
 ## Development
 
