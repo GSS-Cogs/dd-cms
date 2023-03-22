@@ -13,7 +13,7 @@ docker-compose build
 docker-compose up
 ```
 
-To set up your local environment with data from staging, see the instructions [here](./plone-5/README.md#running-plone-locally-with-postgresdb).
+To set up your local environment with data from staging, see the instructions [here](./plone-5/README.md#using-postgres-with-docker-compose).
 
 ## Development
 
