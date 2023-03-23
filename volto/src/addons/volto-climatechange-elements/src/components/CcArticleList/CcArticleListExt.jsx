@@ -26,7 +26,20 @@ export const CcArticleListExt = (props) => {
   const items = listRequest?.data?.items ?? [];
   const firstItem = items?.length > 0 ? items[0] : null;
 
-  const relatedLinks = relatedRequest?.data ?? [];
+  const removeDuplicateLinks = (relatedLinkData, articleData) => {
+    // compares relatedLinkData and articleData and removes any matching articles from relatedLinkData
+    // returning relatedLinkData with only unique articles
+    if (relatedLinkData.length === 0 || articleData.length === 0) {
+      return relatedLinkData;
+    }
+    const articleIdsArray = articleData.map((x) => x['@id']);
+    const filteredRelatedLinkData = relatedLinkData.filter(
+      (x) => !articleIdsArray.includes(x['@id']),
+    );
+    return filteredRelatedLinkData;
+  };
+
+  const relatedLinks = removeDuplicateLinks(relatedRequest?.data ?? [], items);
   let firstItemCreators = null;
   let firstItemDate = null;
   if (firstItem) {
