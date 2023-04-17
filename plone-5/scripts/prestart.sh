@@ -6,7 +6,3 @@
 
 # Inject env vars into the zope.conf.
 python3 /plone/instance/scripts/configure_db_from_env.py
-
-# Apply any patches
-chmod +x /plone/instance/scripts/patch.sh
-/plone/instance/scripts/patch.sh

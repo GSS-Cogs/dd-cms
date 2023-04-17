@@ -16,14 +16,10 @@ RUN \
 COPY instance/site.cfg /plone/instance/
 COPY build-and-start.sh /usr/local/bin/build-and-start
 
-# Copy in the zope conf template and the prestart script dir
+# Copy in the zope conf template and the script dir
 COPY ./zope.conf /plone/instance/parts/instance/etc/zope.conf
 ADD ./scripts /plone/instance/scripts
-RUn chmod -R +x /plone/instance/scripts
-
-RUN apt update
-RUN apt install patch
-RUN apt install nano
+RUN chmod -R +x /plone/instance/scripts
 
 CMD /plone/instance/scripts/prestart.sh && \
     gosu plone bin/instance console

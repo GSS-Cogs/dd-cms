@@ -22,7 +22,7 @@ services:
         source: ./plone-postgres-data/
         target: /var/lib/postgresql/data
   plone:
-    image: plone-5-local
+    image: plone-5-local:latest
     depends_on:
       postgres:
         condition: service_healthy
@@ -32,16 +32,21 @@ services:
         timeout: 10s
         retries: 100
     restart: on-failure
-    # The grep on the end of the command it to avoid bring through all of the health-check HTTP GET request logs to the console.
-    command: ["gosu", "plone", "bash", "-c", "bin/instance foreground | grep -v '^.*GET\ /%40%40ok.*$' "]
+    # The initial bash command is to bring in the env vars.
+    # gosu plone etc starts the plone server.
+    # The grep on the end of the command it to avoid bring through all of
+    # the health-check HTTP GET request logs to the console.
+    command: [
+      "bash", "-c", "/plone/instance/scripts/prestart.sh && gosu plone bin/instance foreground | grep -v '^.*GET\ /%40%40ok.*$$' "
+      ]
     build: 
       context: plone-5
       dockerfile: Dockerfile
-      args:
-        POSTGRES_USER: plone
-        POSTGRES_PASSWORD: qweqwe1!
-        POSTGRES_HOST: postgres
-        POSTGRES_DB: local
+    environment:
+      POSTGRES_USER: plone
+      POSTGRES_PASSWORD: qweqwe1!
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: local
     container_name: dd-cms-backend     
     ports:
       - "127.0.0.1:8080:8080"
