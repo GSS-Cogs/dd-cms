@@ -20,12 +20,10 @@ export const CcArticleListExt = (props) => {
     dispatch(getFolderishContent(path));
     dispatch(getRelatedItemsData(path));
   }, [path]);
-
   const listRequest = useSelector((state) => state.folderishContent?.[path]);
   const relatedRequest = useSelector((state) => state.relatedItemsData);
   const items = listRequest?.data?.items ?? [];
   const firstItem = items?.length > 0 ? items[0] : null;
-
   const removeDuplicateLinks = (relatedLinkData, articleData) => {
     // compares relatedLinkData and articleData and removes any matching articles from relatedLinkData
     // returning relatedLinkData with only unique articles
@@ -46,6 +44,31 @@ export const CcArticleListExt = (props) => {
     firstItemCreators = formattedCreators(firstItem.listCreators);
     firstItemDate = formattedDate(firstItem.EffectiveDate ?? firstItem.created);
   }
+
+  const ArticleLinks = () => {
+    return items.map((data, i, idx) => {
+      if (i !== 0) {
+        return (
+          <div className="cc-article-preview" key={i}>
+            <div className="govuk-grid-row">
+              <CcArticlePreview
+                key={i}
+                data={data}
+                authors={formattedCreators(data.listCreators)}
+              />
+              <h3 className="govuk-heading-s">
+                <a href={data['@id']?.replace('/api', '')}>Read article</a>
+              </h3>
+              {i < items.length - 1 && (
+                <hr className="govuk-section-break govuk-section-break--visible govuk-section-break--xl" />
+              )}
+            </div>
+          </div>
+        );
+      }
+    });
+  };
+
   return (
     <div>
       <CcMasthead className="app-masthead--article cc-article-featured">
@@ -73,32 +96,14 @@ export const CcArticleListExt = (props) => {
       </CcMasthead>
       <GridRow>
         <GridCol setWidth="two-thirds" className="govuk-!-padding-right-8">
-          {items.map((data, i, idx) => {
-            if (i !== 0) {
-              return (
-                <div className="cc-article-preview" key={i}>
-                  <div className="govuk-grid-row">
-                    <CcArticlePreview
-                      key={i}
-                      data={data}
-                      authors={formattedCreators(data.listCreators)}
-                    />
-                    <h3 className="govuk-heading-s">
-                      <a href={data['@id']?.replace('/api', '')}>
-                        Read article
-                      </a>
-                    </h3>
-                    {i < items.length - 1 && (
-                      <hr className="govuk-section-break govuk-section-break--visible govuk-section-break--xl" />
-                    )}
-                  </div>
-                </div>
-              );
-            }
-          })}
+          <ArticleLinks items={items} data-testid="articleLinks" />
         </GridCol>
         <GridCol setWidth="one-third">
-          <CcRelatedLinks items={relatedLinks} doNotShowAll={true} />
+          <CcRelatedLinks
+            items={relatedLinks}
+            doNotShowAll={true}
+            data-testid="relatedLinks"
+          />
         </GridCol>
       </GridRow>
     </div>
