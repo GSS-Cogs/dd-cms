@@ -1,5 +1,5 @@
 """
-Python script to add databse connection details to zope.conf.
+Python script to append database connection details to zope.conf.
 
 The key consideration here is this happens at STARTUP (before zope runs)
 not BUILD so allows us to use the same docker image across multiple
@@ -41,6 +41,13 @@ container-class Products.TemporaryFolder.TemporaryContainer
 python-check-interval 1000
 """
 
-# Open the zope.conf file and append the above
-with open("/plone/instance/parts/instance/etc/zope.conf", "a") as f:
-    f.write(relstorage_section)
+# Get the intiial zope file (with no database connection details)
+with open("/plone/instance/parts/instance/etc/zope-unmodified.conf") as f:
+    zope_unmodified = f.read()
+
+    # Write the zope.conf consisiting of:
+    # - initial zope.conf soured from ../zope.conf
+    # - the database connection details defined above
+    with open("/plone/instance/parts/instance/etc/zope.conf", "w") as f2:
+        f2.write(zope_unmodified)
+        f2.write(relstorage_section)

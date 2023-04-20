@@ -17,7 +17,7 @@ COPY instance/site.cfg /plone/instance/
 COPY build-and-start.sh /usr/local/bin/build-and-start
 
 # Copy in the zope conf template and the script dir
-COPY ./zope.conf /plone/instance/parts/instance/etc/zope.conf
+COPY ./zope.conf /plone/instance/parts/instance/etc/zope-unmodified.conf
 ADD ./scripts /plone/instance/scripts
 RUN chmod -R +x /plone/instance/scripts
 
