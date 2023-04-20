@@ -27,7 +27,7 @@ services:
       postgres:
         condition: service_healthy
     healthcheck:
-        test: ["CMD", "curl", "-f", "http://localhost:8080/@@ok"]
+        test: ["CMD", "nc", "-z", "localhost", "8080"]
         interval: 1s
         timeout: 10s
         retries: 100
@@ -73,7 +73,7 @@ services:
       plone:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/"]
+      test: ["CMD", "nc", "-z", "localhost", "3000"]
       interval: 1s
       timeout: 10s
       # It can take a while to build and set up all of the front-end javascript on start-up

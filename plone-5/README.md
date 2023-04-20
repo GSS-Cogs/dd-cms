@@ -26,7 +26,7 @@ To create this locally, you need to...
 Run postgres with docker (pick a suitable `<password>` for your own local development work).
 
 ```
-docker run -e POSTGRES_USER=plone -e POSTGRES_DB=local -e POSTGRES_PASSWORD=<password> --name plone-postgres -d -p 5432:5432 postgres:14
+docker run -e POSTGRES_USER=plone -e POSTGRES_DB=local -e POSTGRES_PASSWORD=qweqwe1! --name plone-postgres -d -p 5432:5432 postgres:14
 ```
 
 ### 2. Import a representative data backup from GCP
@@ -52,7 +52,7 @@ docker build --tag plone .
 run it
 
 ```
-docker run -e POSTGRES_PASSWORD=<password> -p 8080:8080 plone
+docker run -e POSTGRES_PASSWORD=qweqwe1! -p 8080:8080 plone
 ```
 
 **Important** - there's no oauth handler set up for localhost, you'll need to log into your zope user (for whatever env you copied the database from) to bypass this broken handshake.
