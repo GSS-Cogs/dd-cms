@@ -23,7 +23,7 @@ To create this locally, you need to...
 
 ### 1. Run postgres locally
 
-Run postgres with docker (pick a suitable `<password>` for your own local development work).
+Run postgres with docker (we use a default password for your **local** development work).
 
 ```
 docker run -e POSTGRES_USER=plone -e POSTGRES_DB=local -e POSTGRES_PASSWORD=qweqwe1! --name plone-postgres -d -p 5432:5432 postgres:14
@@ -60,16 +60,13 @@ docker run -e POSTGRES_PASSWORD=qweqwe1! -p 8080:8080 plone
 Any issues, you can sanity check what's been set in the `zope.conf` (by the dockerfile) via:
 
 ```
-docker run -e POSTGRES_PASSWORD=<password> -p 8080:8080 plone
+docker run -e POSTGRES_PASSWORD=qweqwe1! -p 8080:8080 plone
 
 # use docker ps to get the container ID
 docker ps
 
 # then check the content of zope.conf
 docker exec <CONTAINER ID> cat /plone/instance/parts/instance/etc/zope.conf
-
-# NOTE - do NOT try and combine the commands with the -it flag, you'll get the
-# zope.conf without the env var injection.
 ```
 
 
