@@ -5,8 +5,8 @@ all: build
 
 .PHONY: build
 build:
-	docker build --build-arg POSTGRES_PASSWORD=$(POSTGRES_PASSWORD) --tag plone .
+	docker build --tag plone .
 
 .PHONY: debug
 debug: build
-	docker run -p 8080:8080 plone
+	docker run -p 8080:8080 -e POSTGRES_PASSWORD=${POSTGRES_PASSWORD} plone
