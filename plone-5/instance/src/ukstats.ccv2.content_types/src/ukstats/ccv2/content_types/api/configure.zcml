@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="ukstats.ccv2.content_types">
+
+    <plone:service
+    method="GET"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    factory=".controlpanel.PhaseBanner"
+    name="@cmsconf-phase_banner"
+    permission="zope2.View"
+    />
+
+    <plone:service
+    method="GET"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    factory=".controlpanel.SiteTitle"
+    name="@cmsconf-site_title"
+    permission="zope2.View"
+    />
+</configure>
