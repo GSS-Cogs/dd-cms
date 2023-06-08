@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from plone import api
 from plone.restapi.services import Service
+import json
 
 reg_base = 'cmsconf'
 
@@ -8,7 +9,10 @@ reg_base = 'cmsconf'
 class SiteTitle(Service):
     def reply(self):
         registry_record_value = api.portal.get_registry_record(reg_base + '.site_title')
-        return registry_record_value
+        response_data = {
+            'site_title': registry_record_value
+        }
+        return json.dumps(response_data)
 
 
 class PhaseBanner(Service):
