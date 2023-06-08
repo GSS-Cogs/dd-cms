@@ -73,7 +73,7 @@ export function getSiteTitle() {
     type: GET_SITE_TITLE,
     request: {
       op: 'get',
-      path: '@controlpanels/cmsconf-controlpanel',
+      path: '@cmsconf-site_title',
       headers: {},
     },
     url: '',
