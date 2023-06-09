@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from plone import api
 from plone.restapi.services import Service
-import json
+from plone.restapi.serializer.converters import json_compatible
 
 reg_base = 'cmsconf'
 
@@ -12,7 +12,7 @@ class SiteTitle(Service):
         response_data = {
             'site_title': registry_record_value
         }
-        return json.dumps(response_data)
+        return json_compatible(response_data)
 
 
 class PhaseBanner(Service):

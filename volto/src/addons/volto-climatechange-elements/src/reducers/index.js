@@ -207,7 +207,7 @@ export function rawSiteTitle(state = {}, action = {}) {
           loading: false,
           loaded: true,
           error: undefined,
-          data: JSON.parse(result),
+          data: result,
         },
       };
 
