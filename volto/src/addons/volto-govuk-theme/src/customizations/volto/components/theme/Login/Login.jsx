@@ -11,6 +11,7 @@ import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { Container, Segment, Grid, Form } from 'semantic-ui-react';
 import { Button, Input } from 'govuk-react-jsx';
+import LoadingBox from '@govuk-react/loading-box';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 import { withRouter } from 'react-router-dom';
@@ -237,26 +238,27 @@ class Login extends Component {
                 </Form.Field>
               </Segment>
               <Segment className="actions" clearing>
-                <Button
-                  type="submit"
-                  id="login-form-submit"
-                  aria-label={this.props.intl.formatMessage(messages.login)}
-                  title={this.props.intl.formatMessage(messages.login)}
-                  loading={this.props.loading}
-                  onClick={this.onSubmit}
-                  className="govuk-!-margin-right-1"
-                >
-                  Submit
-                </Button>
+                <LoadingBox loading={this.props.loading}>
+                  <Button
+                    type="submit"
+                    id="login-form-submit"
+                    aria-label={this.props.intl.formatMessage(messages.login)}
+                    title={this.props.intl.formatMessage(messages.login)}
+                    onClick={this.onSubmit}
+                    className="govuk-!-margin-right-1"
+                  >
+                    Submit
+                  </Button>
 
-                <Button
-                  id="login-form-cancel"
-                  to="/"
-                  aria-label={this.props.intl.formatMessage(messages.cancel)}
-                  title={this.props.intl.formatMessage(messages.cancel)}
-                >
-                  Cancel
-                </Button>
+                  <Button
+                    id="login-form-cancel"
+                    to="/"
+                    aria-label={this.props.intl.formatMessage(messages.cancel)}
+                    title={this.props.intl.formatMessage(messages.cancel)}
+                  >
+                    Cancel
+                  </Button>
+                </LoadingBox>
               </Segment>
             </Segment.Group>
           </Form>
