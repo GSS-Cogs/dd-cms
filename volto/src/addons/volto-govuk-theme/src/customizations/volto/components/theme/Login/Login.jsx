@@ -183,17 +183,20 @@ class Login extends Component {
           <Form method="post" onSubmit={this.onLogin}>
             <Segment.Group>
               <h1 className="govuk-heading-l">Login</h1>
+
               <Segment secondary>
-                <FormattedMessage
-                  id="Sign in to start session"
-                  defaultMessage="Sign in to start session"
-                />
+                <div class="govuk-!-font-size-19">
+                  <FormattedMessage
+                    id="Sign in to start session"
+                    defaultMessage="Sign in to start session"
+                  />
+                </div>
               </Segment>
               <Segment className="form">
                 <Input
                   id="email"
                   label={{
-                    children: 'User Name'
+                    children: 'User Name',
                   }}
                   name="group0"
                   type="text"
@@ -202,7 +205,7 @@ class Login extends Component {
                 <Input
                   id="password"
                   label={{
-                    children: 'Password'
+                    children: 'Password',
                   }}
                   name="group0"
                   type="password"
