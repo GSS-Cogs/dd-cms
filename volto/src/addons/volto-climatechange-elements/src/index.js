@@ -158,6 +158,11 @@ const applyConfig = (config) => {
   config.views.layoutViews.cc_preview = CcV2ArticleView;
 
   config.views.layoutViews.cc_preview2 = CcV2Overview;
+
+  // TODO replace the discodataconnector with own custom view
+  // so we can remove the reliance on discodata
+  // discodata gets registered from a third party add-on
+  // and is no longer  needed/accessible through the UI
   config.views.contentTypesViews.sparql_dataconnector =
     config.views.contentTypesViews.discodataconnector;
   config.views.contentTypesViews.csv_type =
