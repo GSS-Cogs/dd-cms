@@ -36,7 +36,7 @@ class SPARQLDataProviderForConnectors(object):
         sparql.setReturnFormat(JSON)
 
         try:
-            results = sparql.query().conver()
+            results = sparql.query().convert()
         except Exception:
             logger.exception(f"endpoint_url: {endpoint_url} TITLE : {self.context.title}")
             results = None
