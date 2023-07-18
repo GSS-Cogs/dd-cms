@@ -29,7 +29,6 @@ class SPARQLDataProviderForConnectors(object):
     @timing
     def _get_data(self):
         endpoint_url = self.context.endpoint_url
-        title = self.context.title
         query = self.context.sparql_query
 
         sparql = SPARQLWrapper(endpoint_url)
@@ -37,9 +36,9 @@ class SPARQLDataProviderForConnectors(object):
         sparql.setReturnFormat(JSON)
 
         try:
-            results = sparql.query().convert()
+            results = sparql.query().conver()
         except Exception:
-            logger.exception(f"endpoint_url: {str(endpoint_url)} TITLE : {str(title)}")
+            logger.exception(f"endpoint_url: {endpoint_url} TITLE : {self.context.title}")
             results = None
         return results
 
