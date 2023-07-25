@@ -79,3 +79,25 @@ export function getSiteTitle() {
     url: '',
   };
 }
+export function getGA_ID() {
+  return {
+    type: GET_GA_ID,
+    request: {
+      op: 'get',
+      path: '@cmsconf-ga_id',
+      headers: {},
+    },
+    url: '',
+  }
+}
+export function getHotjar_ID() {
+  return {
+    type: GET_HOTJAR_ID,
+    request: {
+      op: 'get',
+      path: '@cmsconf-hotjar-id',
+      headers: {},
+    },
+    url: '',
+  }
+}

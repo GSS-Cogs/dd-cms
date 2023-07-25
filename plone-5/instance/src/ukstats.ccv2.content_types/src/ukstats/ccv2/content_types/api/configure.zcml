@@ -19,4 +19,20 @@
     name="@cmsconf-site_title"
     permission="zope2.View"
     />
+
+    <plone:service
+    method="GET"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    factory=".controlpanel.GA_ID"
+    name="@cmsconf-ga_id"
+    permission="zope2.View"
+    />
+
+    <plone:service
+    method="GET"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    factory=".controlpanel.Hotjar_ID"
+    name="@cmsconf-hotjar_id"
+    permission="zope2.View"
+    />
 </configure>
