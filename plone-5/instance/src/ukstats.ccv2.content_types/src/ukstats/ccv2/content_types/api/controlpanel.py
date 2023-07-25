@@ -24,12 +24,12 @@ class PhaseBanner(Service):
 
 class GA_ID(Service):
     def reply(self):
-        ga_id_value = api.portal.get_registry_record(reg_base + '.ga_id')
-        response_value = {'ga_id': ga_id_value}
+        ga_id_value = api.portal.get_registry_record(reg_base + '.google_analytics_id')
+        response_value = {'google_analytics_id': ga_id_value}
         return json_compatible(response_value)
 
 class Hotjar_ID(Service):
     def reply(self):
-        hotjar_id_value = api.portal.get_registry_record(reg_base + '.hotjar_id')
-        response_value = {'hotjar_id' : hotjar_id_value}
+        hotjar_id_value = api.portal.get_registry_record(reg_base + '.hotjar_analytics_id')
+        response_value = {'hotjar_analytics_id' : hotjar_id_value}
         return json_compatible(response_value)
