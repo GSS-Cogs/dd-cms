@@ -24,6 +24,7 @@ class SPARQLDataProviderForConnectors(object):
     def __init__(self, context, request):
         self.context = context
         self.request = request
+        
 
     @timing
     def _get_data(self):
@@ -36,8 +37,8 @@ class SPARQLDataProviderForConnectors(object):
 
         try:
             results = sparql.query().convert()
-        except Exception as e:
-            logger.exception(f"SPARQL query execution error: {str(e)}")
+        except Exception:
+            logger.exception(f"endpoint_url: {endpoint_url} TITLE : {self.context.title}")
             results = None
         return results
 
