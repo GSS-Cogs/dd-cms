@@ -50,7 +50,6 @@ const Edit = (props) => {
                     pattern_options: {
                       selectableTypes: [
                         'File',
-                        'discodataconnector',
                         'sparql_dataconnector',
                         'csv_type',
                       ],
@@ -77,11 +76,7 @@ const Edit = (props) => {
                 error={geoJsonError}
                 widgetOptions={{
                   pattern_options: {
-                    selectableTypes: [
-                      'discodataconnector',
-                      'csv_type',
-                      'sparql_dataconnector',
-                    ],
+                    selectableTypes: ['csv_type', 'sparql_dataconnector'],
                   },
                 }}
                 value={data.geojson_path || []}
