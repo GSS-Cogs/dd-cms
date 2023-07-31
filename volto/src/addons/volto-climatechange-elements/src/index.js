@@ -156,8 +156,6 @@ const applyConfig = (config) => {
   config.views.layoutViews.cc_article_with_toc = CcV2ArticleWithToCView;
   config.views.layoutViews.cc_preview = CcV2ArticleView;
 
-  config.views.layoutViews.cc_preview2 = CcV2Overview;
-
   // TODO replace the discodataconnector with own custom view
   // so we can remove the reliance on discodata
   // discodata gets registered from a third party add-on
