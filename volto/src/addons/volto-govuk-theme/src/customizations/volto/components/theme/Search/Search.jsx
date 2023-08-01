@@ -256,12 +256,6 @@ class Search extends Component {
                     }}
                   >
                     <Header.Content className="header-content">
-                      <div className="govuk-body-xl sort-by">
-                        <FormattedMessage
-                          id="Sort By:"
-                          defaultMessage="Sort by:"
-                        />
-                      </div>
                       <div class="govuk-form-group">
                         <label class="govuk-label" for="subject">
                           Sort By
