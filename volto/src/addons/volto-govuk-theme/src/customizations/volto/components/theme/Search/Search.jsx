@@ -22,7 +22,6 @@ import { SearchTags, Toolbar, Icon } from '@plone/volto/components';
 
 import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
 import paginationRightSVG from '@plone/volto/icons/right-key.svg';
-import { text } from 'd3';
 
 /**
  * Search class.
@@ -123,7 +122,6 @@ class Search extends Component {
   };
 
   onSortChange = (event, sort_order) => {
-    console.log('event', event.target.value);
     let options = qs.parse(this.props.history.location.search);
     options.sort_on = event.target.value;
     options.sort_order = sort_order || 'ascending';
@@ -251,25 +249,24 @@ class Search extends Component {
                       defaultMessage="results"
                     />
                   </div>
-                  { <Header
+                  <Header
                     style={{
                       marginTop: 0,
                     }}
                   >
                     <Header.Content className="header-content">
-                      <div class="govuk-form-group">
-                        <label class="text-aling: left" style={{marginRight: "20px", textAlign: "left"}} for="subject">
-                          Sort By
+                      <div className="govuk-form-group">
+                        <label className="govuk-!-margin-right-4 govuk-!-font-size-19" for="subject">
+                          Sort by
                         </label>
-                        <select class="govuk-select" id="subject" name="subject" aria-describedby="subject-hint" onChange={this.onSortChange} value={this.state.active}>
-                          <option value="Choose">Choose</option>
-                          <option value="relevance">relevance</option>
+                        <select className="govuk-select" id="subject" name="subject" aria-describedby="subject-hint" onChange={this.onSortChange} value={this.state.active}>
+                          <option value="relevance">Relevance</option>
                           <option value="sortable_title">Alphabetically</option>
                           <option value="effective">Date (newest first)</option>
                         </select>
                       </div>
                     </Header.Content>
-                  </Header> }
+                  </Header>
                 </div>
               ) : (
                 <div>
