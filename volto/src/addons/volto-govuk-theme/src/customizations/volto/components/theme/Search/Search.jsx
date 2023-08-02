@@ -22,6 +22,7 @@ import { SearchTags, Toolbar, Icon } from '@plone/volto/components';
 
 import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
 import paginationRightSVG from '@plone/volto/icons/right-key.svg';
+import { text } from 'd3';
 
 /**
  * Search class.
@@ -257,7 +258,7 @@ class Search extends Component {
                   >
                     <Header.Content className="header-content">
                       <div class="govuk-form-group">
-                        <label class="govuk-label" for="subject">
+                        <label class="text-aling: left" style={{marginRight: "20px", textAlign: "left"}} for="subject">
                           Sort By
                         </label>
                         <select class="govuk-select" id="subject" name="subject" aria-describedby="subject-hint" onChange={this.onSortChange} value={this.state.active}>
