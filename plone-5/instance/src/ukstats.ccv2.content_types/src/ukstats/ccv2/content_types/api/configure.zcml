@@ -23,7 +23,7 @@
     <plone:service
     method="GET"
     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-    factory=".controlpanel.GA_ID"
+    factory=".controlpanel.GAID"
     name="@cmsconf-ga_id"
     permission="zope2.View"
     />
@@ -31,7 +31,7 @@
     <plone:service
     method="GET"
     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-    factory=".controlpanel.Hotjar_ID"
+    factory=".controlpanel.HotjarID"
     name="@cmsconf-hotjar_id"
     permission="zope2.View"
     />
