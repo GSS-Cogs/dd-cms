@@ -10,7 +10,6 @@ import { StandOutStatEdit } from './components/StandOutStat/StandOutStatEdit';
 import { BlueLineViewTextBlock } from './components/Blocks/Text/View';
 import { CcHeroHeaderView } from './components/CcHeroHeader/CcHeroHeaderView';
 import { CcHeroHeaderEdit } from './components/CcHeroHeader/CcHeroHeaderEdit';
-import { CcV2Overview } from './components/CcV2Preview/CcV2Overview';
 import { CcV2ArticleView } from './components/CcV2Preview/CcV2ArticleView';
 import { CcV2ArticleWithToCView } from './components/CcV2Preview/CcV2ArticleWithToCView';
 import { CcRelatedLinks } from './components/CcRelatedLinks/CcRelatedLinks';
@@ -157,7 +156,10 @@ const applyConfig = (config) => {
   config.views.layoutViews.cc_article_with_toc = CcV2ArticleWithToCView;
   config.views.layoutViews.cc_preview = CcV2ArticleView;
 
-  config.views.layoutViews.cc_preview2 = CcV2Overview;
+  // TODO replace the discodataconnector with own custom view
+  // so we can remove the reliance on discodata
+  // discodata gets registered from a third party add-on
+  // and is no longer  needed/accessible through the UI
   config.views.contentTypesViews.sparql_dataconnector =
     config.views.contentTypesViews.discodataconnector;
   config.views.contentTypesViews.csv_type =

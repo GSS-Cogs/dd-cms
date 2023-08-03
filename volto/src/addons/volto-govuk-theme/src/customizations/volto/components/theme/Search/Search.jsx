@@ -123,20 +123,38 @@ class Search extends Component {
 
   onSortChange = (event, sort_order) => {
     let options = qs.parse(this.props.history.location.search);
-    options.sort_on = event.target.name;
+    options.sort_on = event.target.value;
     options.sort_order = sort_order || 'ascending';
-    if (event.target.name === 'relevance') {
+    if (options.sort_on === 'relevance') {
       delete options.sort_on;
       delete options.sort_order;
     }
     let searchParams = qs.stringify(options);
-    this.setState({ currentPage: 1, active: event.target.name }, () => {
+    this.setState({ currentPage: 1, active: options.sort_on }, () => {
       // eslint-disable-next-line no-restricted-globals
       this.props.history.replace({
         search: searchParams,
       });
     });
   };
+
+  showContent() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  // Close the dropdown menu if the user clicks outside of it
+  onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+    }
+  }
+}
 
   /**
    * Render method.
@@ -231,66 +249,24 @@ class Search extends Component {
                       defaultMessage="results"
                     />
                   </div>
-                  {/* <Header
+                  <Header
                     style={{
                       marginTop: 0,
                     }}
                   >
                     <Header.Content className="header-content">
-                      <div className="govuk-body-xl sort-by">
-                        <FormattedMessage
-                          id="Sort By:"
-                          defaultMessage="Sort by:"
-                        />
+                      <div className="govuk-form-group">
+                        <label className="govuk-!-margin-right-4 govuk-!-font-size-19" for="subject">
+                          Sort by
+                        </label>
+                        <select className="govuk-select" id="subject" name="subject" aria-describedby="subject-hint" onChange={this.onSortChange} value={this.state.active}>
+                          <option value="relevance">Relevance</option>
+                          <option value="sortable_title">Alphabetically</option>
+                          <option value="effective">Date (newest first)</option>
+                        </select>
                       </div>
-                      <Button
-                        onClick={(event) => {
-                          this.onSortChange(event);
-                        }}
-                        name="relevance"
-                        size="tiny"
-                        className={classNames('button-sort', {
-                          'button-active': this.state.active === 'relevance',
-                        })}
-                      >
-                        <FormattedMessage
-                          id="Relevance"
-                          defaultMessage="Relevance"
-                        />
-                      </Button>
-                      <Button
-                        onClick={(event) => {
-                          this.onSortChange(event);
-                        }}
-                        name="sortable_title"
-                        size="tiny"
-                        className={classNames('button-sort', {
-                          'button-active':
-                            this.state.active === 'sortable_title',
-                        })}
-                      >
-                        <FormattedMessage
-                          id="Alphabetically"
-                          defaultMessage="Alphabetically"
-                        />
-                      </Button>
-                      <Button
-                        onClick={(event) => {
-                          this.onSortChange(event, 'reverse');
-                        }}
-                        name="effective"
-                        size="tiny"
-                        className={classNames('button-sort', {
-                          'button-active': this.state.active === 'effective',
-                        })}
-                      >
-                        <FormattedMessage
-                          id="Date (newest first)"
-                          defaultMessage="Date (newest first)"
-                        />
-                      </Button>
                     </Header.Content>
-                  </Header> */}
+                  </Header>
                 </div>
               ) : (
                 <div>
