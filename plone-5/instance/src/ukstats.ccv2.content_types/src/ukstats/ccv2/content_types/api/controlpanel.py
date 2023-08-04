@@ -20,7 +20,8 @@ class PhaseBanner(Service):
         phasebanner_state = api.portal.get_registry_record(
             REG_BASE + '.phasebanner_state')
         feedback_email = api.portal.get_registry_record(REG_BASE + '.feedback_email')
-        return {'bannerDisplay': phasebanner_state, 'bannerLink': feedback_email}
+        return json_compatible({'bannerDisplay': phasebanner_state, 'bannerLink': feedback_email})
+
 
 class GAID(Service):
     def reply(self):
@@ -28,8 +29,10 @@ class GAID(Service):
         response_value = {'google_analytics_id': ga_id_value}
         return json_compatible(response_value)
 
+
 class HotjarID(Service):
     def reply(self):
-        hotjar_id_value = api.portal.get_registry_record(REG_BASE + '.hotjar_analytics_id')
-        response_value = {'hotjar_analytics_id' : hotjar_id_value}
+        hotjar_id_value = api.portal.get_registry_record(
+            REG_BASE + '.hotjar_analytics_id')
+        response_value = {'hotjar_analytics_id': hotjar_id_value}
         return json_compatible(response_value)
