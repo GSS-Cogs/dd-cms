@@ -1,0 +1,36 @@
+steps:
+
+  # "kaniko" is a build runner whose sole job is to build
+  # container images optimised for use on k8s.
+  # destination is just where on our infrastructure we store
+  # these images.
+  # by default it looks for Dockerfile in the repo root and builds
+  # that though other locations can be specified.
+  # For why we build the image twice with different tags, see
+  # the cicd README.
+  - name: 'gcr.io/kaniko-project/executor:latest'
+    args:
+      - >-
+        --destination=${_IMAGE_REPOSITORY}/plone:latest
+      - >-
+        --destination=${_IMAGE_REPOSITORY}/plone:$SHORT_SHA
+      - context=dir://plone-5
+
+  # This uses the kubectl runner (a container designed to interact
+  # with k8s via kubectl) to update the image defined in the k8s deployment
+  # on the cluster in question - k8s will notice this and green/blue 
+  # bounce the pod(s) from there.
+  - name: gcr.io/cloud-builders/kubectl
+    env:
+      - CLOUDSDK_COMPUTE_REGION=${_REGION}
+      - CLOUDSDK_CONTAINER_CLUSTER=${_K8S_CLUSTER_NAME}
+    args:
+      - set
+      - image
+      - deployment/plone
+      - '--namespace=cms'
+      - >-
+        plone=${_IMAGE_REPOSITORY}/plone:$SHORT_SHA
+timeout: 7200s  # 2 hours !!
+options:
+  - machine_type = "E2_HIGHCPU_32"
