@@ -81,4 +81,6 @@ steps:
       - '--namespace=cms'
       - >-
         volto-dcms=${_IMAGE_REPOSITORY}/volto:$TAG_NAME
-timeout: 600s
+timeout: 7200s  # 2 hours !!
+options:
+  - machine_type = "E2_HIGHCPU_32"
