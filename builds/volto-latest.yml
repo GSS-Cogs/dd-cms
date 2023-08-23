@@ -8,6 +8,8 @@ steps:
   # that though other locations can be specified.
   # For why we build the image twice with different tags, see
   # the cicd README.
+
+  # Builds Volto-test from Dockerfile-test and image is pushed to artifact registry
   - name: 'gcr.io/kaniko-project/executor:latest'
     args:
       - >-
@@ -17,7 +19,7 @@ steps:
       - context=dir://volto
       - Dockerfile=Dockerfile-test
 
-  # Builds Volto-test latest container from the artifact registry and Volto tests are run using container volume
+# Run volto tests using the volto test container and Volto tests are run using container volume
   - name: 'gcr.io/cloud-builders/docker'
     dir:
       - '/workspace/volto/'
@@ -25,12 +27,12 @@ steps:
       - run
       - -v
       - /workspace:/workspace
-      - >-
-        --destination=${_IMAGE_REPOSITORY}/volto-test:latest
+      - ${_IMAGE_REPOSITORY}/volto-test:latest
       - /bin/bash
       - -c 
       - cp -R /workspace/volto/src/. /app/src/ && cp /workspace/volto/babel.config.js /app/babel.config.js && yarn test-ci
 
+# Build volto image for deployment
   - name: 'gcr.io/kaniko-project/executor:latest'
     args:
       - >-
