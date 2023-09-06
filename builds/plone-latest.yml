@@ -1,13 +1,5 @@
 steps:
 
-  # "kaniko" is a build runner whose sole job is to build
-  # container images optimised for use on k8s.
-  # destination is just where on our infrastructure we store
-  # these images.
-  # by default it looks for Dockerfile in the repo root and builds
-  # that though other locations can be specified.
-  # For why we build the image twice with different tags, see
-  # the cicd README.
   - name: 'gcr.io/kaniko-project/executor:latest'
     args:
       - >-
@@ -33,4 +25,4 @@ steps:
         plone=${_IMAGE_REPOSITORY}/plone:$SHORT_SHA
 timeout: 7200s  # 2 hours !!
 options:
-  - machine_type = "E2_HIGHCPU_32"
+  machineType: E2_HIGHCPU_32
