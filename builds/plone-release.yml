@@ -6,7 +6,8 @@ steps:
         --destination=${_IMAGE_REPOSITORY}/plone:latest-release
       - >-
         --destination=${_IMAGE_REPOSITORY}/plone:$TAG_NAME
-      - context=dir://plone-5
+      - >-
+        --context=dir://plone-5
 
   # This uses the kubectl runner (a container designed to interact
   # with k8s via kubectl) to update the image defined in the k8s deployment

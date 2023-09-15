@@ -7,7 +7,8 @@ steps:
         --destination=${_IMAGE_REPOSITORY}/volto-test:latest
       - >-
         --destination=${_IMAGE_REPOSITORY}/volto-test:$SHORT_SHA
-      - context=dir://volto
+      - >-
+        --context=dir://volto
       - Dockerfile=Dockerfile-test
 
 # Run volto tests using the volto test container and Volto tests are run using container volume
