@@ -12,18 +12,18 @@ steps:
       - >-
         --dockerfile=Dockerfile-test
 
-# # Run volto tests using the volto test container and Volto tests are run using container volume
-#   - name: 'gcr.io/cloud-builders/docker'
-#     dir:
-#       - '/workspace/volto/'
-#     args:
-#       - run
-#       - -v
-#       - /workspace:/workspace
-#       - ${_IMAGE_REPOSITORY}/volto-test:latest
-#       - /bin/bash
-#       - -c 
-#       - cp -R /workspace/volto/src/. /app/src/ && cp /workspace/volto/babel.config.js /app/babel.config.js && yarn test-ci
+# Run volto tests using the volto test container and Volto tests are run using container volume
+  - name: 'gcr.io/cloud-builders/docker'
+    dir:
+      - '/workspace/volto/'
+    args:
+      - run
+      - -v
+      - /workspace:/workspace
+      - ${_IMAGE_REPOSITORY}/volto-test:latest
+      - /bin/bash
+      - -c 
+      - "cp -R /workspace/volto/src/. /app/src/ && cp /workspace/volto/babel.config.js /app/babel.config.js && yarn test-ci"
 
 # # Build volto image for deployment
 #   - name: 'gcr.io/kaniko-project/executor:latest'
