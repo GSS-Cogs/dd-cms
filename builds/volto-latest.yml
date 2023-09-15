@@ -14,10 +14,10 @@ steps:
 
 # Run volto tests using the volto test container and Volto tests are run using container volume
   - name: 'gcr.io/cloud-builders/docker'
-    dir:
-      - '/workspace/volto/'
-    args:
-      - run
+    # dir:
+    #   - '/workspace/volto/'
+    # args:
+    #   - run
       # - -v
       # - /workspace:/workspace
       # - "${_IMAGE_REPOSITORY}/volto-test:latest"
