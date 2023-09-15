@@ -9,7 +9,8 @@ steps:
         --destination=${_IMAGE_REPOSITORY}/volto-test:$TAG_NAME
       - >-
         --context=dir://volto
-      - Dockerfile=Dockerfile-test
+      - >-
+        --dockerfile=Dockerfile-test
 
 # Run volto tests using the volto test container and Volto tests are run using container volume
   - name: 'gcr.io/cloud-builders/docker'
