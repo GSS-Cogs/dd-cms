@@ -14,8 +14,7 @@ steps:
 
 # Run volto tests using the volto test container and Volto tests are run using container volume
   - name: 'gcr.io/cloud-builders/docker'
-    dir:
-      - '/workspace/volto/'
+    dir: '/workspace/volto/'
     args:
       - run
       - -v
@@ -48,7 +47,8 @@ steps:
       - image
       - deployment/volto-climate-change
       - '--namespace=cms'
-      - volto-climate-change=${_IMAGE_REPOSITORY}/volto:$TAG_NAME
+      - >-
+        volto-climate-change=${_IMAGE_REPOSITORY}/volto:$TAG_NAME
 
 # Deploy vawg
   - name: gcr.io/cloud-builders/kubectl
@@ -60,7 +60,8 @@ steps:
       - image
       - deployment/volto-vawg
       - '--namespace=cms'
-      - volto-vawg=${_IMAGE_REPOSITORY}/volto:$TAG_NAME
+      - >-
+        volto-vawg=${_IMAGE_REPOSITORY}/volto:$TAG_NAME
 
 # Deploy dcms
   - name: gcr.io/cloud-builders/kubectl
@@ -72,7 +73,8 @@ steps:
       - image
       - deployment/volto-dcms
       - '--namespace=cms'
-      - volto-dcms=${_IMAGE_REPOSITORY}/volto:$TAG_NAME
+      - >-
+        volto-dcms=${_IMAGE_REPOSITORY}/volto:$TAG_NAME
 timeout: 7200s  # 2 hours !!
 options:
   machineType: E2_HIGHCPU_32
