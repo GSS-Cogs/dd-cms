@@ -39,40 +39,43 @@ steps:
   # bounce the pod(s) from there.
 
 # Deploy climate-change
-  - name: gcr.io/cloud-builders/kubectl
-    env:
-      - CLOUDSDK_COMPUTE_REGION=${_REGION}
-      - CLOUDSDK_CONTAINER_CLUSTER=${_K8S_CLUSTER_NAME}
-    args:
-      - set
-      - image
-      - deployment/volto-climate-change
-      - '--namespace=cms'
-      - volto-climate-change=${_IMAGE_REPOSITORY}/volto:$SHORT_SHA
+#   - name: gcr.io/cloud-builders/kubectl
+#     env:
+#       - CLOUDSDK_COMPUTE_REGION=${_REGION}
+#       - CLOUDSDK_CONTAINER_CLUSTER=${_K8S_CLUSTER_NAME}
+#     args:
+#       - set
+#       - image
+#       - deployment/volto-climate-change
+#       - '--namespace=cms'
+#       - >-
+#         volto-climate-change=${_IMAGE_REPOSITORY}/volto:$SHORT_SHA
 
-# Deploy vawg
-  - name: gcr.io/cloud-builders/kubectl
-    env:
-      - CLOUDSDK_COMPUTE_REGION=${_REGION}
-      - CLOUDSDK_CONTAINER_CLUSTER=${_K8S_CLUSTER_NAME}
-    args:
-      - set
-      - image
-      - deployment/volto-vawg
-      - '--namespace=cms'
-      - volto-vawg=${_IMAGE_REPOSITORY}/volto:$SHORT_SHA
+# # Deploy vawg
+#   - name: gcr.io/cloud-builders/kubectl
+#     env:
+#       - CLOUDSDK_COMPUTE_REGION=${_REGION}
+#       - CLOUDSDK_CONTAINER_CLUSTER=${_K8S_CLUSTER_NAME}
+#     args:
+#       - set
+#       - image
+#       - deployment/volto-vawg
+#       - '--namespace=cms'
+#       - >-
+#         volto-vawg=${_IMAGE_REPOSITORY}/volto:$SHORT_SHA
 
-# Deploy dcms
-  - name: gcr.io/cloud-builders/kubectl
-    env:
-      - CLOUDSDK_COMPUTE_REGION=${_REGION}
-      - CLOUDSDK_CONTAINER_CLUSTER=${_K8S_CLUSTER_NAME}
-    args:
-      - set
-      - image
-      - deployment/volto-dcms
-      - '--namespace=cms'
-      - volto-dcms=${_IMAGE_REPOSITORY}/volto:$SHORT_SHA
+# # Deploy dcms
+#   - name: gcr.io/cloud-builders/kubectl
+#     env:
+#       - CLOUDSDK_COMPUTE_REGION=${_REGION}
+#       - CLOUDSDK_CONTAINER_CLUSTER=${_K8S_CLUSTER_NAME}
+#     args:
+#       - set
+#       - image
+#       - deployment/volto-dcms
+#       - '--namespace=cms'
+#       - >-
+#         volto-dcms=${_IMAGE_REPOSITORY}/volto:$SHORT_SHA
 timeout: 7200s  # 2 hours !!
 options:
   machineType: E2_HIGHCPU_32
