@@ -23,7 +23,8 @@ steps:
       - ${_IMAGE_REPOSITORY}/volto-test:latest
       - /bin/bash
       - -c 
-      - "cp -R /workspace/volto/src/. /app/src/ && cp /workspace/volto/babel.config.js /app/babel.config.js && yarn test-ci"
+      - |
+        "cp -R /workspace/volto/src/. /app/src/ && cp /workspace/volto/babel.config.js /app/babel.config.js && yarn test-ci"
 
 # # Build volto image for deployment
 #   - name: 'gcr.io/kaniko-project/executor:latest'
