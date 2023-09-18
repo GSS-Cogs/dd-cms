@@ -28,9 +28,15 @@ steps:
   - name: 'gcr.io/kaniko-project/executor:latest'
     args:
       - >-
-        --destination=${_IMAGE_REPOSITORY}//volto:latest-release
+        --destination=${_IMAGE_REPOSITORY}/volto:latest-release
       - >-
         --destination=${_IMAGE_REPOSITORY}/volto:$TAG_NAME
+      - >-
+        --cache=true
+      - >-
+        --context=dir://volto
+      - >-
+        --build-arg=ADDONS=${_VOLTO_ADDONS}
 
   # This uses the kubectl runner (a container designed to interact
   # with k8s via kubectl) to update the image defined in the k8s deployment
