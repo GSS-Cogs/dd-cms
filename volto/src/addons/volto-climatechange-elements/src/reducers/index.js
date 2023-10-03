@@ -188,7 +188,6 @@ export function rawPhaseBanner(state = {}, action = {}) {
 
 export function rawSiteTitle(state = {}, action = {}) {
   let { result, url } = action;
-
   switch (action.type) {
     case `${GET_SITE_TITLE}_PENDING`:
       return {

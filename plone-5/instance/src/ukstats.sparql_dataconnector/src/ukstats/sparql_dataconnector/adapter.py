@@ -1,5 +1,5 @@
 """ adapter module - Based on eea.api.dataconnector add-on"""
-
+import logging
 from plone.memoize import ram
 from zope.component import adapter
 from zope.interface import implementer
@@ -11,6 +11,7 @@ from eea.restapi.utils import timing
 
 from SPARQLWrapper import SPARQLWrapper, JSON
 
+logger = logging.getLogger(__name__)
 
 @adapter(ISPARQLDataConnector, IBrowserRequest)
 @implementer(IDataProvider)
@@ -23,6 +24,7 @@ class SPARQLDataProviderForConnectors(object):
     def __init__(self, context, request):
         self.context = context
         self.request = request
+        
 
     @timing
     def _get_data(self):
@@ -33,8 +35,11 @@ class SPARQLDataProviderForConnectors(object):
         sparql.setQuery(query)
         sparql.setReturnFormat(JSON)
 
-        results = sparql.query().convert()
-
+        try:
+            results = sparql.query().convert()
+        except Exception:
+            logger.exception(f"endpoint_url: {endpoint_url} TITLE : {self.context.title}")
+            results = None
         return results
 
     def change_orientation(self, keys, data):

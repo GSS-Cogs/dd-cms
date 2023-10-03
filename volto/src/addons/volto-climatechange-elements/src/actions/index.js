@@ -63,7 +63,7 @@ export function getPhaseBannerContent() {
     request: {
       op: 'get',
       path: '',
-      headers: {},
+      headers: { 'Content-Type': 'application/json' },
     },
     url: '',
   };
@@ -73,8 +73,30 @@ export function getSiteTitle() {
     type: GET_SITE_TITLE,
     request: {
       op: 'get',
-      path: '@controlpanels/cmsconf-controlpanel',
-      headers: {},
+      path: '@cmsconf-site_title',
+      headers: { 'Content-Type': 'application/json' },
+    },
+    url: '',
+  };
+}
+export function getGA_ID() {
+  return {
+    type: GET_GA_ID,
+    request: {
+      op: 'get',
+      path: '@cmsconf-ga_id',
+      headers: { 'Content-Type': 'application/json' },
+    },
+    url: '',
+  };
+}
+export function getHotjar_ID() {
+  return {
+    type: GET_HOTJAR_ID,
+    request: {
+      op: 'get',
+      path: '@cmsconf-hotjar-id',
+      headers: { 'Content-Type': 'application/json' },
     },
     url: '',
   };

@@ -42,7 +42,7 @@ pipeline {
                             sh './run.sh'
                             sh './lighthouse.sh'
                         }
-                        sh "docker-compose -p ${PROJ_NAME} logs -t --no-color > containers.log"
+                        sh "docker-compose -p ${PROJ_NAME} logs -t --no-color > containers.log 2>&1"
                     }
                 }
             }

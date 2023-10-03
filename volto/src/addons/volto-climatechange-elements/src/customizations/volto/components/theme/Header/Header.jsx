@@ -57,7 +57,7 @@ const Header = (props) => {
     (state) => state.reduxAsyncConnect.navigation?.items ?? [],
   );
   const siteTitle = useSelector(
-    (state) => state.rawSiteTitle?.siteTitle?.data?.data?.site_title ?? '',
+    (state) => state.rawSiteTitle?.siteTitle?.data?.site_title ?? '',
   );
 
   const menu_contents = [];

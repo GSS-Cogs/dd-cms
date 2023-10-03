@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ServiceProblem renders a not found component 1`] = `
+<div
+  class="app-width-container"
+>
+  <main
+    class="govuk-main-wrapper govuk-main-wrapper--l"
+    id="main-content"
+    role="main"
+  >
+    <div
+      class="govuk-grid-row"
+    >
+      <div
+        class="govuk-grid-column-two-thirds"
+      >
+        <h1
+          class="govuk-heading-xl govuk-!-margin-bottom-9"
+        >
+          Sorry, there is a problem with the service
+        </h1>
+        <p
+          class="govuk-body"
+        >
+          Our Support Team is working on the error, and will resolve it as soon as possible.
+        </p>
+        <p
+          class="govuk-body"
+        >
+          Try again later.
+        </p>
+      </div>
+    </div>
+  </main>
+</div>
+`;

@@ -1,0 +1,40 @@
+@import '../../colors.scss';
+.standout_container{
+  padding: 24px 0 32px;
+  display: flex;
+  flex-direction: row;
+}
+
+.standout_figure {
+  @include govuk-font($size: 80);
+  @include govuk-responsive-margin(6, "right");
+  font-family: 'GDS Transport';
+  font-weight: 700;
+  text-align: end;
+  word-wrap: break-word;
+  color: govuk-colour('blue');
+}
+
+.standout_description_container {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  width: 85%;
+  vertical-align: baseline;
+}
+.standout_description_container a {
+  @include govuk-font($size: 19);
+  text-decoration: none;
+  font-family: 'GDS Transport';
+  font-weight: 700;
+  color: govuk-colour('blue');
+}
+.standout_description {
+  font-size: 24px;
+  line-height: 32px;
+  font-family: 'GDS Transport';
+  font-weight: 700;
+  margin-bottom: 16px;
+}

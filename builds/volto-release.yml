@@ -1,0 +1,86 @@
+steps:
+
+# Builds Volto-test from Dockerfile-test and image is pushed to artifact registry
+  - name: 'gcr.io/kaniko-project/executor:latest'
+    args:
+      - >-
+        --destination=${_IMAGE_REPOSITORY}/volto-test:latest-release
+      - >-
+        --destination=${_IMAGE_REPOSITORY}/volto-test:$TAG_NAME
+      - >-
+        --context=dir://volto
+      - >-
+        --dockerfile=Dockerfile-test
+
+# Run volto tests using the volto test container and Volto tests are run using container volume
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: '/workspace/volto/'
+    args:
+      - run
+      - -v
+      - /workspace:/workspace
+      - ${_IMAGE_REPOSITORY}/volto-test:latest-release
+      - /bin/bash
+      - -c 
+      - cp -R /workspace/volto/src/. /app/src/ && cp /workspace/volto/babel.config.js /app/babel.config.js && yarn test-ci
+
+# Build volto image for deployment
+  - name: 'gcr.io/kaniko-project/executor:latest'
+    args:
+      - >-
+        --destination=${_IMAGE_REPOSITORY}/volto:latest-release
+      - >-
+        --destination=${_IMAGE_REPOSITORY}/volto:$TAG_NAME
+      - >-
+        --cache=true
+      - >-
+        --context=dir://volto
+      - >-
+        --build-arg=ADDONS=${_VOLTO_ADDONS}
+
+  # This uses the kubectl runner (a container designed to interact
+  # with k8s via kubectl) to update the image defined in the k8s deployment
+  # on the cluster in question - k8s will notice this and green/blue 
+  # bounce the pod(s) from there.
+
+# Deploy climate-change
+  - name: gcr.io/cloud-builders/kubectl
+    env:
+      - CLOUDSDK_COMPUTE_REGION=${_REGION}
+      - CLOUDSDK_CONTAINER_CLUSTER=${_K8S_CLUSTER_NAME}
+    args:
+      - set
+      - image
+      - deployment/volto-climate-change
+      - '--namespace=cms'
+      - >-
+        volto-climate-change=${_IMAGE_REPOSITORY}/volto:$TAG_NAME
+
+# Deploy vawg
+  - name: gcr.io/cloud-builders/kubectl
+    env:
+      - CLOUDSDK_COMPUTE_REGION=${_REGION}
+      - CLOUDSDK_CONTAINER_CLUSTER=${_K8S_CLUSTER_NAME}
+    args:
+      - set
+      - image
+      - deployment/volto-vawg
+      - '--namespace=cms'
+      - >-
+        volto-vawg=${_IMAGE_REPOSITORY}/volto:$TAG_NAME
+
+# Deploy dcms
+  - name: gcr.io/cloud-builders/kubectl
+    env:
+      - CLOUDSDK_COMPUTE_REGION=${_REGION}
+      - CLOUDSDK_CONTAINER_CLUSTER=${_K8S_CLUSTER_NAME}
+    args:
+      - set
+      - image
+      - deployment/volto-dcms
+      - '--namespace=cms'
+      - >-
+        volto-dcms=${_IMAGE_REPOSITORY}/volto:$TAG_NAME
+timeout: 7200s  # 2 hours !!
+options:
+  machineType: E2_HIGHCPU_32
