@@ -4,6 +4,7 @@ import {
   GET_FOLDERISH_CONTENT,
   GET_PHASE_BANNER_CONTENT,
   GET_SITE_TITLE,
+  GET_CLIMATE_CHANGE_NOTIFICATION_STATE,
 } from '../constants/ActionTypes';
 
 export function getRelatedItemsData({
@@ -68,6 +69,19 @@ export function getPhaseBannerContent() {
     url: '',
   };
 }
+
+export function getClimateChangeNotificationState() {
+  return {
+    type: GET_CLIMATE_CHANGE_NOTIFICATION_STATE,
+    request: {
+      op: 'get',
+      path: '@cmsconf-climate_change_notification',
+      headers: { 'Content-Type': 'application/json' },
+    },
+    url: '',
+  };
+}
+
 export function getSiteTitle() {
   return {
     type: GET_SITE_TITLE,

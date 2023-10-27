@@ -1,0 +1,37 @@
+.cc-notification {
+  position: relative;
+  background-color: govuk-colour('yellow');
+  // this is here to slightly overlap the headers bottom border
+  top: -10px;
+  margin-bottom: -10px;
+}
+
+.cc-notification--non-root {
+  background-color: govuk-colour('blue');
+}
+
+.cc-notification__wrapper {
+  margin-bottom: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.cc-notification__icon--non-root {
+  background-color: govuk-colour('white');
+  color: govuk-colour('blue');
+  border-color: govuk-colour('white');
+}
+
+.cc-notification__text {
+  color: #0b0c0c;
+}
+.cc-notification__text--non-root {
+  color: govuk-colour('white');
+}
+
+.cc-notification__link {
+  color: govuk-colour('blue') !important;
+}
+.cc-notification__link--non-root {
+  color: govuk-colour('white') !important;
+}

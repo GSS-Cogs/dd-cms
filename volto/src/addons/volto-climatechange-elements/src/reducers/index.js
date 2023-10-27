@@ -6,6 +6,7 @@ import {
   GET_FOLDERISH_CONTENT,
   GET_PHASE_BANNER_CONTENT,
   GET_SITE_TITLE,
+  GET_CLIMATE_CHANGE_NOTIFICATION_STATE,
 } from '../constants/ActionTypes';
 import { formattedDate } from '../utils';
 
@@ -215,6 +216,47 @@ export function rawSiteTitle(state = {}, action = {}) {
       return {
         ...state,
         siteTitle: {
+          data: null,
+          loading: false,
+          loaded: false,
+          error: action.error,
+        },
+      };
+    default:
+      break;
+  }
+  return state;
+}
+
+export function rawClimateChangeNotificationState(state = {}, action = {}) {
+  let { result, url } = action;
+  switch (action.type) {
+    case `${GET_CLIMATE_CHANGE_NOTIFICATION_STATE}_PENDING`:
+      return {
+        ...state,
+        climateChangeNotificationState: {
+          data: null,
+          loading: true,
+          loaded: false,
+          error: undefined,
+        },
+      };
+    case `${GET_CLIMATE_CHANGE_NOTIFICATION_STATE}_SUCCESS`:
+      return {
+        ...state,
+        climateChangeNotificationState: {
+          ...state[url],
+          loading: false,
+          loaded: true,
+          error: undefined,
+          data: result.climate_change_notification_state,
+        },
+      };
+
+    case `${GET_CLIMATE_CHANGE_NOTIFICATION_STATE}_FAIL`:
+      return {
+        ...state,
+        climateChangeNotificationState: {
           data: null,
           loading: false,
           loaded: false,
