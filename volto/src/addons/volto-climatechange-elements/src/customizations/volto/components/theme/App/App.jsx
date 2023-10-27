@@ -48,7 +48,7 @@ import {
 import clearSVG from '@plone/volto/icons/clear.svg';
 import * as Sentry from '@sentry/browser';
 import MultilingualRedirector from '@plone/volto/components/theme/MultilingualRedirector/MultilingualRedirector';
-import { ClimateChangeNotification } from 'addons/volto-climatechange-elements/src/components/ClimateChangeNotification/ClimateChangeNotification';
+import { ClimateChangeNotification } from '../ClimateChangeNotification/ClimateChangeNotification';
 /**
  * @export
  * @class App
