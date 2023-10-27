@@ -35,4 +35,12 @@
     name="@cmsconf-hotjar_id"
     permission="zope2.View"
     />
+
+    <plone:service
+    method="GET"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    factory=".controlpanel.ClimateChangeNotification"
+    name="@cmsconf-climate_change_notification"
+    permission="zope2.View"
+    />
 </configure>
