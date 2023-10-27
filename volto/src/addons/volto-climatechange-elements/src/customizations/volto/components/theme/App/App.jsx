@@ -39,12 +39,16 @@ import {
   getTypes,
   getWorkflow,
 } from '@plone/volto/actions';
-import { getPhaseBannerContent, getSiteTitle } from '../../../../../actions';
-//'../../../../../../../volto-climatechange-elements/src/actions';
+import {
+  getPhaseBannerContent,
+  getSiteTitle,
+  getClimateChangeNotificationState,
+} from '../../../../../actions';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 import * as Sentry from '@sentry/browser';
 import MultilingualRedirector from '@plone/volto/components/theme/MultilingualRedirector/MultilingualRedirector';
+import { ClimateChangeNotification } from 'addons/volto-climatechange-elements/src/components/ClimateChangeNotification/ClimateChangeNotification';
 /**
  * @export
  * @class App
@@ -134,6 +138,7 @@ class App extends Component {
           />
           <SkipLinks />
           <Header pathname={path} />
+          <ClimateChangeNotification pathname={path} />
           {this.props.pathname !== '/' && <Breadcrumbs pathname={path} />}
           <MultilingualRedirector pathname={this.props.pathname}>
             <main>
@@ -200,6 +205,11 @@ export default compose(
       key: 'siteTitle',
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ && dispatch(getSiteTitle()),
+    },
+    {
+      key: 'climateChangeNotificationState',
+      promise: ({ location, store: { dispatch } }) =>
+        __SERVER__ && dispatch(getClimateChangeNotificationState()),
     },
     {
       key: 'content',
