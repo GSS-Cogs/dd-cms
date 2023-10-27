@@ -1,4 +1,4 @@
 /* @/src/customizstiond/volto/components/manage/Widgets/CheckboxWidget.module.css */
 .checkboxWidget {
-  width: 100%;
+  width: 100% !important;
 }
