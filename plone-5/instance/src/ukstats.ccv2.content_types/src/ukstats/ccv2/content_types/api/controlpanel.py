@@ -36,3 +36,13 @@ class HotjarID(Service):
             REG_BASE + '.hotjar_analytics_id')
         response_value = {'hotjar_analytics_id': hotjar_id_value}
         return json_compatible(response_value)
+
+
+class ClimateChangeNotification(Service):
+    def reply(self):
+        climate_change_notification_state = api.portal.get_registry_record(
+            REG_BASE + '.climate_change_notification_state')
+        response_data = {
+            'climate_change_notification_state': climate_change_notification_state
+        }
+        return json_compatible(response_data)

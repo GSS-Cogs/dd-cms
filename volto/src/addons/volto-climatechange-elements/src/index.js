@@ -26,6 +26,7 @@ import {
   folderishContent,
   rawPhaseBanner,
   rawSiteTitle,
+  rawClimateChangeNotificationState,
 } from './reducers';
 
 import '../theme/main.scss';
@@ -170,7 +171,7 @@ const applyConfig = (config) => {
   config.addonReducers.folderishContent = folderishContent;
   config.addonReducers.rawPhaseBanner = rawPhaseBanner;
   config.addonReducers.rawSiteTitle = rawSiteTitle;
-
+  config.addonReducers.rawClimateChangeNotificationState = rawClimateChangeNotificationState;
   config = customiseSlateConfig(config);
 
   return config;

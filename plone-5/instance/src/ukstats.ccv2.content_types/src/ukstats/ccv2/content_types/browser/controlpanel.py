@@ -43,6 +43,13 @@ class ICMSSiteSettings(Interface):
         required=False,
     )
 
+    climate_change_notification_state = schema.Bool(
+        title="Enable climate change notifiction",
+        description="Enable or disable the climate change notification",
+        default=False,
+        required=False,
+    )
+
     directives.widget("site_title", frontendOptions={"widget": "TextLinesFieldWidget"})
 
     directives.widget(
@@ -55,6 +62,10 @@ class ICMSSiteSettings(Interface):
 
     directives.widget(
         "phasebanner_state", frontendOptions={"widget": "SingleCheckBoxFieldWidget"}
+    )
+
+    directives.widget(
+        "climate_change_notification_state", frontendOptions={"widget": "SingleCheckBoxFieldWidget"}
     )
 
 
