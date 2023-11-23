@@ -27,6 +27,7 @@ import {
   rawPhaseBanner,
   rawSiteTitle,
   rawClimateChangeNotificationState,
+  rawNotificationBannerState,
 } from './reducers';
 
 import '../theme/main.scss';
@@ -172,6 +173,7 @@ const applyConfig = (config) => {
   config.addonReducers.rawPhaseBanner = rawPhaseBanner;
   config.addonReducers.rawSiteTitle = rawSiteTitle;
   config.addonReducers.rawClimateChangeNotificationState = rawClimateChangeNotificationState;
+  config.addonReducers.rawNotificationBannerState = rawNotificationBannerState;
   config = customiseSlateConfig(config);
 
   return config;

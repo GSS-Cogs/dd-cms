@@ -7,6 +7,7 @@ import {
   GET_PHASE_BANNER_CONTENT,
   GET_SITE_TITLE,
   GET_CLIMATE_CHANGE_NOTIFICATION_STATE,
+  GET_NOTIFICATION_BANNER_STATE,
 } from '../constants/ActionTypes';
 import { formattedDate } from '../utils';
 
@@ -257,6 +258,47 @@ export function rawClimateChangeNotificationState(state = {}, action = {}) {
       return {
         ...state,
         climateChangeNotificationState: {
+          data: null,
+          loading: false,
+          loaded: false,
+          error: action.error,
+        },
+      };
+    default:
+      break;
+  }
+  return state;
+}
+
+export function rawNotificationBannerState(state = {}, action = {}) {
+  let { result, url } = action;
+  switch (action.type) {
+    case `${GET_NOTIFICATION_BANNER_STATE}_PENDING`:
+      return {
+        ...state,
+        notificationBannerState: {
+          data: null,
+          loading: true,
+          loaded: false,
+          error: undefined,
+        },
+      };
+    case `${GET_NOTIFICATION_BANNER_STATE}_SUCCESS`:
+      return {
+        ...state,
+        notificationBannerState: {
+          ...state[url],
+          loading: false,
+          loaded: true,
+          error: undefined,
+          data: result.notification_banner_state,
+        },
+      };
+
+    case `${GET_NOTIFICATION_BANNER_STATE}_FAIL`:
+      return {
+        ...state,
+        notificationBannerState: {
           data: null,
           loading: false,
           loaded: false,
