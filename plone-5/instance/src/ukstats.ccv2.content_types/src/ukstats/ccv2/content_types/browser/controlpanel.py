@@ -1,10 +1,17 @@
 from plone import schema
+from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 from plone.app.registry.browser.controlpanel import ControlPanelFormWrapper
 from plone.app.registry.browser.controlpanel import RegistryEditForm
 from plone.autoform import directives
 from plone.restapi.controlpanels import RegistryConfigletPanel
 from zope.component import adapter
 from zope.interface import Interface
+
+notifation_banner_vocabulary = SimpleVocabulary([
+    SimpleTerm(value="none", title="None"),
+    SimpleTerm(value="climate_change_shutdown", title="Climate Change Shutdown"),
+    SimpleTerm(value="vawg_shutdown", title="VAWG Shutdown"),
+])
 
 
 class ICMSSiteSettings(Interface):
@@ -50,6 +57,14 @@ class ICMSSiteSettings(Interface):
         required=False,
     )
 
+    notification_banner_state = schema.Choice(
+        title="Choose notifiction banner",
+        description="Choose an option for the notification banner",
+        vocabulary=notifation_banner_vocabulary,
+        default='none',
+        required=False,
+    )
+
     directives.widget("site_title", frontendOptions={"widget": "TextLinesFieldWidget"})
 
     directives.widget(
@@ -66,6 +81,10 @@ class ICMSSiteSettings(Interface):
 
     directives.widget(
         "climate_change_notification_state", frontendOptions={"widget": "SingleCheckBoxFieldWidget"}
+    )
+
+    directives.widget(
+        "notification_banner_state", frontendOptions={"widget": "AutocompleteFieldWidget"}
     )
 
 

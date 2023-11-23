@@ -46,3 +46,13 @@ class ClimateChangeNotification(Service):
             'climate_change_notification_state': climate_change_notification_state
         }
         return json_compatible(response_data)
+
+
+class NotificationBanner(Service):
+    def reply(self):
+        notification_banner_state = api.portal.get_registry_record(
+            REG_BASE + '.notification_banner_state')
+        response_data = {
+            'notification_banner_state': notification_banner_state
+        }
+        return json_compatible(response_data)
