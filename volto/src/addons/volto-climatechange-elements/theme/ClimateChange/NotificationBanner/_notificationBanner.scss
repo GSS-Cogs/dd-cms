@@ -1,4 +1,4 @@
-.cc-notification {
+.notification_banner {
   position: relative;
   background-color: govuk-colour('yellow');
   // this is here to slightly overlap the headers bottom border
@@ -6,32 +6,32 @@
   margin-bottom: -10px;
 }
 
-.cc-notification--non-root {
+.notification_banner--non-root {
   background-color: govuk-colour('blue');
 }
 
-.cc-notification__wrapper {
+.notification_banner__wrapper {
   margin-bottom: 0px;
   display: flex;
   align-items: center;
 }
 
-.cc-notification__icon--non-root {
+.notification_banner__icon--non-root {
   background-color: govuk-colour('white');
   color: govuk-colour('blue');
   border-color: govuk-colour('white');
 }
 
-.cc-notification__text {
+.notification_banner__text {
   color: #0b0c0c;
 }
-.cc-notification__text--non-root {
+.notification_banner__text--non-root {
   color: govuk-colour('white');
 }
 
-.cc-notification__link {
+.notification_banner__link {
   color: govuk-colour('blue') !important;
 }
-.cc-notification__link--non-root {
+.notification_banner__link--non-root {
   color: govuk-colour('white') !important;
 }

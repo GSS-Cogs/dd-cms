@@ -43,12 +43,13 @@ import {
   getPhaseBannerContent,
   getSiteTitle,
   getClimateChangeNotificationState,
+  getNotificationBannerState,
 } from '../../../../../actions';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 import * as Sentry from '@sentry/browser';
 import MultilingualRedirector from '@plone/volto/components/theme/MultilingualRedirector/MultilingualRedirector';
-import { ClimateChangeNotification } from '../ClimateChangeNotification/ClimateChangeNotification';
+import { NotificationBanner } from '../NotificationBanner/NotificationBanner';
 /**
  * @export
  * @class App
@@ -138,7 +139,7 @@ class App extends Component {
           />
           <SkipLinks />
           <Header pathname={path} />
-          <ClimateChangeNotification pathname={path} />
+          <NotificationBanner pathname={path} />
           {this.props.pathname !== '/' && <Breadcrumbs pathname={path} />}
           <MultilingualRedirector pathname={this.props.pathname}>
             <main>
@@ -210,6 +211,11 @@ export default compose(
       key: 'climateChangeNotificationState',
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ && dispatch(getClimateChangeNotificationState()),
+    },
+    {
+      key: 'notificationBannerState',
+      promise: ({ location, store: { dispatch } }) =>
+        __SERVER__ && dispatch(getNotificationBannerState()),
     },
     {
       key: 'content',
