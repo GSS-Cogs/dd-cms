@@ -2,6 +2,7 @@
 
 exports[`App renders a CCv2 style app component 1`] = `
 Array [
+  " ",
   <main />,
   <footer
     className="govuk-footer "
