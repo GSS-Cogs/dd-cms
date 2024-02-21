@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/Enrise/puppeteer-cucumber#readme",
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.28.0",
     "chai": "^4.2.0",
     "chai-dom": "^1.8.1",
     "chai-http": "^4.3.0",
