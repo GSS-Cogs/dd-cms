@@ -18,7 +18,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   # and it doesn't find it without these env vars...
   ZLIB_BASE=$(brew --prefix zlib)
   export LDFLAGS="-L${ZLIB_BASE}/lib"
-  export CPPFLAGS="-I${ZLIB_BASE}/include"
+  export CPPFLAGS="-I${ZLIB_BASE}/include -Wno-error=implicit-function-declaration"
 else
     sed -i 's|var-dir=/data|var-dir=data|;/RelStorage\|psycopg2\|mysqlclient\|cx-Oracle\|ldap/d' instance/buildout.cfg
 fi
@@ -35,7 +35,12 @@ export $(docker inspect --format='{{join .Config.Env " "}}' plone:${PLONE_VERSIO
 # restore my path variable
 export PATH=$mypath
 
-pipenv install requests pip==$PIP setuptools==$SETUPTOOLS zc.buildout==$ZC_BUILDOUT wheel==$WHEEL
+sudo pipenv install requests pip==$PIP setuptools==$SETUPTOOLS zc.buildout==$ZC_BUILDOUT wheel==$WHEEL
 cd instance
-pipenv run buildout -c custom.cfg
+
+if [[ -z "$1" ]]; then
+  sudo pipenv run buildout -c custom.cfg
+else
+  sudo pipenv run buildout -c $1
+fi
 cd ..
